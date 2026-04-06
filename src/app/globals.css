@@ -1,0 +1,149 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Background & Foreground */
+    --background: 0 0% 100%;
+    --foreground: 240 7% 10%;
+
+    /* Card */
+    --card: 240 5% 96%;
+    --card-foreground: 240 7% 10%;
+
+    /* Popover */
+    --popover: 240 5% 96%;
+    --popover-foreground: 240 7% 10%;
+
+    /* Primary - Burgundy */
+    --primary: 350 73% 27%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary */
+    --secondary: 240 5% 96%;
+    --secondary-foreground: 240 7% 10%;
+
+    /* Muted */
+    --muted: 240 5% 96%;
+    --muted-foreground: 240 5% 46%;
+
+    /* Accent */
+    --accent: 240 5% 96%;
+    --accent-foreground: 240 7% 10%;
+
+    /* Destructive */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --success: 142 72% 36%;
+    --success-foreground: 0 0% 100%;
+
+    /* Border & Input */
+    --border: 240 9% 91%;
+    --input: 240 5% 96%;
+    --ring: 350 73% 27%;
+
+    /* Radius */
+    --radius: 0.5rem;
+
+    /* Sidebar */
+    --sidebar: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Custom Shadows (for reference) */
+    --shadow-card: 0 2px 8px -2px hsl(240 7% 10% / 0.08);
+    --shadow-elegant: 0 8px 25px -8px hsl(240 7% 10% / 0.12);
+    --shadow-glow: 0 0 40px hsl(350 73% 27% / 0.2);
+
+    /* Custom Transitions (for reference) */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-elegant: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .dark {
+    /* Background & Foreground */
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    /* Card */
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    /* Popover */
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Primary - Burgundy (slightly lighter for dark mode) */
+    --primary: 350 73% 35%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary */
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    /* Muted */
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    /* Accent */
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+
+    /* Destructive */
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --success: 142 64% 42%;
+    --success-foreground: 0 0% 100%;
+
+    /* Border & Input */
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 350 73% 35%;
+
+    /* Sidebar */
+    --sidebar: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 350 73% 35%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Custom transition utilities */
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+
+  .transition-bounce {
+    transition: var(--transition-bounce);
+  }
+
+  .transition-elegant {
+    transition: var(--transition-elegant);
+  }
+}

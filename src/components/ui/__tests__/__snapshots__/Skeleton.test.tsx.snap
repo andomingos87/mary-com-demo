@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Skeleton Component Common Patterns renders card skeleton correctly 1`] = `
+<div
+  class="flex flex-col space-y-3"
+>
+  <div
+    class="animate-pulse bg-muted h-[125px] w-[250px] rounded-xl"
+    data-testid="image"
+  />
+  <div
+    class="space-y-2"
+  >
+    <div
+      class="animate-pulse rounded-md bg-muted h-4 w-[250px]"
+      data-testid="title"
+    />
+    <div
+      class="animate-pulse rounded-md bg-muted h-4 w-[200px]"
+      data-testid="description"
+    />
+  </div>
+</div>
+`;
+
+exports[`Skeleton Component Common Patterns renders text placeholder correctly 1`] = `
+<div
+  class="space-y-2"
+>
+  <div
+    class="animate-pulse rounded-md bg-muted h-4 w-full"
+    data-testid="line1"
+  />
+  <div
+    class="animate-pulse rounded-md bg-muted h-4 w-3/4"
+    data-testid="line2"
+  />
+</div>
+`;
+
+exports[`Skeleton Component Snapshots renders default skeleton correctly 1`] = `
+<div
+  class="animate-pulse rounded-md bg-muted"
+/>
+`;
+
+exports[`Skeleton Component Snapshots renders skeleton card layout correctly 1`] = `
+<div
+  class="space-y-3"
+>
+  <div
+    class="animate-pulse rounded-md bg-muted h-4 w-[250px]"
+  />
+  <div
+    class="animate-pulse rounded-md bg-muted h-4 w-[200px]"
+  />
+  <div
+    class="animate-pulse rounded-md bg-muted h-4 w-[150px]"
+  />
+</div>
+`;
+
+exports[`Skeleton Component Snapshots renders skeleton with custom dimensions correctly 1`] = `
+<div
+  class="animate-pulse rounded-md bg-muted h-12 w-12"
+/>
+`;

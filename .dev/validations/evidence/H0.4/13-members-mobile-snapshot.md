@@ -1,0 +1,31 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e5]:
+        - button "Abrir menu" [ref=e6] [cursor=pointer]:
+          - img
+        - navigation "Breadcrumb" [ref=e7]:
+          - list [ref=e8]:
+            - listitem [ref=e9]
+            - listitem [ref=e11]
+            - listitem [ref=e14]
+      - button "Abrir Mary AI" [ref=e17] [cursor=pointer]:
+        - img
+        - text: Mary AI
+    - main "Conteúdo principal" [ref=e18]:
+      - generic [ref=e19]: Início do conteúdo principal
+      - generic [ref=e20]:
+        - generic [ref=e22]:
+          - generic [ref=e23]:
+            - heading "Projeto Atlas" [level=1] [ref=e24]
+            - paragraph [ref=e25]: projeto-atlas
+            - paragraph [ref=e26]: Descricao persistida para validacao de reidratacao.
+          - 'status "Status: Teaser" [ref=e27]': Teaser
+        - generic [ref=e28]:
+          - navigation [ref=e29]:
+            - list [ref=e30]
+          - generic [ref=e62]:
+            - generic [ref=e66]
+            - paragraph [ref=e75]: Nenhum membro neste projeto
+  - region "Notifications alt+T"
+  - alert [ref=e65]

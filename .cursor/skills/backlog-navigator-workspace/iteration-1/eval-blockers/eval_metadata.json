@@ -1,0 +1,12 @@
+{
+  "eval_id": 2,
+  "eval_name": "eval-blockers",
+  "prompt": "o que esta bloqueando o progresso do projeto?",
+  "assertions": [
+    {"name": "identifica_decisoes_pendentes", "description": "Menciona T7.1 e T7.2 como decisoes pendentes"},
+    {"name": "analisa_dependencias", "description": "Analisa dependencias entre epicos/historias e identifica gargalos"},
+    {"name": "menciona_lacunas_criticas", "description": "Menciona lacunas criticas do backlog (assinatura, upload, MRS, Mary AI provider)"},
+    {"name": "apresenta_impacto", "description": "Para cada blocker, explica o impacto no progresso"},
+    {"name": "sugere_mitigacao", "description": "Propoe acoes ou mitigacoes para os blockers identificados"}
+  ]
+}

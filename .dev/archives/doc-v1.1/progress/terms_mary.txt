@@ -1,0 +1,373 @@
+# TERMOS DE USO
+Bem-vindo à Mary Digital Ecosystem!
+
+Estes Termos de Uso trazem as condições e regras para você, Usuário, visitar nossa página, realizar seu cadastro e usufruir dos serviços oferecidos. Por isso pedimos, por favor, leia este documento com atenção, já que estes termos irão regulamentar a nossa relação com você e explicar como nosso Ecossistema funciona e como oferecemos os Serviços aos Usuários.
+
+Índice
+Sobre a Mary
+1. Introdução
+2. Definições
+3. Tipos de Usuários, Serviços e Funcionalidades
+4. Cadastro
+5. Serviços
+6. Regras e Condições para Utilização da Mary
+7. Conteúdo Fornecido pelo Usuário
+8. Medidas de Segurança
+9. Propriedade Intelectual
+10. Links de Terceiros
+11. Garantia e Termo de Responsabilidade
+12. Limitação de Responsabilidade
+13. Indenização
+14. Vigência e Rescisão
+15. Modificações
+16. Disposições Gerais
+17. Lei Aplicável
+18. Central de Suporte
+
+SOBRE A MARY
+A Mary é um ecossistema digital voltado para transações de Fusões e Aquisições (M&A) acessível pela URL https://www.mary.network/ ("Plataforma" ou "Ecossistema"), desenvolvida e disponibilizada pela Mary Digital Ecosystem Ltda., inscrita no CNPJ sob o nº 62.135.811/0001-57, com sede na Alameda César Nascimento, nº 646, sala comercial, bairro Jurerê, na Cidade de Florianópolis, Estado de Santa Catarina, CEP 88.053-500 ("Mary", "nós" ou "nossos").
+
+A Mary é uma plataforma digital desenvolvida para facilitar, acelerar e estruturar transações de M&A (Fusões e Aquisições), conectando empresas (ativos), investidores (financeiros e estratégicos), advisors (assessores) e agentes de mercado de forma inteligente, segura e eficiente.
+
+Nosso Ecossistema oferece uma infraestrutura completa para originação, qualificação e condução de oportunidades de M&A, com ferramentas que auxiliam desde o cadastro das teses de investimento, publicação e validação de ativos, até a automação de documentos e negociação de contratos. Utilizamos tecnologia, curadoria e dados estruturados para reduzir atritos e trazer mais fluidez às transações.
+
+A plataforma é composta por diferentes perfis de Usuários:
+
+Investidores: fundos de venture capital, private equity, family offices, corporate ventures e empresas estratégicas. Têm acesso a filtros inteligentes, recomendações automáticas de oportunidades (baseadas na tese cadastrada), dashboards de pipeline e materiais de apoio como Teasers, CIMs e VDRs. Participam dos processos após assinatura de NDA digital e envio de NBO.
+Ativos: empresas que desejam captar investimento ou realizar uma venda parcial ou total. Podem se cadastrar diretamente ou por meio de advisors/agentes. Após validação, têm acesso à área exclusiva para acompanhamento do processo, geração automática de materiais e leitura do seu Readiness Score.
+Advisors: assessores especializados em sell side, buy side ou due diligence. Podem cadastrar ativos, estruturar os materiais necessários (como CIM, VDR, etc.) e acompanhar todas as interações do deal por meio de painéis próprios.
+Agentes: advogados, contadores, conselheiros ou executivos que atuam como sinalizadores de oportunidades para a Mary. Ao indicar empresas, acompanham os deals e recebem comissões conforme as regras da plataforma.
+Algumas funcionalidades específicas disponibilizadas pela Mary dependem de um cadastro prévio no Ecossistema.
+
+Nestes Termos de Uso, explicamos como nosso Ecossistema funciona e como oferecemos os Serviços aos Usuários. Por favor, note que, para a utilização de parte dos Serviços e de algumas funcionalidades do Ecossistema, é necessário que a Mary tenha acesso a determinadas informações sobre os Usuários e suas empresas, e explicamos com detalhes que tipo de informações coletamos e para quais finalidades em nossa Política de Privacidade ("Política de Privacidade").
+
+Tanto o uso de qualquer funcionalidade do Ecossistema como o cadastro somente poderão ser realizados após a leitura, compreensão e aceite dos presentes Termos de Uso.
+
+O ACEITE DOS TERMOS DE USO E DA POLÍTICA DE PRIVACIDADE IMPLICARÁ O RECONHECIMENTO DE QUE VOCÊ LEU, ENTENDEU E CONCORDOU, INCONDICIONALMENTE, COM TODAS O AS DISPOSIÇÕES CONSTANTES DESTES TERMOS DE USO E DOS DEMAIS TERMOS E CONDIÇÕES AQUI MENCIONADOS. CASO VOCÊ TENHA QUALQUER DÚVIDA, DEVERÁ ENTRAR EM CONTATO COM A MARY, POR MEIO DO NOSSO CENTRAL DE SUPORTE INDICADO NESTE DOCUMENTO, ANTES DE ACEITAR ESTES TERMOS DE USO.
+
+ATENÇÃO! SE VOCÊ (USUÁRIO OU NAVEGANTE) NÃO CONCORDAR COM TODOS OS TERMOS QUE SE SEGUEM, NÃO PODERÁ ACESSAR OU UTILIZAR A PLATAFORMA E SEUS SERVIÇOS A QUALQUER TÍTULO.
+
+1. INTRODUÇÃO
+
+1.1. Ao se inscrever e/ou usar os Serviços e Funcionalidades disponibilizados por meio do Ecossistema, você declara ser maior de 18 (dezoito) anos e se compromete a ler e a compreender o conteúdo integral dos Termos de Uso e, se concordar com as condições estipuladas, manifestar seu livre, expresso e inequívoco aceite. O Usuário poderá cancelar sua conta a qualquer momento, encerrando sua relação com a Mary. Portanto, ao aceitar os Termos de Uso, as disposições neles constantes serão aplicáveis e irão regular plenamente a relação entre você e a Mary.
+
+1.2. Ao cancelar a sua conta, você reconhece que deverá suspender o acesso aos nossos Serviços.
+
+1.3. A Mary se compromete a, assim que receber a solicitação de cancelamento do Usuário, excluir seus dados pessoais e institucionais, exceto se o armazenamento for necessário para o cumprimento de obrigações legais ou regulatórias ou para exercício de direito da Mary em processos judiciais, arbitrais ou administrativos ou quando permitido por lei. Em caso de impossibilidade de cumprir qualquer das disposições contidas nestes Termos de Uso, você também terá seu acesso à Plataforma restrito e/ou negado.
+
+1.4. Caso você seja menor de 18 (dezoito) anos, não poderá se cadastrar no Ecossistema, pois não coletamos dados, nem mesmo para registro, de menores de idade.
+
+2. DEFINIÇÕES
+
+2.1. Para fins destes Termos de Uso, os termos abaixo terão os seguintes significados, independentemente de estarem no singular ou no plural:
+
+Mary – Refere-se à Mary Digital Ecosystem Ltda., pessoa jurídica proprietária e operadora da Plataforma.
+Plataforma ou Ecossistema – Refere-se ao ambiente digital acessível por meio da URL https://www.mary.network, incluindo suas funcionalidades, interfaces, dados e sistemas.
+Usuário – Toda pessoa física ou jurídica que acesse ou utilize os Serviços da Mary, mediante cadastro e aceite destes Termos de Uso.
+Visitante – Pessoa que acessa a Plataforma sem cadastro.
+Investidor – Pessoa física ou jurídica com interesse em adquirir ou investir em empresas (Ativos), mediante cadastro e validação.
+Ativo – Empresa ou sociedade empresária listada na Plataforma com o objetivo de captar investimento ou realizar uma transação de M&A.
+Advisor – Profissional ou organização responsável pela assessoria de M&A, autorizado a cadastrar e representar Ativos.
+Agente – Pessoa física ou jurídica que atua na originação ou indicação de oportunidades de M&A, com ou sem vínculo direto com os Ativos.
+Serviços – Conjunto de funcionalidades e recursos ofertados pela Mary por meio da Plataforma, voltados à gestão, estruturação e análise de oportunidades de M&A.
+Termos de Uso – Este documento, que rege os direitos e deveres relacionados ao uso da Plataforma Mary.
+Política de Privacidade – Documento que regula o tratamento de dados pessoais e institucionais dos Usuários da Plataforma.
+Readiness Score – Métrica desenvolvida pela Mary para avaliar a prontidão de uma empresa (Ativo) para uma transação de M&A.
+
+3. TIPOS DE USUÁRIOS, SERVIÇOS E FUNCIONALIDADES
+
+3.1. Visitantes
+
+3.1.1. "Visitantes" são os usuários que navegam em nosso Ecossistema sem efetuar um cadastro.
+
+3.1.2. Funcionalidades: o Visitante poderá utilizar as funcionalidades abaixo, sem precisar se cadastrar no Ecossistema:
+
+Visualizar os benefícios destinados para cada Perfil;
+Visualizar as informações de Como Funciona a Mary;
+Entender Quem Somos e Que Fazemos;
+Acessar os Casos de Sucesso, após terem sido autorizados pelos clientes e publicados;
+Acessar materiais educacionais disponíveis publicamente;
+Acessar a central de ajuda para solicitar suporte e/ou atendimento;
+Acessar este Termo de Uso, nossa Política de Privacidade e links externos.
+
+3.2. Usuários
+
+3.2.1. A Mary é voltada a pessoas físicas e jurídicas interessadas em intermediar, participar, acompanhar ou viabilizar transações de fusões e aquisições. Os Usuários podem se cadastrar na Plataforma assumindo um dos seguintes perfis:
+
+Investidor: fundos de investimento, corporate ventures, family offices ou empresas com interesse em adquirir ou investir em ativos.
+Ativo: empresa ou sociedade empresária interessada em captar investimento ou realizar uma transação de M&A (total ou parcial).
+Advisor: profissional ou empresa especializada em assessoria de M&A, autorizada a cadastrar e representar Ativos na Plataforma.
+Agente: pessoa física ou jurídica autorizada a indicar oportunidades ou Ativos à Plataforma, atuando como originador ou sinalizador de deals.
+
+3.2.2. Cada Usuário deverá realizar seu cadastro individual, fornecendo os seguintes dados mínimos:
+
+Pessoa Física (Individual): nome completo, e-mail, senha, CPF, data de nascimento, telefone celular, ocupação e vínculo com a Instituição (quando aplicável).
+Pessoa Jurídica (Institucional): nome empresarial, CNPJ, endereço, e-mail corporativo, contrato/estatuto social, representante legal e lista de colaboradores (com respectivos dados pessoais).
+
+3.2.3. No caso de contas institucionais, o primeiro Usuário cadastrado será considerado o Administrador, com poderes para adicionar e remover Colaboradores vinculados à mesma Instituição. Esses Colaboradores passam a ser considerados Usuários Institucionais, com acesso vinculado ao perfil da Instituição e sujeito aos mesmos Termos de Uso.
+
+3.2.4. Os Usuários terão acesso às funcionalidades conforme seu perfil e nível de verificação, podendo incluir, mas não se limitando a:
+
+Para todos os Usuários:
+
+Acesso à área logada da Plataforma
+Edição do seu cadastro e perfil
+Consulta e leitura de conteúdos públicos, materiais e relatórios
+Acesso à Central de Ajuda
+Visualização da Política de Privacidade, Termos de Uso e APIs públicas
+Funcionalidades específicas por perfil:
+
+Investidores
+
+Cadastro de sua tese de investimento (critérios, filtros, estruturações preferidas)
+Acesso ao Radar de Oportunidades (Dealflow) conforme sua tese
+Visualização e gestão de pipeline de deals
+Recebimento de alertas de match e oportunidades
+Solicitação de acesso a documentos (mediante NDA)
+Envio de NBO (Oferta Não-Vinculante) por meio da Plataforma
+Ativos
+
+Cadastro completo da empresa para venda ou captação
+Upload de documentos financeiros e societários
+Geração automática de Teaser, CIM e Readiness Score
+Acompanhamento de interesse de investidores
+Acesso seguro à área de gestão da oportunidade
+Advisors
+
+Cadastro de múltiplos Ativos sob gestão
+Gerenciamento dos dados, documentos e andamento do deal
+Interação com investidores interessados
+Visualização de pipeline por ativo
+Acesso à curadoria e funcionalidades de geração de materiais
+Agentes
+
+Indicação de empresas (Ativos) via formulário próprio
+Acompanhamento do andamento do deal indicado
+Potencial recebimento de bônus ou comissão, conforme regras específicas
+Acesso restrito a informações gerais dos deals em que participa
+
+3.2.5. A Mary poderá conceder acesso a funcionalidades experimentais (versões beta) para determinados Usuários ou perfis. Caso o Usuário opte por testar essas funcionalidades, declara estar ciente de que podem ocorrer falhas, instabilidades ou perda de dados, não sendo devida qualquer responsabilização pela Mary.
+
+3.3. Isenção de Responsabilidade
+
+3.3.1. Nenhuma das funcionalidades ou conteúdos da Plataforma Mary devem ser interpretados como consultoria jurídica, contábil, tributária, financeira ou estratégica. O uso da Plataforma não substitui a atuação de profissionais especializados.
+
+3.3.2. A Mary é uma ferramenta de apoio, curadoria e conexão entre as partes, não sendo parte das negociações ou transações realizadas entre os Usuários. A Mary não se responsabiliza pelos resultados comerciais, decisões de investimento, documentos trocados, qualidade das informações inseridas pelos Usuários ou pelas consequências das interações entre eles.
+
+3.3.3. A Plataforma Mary tampouco garante que qualquer oportunidade cadastrada resulte em investimento, aquisição, venda ou outro tipo de transação. Todas as decisões comerciais são de responsabilidade exclusiva dos próprios Usuários.
+
+4. CADASTRO
+
+4.1. Conforme disposto acima, o acesso ao Ecossistema pelos Usuários depende do fornecimento de determinadas informações, conforme previsto na Política de Privacidade. Tais informações poderão incluir dados pessoais, profissionais e institucionais, a depender do perfil de acesso escolhido (Investidor, Ativo, Advisor ou Agente).
+
+4.2. Após a conclusão do processo de cadastro, o Usuário receberá no e-mail informado um link para validação da conta. O envio deste e-mail poderá levar alguns minutos. Caso não receba a mensagem, recomendamos verificar a caixa de spam. Persistindo a ausência, o Usuário deverá entrar em contato com a Central de Suporte.
+
+4.3. A conta de cada Usuário é pessoal e intransferível, acessível unicamente por meio do login e senha cadastrados. O Usuário é o único e exclusivo responsável por manter o sigilo dessas credenciais, devendo adotar todas as medidas necessárias para evitar o uso não autorizado por terceiros.
+
+4.4. O Usuário é integralmente responsável por todas as atividades realizadas com sua conta. Em caso de perda, extravio ou suspeita de uso indevido, deverá comunicar imediatamente a Mary, por meio da Central de Suporte, para que sejam adotadas as providências cabíveis. A Mary poderá inabilitar, de forma definitiva, cadastros duplicados ou irregulares, independentemente de notificação prévia.
+
+4.5. O Usuário declara e garante que todos os dados fornecidos no momento do cadastro ("Dados Cadastrais") são verdadeiros, completos, precisos e atualizados. Compromete-se, ainda, a manter seus dados atualizados ao longo do uso da Plataforma. A inclusão de informações incorretas ou desatualizadas poderá ensejar a suspensão do acesso, sendo o Usuário o único responsável por eventuais prejuízos decorrentes.
+
+4.6. A Mary poderá suspender, temporária ou definitivamente, o acesso de qualquer Usuário cujo cadastro contenha informações inverídicas, inconsistentes ou desatualizadas, especialmente quando não for possível regularizar tais dados ou quando houver recusa injustificada em fornecer eventuais informações ou documentos complementares.
+
+4.6.1. A Mary poderá, a qualquer tempo, solicitar documentos ou dados adicionais para verificação, revisão ou atualização do cadastro, tanto do Usuário Individual quanto da Instituição por ele representada. A não apresentação das informações solicitadas poderá resultar no indeferimento, suspensão ou cancelamento do cadastro, a exclusivo critério da Mary, sem que isso gere qualquer tipo de indenização ao Usuário, resguardado o direito de solicitar esclarecimentos por meio da Central de Suporte.
+
+4.7. O Usuário compromete-se a não compartilhar suas credenciais de acesso com terceiros. A Mary não se responsabiliza por danos decorrentes do uso indevido ou compartilhado da conta, cabendo ao Usuário assumir integral responsabilidade por qualquer prejuízo oriundo dessa conduta.
+
+4.8. O Usuário declara estar ciente de que todos os acessos realizados sob sua identidade digital serão presumidos como legítimos, salvo comprovação inequívoca de fraude comunicada tempestivamente à Mary.
+
+4.8.1. O Usuário compromete-se a notificar imediatamente a Mary, por meio da Central de Suporte, em caso de suspeita de violação de segurança, uso indevido de sua conta ou acesso não autorizado por terceiros.
+
+4.8.2. A Mary reserva-se o direito de suspender ou bloquear preventivamente o acesso do Usuário sempre que houver indícios razoáveis de fraude, uso irregular ou violação destes Termos de Uso, sem que isso gere qualquer direito à indenização por parte do Usuário.
+
+5. SERVIÇOS
+
+5.1. A Mary oferece aos Usuários uma plataforma digital especializada para a gestão de processos de Fusões e Aquisições (M&A), com ferramentas voltadas à originação, qualificação, estruturação e acompanhamento de oportunidades de investimento e transações societárias.
+
+5.2. Por meio do Ecossistema, os Usuários poderão:
+
+Cadastrar suas teses de investimento ou oportunidades de captação/venda;
+Utilizar filtros e algoritmos inteligentes para identificação de oportunidades com maior aderência;
+Acompanhar, por meio de dashboards e pipelines, as etapas de cada oportunidade;
+Gerar e acessar materiais padronizados de transação, tais como Teasers, CIMs e documentos de apoio;
+Solicitar assinatura de NDA digital e acessar áreas seguras de dados (VDR);
+Enviar ou receber manifestações de interesse (como NBO – Oferta Não-Vinculante), conforme etapa do processo;
+Interagir com outros Usuários, conforme permissões e funcionalidades disponibilizadas em cada perfil.
+
+5.3. As funcionalidades da Mary poderão variar de acordo com o perfil do Usuário (Investidor, Ativo, Advisor ou Agente), conforme detalhado nos Termos de Uso e durante o processo de cadastro.
+
+5.4. A Mary poderá disponibilizar ao Usuário, diretamente ou por meio de integrações com sistemas parceiros, informações públicas, análises técnicas ou indicadores sobre empresas cadastradas (tais como Readiness Score, dados financeiros, localização, setor de atuação e estrutura societária). Esses dados têm caráter referencial e deverão ser utilizados exclusivamente para fins de qualificação e análise de oportunidades de M&A.
+
+5.5. O Usuário compromete-se a utilizar o Ecossistema e os dados ali acessados unicamente para fins legítimos, relacionados à análise, estruturação ou participação em processos de M&A. É vedado o uso da Plataforma para finalidades não autorizadas por estes Termos, incluindo, mas não se limitando a: prospecção comercial genérica, envio de mensagens não solicitadas, coleta de dados em massa ou práticas de concorrência desleal.
+
+5.6. A responsabilidade pela veracidade, integridade e legalidade das informações inseridas na Plataforma é exclusiva dos Usuários que as fornecem. Caso sejam utilizados dados de terceiros, o Usuário declara que possui legitimidade e permissão para seu uso, nos termos da legislação vigente, inclusive a Lei Geral de Proteção de Dados (LGPD).
+
+5.7. A Mary reserva-se o direito de auditar ou suspender o acesso de qualquer Usuário que utilize os serviços da Plataforma de maneira fraudulenta, abusiva ou incompatível com estes Termos.
+
+6. REGRAS E CONDIÇÕES PARA UTILIZAÇÃO DA MARY
+
+6.1. Ao aceitar estes Termos de Uso, você declara: (i) ser maior de 18 (dezoito) anos; (ii) ser responsável por quaisquer consequências relacionadas à sua utilização da Plataforma, respondendo, inclusive perante terceiros, por qualquer reivindicação que venha a ser apresentada à Mary, judicial ou extrajudicialmente; e (iii) ser o único responsável pelas operações que realizar por meio do Ecossistema, assumindo todos os riscos relacionados a elas, inclusive em caso de eventual prejuízo.
+
+6.2. A utilização do Ecossistema possui caráter individual ou institucional, conforme o tipo de cadastro realizado pelo Usuário, sendo o uso pessoal, intransferível e autorizado apenas para fins lícitos e relacionados ao propósito a que o Ecossistema se destina de acordo com estes Termos de Uso. Portanto, você declara que não utilizará o Ecossistema para quaisquer fins ilícitos, devendo ser, sob qualquer circunstância, observada a legislação vigente.
+
+6.3. É de seu conhecimento que o acesso à Plataforma por meio de conexão em redes wi-fi públicas e desprotegidas oferece risco às informações armazenadas em seu dispositivo móvel, bem como aos dados e/ou informações nele armazenados. Assim, declara estar ciente de que deverá assegurar a confiabilidade das redes que viabilizem o seu acesso à Plataforma, sendo de sua única e exclusiva responsabilidade quaisquer danos advindos do uso do Ecossistema mediante acesso a redes públicas consideradas inseguras, uma vez que a Mary não possui qualquer ingerência nas medidas de segurança adotadas por tais redes.
+
+6.4. A Mary, por meio destes Termos de Uso, concede a você uma licença individual, limitada, temporária, revogável, não exclusiva e intransferível de uso do Ecossistema, durante o período de uso do Ecossistema, sendo certo que você não poderá utilizar e nem permitir o uso do Ecossistema para qualquer outra finalidade não expressamente prevista nestes Termos de Uso.
+
+6.5. Você reconhece, desde já, que não poderá:
+
+(i) utilizar o Ecossistema, inclusive para divulgar informações, de qualquer forma que possa implicar violação de legislação aplicável, de direitos de propriedade da Mary e/ou de terceiros ou dos bons costumes, incluindo, sem limitação, violação de direitos intelectuais, autorais e de privacidade, ou produção e divulgação de conteúdo ilegal, imoral, inapropriado ou ofensivo;
+(ii) copiar, distribuir, ceder, sublicenciar, vender, revender, compartilhar, alugar, dar em locação ou em garantia, reproduzir, doar, alienar de qualquer forma, transferir total ou parcialmente, a qualquer título, sob qualquer modalidade, gratuita ou onerosamente, provisória ou permanentemente Ecossistema ou qualquer de seus módulos, partes, manuais, conteúdos ou informações associadas ou quaisquer informações a eles relativas;
+(iii) empregar malware e/ou práticas nocivas com o intuito de utilizar indevidamente o Ecossistema para práticas indesejadas à Mary ou a terceiros, tais como, mas não limitadas a, exploits, spamming, flooding, spoofing, crashing e root kits;
+(iv) reproduzir, adaptar, modificar e/ou empregar, no todo ou em parte, para qualquer fim, os Serviços, o Ecossistema e/ou o sistema operacional ou qualquer conteúdo do Ecossistema, assim como seus módulos, partes, conteúdos, manuais ou quaisquer informações a eles relativas, sem a autorização prévia e expressa da Mary;
+(v) publicar ou transmitir qualquer arquivo que contenha vírus, worms, cavalos de Troia ou qualquer outro programa contaminante ou destrutivo, ou que, de alguma forma, possa interferir no bom funcionamento do Ecossistema;
+(vi) utilizar o Ecossistema para finalidade diversa daquela para a qual foi disponibilizada pela Mary; e
+(vii) acessar, armazenar, divulgar, utilizar ou modificar indevidamente os dados de outros Usuários.
+
+6.6. São responsabilidades do Usuário:
+
+(i) utilizar o Ecossistema de forma adequada e diligente, em conformidade com estes Termos de Uso, com a lei, a moral, os bons costumes e a ordem pública;
+(ii) manter o ambiente de seus dispositivos de acesso ao à Plataforma seguro, valendo-se de ferramentas específicas para tanto, tais como antivírus, firewall, entre outras, de modo a contribuir para a prevenção de riscos eletrônicos;
+(iii) utilizar sistemas operacionais atualizados e eficientes para a plena utilização do Ecossistema;
+(iv) equipar-se e responsabilizar-se pelos dispositivos de hardware necessários para o acesso à Plataforma, bem como pelo acesso desses à Internet;
+(v) não explorar maliciosamente a segurança do Ecossistema para a prática de atos ilícitos, proibidos pela lei e pelos presentes Termos de Uso, lesivos aos direitos e interesses de terceiros, ou que, de qualquer forma, possa danificar, inutilizar, sobrecarregar ou deteriorar o o Ecossistema, bem como os equipamentos de informática de outros Usuários ou de outros internautas (hardware e software), assim como os documentos, arquivos e todo conteúdo armazenado em seus dispositivos ou impedir a normal utilização ou gozo do Site, do Ecossistema e dos Serviços;
+(vi) manter cópia de todo conteúdo e dos dados que julgue importante, tendo em vista que podem ocorrer eventuais manutenções que limitem temporariamente o acesso aos dados. É de responsabilidade do Usuário manter cópias locais de qualquer conteúdo essencial;
+(vii) garantir a veracidade, qualidade, integridade e legalidade de seus dados e do meio através do qual adquiriu os seus dados;
+(viii) agir de forma a coibir o acesso não autorizado à utilização dos Serviços e notificar o Ecossistema imediatamente de qualquer acesso não autorizado ou uso; e
+6.7. O Usuário declara e garante que cumpre com as leis e regulamentos de proteção de dados pessoais, incluindo os da LGPD e as regulamentações e entendimentos da Autoridade Nacional de Proteção de Dados, sobretudo no que se refere à gestão e tratamento de dados pessoais que serão acessados, pelo Usuário, utilizando o Ecossistema.
+
+6.7.1. O Usuário, como Controlador dos dados pessoais, deverá cumprir com os direitos dos titulares e demais obrigações impostas pela LGPD em relação ao tratamento dos dados pessoais acessados utilizando as ferramentas disponibilizadas pelo Ecossistema.
+
+6.8. A Mary se compromete a envidar seus melhores esforços para manter os Serviços ativos o máximo de tempo possível. Todavia, não possui obrigação de performance, estabilidade, continuidade ou qualquer espécie de dever de perpetuar permanentemente os Serviço e seu acesso à Plataforma. A Mary também não se responsabiliza por lucros cessantes, perda de oportunidade, dados ou negócios em decorrência de indisponibilidades temporárias. Os danos causados decorrentes de indisponibilidade serão suportados por você e não pela Mary.
+
+6.9. A Mary poderá, a seu exclusivo critério, a qualquer tempo e sem necessidade de comunicação prévia a você:
+
+(i) encerrar, modificar ou suspender, total ou parcialmente, o seu acesso à Plataforma, quando referido acesso ou cadastro violar as condições estabelecidas nestes Termos de Uso e/ou na Política de Privacidade;
+(ii) excluir, total ou parcialmente, as informações cadastradas por você que não estejam em consonância com as disposições destes Termos de Uso; e
+(iii) acrescentar, excluir ou modificar o conteúdo do Ecossistema ou dos Serviços.
+6.10. A Mary poderá, a seu exclusivo critério, suspender, modificar ou encerrar as atividades do Ecossistema, mediante comunicação prévia, salvo nas hipóteses de ato de autoridade competente, caso fortuito ou força maior.
+
+7. CONTEÚDO FORNECIDO PELO USUÁRIO
+
+7.1. A Mary pode, ocasionalmente, ao seu exclusivo critério, permitir que você submeta, transfira, publique ou de outra forma disponibilize, por meio dos Serviços, conteúdo e informação de texto, áudio e/ou visual, incluindo, mas não se limitando a, comentários, feedbacks, informações sobre empresas (Ativos), teses de investimento, documentos enviados, interações via chat ou mensagens, registros de oportunidades e demais dados submetidos por meio da Plataforma.
+
+7.2. O Usuário declara e garante que os conteúdos por ele submetidos, transferidos, publicados ou de outra forma disponibilizados não infringem, nem infringirão, qualquer obrigação ou direto de quaisquer terceiros, seja pessoa natural ou jurídica, incluindo, sem limitação, direitos de propriedade intelectual, direitos autorais, direitos de imagem, privacidade, direitos do consumidor, entre outros.
+
+7.3. Todo o conteúdo fornecido por você mantém-se de sua propriedade, contudo, ao fornecer tais conteúdos à Mary, você concede licença gratuita, por prazo indeterminado, não exclusiva, para uso institucional, estatístico ou promocional da Mary, com exceção de dados confidenciais ou que permitam a identificação direta de Usuários e Ativos, para utilizar, copiar, modificar, criar obras derivadas, distribuir, incluir em material institucional ou materiais correlatos para a promoção da Mary e/ou dos Serviços, apresentar e executar publicamente, e de outra forma explorar, sob qualquer modo, tal conteúdo, em todos os formatos e canais de distribuição conhecidos ou futuramente concebidos (incluindo em relação aos Serviços e à atividade da Mary em sites e serviços de terceiros), sem a necessidade de aviso a você ou consentimento prévio, e sem a necessidade de qualquer pagamento a você ou a qualquer outra pessoa ou entidade. A utilização de conteúdos confidenciais ou sensíveis para fins promocionais será feita de forma agregada, estatística ou anonimizável, sem exposição de dados identificáveis de Usuários ou empresas sem prévia autorização.
+
+7.4. O Usuário compromete-se a não fornecer conteúdo que seja ofensivo, difamatório, calunioso, injurioso, discriminatório, violento, obsceno, ilícito, pornográfico, ou que exponha de forma negativa a imagem da Mary, das instituições, organizações e empresas parceiras da Mary ou de outros usuários do Ecossistema, conforme apuração da Mary a seu exclusivo critério, seja ou não esse material protegido por lei. A Mary poderá remover o conteúdo, a seu exclusivo critério de análise, a qualquer momento e por qualquer motivo relevante, sem nenhum aviso, podendo resultar na exclusão do Usuário do Ecossistema e responsabilização legal sobre o conteúdo.
+
+7.5. O Usuário reconhece que será o único e exclusivo responsável por qualquer dano causado à Mary, a terceiros ou a outros Usuários em decorrência do conteúdo que submeter à Plataforma, isentando a Mary de qualquer responsabilidade relacionada a reclamações, demandas judiciais ou extrajudiciais que venham a ocorrer por esse motivo. O Usuário reconhece que a Mary poderá utilizar trechos, padrões e aprendizados oriundos do conteúdo submetido para melhoria de seus algoritmos, modelos estatísticos ou sistemas de recomendação, sempre respeitando os limites legais e contratuais de confidencialidade.
+
+8. MEDIDAS DE SEGURANÇA
+
+8.1. A Mary se compromete a aplicar as medidas de segurança adequadas para seu uso do Ecossistema. No entanto, você declara estar ciente de que nenhum sistema está totalmente isento de vulnerabilidades, de maneira que a Mary não deverá ser responsabilizada por casos de quebra de segurança provocados por terceiros ou falhas de natureza elétrica ou de telecomunicações, tal qual pela ocorrência de desastres ou demais casos fortuitos ou de força maior.
+
+8.2. A Mary também não será responsável por indenizações ou reparação de danos provocados por negligência, descuido, imprudência ou mau uso da tecnologia que o Usuário adotou ao acessar o Ecossistema.
+
+8.3. Mary não solicita espontaneamente ao Usuário (i) a divulgação, confirmação, conferência ou atualização de dados de cadastro ou de informações pessoais ou (ii) requisição, confirmação, conferência ou atualização de identidade digital, de componentes de segurança ou de dados próprios. Mensagens com tais solicitações deverão ser ignoradas pelo Usuário e comunicadas prontamente à Mary.
+
+8.4. Os avisos, os alertas de segurança e as dicas apresentados no Ecossistema devem ser lidos com atenção por você, de maneira a garantir uma melhor experiência no Ecossistema e a eventual mitigação de falhas de segurança ou de operação do sistema.
+
+8.5. Você está ciente e concorda que, ao aceitar estes Termos de Uso, poderá se sujeitar a mecanismos de validação de segurança utilizados pela Mary para proteção de sua conta e da integridade do Ecossistema, tais como autenticação em duas etapas, validação por e-mail, envio de documentos comprobatórios, uso de certificados digitais emitidos por autoridades reconhecidas (e.g. ICP-Brasil) e questionários de segurança. A Mary poderá exigir, sempre que necessário, a adoção de métodos adicionais de verificação, com o objetivo de garantir a autenticidade da identidade do Usuário e a segurança das informações tratadas na Plataforma.
+
+8.5.1. No caso de Advisors e Agentes que desejem cadastrar, representar ou acessar informações de uma empresa (Ativo), o vínculo com tal empresa deverá ser previamente validado por meio de, pelo menos, um dos seguintes métodos: (i) e-mail institucional com domínio correspondente ao da empresa; (ii) confirmação expressa do responsável legal da empresa, por meio de assinatura eletrônica ou certificado digital válido; (iii) autenticação com certificado digital emitido por autoridade certificadora reconhecida (como ICP-Brasil); ou (iv) outro meio seguro e verificável definido pela Mary. O acesso a dados sensíveis do Ativo somente será permitido após validação bem-sucedida e registro da respectiva autorização no sistema.
+
+8.6. Caso se comprove que você agiu de má-fé, fraudando o acesso à Plataforma, você será o único responsável por quaisquer despesas incorridas, mesmo após a comunicação à Mary.
+
+9. PROPRIEDADE INTELECTUAL
+
+9.1. A Plataforma Mary, seu código-fonte, algoritmos, banco de dados estruturado, interface visual, funcionalidades, layout, identidade visual, manuais e quaisquer materiais desenvolvidos ou disponibilizados pela própria Mary são de propriedade exclusiva da Mary Digital Ecosystem Ltda., ou licenciados sob autorização legítima. Nenhuma disposição nestes Termos transfere ou concede qualquer direito de titularidade ao Usuário sobre tais ativos.
+
+9.2. O Usuário reconhece que não adquire, por meio destes Termos de Uso, qualquer direito sobre a propriedade intelectual ou industrial relacionada à Plataforma Mary, incluindo suas marcas, patentes, algoritmos, interfaces, bancos de dados estruturados e demais ativos imateriais. A base de dados estruturada, incluindo dados agregados e anonimizados inseridos por Usuários (individuais ou institucionais), pertence à Mary, exceto nos casos em que tais dados sejam confidenciais e identificáveis como de propriedade exclusiva do Usuário, conforme indicado em Política de Privacidade.
+
+9.3. É vedado ao Usuário replicar, total ou parcialmente, a estrutura, lógica funcional, layout ou banco de dados da Mary para desenvolver produtos concorrentes, derivados ou inspirados, sem autorização expressa. O descumprimento poderá configurar violação de propriedade intelectual, sujeitando o infrator às sanções legais cabíveis.
+
+9.4. O Usuário reconhece que qualquer violação aos direitos de propriedade intelectual da Mary ou de terceiros poderá ensejar responsabilização civil e/ou criminal, conforme legislação vigente.
+
+9.5. As marcas, nomes comerciais, logotipos, domínios e demais sinais distintivos relacionados à Mary são de propriedade exclusiva da Mary Digital Ecosystem Ltda. Quaisquer marcas de terceiros eventualmente exibidas na Plataforma pertencem aos respectivos titulares e são utilizadas apenas com autorização, fins informativos ou dentro do contexto de uso pelos próprios Usuários. A exibição desses elementos não implica qualquer cessão, licenciamento ou autorização de uso adicional por parte de outros Usuários.
+
+9.6. Caso o Usuário identifique qualquer conteúdo ou funcionalidade na Plataforma que possa representar violação de direitos de propriedade intelectual, poderá enviar denúncia à Mary por meio da Central de Suporte. A Mary se compromete a analisar a solicitação e tomar as medidas necessárias para correção ou esclarecimento, se for o caso.
+
+10. LINKS DE TERCEIROS
+
+10.1. O Ecossistema poderá conter links para websites de terceiros, inclusive inseridos por outros Usuários como parte de seus cadastros ou interações. Você está ciente e concorda que a existência destes links não representa um endosso ou patrocínio a tais terceiros e reconhece estar sujeito aos termos de uso e às políticas de privacidade de tais terceiros, os quais deverão ser verificados por você.
+
+10.2. Os links de terceiros são fornecidos somente para sua conveniência e informação, sendo que a Mary não mantém controle, não assume qualquer responsabilidade e não fornece qualquer tipo de garantia sobre eles, tais como exatidão, qualidade e atualidade. Portanto, você declara estar ciente de que a Mary não será responsável por conteúdo de terceiros ou sites acessados por meio de links disponíveis no Ecossistema.
+
+11. GARANTIA E TERMO DE RESPONSABILIDADE
+
+11.1. A Mary atua como um ecossistema digital que conecta investidores, empresas, agentes e advisors, oferecendo ferramentas para estruturação, qualificação e acompanhamento de processos de M&A. A Mary não atua como assessoria financeira, jurídica ou estratégica e nem representa, assessora, intermedeia ou negocia em nome de qualquer Usuário, a realização de investimentos, aquisição ou alienação de participações societárias. A Plataforma atua como meio tecnológico de apoio à organização, curadoria e acompanhamento de oportunidades de M&A e não se responsabiliza por decisões de investimento ou negociações realizadas entre os Usuários.
+
+11.2. A Mary não garante, endossa ou assume qualquer responsabilidade por serviços prestados por terceiros (incluindo Advisors, Agentes, parceiros ou Usuários cadastrados), tampouco pela veracidade, integridade ou completude das informações inseridas por Usuários ou obtidas por meio de fontes externas conectadas via API (como bases públicas, comerciais ou institucionais). O Usuário reconhece que eventuais relatórios, dados cadastrais ou indicadores provenientes dessas fontes têm caráter informativo, e devem ser utilizados como apoio à análise, nunca como substituto de due diligence ou validação própria.
+
+11.3. A Plataforma é fornecida "como está" e "conforme disponível". A Mary não garante que a Plataforma estará livre de interrupções, erros, falhas de sistema ou conteúdo malicioso, embora adote medidas técnicas para mitigar riscos. A responsabilidade pelo ambiente de navegação, conexão segura e proteção contra malware é do próprio Usuário.
+
+11.4. A Mary não garante a obtenção de resultados específicos, acordos comerciais ou transações de sucesso a partir do uso da Plataforma. O uso das ferramentas e recursos disponíveis é de responsabilidade exclusiva do Usuário, que deverá avaliar sua adequação aos seus objetivos estratégicos e critérios internos.
+
+11.5. O Usuário reconhece que qualquer conteúdo de terceiros, link, comentário, análise, sugestão de oportunidade ou material acessado por meio da Plataforma é de responsabilidade de quem o inseriu, não havendo qualquer obrigação da Mary de revisar, validar ou garantir tais informações, salvo nos casos expressamente definidos na Política de Privacidade ou em contrato específico.
+
+12. LIMITAÇÃO DE RESPONSABILIDADE
+
+12.1. Você concorda que possui como solução para quaisquer problemas ou insatisfações decorrentes do uso dos Serviços, a possibilidade de cancelar seu cadastro no Ecossistema e, portanto, parar de usar os Serviços da Mary.
+
+12.2. A Mary não é responsável por plataformas de terceiros ou pelo conteúdo destes, e embora seu relacionamento com tais plataformas possa ser regido por acordos separados firmados com tais terceiros, na medida máxima permitida pela lei aplicável, sua solução para quaisquer problemas ou insatisfação com plataformas de terceiros ou o conteúdo destes, é parar de usar tais plataformas de terceiros. Na medida máxima permitida pela lei, em nenhuma circunstância a Mary, seus responsáveis, acionistas, funcionários, agentes, diretores, empregados, subsidiárias, afiliadas, sucessores, cessionários, fornecedores ou licenciadores serão responsáveis por quaisquer lucros cessantes, danos indiretos, especiais, incidentais, punitivos, exemplares ou consequentes decorrentes, em todos os casos, do uso ou da incapacidade de usar os Serviços, as plataformas de terceiros ou o conteúdo de plataformas de terceiros, independentemente da teoria legal, ainda que a Mary tenha sido advertida sobre a possibilidade desses danos, e mesmo se uma solução falhar em sua finalidade essencial.
+
+12.3. A Mary não será responsável por (i) quaisquer indisponibilidades, erros e/ou falhas do Ecossistema; (ii) eventuais erros e/ou inconsistências na transmissão de dados da rede, bem como relacionados à qualidade ou à disponibilidade da conexão de internet capazes de obstar o adequado recebimento de informações pela Mary ou por você; (iii) dados desatualizados, incompletos e/ou inverídicos eventualmente apresentados por meio do Ecossistema; (iv) qualquer desvalorização que possa vir a ocorrer em qualquer transação/aplicação realizada por você, bem como qualquer prejuízo que venha a suportar por essa razão; ou (v) eventuais inconsistências, atrasos ou falhas em dados oriundos de fontes externas conectadas via API, como bases públicas, comerciais ou institucionais.
+
+12.4. A Mary não se responsabiliza pelo uso do Ecossistema em desacordo com estes Termos de Uso e por danos e prejuízos de toda natureza decorrentes do conhecimento que terceiros não autorizados possam ter a dados disponibilizados por meio do Ecossistema.
+
+12.5. Você concorda, ainda, que a Mary não possui responsabilidade por quaisquer danos e/ou perdas sofridos em decorrência do uso de produtos e/ou serviços ofertados por terceiros por meio do Ecossistema.
+
+13. INDENIZAÇÃO
+
+13.1. O Usuário concorda em defender, indenizar e manter indene a Mary e seus responsáveis, acionistas, funcionários, agentes, diretores, empregados, subsidiárias, afiliadas, sucessores, cessionários, fornecedores ou licenciadores, de e contra quaisquer encargos, ações ou demandas, incluindo, exemplificativamente, multas, danos, indenizações, custas processuais e honorários advocatícios razoáveis, resultantes: (i) da eventual utilização indevida do Ecossistema; (ii) da violação das condições ora pactuadas; (iii) de qualquer atividade da qual você participe por meio dos Serviços; (iv) das finalidades para as quais utiliza o resultado dos Serviços; e (v) de sua violação de qualquer lei ou direitos de terceiro.
+
+14. VIGÊNCIA E RESCISÃO
+
+14.1. Estes Termos de Uso terão vigência a partir da data de adesão à Plataforma pelo Usuário e permanecerão em vigor enquanto (a) os Serviços e funcionalidades do Ecossistema ficarem disponíveis; (b) o Usuário estiver devidamente cadastrado; (c) o Usuário utilizar as funcionalidades disponíveis pelo Ecossistema; ou (d) não houver cancelamento por qualquer das partes, nos termos destes Termos de Uso).
+
+14.2. A Mary poderá rescindir estes Termos de Uso e interromper o fornecimento dos Serviços e/ou funcionalidade do Ecossistema, sem aplicação de qualquer penalidade, nos seguintes casos:
+
+(i) Uso indevido da conta ou das funcionalidades do Ecossistema por parte do Usuário, em desconformidade com estes Termos de Uso;
+(ii) Suspeita de fraude praticada pelo Usuário;
+(iii) Em caso de falecimento do Usuário Pessoa Física ou extinção, dissolução, falência ou inatividade da Pessoa Jurídica representada; e
+(iv) Mediante aviso prévio ao Usuário, com antecedência de pelo menos 7 (sete) dias.
+
+14.3. O Usuário pode, a qualquer momento, sem a necessidade de justificativa, solicitar a exclusão de seu cadastro no Ecossistema, encerrando seu relacionamento com a Mary, mediante solicitação realizada pela Central de Suporte. A exclusão será concluída em até 5 dias úteis, desde que não haja impedimentos legais, contratuais ou operacionais (como interações com ativos em andamento).
+
+15. MODIFICAÇÕES
+
+15.1. Com o fim de conferir maior segurança, você reconhece e declara compreender que o Ecossistema, os Termos de Uso e a Política de Privacidade estão sujeitos a um processo contínuo de aprimoramento, sendo que a atualização dos Termos de Uso estará sempre disponível no Ecossistema, sendo sua responsabilidade consultar os Termos de Uso de tempos em tempos e verificar se está de acordo com tais atualizações. Sempre que estes Termos de Uso tiverem alterações relevantes, essas alterações serão evidenciadas válidas, eficazes e vinculantes após: (1) serem divulgadas em nosso Ecossistema; ou (2) serem enviadas a você por e-mail; ou (3) serem a você comunicadas de outra forma, sendo facultado ao Usuário, em caso de discordância com as alterações, solicitar o encerramento de sua conta a qualquer tempo.
+
+15.2. O Usuário reconhece e aceita que, assim que publicada a alteração destes Termos de Uso e/ou da Política de Privacidade, o uso do Ecossistema passará a ser submetido aos Termos de Uso e à Política de Privacidade atualizados.
+
+16. DISPOSIÇÕES GERAIS
+
+16.1. Caso qualquer disposição destes Termos de Uso ou da Política de Privacidade venha a ser considerada ilegal, nula ou inexequível por qualquer razão, as disposições restantes não serão afetadas, permanecendo válidas e aplicáveis na máxima extensão possível.
+
+16.2. Todas as comunicações encaminhadas por você à Mary serão consideradas plenamente válidas quando realizadas por meio do Central de Suporte. Por outro lado, todas as comunicações enviadas pela Mary serão consideradas válidas quando realizadas por meio de qualquer das informações de contato disponibilizadas por você no Ecossistema.
+
+16.3. Especial atenção deve ser dada em qualquer hipótese de recebimento de e-mails encaminhados pela Mary, especialmente os que se destinam a solicitar dados ou o pagamento de contas. Você deverá analisar atentamente o emissor de tais mensagens a fim de evitar condutas fraudulentas. Caso suspeite de qualquer mensagem encaminhada, você deverá entrar em contato com a Mary por meio da Central de Suporte.
+
+16.4. Qualquer falha da Mary para impor ou exercer qualquer direito, prerrogativa ou faculdade assegurados por estes Termos de Uso, pela Política de Privacidade ou pela legislação, incluindo direitos conexos, não constitui renúncia a esse direito, prerrogativa ou faculdade.
+
+16.5. Caso você queira manifestar uma reclamação e/ou realizar uma denúncia de algum fato comprometedor à reputação da Mary ou à segurança dos Usuários do Ecossistema, deverá, preferencialmente, comunicar a Mary por meio do Central de Suporte indicado, com o objetivo de diminuir os impactos negativos do que se pretende noticiar.
+
+17. LEI APLICÁVEL
+
+17.1. Estes Termos de Uso, a Política de Privacidade e os Serviços disponibilizados no Ecossistema serão regidos e interpretados exclusivamente de acordo com as leis do Brasil.
+
+17.2. Usuário reconhece que quaisquer controvérsias deverão ser resolvidas junto ao foro central da Comarca de Florianópolis, Estado de Santa Catarina, em detrimento de qualquer outro, por mais privilegiado que possa ser, para o ajuizamento de toda e qualquer ação judicial ou procedimento administrativo referente a estes Termos de Uso, a Política de Privacidade e os Serviços disponibilizados no Ecossistema.
+
+18. CENTRAL DE SUPORTE
+
+18.1. Em caso de dúvidas, sugestões, solicitações, reclamações ou manifestações diversas, o Usuário poderá entrar em contato com os canais oficiais de atendimento da Mary, disponíveis de segunda a sexta-feira, em horário comercial (exceto feriados nacionais), por meio de:
+
+(i) Chat disponível no menu "Ajuda" diretamente no Ecossistema;
+(ii) E-mail: help@mary.network;
+(iii) Seção "Central de Suporte", acessível em: https://www.mary.network
+
+Termos de Uso - Versão 1.0 | Atualizado em: 10 de janeiro de 2026
+
+Estes Termos de Uso devem ser interpretados em conjunto com a Política de Privacidade da Mary.

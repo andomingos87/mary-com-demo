@@ -1,0 +1,110 @@
+{
+  "foundation-common": {
+    "context": ".context/modules/foundation-common/context.md",
+    "agents": ".context/modules/foundation-common/agents.md",
+    "skills": ".context/modules/foundation-common/skills.md",
+    "cursorSkill": ".cursor/skills/foundation-common/SKILL.md"
+  },
+  "onboarding": {
+    "context": ".context/modules/onboarding/context.md",
+    "agents": ".context/modules/onboarding/agents.md",
+    "skills": ".context/modules/onboarding/skills.md",
+    "cursorSkill": ".cursor/skills/onboarding/SKILL.md"
+  },
+  "projects": {
+    "context": ".context/modules/projects/context.md",
+    "agents": ".context/modules/projects/agents.md",
+    "skills": ".context/modules/projects/skills.md",
+    "cursorSkill": ".cursor/skills/projects/SKILL.md"
+  },
+  "thesis": {
+    "context": ".context/modules/thesis/context.md",
+    "agents": ".context/modules/thesis/agents.md",
+    "skills": ".context/modules/thesis/skills.md",
+    "cursorSkill": ".cursor/skills/thesis/SKILL.md"
+  },
+  "radar": {
+    "context": ".context/modules/radar/context.md",
+    "agents": ".context/modules/radar/agents.md",
+    "skills": ".context/modules/radar/skills.md",
+    "cursorSkill": ".cursor/skills/radar/SKILL.md"
+  },
+  "radar-score": {
+    "context": ".context/modules/radar-score/context.md",
+    "agents": ".context/modules/radar-score/agents.md",
+    "skills": ".context/modules/radar-score/skills.md",
+    "cursorSkill": ".cursor/skills/radar-score/SKILL.md"
+  },
+  "radar-teaser": {
+    "context": ".context/modules/radar-teaser/context.md",
+    "agents": ".context/modules/radar-teaser/agents.md",
+    "skills": ".context/modules/radar-teaser/skills.md",
+    "cursorSkill": ".cursor/skills/radar-teaser/SKILL.md"
+  },
+  "radar-nda": {
+    "context": ".context/modules/radar-nda/context.md",
+    "agents": ".context/modules/radar-nda/agents.md",
+    "skills": ".context/modules/radar-nda/skills.md",
+    "cursorSkill": ".cursor/skills/radar-nda/SKILL.md"
+  },
+  "radar-follow": {
+    "context": ".context/modules/radar-follow/context.md",
+    "agents": ".context/modules/radar-follow/agents.md",
+    "skills": ".context/modules/radar-follow/skills.md",
+    "cursorSkill": ".cursor/skills/radar-follow/SKILL.md"
+  },
+  "feed": {
+    "context": ".context/modules/feed/context.md",
+    "agents": ".context/modules/feed/agents.md",
+    "skills": ".context/modules/feed/skills.md",
+    "cursorSkill": ".cursor/skills/feed/SKILL.md"
+  },
+  "mrs": {
+    "context": ".context/modules/mrs/context.md",
+    "agents": ".context/modules/mrs/agents.md",
+    "skills": ".context/modules/mrs/skills.md",
+    "cursorSkill": ".cursor/skills/mrs/SKILL.md"
+  },
+  "mais-infos": {
+    "context": ".context/modules/mais-infos/context.md",
+    "agents": ".context/modules/mais-infos/agents.md",
+    "skills": ".context/modules/mais-infos/skills.md",
+    "cursorSkill": ".cursor/skills/mais-infos/SKILL.md"
+  },
+  "collaboration": {
+    "context": ".context/modules/collaboration/context.md",
+    "agents": ".context/modules/collaboration/agents.md",
+    "skills": ".context/modules/collaboration/skills.md",
+    "cursorSkill": ".cursor/skills/collaboration/SKILL.md"
+  },
+  "mary-ai": {
+    "context": ".context/modules/mary-ai/context.md",
+    "agents": ".context/modules/mary-ai/agents.md",
+    "skills": ".context/modules/mary-ai/skills.md",
+    "cursorSkill": ".cursor/skills/mary-ai/SKILL.md"
+  },
+  "settings-admin": {
+    "context": ".context/modules/settings-admin/context.md",
+    "agents": ".context/modules/settings-admin/agents.md",
+    "skills": ".context/modules/settings-admin/skills.md",
+    "cursorSkill": ".cursor/skills/settings-admin/SKILL.md"
+  },
+  "dashboard-frontend": {
+    "context": ".context/modules/dashboard-frontend/context.md",
+    "agents": ".context/modules/dashboard-frontend/agents.md",
+    "skills": ".context/modules/dashboard-frontend/skills.md",
+    "cursorSkill": ".cursor/skills/dashboard-frontend/SKILL.md"
+  },
+  "z-api": {
+    "context": ".context/modules/z-api/context.md",
+    "agents": ".context/modules/z-api/agents.md",
+    "skills": ".context/modules/z-api/skills.md",
+    "cursorSkill": ".cursor/skills/z-api/SKILL.md"
+  },
+  "excalidraw-front-alignment": {
+    "context": ".context/modules/excalidraw-front-alignment/context.md",
+    "agents": ".context/modules/excalidraw-front-alignment/agents.md",
+    "skills": ".context/modules/excalidraw-front-alignment/skills.md",
+    "cursorSkill": ".cursor/skills/excalidraw-front-alignment/SKILL.md"
+  }
+}

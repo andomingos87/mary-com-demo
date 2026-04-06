@@ -1,0 +1,47 @@
+{
+  "skill_name": "backlog-navigator",
+  "evals": [
+    {
+      "id": 0,
+      "name": "eval-proxima-etapa",
+      "prompt": "qual a proxima etapa?",
+      "expected_output": "Deve ler o backlog, identificar Fase 0 / E0 em andamento, verificar historias concluidas vs pendentes, e recomendar a proxima historia P0 sem dependencia bloqueante (provavelmente H0.1) com justificativa clara.",
+      "files": [],
+      "assertions": [
+        {"name": "leu_backlog", "type": "manual", "description": "A resposta demonstra que o backlog oficial foi lido (menciona fase, epico, historias)"},
+        {"name": "identifica_fase_atual", "type": "manual", "description": "Identifica corretamente a fase ativa (Fase 0 — Realinhamento Excalidraw)"},
+        {"name": "recomenda_proxima_com_justificativa", "type": "manual", "description": "Recomenda uma historia especifica com justificativa baseada em prioridade/dependencias"},
+        {"name": "mostra_sequencia", "type": "manual", "description": "Apresenta pelo menos 2 etapas seguintes alem da recomendada"},
+        {"name": "formato_estruturado", "type": "manual", "description": "Usa formato estruturado com secoes claras (status, recomendacao, sequencia)"}
+      ]
+    },
+    {
+      "id": 1,
+      "name": "eval-marcar-concluido",
+      "prompt": "marca H0.1 como concluido",
+      "expected_output": "Deve validar evidencias (spec existe, codigo modificado), pedir confirmacao ao usuario antes de editar, atualizar o backlog com status concluido e data, e recomendar proxima etapa automaticamente.",
+      "files": [],
+      "assertions": [
+        {"name": "valida_evidencia", "type": "manual", "description": "Verifica evidencias antes de marcar (spec, codigo, etc) ou menciona que vai verificar"},
+        {"name": "pede_confirmacao", "type": "manual", "description": "Pede confirmacao explicita do usuario antes de editar o backlog"},
+        {"name": "atualiza_backlog", "type": "manual", "description": "Edita ou propoe editar o backlog com formato correto (checkmark + data)"},
+        {"name": "recomenda_proxima_apos_update", "type": "manual", "description": "Apos atualizar, recomenda automaticamente a proxima etapa"},
+        {"name": "verifica_cascata", "type": "manual", "description": "Menciona impacto em cascata (historias desbloqueadas, status do epico pai)"}
+      ]
+    },
+    {
+      "id": 2,
+      "name": "eval-blockers",
+      "prompt": "o que esta bloqueando o progresso do projeto?",
+      "expected_output": "Deve identificar T7.1 (assinatura eletronica) e T7.2 (politica upload) como decisoes pendentes, verificar dependencias nao resolvidas, lacunas criticas abertas, e apresentar mapa de blockers com impacto.",
+      "files": [],
+      "assertions": [
+        {"name": "identifica_decisoes_pendentes", "type": "manual", "description": "Menciona T7.1 e T7.2 como decisoes pendentes"},
+        {"name": "analisa_dependencias", "type": "manual", "description": "Analisa dependencias entre epicos/historias e identifica gargalos"},
+        {"name": "menciona_lacunas_criticas", "type": "manual", "description": "Menciona lacunas criticas do backlog (assinatura, upload, MRS, Mary AI provider)"},
+        {"name": "apresenta_impacto", "type": "manual", "description": "Para cada blocker, explica o impacto no progresso"},
+        {"name": "sugere_mitigacao", "type": "manual", "description": "Propoe acoes ou mitigacoes para os blockers identificados"}
+      ]
+    }
+  ]
+}

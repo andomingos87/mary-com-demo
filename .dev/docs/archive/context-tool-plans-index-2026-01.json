@@ -1,0 +1,14 @@
+{
+  "active": [
+    {
+      "slug": "vdr-accordion-table-redesign",
+      "path": "plans/vdr-accordion-table-redesign.md",
+      "title": "VDR Accordion Table Redesign",
+      "summary": "Redesenhar o VDR de layout sidebar+lista para **tabela com acordeão** conforme protótipo, incluindo N1/N2/N3, filtros avançados, ações em massa e template de 32 itens de due diligence.",
+      "linkedAt": "2026-02-09T14:08:31.123Z",
+      "status": "active"
+    }
+  ],
+  "completed": [],
+  "primary": "vdr-accordion-table-redesign"
+}

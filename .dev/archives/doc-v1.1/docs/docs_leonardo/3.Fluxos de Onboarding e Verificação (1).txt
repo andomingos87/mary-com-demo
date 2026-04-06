@@ -1,0 +1,175 @@
+Fluxos de Onboarding e Verificação (Elegibilidade de Investidores e Advisors)
+
+# Visão Geral (o que muda)
+
+* **Momento do gate**: **Onboarding Passo 0 – “Elegibilidade”** logo após o **callback de autenticação por e-mail**.
+* **Acesso enquanto pendente**: usuário **logado**, segue o onboarding **até o fim** (gera engajamento), mas fica em **modo leitura-only** (sem matching, sem convite, sem publicar perfil).
+* **Verificação híbrida**: **score automático** + **amostra manual** (SLA 48h).
+* **Slug**:
+
+  * **Reserva** no callback (provisório, privado);
+  * **Congela** e torna **público** **apenas** após **verificação=verified** **+** onboarding completo;
+  * **Sem slug_history** (se mudar nome antes de congelar, apenas recalcula; depois de congelado, só admin pode alterar).
+* **Separação de perfis**: **Investidor** e **Advisor** são **mutuamente exclusivos** por usuário; **Empresa** é outro perfil.
+* **Herança de verificação**: se **organização = verified**, **novos membros** com **mesmo domínio** herdam status.
+
+---
+
+# Estados & Invariantes
+
+* `profile_type ∈ {investidor_institucional, investidor_individual, advisor, empresa}`
+* `onboarding_status ∈ {not_started, in_progress, completed}`
+* `verification_status ∈ {pending, verified, rejected}`
+* **Invariantes**:
+
+  1. Usuário logado **nunca** é redirecionado globalmente pelo `Login.tsx`; redirecionamentos só em **/login** ou **/auth/callback**.
+  2. **Acesso pleno** somente quando `verification_status=verified` **e** `onboarding_status=completed`.
+  3. **Investidor/Advisor** exigem elegibilidade; **Empresa** não.
+
+---
+
+# Matriz de Acesso (resumo)
+
+| Status                              | Páginas permitidas                                                                                                                                                                   |
+| ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `pending`                           | Onboarding completo (todos passos), Perfil (rascunho, privado), Upload de evidências, Leitura-only de docs públicos. **Sem** matching, mensagens, convites, publicar, buscar ativos. |
+| `verified` + `onboarding completed` | Acesso total ao **dashboard do perfil** e funcionalidades do papel.                                                                                                                  |
+| `rejected`                          | Redireciona para **modo “observador/candidate”**: mantém conta, permite re-submit/appeal, sem publicar/matching.                                                                     |
+
+---
+
+# Fluxo Global (resumido)
+
+1. **/profile-selection** → usuário escolhe perfil (único).
+2. **Cadastro (e-mail/senha)** → envia link.
+3. **/auth/callback (com e-mail verificado)**
+
+   * Persiste `profile_type` no `app_metadata.role` e em tabela pública.
+   * **Reserva `slug` provisório** (privado).
+   * Cria contêiner da **conta/organização** (se aplicável).
+   * Redireciona para **/onboarding/{profile_type}/eligibility** (Passo 0).
+4. **Onboarding Passo 0 – Elegibilidade** (*Investidor/Advisor apenas*): coleta critérios e **evidências**; seta `verification_status=pending`.
+5. Usuário segue **Passos 1..N** do onboarding (dados institucionais).
+6. Motor de **verificação híbrida** roda em paralelo (score auto + fila manual ≤ 48h).
+7. Quando **verification=verified** **e** onboarding **completed** → **congela slug** e libera **dashboard do perfil**.
+8. Se **rejected** → desvia para **observador/candidate**, com **appeal**.
+
+---
+
+# Fluxos por Perfil
+
+## A) Investidor (Institucional)
+
+**Elegibilidade (Passo 0) – obrigatório**
+
+* Requisitos: **≥2 deals nos últimos 3 anos** **e** **≥5 anos** de M&A; **valor mínimo acumulado** dos deals **≥ USD 20k**.
+* **Track record** permitido: soma do **time (sócios)** da firma.
+* **Evidências**: URLs (site/tombstones, notícias, CVM/SEC/EDGAR, press releases, LinkedIn, cadastros ABVCAP/ENDEAVOR/LAVCA etc.) + **PDFs sob NDA**.
+* **Saída**: `verification_status=pending`, `verification_score` calculado; segue onboarding completo (empresa gestora, AUM, governança, ESG, teses etc.).
+* **Liberação**: só após `verified` + `completed` → `/investidor/dashboard`.
+
+## B) Investidor (Individual/Angel)
+
+* Mesmos **critérios** de deals e anos, mas **track record estritamente pessoal** (não soma equipe).
+* Restante igual ao institucional, com onboarding mais enxuto (dados pessoais + preferências/teses).
+
+## C) Advisor
+
+* Mesmos **critérios** (≥2 deals/3y, ≥5 anos, ≥USD 100k acumulado).
+* **Evidências** podem incluir casos de **sell-side/buy-side, carve-outs, PIPE, mergers, JVs**, com **papel relevante** (liderou/co-liderou/executou).
+* Após `verified+completed` → `/advisor/dashboard`.
+
+## D) Empresa (Sócio/Representante)
+
+* **Sem gate de track record**.
+* Callback → Onboarding de **dados institucionais** (CNPJ, cap table, finanças, projeto: captação/venda etc.).
+* Ao concluir → `/empresa/dashboard` (sem dependência de verificação).
+
+---
+
+# Verificação Híbrida (como funciona)
+
+* **Automática (score)**:
+
+  * `deals_count_3y`, `mna_years`, `deals_value_sum` (USD), diversidade de fontes, reputação do domínio do e-mail, presença em entidades sérias.
+  * Heurísticas de *matching* nos URLs (empresa, nomes, datas).
+  * Resultado: `verification_score 0–100` + `risk_flags[]`.
+* **Manual (amostragem / exceções)**:
+
+  * Itens com score médio/baixo ou flags vão para **fila**; SLA **48h**.
+  * Campos: `verified_by`, `verified_at`, `rejection_reason`.
+* **Consentimento de scraping** explicitamente coletado no Passo 0.
+* **Audit log** em toda mudança de status/score/evidência.
+
+---
+
+# Regras de Navegação & Guards
+
+* **Correção do bug de redirecionamento**:
+
+  * `Login.tsx` só redireciona se `pathname ∈ {/login, /auth/login}` (ou no **/auth/callback**).
+  * **Nunca** empurrar usuário autenticado em outras rotas.
+* **EligibilityGuard** (Investidor/Advisor):
+
+  * Se `verification_status=pending` ou `rejected`: bloquear **matching, mensagens, convites, publicar**; permitir onboarding e upload de evidências.
+* **RoleGuard**: impede cruzar áreas (ex.: investidor não entra em `/advisor/*`).
+* **OnboardingGuard**: se `onboarding != completed`, sempre priorizar rota `/onboarding/...` até finalizar (exceto páginas de conta/ajuda).
+
+---
+
+# Política de Slug
+
+* **Reserva**: no callback (privado, não indexado).
+* **Congelamento**: após `verified + completed`; torna público.
+* **Sem histórico**: nenhuma rota antiga é mantida. (⚠️ Recomendo AVISO claro ao usuário antes de congelar.)
+* **Individual vs Organização**: Angel tem `slug` pessoal; Institucional usa `slug` da organização; novos membros herdam verificação se `email_domain` coincidir.
+
+---
+
+# Dados & Persistência (novos campos — por Usuário **e** por Organização)
+
+* `verification_status {pending|verified|rejected}`
+* `verification_score int`
+* `mna_years int`
+* `deals_count_3y int`, `deals_count_5y int`
+* `deals_value_sum numeric` (valida ≥ USD 100k acumulado)
+* `deal_evidence[]` (URL, tipo, fonte, confidencialidade) + storage de **PDFs sob NDA**
+* `verified_by uuid`, `verified_at timestamptz`, `rejection_reason text`
+* **Consent & Audit**: `public_scraping_consent boolean`, `audit_log` (tabela dedicada).
+* **Herdar verificação** por domínio (org-level + member-level flag).
+
+---
+
+# Mensagens & UX
+
+* **Pending**: “Estamos verificando seu histórico (até 48h). Você pode concluir seu onboarding e subir mais evidências. Acesso atual: leitura-only.”
+* **Verified**: “Conta verificada. Bem-vindo ao dashboard.”
+* **Rejected**: motivo + **botão de appeal/re-submit** (limite de tentativas, p.ex. 2/mês).
+* **Banners de estado** fixos no topo enquanto pendente/rejeitado.
+
+---
+
+# Anti-fraude & Confiabilidade
+
+* Checagem de **domínio de e-mail corporativo**; forçar **prova de vínculo** (meta-tag DNS, e-mail de confirmação no domínio).
+* Deduplicação de deals (hash por título+data+contraparte+valor).
+* Marcação de **fontes frágeis** (blogs pessoais) com peso baixo.
+* Flags para aparições inconsistentes de nomes/empresas.
+
+---
+
+# Edge Cases
+
+* **Sem evidências suficientes**: permanece `pending`; lembrete e *nudges* para completar.
+* **Empresa criada antes de firma ser verificada**: permitido; **sem publicação** até `verified+completed`.
+* **Troca de perfil**: não permitido entre investidor/advisor; precisa **nova conta**.
+* **Membro novo** em org verificada com domínio diferente: sem herança (verificação individual).
+
+---
+
+Se esta consolidação estiver **100% de acordo**, sinaliza e eu já te entrego os **prompts do Lovable** (Conversational + Structured/CLEAR) para:
+
+1. implementar o **gate de elegibilidade** (Passo 0),
+2. corrigir o **Login.tsx** e os **guards**,
+3. criar a **persistência** e a **fila de verificação híbrida**,
+4. aplicar a política de **slug** (reserva + congelamento).

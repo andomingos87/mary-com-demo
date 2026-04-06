@@ -1,0 +1,141 @@
+## “Modelo de Validação em Camadas” (Mary L1 / L2 / L3)
+
+A Mary adota **três níveis de verificação de dados e documentos**, inspirados em controles de auditoria, pipelines de dados e due diligence estruturada.
+
+| Nível                                      | Quem executa                                        | O que é validado                                            | Natureza da validação                   | Confiança resultante |
+| ------------------------------------------ | --------------------------------------------------- | ----------------------------------------------------------- | --------------------------------------- | -------------------- |
+| **L1 – Origem (Input)**                    | **Empresa / Sócios / Executivos**                   | Dados e documentos originais inseridos na plataforma        | Autodeclaração + upload direto          | Baixa / “Raw”        |
+| **L2 – Revisão Técnica (Advisors)**        | **Advisor / Boutique / Analista credenciado Mary**  | Revisão da coerência, formatação, consistência e completude | Curadoria humana + validação cruzada    | Média / “Curated”    |
+| **L3 – Auditoria (Terceiro independente)** | **Auditor / Contador / Legal / Compliance Partner** | Checagem formal e documental (com evidência)                | Verificação independente com log e hash | Alta / “Verified”    |
+
+---
+
+## 🧠 COMO ISSO GARANTE INTEGRIDADE PARA ANÁLISES DE M&A
+
+1. **Camada de rastreabilidade (Data Provenance)**
+
+   * Cada dado, arquivo ou campo possui **metadados de origem**:
+     `submitted_by`, `validated_by`, `audited_by`, `hash_original`, `hash_reviewed`, `timestamp`.
+   * Isso cria uma **linha do tempo auditável** (pipeline de dados).
+
+2. **Controle de versão**
+
+   * Quando o L2 altera ou ajusta algo, a versão L1 é preservada e referenciada.
+     Ex.: DRE ajustada → `dre_l1_original.pdf` e `dre_l2_revised.pdf` coexistem, com vínculo e diff.
+   * Permite análise de divergência (ex.: “quanto o advisor corrigiu do que o fundador declarou?”).
+
+3. **Assinatura digital / Hash de integridade**
+
+   * Cada documento L3 é selado com hash SHA-256 e armazenado no bucket seguro.
+   * Auditor e Mary AI podem verificar se houve alteração após a revisão.
+
+4. **Etiquetas de confiabilidade (Readiness Score® inputs)**
+
+   * Cada campo e documento recebe uma flag:
+
+     * `raw` (não revisado)
+     * `reviewed` (revisado por advisor)
+     * `verified` (auditado)
+   * Esses níveis alimentam o **Mary Readiness Score®**, impactando o “grau de prontidão” do ativo.
+
+5. **Pipeline de análise estruturada**
+
+   * Quando você roda dashboards, valuations, comparações ou MRS, o sistema pode aplicar filtros:
+
+     * `include only verified data`
+     * `fallback to reviewed if verified missing`
+   * Isso garante que análises e múltiplos não se baseiem em dados autodeclarados.
+
+---
+
+## 🔐 EXEMPLO PRÁTICO
+
+| Campo / Documento      | Origem (L1)                  | Revisão (L2)                           | Auditoria (L3)                       | Status final             |
+| ---------------------- | ---------------------------- | -------------------------------------- | ------------------------------------ | ------------------------ |
+| Receita 2023           | CFO subiu planilha Excel     | Advisor ajustou classificação e margem | Auditor validou via ECF              | ✅ Verified               |
+| Número de funcionários | CEO informou manualmente     | Advisor validou com holerite amostral  | —                                    | ⚠️ Reviewed              |
+| Base societária        | Sócio enviou contrato social | Advisor reformatou                     | Auditor conferiu com junta comercial | ✅ Verified               |
+| DRE 2022               | CFO anexou PDF               | Advisor padronizou layout              | Auditor conferiu com balancete       | ✅ Verified               |
+| Projeções 2025         | CFO informou manualmente     | Advisor ajustou premissas              | —                                    | 🔘 Raw (sem verificação) |
+
+---
+
+## 📊 USO NAS ANÁLISES DE M&A
+
+1. **Pesos no Readiness Score®**
+
+   * L1 = 0.3
+   * L2 = 0.7
+   * L3 = 1.0
+     → média ponderada por tipo de dado (financeiro, operacional, jurídico).
+
+2. **Filtros em dashboards e VDR**
+
+   * “Exibir apenas dados L2+” ou “Somente documentos L3 verificados”.
+
+3. **Confiança dinâmica no Matching**
+
+   * Matching de investidores → ativos com ≥70% dados L2+ ganham prioridade.
+   * Advisors aparecem com score de “confiabilidade média dos deals revisados”.
+
+4. **Alertas de gaps**
+
+   * A Mary AI pode emitir alertas:
+     *“Sua projeção de EBITDA ainda está em nível L1 (não revisada). Suba revisão do advisor para melhorar o score.”*
+
+---
+
+## ⚙️ IMPLEMENTAÇÃO TÉCNICA (Supabase / Mary Data Layer)
+
+### Tabelas principais
+
+```
+companies
+documents
+data_points
+validations
+users
+```
+
+### Exemplo `validations` schema
+
+| id   | entity_type | entity_id | level | validated_by | timestamp  | hash   | comments             |
+| ---- | ----------- | --------- | ----- | ------------ | ---------- | ------ | -------------------- |
+| uuid | “document”  | doc_id    | “L2”  | advisor_id   | 2025-10-07 | sha256 | “layout padronizado” |
+
+### API logic (Mary-API)
+
+* Ao subir um arquivo → cria registro `L1`.
+* Quando advisor confirma → insere `L2`.
+* Quando auditor confirma → insere `L3`.
+* Query padrão agrupa pelo **highest_level**.
+
+---
+
+## 🧮 RESULTADO: “DATA CONFIDENCE LAYER”
+
+A Mary passa a ter três realidades coexistindo:
+
+* **L1:** o que o fundador declarou.
+* **L2:** o que o advisor curou.
+* **L3:** o que foi formalmente auditado.
+
+Isso permite análises de:
+
+* Confiabilidade por campo
+* Desvio entre declarações e realidade
+* Evolução de maturidade ao longo do tempo
+* Atribuição de mérito ao advisor (quem eleva mais dados de L1→L3)
+
+---
+
+## 📘 RESUMO
+
+| Camada             | Responsável         | Propósito                         | Impacto no MRS | Analítico                                  |
+| ------------------ | ------------------- | --------------------------------- | -------------- | ------------------------------------------ |
+| **L1 – Origem**    | Sócios / Executivos | Captura inicial de dados          | Baixo          | Amostra bruta                              |
+| **L2 – Revisão**   | Advisor             | Padroniza e valida consistência   | Médio          | Comparável e estruturado                   |
+| **L3 – Auditoria** | Auditor             | Confirma veracidade e integridade | Alto           | Base confiável para múltiplos e relatórios |
+
+---
+

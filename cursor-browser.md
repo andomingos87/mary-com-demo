@@ -1,0 +1,1 @@
+Use o cursor-ide-browser

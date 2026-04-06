@@ -1,0 +1,17 @@
+{
+    "version": 1,
+    "hooks": {
+        "beforeShellExecution": [
+            {
+                "name": "block-dangerous-commands",
+                "command": "node .cursor/hooks/blockCommands.js"
+            }
+        ],
+        "beforeReadFile": [
+            {
+                "name": "log-file-reads",
+                "command": "node .cursor/hooks/logFileReads.js"
+            }
+        ]
+    }
+}

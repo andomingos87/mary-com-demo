@@ -1,0 +1,12 @@
+{
+  "eval_id": 1,
+  "eval_name": "eval-marcar-concluido",
+  "prompt": "marca H0.1 como concluido",
+  "assertions": [
+    {"name": "valida_evidencia", "description": "Verifica evidencias antes de marcar (spec, codigo, etc) ou menciona que vai verificar"},
+    {"name": "pede_confirmacao", "description": "Pede confirmacao explicita do usuario antes de editar o backlog"},
+    {"name": "atualiza_backlog", "description": "Edita ou propoe editar o backlog com formato correto (checkmark + data)"},
+    {"name": "recomenda_proxima_apos_update", "description": "Apos atualizar, recomenda automaticamente a proxima etapa"},
+    {"name": "verifica_cascata", "description": "Menciona impacto em cascata (historias desbloqueadas, status do epico pai)"}
+  ]
+}

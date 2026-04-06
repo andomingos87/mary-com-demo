@@ -1,0 +1,247 @@
+## **Escopo MVP v1.0 - Definição Final**
+
+### **✅ Perfis Incluídos (Core)**
+- **Investidor:** Funcionalidade completa (thesis → matching → pipeline → VDR)
+- **Ativo:** Funcionalidade completa (setup → projeto → teaser → negociação)  
+- **Advisor:** Acesso contextual limitado (sell-side OU buy-side, nunca ambos no mesmo projeto)
+
+### **❌ Excluídos do MVP**
+- **Agente** (v1.5)
+- **Todas as funcionalidades TBD** (apenas placeholder "Em breve...")
+- **Signatures nativo** (externa + upload no MVP)
+- **Smart contracts, PMI, BI, Marketplace, Rankings, Deals Club**
+
+### **🎯 Pilar Unificador Confirmado**
+**"Dados Vivos, Automáticos, Estruturados e Confiáveis"** através do modelo L1/L2/L3 com Mary Taxonomy (ver anexo "Mary Taxonomy v1") e matching inteligente.
+
+---
+
+## **User Journey 1: Investidor → Deal Flow Qualificado**
+
+### **Objetivo:** Acesso a deal flow estruturado com matching automático baseado em teses
+
+```
+Onboarding → Thesis Creation → Automated Radar → Pipeline Management → Deal Closing
+```
+
+### **Etapas Detalhadas:**
+
+**1. Onboarding & Authentication**
+- **Rota:** `/:investorname/` (slug criado no callback)
+- **MFA obrigatório:** E-mail + WhatsApp
+- **Campos mínimos:** Site e CNPJ > AI extrai tudo que for possível, antes de abrir campos: tipo de Investidor (Ver Perfis no anexo "Arquitetura Mestre - Mary v2"), AUM, dados institucionais, responsáveis.
+- **Alerta persistente:** "Configure sua primeira tese para começar a receber oportunidades"
+- **Anexo "Fluxos de Onboarding e Verificação":** Essencial para filtrar Investidores e Advisors sério, profissionais e relevantes, para não poluir nem desacreditar a Mary.
+
+
+
+**2. Thesis Creation (`/:investorname/thesis`)**
+- **Mary Taxonomy Integration:** Ver anexo "Mary Taxonomy v1"
+- **Campos críticos:**
+- **IA Assistant:** Pode fazer sugestão inicial de toda tese, com base no perfil do investidor
+  - Nome da tese
+  - Setores alvo (multi-seleção) > Mary Taxonomy
+  - Modelos de negócio (SaaS, Marketplace, B2B Services, etc.)
+  - Geografia (países/regiões)
+  - Faixa de investimento (Ticket size) (USD min/max)
+  - Tipo participação (integral/controle/minoritária relevante/minoritária)
+  - Faixa receita (USD min/max) alvo
+  - Faixa EBITDA (USD min/max) alvo
+  - Critérios específicos (founder-led, carve-out, etc.)
+  - Restrições/exclusões
+- **IA Assistant:** Sugere refinamentos baseados em dados de mercado
+- **Resultado:** Tese ativa alimenta matching automático
+
+**3. Automated Opportunities Radar (`/:investorname/opportunities`)**
+- **Interface:** Cards de ativos com matching score + explicação
+- **Dados por card:** Codenome, segmento, faturamento, EBITDA, overview confidencial, objetivo, Readiness Score
+- **Matching Algorithm:** Score 0-100 com "why it matches"
+  - Fit setorial/modelo (40%)
+  - Tamanho/ticket (20%) 
+  - Geografia (10%)
+  - Objetivo vs. tese (10%)
+  - Readiness/cobertura L2+ (20%)
+- **Filtros persistentes:** Readiness Score, setor, ticket, localização, status pipeline
+- **CTA principal:** "Acessar Teaser" → move para pipeline
+
+**4. Pipeline Management (`/:investorname/pipeline`)**
+- **Controle:** Investidor controla avanço via CTAs
+- **Etapas e gatilhos:**
+  - **Teaser** → CTA: "Assinar NDA"
+  - **NDA** → Gatilho: Upload NDA assinado
+  - **Pré-DD** → CTA: "Indicar Interesse"  
+  - **IoI** → Gatilho: Upload IoI assinada
+  - **Management Meetings** → CTA: "Avançar para NBO"
+  - **NBO** → Gatilho: Upload NBO assinada
+  - **DD/SPA** → CTA: "Avançar para Signing"
+  - **Signing** → Gatilho: Upload SPA assinado
+  - **CP's** → CTA: "CP's Concluídas"
+  - **Closing** → Gatilho: "Closing Concluído"
+  - **Disclosure** → CTA: "Deal Divulgado"
+  - **Declinado** → CTA: "Recusar"
+- **Sincronização:** Pipeline espelhado com área do ativo
+- **Notificações:** WhatsApp + e-mail + in-app para cada mudança
+
+**5. VDR Access & Q&A**
+- **Teaser:** Acesso direto via link rastreável
+- **NDA Required:** Para criação do VDR específico do investidor
+- **Copy-on-Share:** VDR copia snapshot do Asset VDR após NDA
+- **Q&A Management:** Threads por documento com estados (Open, Waiting, Resolved)
+- **Isolation:** VDR completamente separado entre investidores
+
+---
+
+## **User Journey 2: Ativo → Exposição Qualificada**
+
+### **Objetivo:** Estruturar dados, gerar materiais automáticos e receber interesse qualificado
+
+```
+Onboarding → Data Structuring → Project Creation → AI Content → Investor Matching → Deal Management
+```
+
+### **Etapas Detalhadas:**
+
+**1. Company Onboarding (`/:assetname/`)**
+- **CNPJ Integration:** Auto-preenchimento dados públicos
+- **Campos mínimos:** Razão social, nome fantasia, site, setor (Mary Taxonomy), receita 12m, EBITDA 12m, objetivo
+- **Readiness inicial:** Cálculo automático com dados L1
+
+**2. Data Structuring Phase**
+- **Asset VDR (`/:assetname/assetvdr`):** Árvore padrão + uploads customizados
+- **L1 Tagging:** Todos os uploads iniciais marcados como "Raw"
+- **Financials (`/:assetname/financials`):** IA padroniza DRE/BS/FC
+- **Cap Table (`/:assetname/cap-table`):** Estrutura societária + versionamento
+- **KPIs (`/:assetname/kpis`):** Métricas por segmento (receita, EBITDA, margem, churn/LTV/GMV)
+
+**3. Mary Readiness Score (`/:assetname/readiness`)**
+- **Cálculo ponderado:** L1=0.3, L2=0.7, L3=1.0 por tipo de dado
+- **Categorias:** Financeiro, operacional, jurídico, estratégico
+- **Roadmap automático:** IA sugere gaps a atacar para melhorar score
+- **Integração:** Score impacta ranking no matching de investidores
+
+**4. Project Creation (`/:assetname/projects/`)**
+- **Codename:** Sugestão automática "MARY-ABCD" + editável
+- **Objetivo:** Venda, captação, fusão
+- **IA Content Generation:**
+  - **Teaser:** Formato chat scrollável com dados estruturados
+  - **Valuation:** Múltiplos automáticos + metodologia explicada
+  - **CIM:** Documento completo baseado no Asset VDR
+- **Links rastreáveis:** Sem export PDF, apenas compartilhamento com tracking
+
+**5. Investor Matching (`/:assetname/projects/:codename/investors`)**
+- **Lista automática:** Matching reverso baseado em teses cadastradas
+- **Manual selection:** Busca e filtros para seleção adicional
+- **Outreach:** Mensagens in-app para investidores selecionados
+- **Pipeline sync:** Criação automática de cards no pipeline do investidor
+
+**6. VDR Management per Investor**
+- **Trigger:** Criação automática após validação de NDA
+- **Rota isolada:** `/:assetname/projects/:codename/investors/:investorname/vdr`
+- **Q&A bidirectional:** Upload de RFI pelo investidor + respostas do ativo
+- **L2 Elevation:** Advisor pode elevar documentos durante o processo
+
+---
+
+## **User Journey 3: Advisor → Curadoria L2 e Eficiência**
+
+### **Objetivo:** Gestão eficiente de mandatos com curadoria de dados L1→L2
+
+```
+Authorization → Conflict Check → Project Access → L2 Validation → Collaborative Management
+```
+
+### **Etapas Detalhadas:**
+
+**1. Authorization & Mandate Registration**
+- **Registro inicial:** Contrato/mandato registrado no início do processo
+- **Conflict prevention:** Sistema impede acesso a ambos os lados do mesmo projeto
+- **RBAC Assignment:** Owner/Admin define permissões granulares (Member com permissão L2)
+
+**2. Project Access (Contextual)**
+- **Sell-side:** Acesso apenas à área do ativo (`/:assetname/*`)
+- **Buy-side:** Acesso apenas à área do investidor (`/:investorname/*`)
+- **Lista consolidada:** Visão agregada em `/advisor/projects` (v1.5)
+
+**3. L2 Data Validation**
+- **Curadoria:** Revisão de documentos e campos L1 → L2
+- **Tracking:** Metadados completos (validated_by, timestamp, hash, comments)
+- **Padronização:** Formatação e estruturação de materiais
+- **Diff viewer:** Comparação entre versões L1 e L2
+
+**4. Collaborative Tools**
+- **Task creation:** Dentro dos projetos com atribuição @users
+- **Q&A participation:** Threads no VDR com expertise técnica
+- **Document review:** Teaser, CIM, valuation com sugestões de melhoria
+
+---
+
+## **Arquitetura de Integração Cross-Profile**
+
+### **Data Flow com L1/L2/L3**
+```
+Ativo (L1 raw data) → Advisor (L2 curation) → Investidor (qualified view)
+                           ↓
+Pipeline sync ← → Task management ← → Notifications ← → Mary AI Context
+```
+
+### **Security & Confidentiality**
+- **VDR Isolation:** Cada investidor = namespace completamente separado
+- **RBAC Enforcement:** Advisor nunca acessa ambos os lados simultaneamente
+- **Mary AI Context:** Limitada ao workspace_id + project_id da sessão ativa
+- **Audit Trail:** Logs granulares de acesso, visualização, modificação
+
+### **Automation Triggers**
+- **Matching Engine:** Tese ↔ Ativo com score explicável em tempo real
+- **Pipeline Advancement:** CTAs → notificações → sync bidirecional
+- **Readiness Scoring:** L1/L2/L3 validation → MRS update → ranking impact
+
+---
+
+## **Métricas de Validação MVP**
+
+### **Success Metrics por Perfil:**
+
+**Investidor:**
+- Time to first qualified lead: < 7 dias após criação da tese
+- Match accuracy: > 70% dos teasers acessados avançam para NDA  
+- Pipeline velocity: 4x faster vs. processo tradicional
+
+**Ativo:**
+- Setup to first interest: < 14 dias do onboarding ao primeiro investidor interessado
+- Readiness improvement: 80% dos ativos melhoram MRS em 30 dias
+- Qualified interest rate: > 60% dos investidores que acessam teaser assinam NDA
+
+**Advisor:**
+- Operational efficiency: 50% redução em tarefas administrativas
+- Data quality: 90% dos projetos atingem L2 validation em 30 dias
+- Deal velocity: 3x faster deal closure vs. processos tradicionais
+
+---
+
+## **Próximos Passos Estruturados**
+
+### **Fase 1: Especificação Detalhada**
+1. **Database Schema:** User roles, projects, VDRs, permissions com Supabase
+2. **Mary Taxonomy:** Estrutura completa de setores e modelos de negócio  
+3. **Matching Algorithm:** Especificação técnica com pesos e explicabilidade
+4. **RBAC Matrix:** Permissões granulares por perfil e ação
+
+### **Fase 2: Wireframes Core**
+1. **Onboarding flows:** Investidor e Ativo
+2. **Main dashboards:** Com filtros persistentes e "tela como relatório"
+3. **Pipeline interfaces:** Espelhamento e sincronização
+4. **VDR structure:** Asset institucional e copy-on-share
+
+### **Fase 3: Integração Mary AI**
+1. **Context isolation:** Workspace + project scoping
+2. **RAG implementation:** Com Genspark.ai ou ChatGPT
+3. **Security guardrails:** Anti-injection e data leakage prevention
+
+### **Perguntas Finais para Travar Escopo:**
+
+1. **NDA externo confirmado:** Solução externa + upload "NDA assinado" no MVP?
+2. **L3 validation:** Incluir fluxo básico de "verificação solicitada" ou deixar para v1.5?
+3. **Mary AI budget:** USD 1,00/usuário/mês é realista para o modelo de negócio?
+4. **Mobile-first priority:** Dashboard completo mobile ou versão simplificada?
+
+Com estas definições, podemos partir para o detalhamento técnico dos schemas, componentes UI e especificação da Mary AI Private. **Qual área você gostaria que eu detalhe primeiro?**

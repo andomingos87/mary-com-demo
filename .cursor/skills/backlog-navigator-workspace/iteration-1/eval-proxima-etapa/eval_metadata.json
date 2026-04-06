@@ -1,0 +1,12 @@
+{
+  "eval_id": 0,
+  "eval_name": "eval-proxima-etapa",
+  "prompt": "qual a proxima etapa?",
+  "assertions": [
+    {"name": "leu_backlog", "description": "A resposta demonstra que o backlog oficial foi lido (menciona fase, epico, historias)"},
+    {"name": "identifica_fase_atual", "description": "Identifica corretamente a fase ativa (Fase 0 — Realinhamento Excalidraw)"},
+    {"name": "recomenda_proxima_com_justificativa", "description": "Recomenda uma historia especifica com justificativa baseada em prioridade/dependencias"},
+    {"name": "mostra_sequencia", "description": "Apresenta pelo menos 2 etapas seguintes alem da recomendada"},
+    {"name": "formato_estruturado", "description": "Usa formato estruturado com secoes claras (status, recomendacao, sequencia)"}
+  ]
+}

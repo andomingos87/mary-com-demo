@@ -1,0 +1,207 @@
+{
+  "landing": {
+    "hero_title": "Unlocking Private Markets, Globally.",
+    "hero_subtitle": "Mary is an AI-native Market Network infrastructure, led by people, that powers private markets at global scale.",
+    "login_cta": "Log in",
+    "profile_select_title": "Choose your profile and get started",
+    "profile_select_subtitle": "Select the account type that best represents you or your organization for a personalized experience.",
+    "profile_investor": "Investor",
+    "profile_investor_desc": "PEs, VCs, Family Offices, Angels, CVCs and more",
+    "profile_asset": "Company",
+    "profile_asset_desc": "Any size, sector or region",
+    "profile_advisor": "Advisor",
+    "profile_advisor_desc": "IBs, M&A boutiques, law, accounting",
+    "register_as": "Register as",
+    "feature_deal_flow": "Access qualified deal flow",
+    "feature_thesis": "Smart investment theses",
+    "feature_pipeline": "Opportunity pipeline",
+    "feature_dd": "Automated due diligence",
+    "feature_connect": "Connect with investors",
+    "feature_valuation": "Automated valuation",
+    "feature_vdr": "Secure data room (VDR)",
+    "feature_ma": "M&A preparation",
+    "feature_deals": "Multi-deal management",
+    "feature_firewall": "Buy/sell side firewall",
+    "feature_crm": "Integrated CRM",
+    "feature_analytics": "Advanced analytics",
+    "professionals_title": "Professional Network",
+    "professionals_subtitle": "Join the network of professionals who refer deals and earn commission",
+    "has_account": "Already have an account?",
+    "do_login": "Log in",
+    "profile_required": "Select your profile below to create your account and get started.",
+    "footer_copyright": "© 2026 Mary Digital Ecosystem."
+  },
+  "common": {
+    "welcome": "Welcome to Mary AI",
+    "login": "Log in",
+    "home": "Home",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "save": "Save",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Submit",
+    "logout": "Log out"
+  },
+  "home": {
+    "title": "Mary AI Platform",
+    "description": "Your intelligent M&A assistant."
+  },
+  "login": {
+    "title": "Log in",
+    "subtitle": "Enter your credentials to access",
+    "submit": "Log in",
+    "placeholder_email": "your@email.com",
+    "placeholder_password": "your password",
+    "remember_me": "Remember me",
+    "forgot_password": "Forgot password?",
+    "no_account": "Don't have an account?",
+    "signup_link": "Sign up",
+    "error_invalid": "Incorrect email or password",
+    "error_connection": "Connection error. Please try again."
+  },
+  "signup": {
+    "title": "Sign up",
+    "subtitle": "Fill in the details to create your account",
+    "submit": "Create account",
+    "name_label": "Full name",
+    "email_label": "Email",
+    "phone_label": "WhatsApp",
+    "phone_hint": "Used for two-factor verification",
+    "password_label": "Password",
+    "password_hint": "Minimum 8 characters",
+    "confirm_password_label": "Confirm password",
+    "terms_accept": "I have read and accept the",
+    "terms_link": "Terms of Use",
+    "privacy_link": "Privacy Policy",
+    "has_account": "Already have an account?",
+    "login_link": "Log in",
+    "success_title": "Verify your email",
+    "success_message": "We sent a confirmation link to your email. Click the link to activate your account."
+  },
+  "mfa": {
+    "title": "Verification",
+    "subtitle": "Enter the 6-digit code sent to your",
+    "whatsapp": "WhatsApp",
+    "sms": "SMS",
+    "verify": "Verify",
+    "resend": "Didn't receive it? Resend code",
+    "resend_countdown": "Resend code in",
+    "expires_hint": "Code expires in 5 minutes",
+    "error_invalid": "Invalid code",
+    "error_expired": "Code expired",
+    "error_max_attempts": "Maximum attempts exceeded"
+  },
+  "recovery": {
+    "title": "Forgot password?",
+    "subtitle": "Enter your email and we'll send a link to reset your password",
+    "submit": "Send recovery link",
+    "success_title": "Check your email",
+    "success_message": "If the email is registered, you'll receive a link to reset your password.",
+    "expires_hint": "Link expires in 15 minutes",
+    "rate_limit": "For security, you can request up to 3 recoveries per hour"
+  },
+  "reset_password": {
+    "title": "New password",
+    "subtitle": "Create a new password for your account",
+    "password_label": "New password",
+    "confirm_label": "Confirm password",
+    "submit": "Reset password",
+    "success_title": "Password reset!",
+    "success_message": "Your password was changed successfully. You will be redirected to login.",
+    "requirements": {
+      "title": "Your password must have:",
+      "min_length": "At least 8 characters",
+      "match": "Passwords match"
+    }
+  },
+  "navigation": {
+    "dashboard": "Dashboard",
+    "thesis": "Theses",
+    "opportunities": "Opportunities",
+    "pipeline": "Pipeline",
+    "projects": "Projects",
+    "assetvdr": "VDR",
+    "mary_ai": "Mary AI",
+    "profile": "Profile",
+    "settings": "Settings",
+    "admin": "Admin",
+    "logout": "Log out"
+  },
+  "dashboard": {
+    "welcome": "Welcome back!",
+    "session": {
+      "title": "Active Session",
+      "subtitle": "Authentication verified",
+      "mfa_verified": "MFA Verified",
+      "device": "Device",
+      "expires": "Expires in"
+    },
+    "profile": { "title": "Profile", "subtitle": "Your information" },
+    "actions": {
+      "title": "Quick Actions",
+      "subtitle": "Quick access",
+      "edit_profile": "Edit Profile",
+      "settings": "Settings"
+    },
+    "investor": {
+      "title": "Investor Dashboard",
+      "thesis_active": "Active Theses",
+      "opportunities": "Opportunities",
+      "pipeline": "Pipeline",
+      "deal_flow": "Deal Flow",
+      "create_thesis": "Create Investment Thesis",
+      "explore_opportunities": "Explore Opportunities",
+      "manage_pipeline": "Manage Pipeline"
+    },
+    "asset": {
+      "title": "Company Dashboard",
+      "readiness_score": "Mary Readiness Score®",
+      "projects_active": "Active Projects",
+      "documents_vdr": "Documents in VDR",
+      "interested_investors": "Interested Investors",
+      "pending_tasks": "Pending Tasks",
+      "create_project": "Create Project",
+      "setup_vdr": "Setup VDR",
+      "complete_profile": "Complete Profile"
+    },
+    "advisor": {
+      "title": "Advisor Dashboard",
+      "active_projects": "Active Projects",
+      "sell_side": "Sell-Side",
+      "buy_side": "Buy-Side",
+      "conflict_alerts": "Conflict Alerts"
+    }
+  },
+  "permissions": {
+    "read_only_title": "Account under review",
+    "read_only_message": "Your account is being verified. Some actions are temporarily disabled.",
+    "access_denied": "Access denied",
+    "wrong_profile": "This page is not available for your account type.",
+    "not_member": "You are not a member of this organization.",
+    "onboarding_required": "Complete onboarding to access this page."
+  },
+  "admin": {
+    "title": "Administrative Area",
+    "under_construction": "Under Construction",
+    "under_construction_message": "The full admin panel is under development.",
+    "total_users": "Total Users",
+    "organizations": "Organizations",
+    "pending_verification": "Pending Verification",
+    "system_status": "System Status"
+  },
+  "errors": {
+    "required_field": "This field is required",
+    "invalid_email": "Invalid email",
+    "invalid_phone": "Invalid phone number",
+    "password_mismatch": "Passwords do not match",
+    "password_too_short": "Password must be at least 8 characters",
+    "rate_limit": "Too many attempts. Try again later.",
+    "server_error": "Internal server error",
+    "connection_error": "Connection error. Please try again.",
+    "not_found": "Page not found",
+    "unauthorized": "Unauthorized"
+  }
+}

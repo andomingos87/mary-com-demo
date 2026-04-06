@@ -1,0 +1,1 @@
+Compreenda a demanda e se familiarize com o contexto para depois criar um plano executavel passo a passo detalhado para essa implementação.

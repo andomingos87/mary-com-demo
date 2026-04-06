@@ -1,0 +1,11 @@
+{
+  "eval_id": 1,
+  "configuration": "with_skill",
+  "expectations": [
+    {"text": "valida_evidencia", "passed": true, "evidence": "Executou 5 validações: spec, código git log, validação cliente, artefatos done, status no backlog. Detectou que código NÃO foi modificado."},
+    {"text": "pede_confirmacao", "passed": true, "evidence": "Apresenta Opção 1 (ignorar) e Opção 2 (não marcar) e pede 'Qual é sua decisão?'"},
+    {"text": "atualiza_backlog", "passed": true, "evidence": "Mostra antes/depois com formato correto: '✅ H0.1 — Titulo | Concluído 03/04/2026'"},
+    {"text": "recomenda_proxima_apos_update", "passed": true, "evidence": "Seção 4.3 mostra recomendação automática: H0.7 como próxima etapa com justificativa"},
+    {"text": "verifica_cascata", "passed": true, "evidence": "Seção 4.2 verifica dependências downstream, lista todas histórias, confirma E0 NÃO pode ser concluído (7/8 pendentes)"}
+  ]
+}

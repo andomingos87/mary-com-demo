@@ -1,0 +1,1799 @@
+{
+  "version": "1.0.0",
+  "generated": "2026-01-31T00:56:59.479Z",
+  "stack": {
+    "primaryLanguage": "typescript",
+    "languages": [
+      "javascript",
+      "typescript"
+    ],
+    "frameworks": [
+      "nextjs"
+    ],
+    "buildTools": [],
+    "testFrameworks": [
+      "jest"
+    ],
+    "packageManager": "npm",
+    "isMonorepo": false,
+    "hasDocker": false,
+    "hasCI": true
+  },
+  "structure": {
+    "totalFiles": 244,
+    "topDirectories": [
+      {
+        "name": "ajustes_cliente",
+        "fileCount": 13
+      },
+      {
+        "name": "components.json",
+        "fileCount": 1
+      },
+      {
+        "name": "docs",
+        "fileCount": 21
+      },
+      {
+        "name": "jest.config.js",
+        "fileCount": 1
+      },
+      {
+        "name": "jest.setup.js",
+        "fileCount": 1
+      },
+      {
+        "name": "next-env.d.ts",
+        "fileCount": 1
+      },
+      {
+        "name": "next.config.mjs",
+        "fileCount": 1
+      },
+      {
+        "name": "package-lock.json",
+        "fileCount": 1
+      },
+      {
+        "name": "package.json",
+        "fileCount": 1
+      },
+      {
+        "name": "postcss.config.js",
+        "fileCount": 1
+      },
+      {
+        "name": "public",
+        "fileCount": 7
+      },
+      {
+        "name": "scripts",
+        "fileCount": 6
+      },
+      {
+        "name": "src",
+        "fileCount": 180
+      },
+      {
+        "name": "supabase",
+        "fileCount": 5
+      },
+      {
+        "name": "tailwind.config.ts",
+        "fileCount": 1
+      },
+      {
+        "name": "tsconfig.json",
+        "fileCount": 1
+      },
+      {
+        "name": "usuarios_teste.md",
+        "fileCount": 1
+      },
+      {
+        "name": "vercel.json",
+        "fileCount": 1
+      }
+    ],
+    "languageDistribution": [
+      {
+        "extension": ".tsx",
+        "count": 96
+      },
+      {
+        "extension": ".ts",
+        "count": 79
+      },
+      {
+        "extension": ".md",
+        "count": 23
+      },
+      {
+        "extension": ".snap",
+        "count": 9
+      },
+      {
+        "extension": ".png",
+        "count": 7
+      },
+      {
+        "extension": ".json",
+        "count": 6
+      },
+      {
+        "extension": ".js",
+        "count": 6
+      },
+      {
+        "extension": ".html",
+        "count": 6
+      },
+      {
+        "extension": ".sql",
+        "count": 5
+      },
+      {
+        "extension": ".txt",
+        "count": 3
+      }
+    ]
+  },
+  "architecture": {
+    "layers": [
+      {
+        "name": "Repositories",
+        "description": "Data access and persistence",
+        "directories": [
+          "src\\types",
+          "src\\components\\onboarding"
+        ],
+        "symbolCount": 56,
+        "dependsOn": [
+          "Components"
+        ]
+      },
+      {
+        "name": "Utils",
+        "description": "Shared utilities and helpers",
+        "directories": [
+          "src\\lib",
+          "src\\lib\\validation",
+          "src\\lib\\taxonomy",
+          "src\\lib\\supabase",
+          "src\\lib\\readiness",
+          "src\\lib\\format",
+          "src\\lib\\enrichment",
+          "src\\lib\\email",
+          "src\\lib\\constants",
+          "src\\lib\\auth",
+          "src\\lib\\actions",
+          "src\\lib\\enrichment\\__tests__",
+          "src\\lib\\email\\templates",
+          "src\\lib\\actions\\__tests__"
+        ],
+        "symbolCount": 352,
+        "dependsOn": [
+          "Controllers"
+        ]
+      },
+      {
+        "name": "Controllers",
+        "description": "Request handling and routing",
+        "directories": [
+          "src\\lib\\enrichment",
+          "src\\app\\auth\\callback",
+          "src\\app\\api\\auth\\verify-mfa",
+          "src\\app\\api\\auth\\signup",
+          "src\\app\\api\\auth\\reset-password",
+          "src\\app\\api\\auth\\resend-otp",
+          "src\\app\\api\\auth\\logout",
+          "src\\app\\api\\auth\\login",
+          "src\\app\\api\\auth\\forgot-password"
+        ],
+        "symbolCount": 16,
+        "dependsOn": []
+      },
+      {
+        "name": "Components",
+        "description": "UI components and views",
+        "directories": [
+          "src\\components\\ui",
+          "src\\components\\providers",
+          "src\\components\\projects",
+          "src\\components\\onboarding",
+          "src\\components\\navigation",
+          "src\\components\\guards",
+          "src\\components\\dashboard",
+          "src\\components\\onboarding\\hooks",
+          "src\\components",
+          "src\\app",
+          "src\\components\\auth",
+          "src\\app\\verify-mfa",
+          "src\\app\\terms",
+          "src\\app\\signup",
+          "src\\app\\reset-password",
+          "src\\app\\privacy",
+          "src\\app\\login",
+          "src\\app\\onboarding",
+          "src\\app\\forgot-password",
+          "src\\app\\dashboard",
+          "src\\components\\ui\\__tests__",
+          "src\\components\\onboarding\\__tests__",
+          "src\\app\\signup\\success",
+          "src\\app\\onboarding\\[step]",
+          "src\\app\\onboarding\\pending-review",
+          "src\\app\\dashboard\\organizations",
+          "src\\app\\auth\\error",
+          "src\\app\\(protected)\\[orgSlug]\\thesis",
+          "src\\app\\(protected)\\[orgSlug]\\projects",
+          "src\\app\\(protected)\\[orgSlug]\\settings",
+          "src\\app\\(protected)\\[orgSlug]\\profile",
+          "src\\app\\(protected)\\[orgSlug]\\pipeline",
+          "src\\app\\(protected)\\[orgSlug]\\opportunities",
+          "src\\app\\(protected)\\[orgSlug]\\mary-ai-private",
+          "src\\app\\(protected)\\[orgSlug]\\dashboard",
+          "src\\app\\(protected)\\[orgSlug]\\assetvdr",
+          "src\\app\\(protected)\\advisor\\settings",
+          "src\\app\\(protected)\\advisor\\projects",
+          "src\\app\\(protected)\\advisor\\profile",
+          "src\\app\\(protected)\\advisor\\mary-ai-private",
+          "src\\app\\(protected)\\advisor\\dashboard",
+          "src\\app\\(protected)\\admin\\dashboard",
+          "src\\app\\dashboard\\organizations\\[orgId]\\members",
+          "src\\app\\(protected)\\[orgSlug]\\projects\\[codename]"
+        ],
+        "symbolCount": 262,
+        "dependsOn": []
+      }
+    ],
+    "patterns": [
+      {
+        "name": "Observer",
+        "confidence": 0.75,
+        "description": "Defines a subscription mechanism to notify multiple objects",
+        "occurrences": 2
+      }
+    ],
+    "entryPoints": [
+      "src\\lib\\taxonomy\\index.ts",
+      "src\\lib\\supabase\\server.ts",
+      "src\\lib\\readiness\\index.ts",
+      "src\\lib\\enrichment\\index.ts",
+      "src\\lib\\email\\index.ts",
+      "src\\lib\\constants\\index.ts",
+      "src\\lib\\auth\\index.ts",
+      "src\\lib\\actions\\index.ts",
+      "src\\components\\ui\\index.ts",
+      "src\\components\\providers\\index.ts",
+      "src\\components\\projects\\index.ts",
+      "src\\components\\onboarding\\index.ts",
+      "src\\components\\navigation\\index.ts",
+      "src\\components\\guards\\index.ts",
+      "src\\components\\dashboard\\index.ts",
+      "src\\components\\onboarding\\hooks\\index.ts"
+    ]
+  },
+  "symbols": {
+    "classes": [
+      {
+        "name": "EnrichmentError",
+        "kind": "class",
+        "file": "src\\lib\\enrichment\\types.ts",
+        "line": 264,
+        "exported": true
+      },
+      {
+        "name": "IntersectionObserver",
+        "kind": "class",
+        "file": "jest.setup.js",
+        "line": 28,
+        "exported": false
+      },
+      {
+        "name": "ResizeObserver",
+        "kind": "class",
+        "file": "jest.setup.js",
+        "line": 19,
+        "exported": false
+      }
+    ],
+    "interfaces": [
+      {
+        "name": "ActionResult",
+        "kind": "interface",
+        "file": "src\\types\\projects.ts",
+        "line": 353,
+        "exported": true
+      },
+      {
+        "name": "ActionResult",
+        "kind": "interface",
+        "file": "src\\types\\onboarding.ts",
+        "line": 28,
+        "exported": true
+      },
+      {
+        "name": "ActionResult",
+        "kind": "interface",
+        "file": "src\\lib\\actions\\organizations.ts",
+        "line": 20,
+        "exported": true
+      },
+      {
+        "name": "ActionResult",
+        "kind": "interface",
+        "file": "src\\lib\\actions\\navigation.ts",
+        "line": 27,
+        "exported": true
+      },
+      {
+        "name": "ActionResult",
+        "kind": "interface",
+        "file": "src\\lib\\actions\\members.ts",
+        "line": 17,
+        "exported": true
+      },
+      {
+        "name": "ActionResult",
+        "kind": "interface",
+        "file": "src\\lib\\actions\\invites.ts",
+        "line": 18,
+        "exported": true
+      },
+      {
+        "name": "ActionResult",
+        "kind": "interface",
+        "file": "src\\lib\\actions\\auth.ts",
+        "line": 35,
+        "exported": true
+      },
+      {
+        "name": "ActionResult",
+        "kind": "interface",
+        "file": "src\\lib\\actions\\advisor.ts",
+        "line": 17,
+        "exported": true
+      },
+      {
+        "name": "ActiveOrganizationResult",
+        "kind": "interface",
+        "file": "src\\lib\\actions\\navigation.ts",
+        "line": 33,
+        "exported": true
+      },
+      {
+        "name": "AdvisorProfileDetails",
+        "kind": "interface",
+        "file": "src\\types\\onboarding.ts",
+        "line": 190,
+        "exported": true
+      },
+      {
+        "name": "AssetProfileDetails",
+        "kind": "interface",
+        "file": "src\\types\\onboarding.ts",
+        "line": 179,
+        "exported": true
+      },
+      {
+        "name": "BadgeProps",
+        "kind": "interface",
+        "file": "src\\components\\ui\\badge.tsx",
+        "line": 26,
+        "exported": true
+      },
+      {
+        "name": "BrasilApiCnae",
+        "kind": "interface",
+        "file": "src\\lib\\enrichment\\types.ts",
+        "line": 21,
+        "exported": true
+      },
+      {
+        "name": "BrasilApiCnpjResponse",
+        "kind": "interface",
+        "file": "src\\lib\\enrichment\\types.ts",
+        "line": 27,
+        "exported": true
+      },
+      {
+        "name": "BrasilApiShareholder",
+        "kind": "interface",
+        "file": "src\\lib\\enrichment\\types.ts",
+        "line": 11,
+        "exported": true
+      },
+      {
+        "name": "ButtonProps",
+        "kind": "interface",
+        "file": "src\\components\\ui\\button.tsx",
+        "line": 43,
+        "exported": true
+      },
+      {
+        "name": "CalculatedPermissions",
+        "kind": "interface",
+        "file": "src\\types\\navigation.ts",
+        "line": 92,
+        "exported": true
+      },
+      {
+        "name": "ClearbitLogoResult",
+        "kind": "interface",
+        "file": "src\\lib\\enrichment\\types.ts",
+        "line": 141,
+        "exported": true
+      },
+      {
+        "name": "CnpjInputProps",
+        "kind": "interface",
+        "file": "src\\components\\onboarding\\CnpjInput.tsx",
+        "line": 30,
+        "exported": true
+      },
+      {
+        "name": "ConfidenceIndicatorProps",
+        "kind": "interface",
+        "file": "src\\components\\onboarding\\ConfidenceIndicator.tsx",
+        "line": 22,
+        "exported": true
+      },
+      {
+        "name": "ConflictCheckResult",
+        "kind": "interface",
+        "file": "src\\lib\\actions\\advisor.ts",
+        "line": 23,
+        "exported": true
+      },
+      {
+        "name": "CreateAssignmentInput",
+        "kind": "interface",
+        "file": "src\\lib\\actions\\advisor.ts",
+        "line": 29,
+        "exported": true
+      },
+      {
+        "name": "CreateInviteInput",
+        "kind": "interface",
+        "file": "src\\lib\\actions\\invites.ts",
+        "line": 24,
+        "exported": true
+      },
+      {
+        "name": "CreateOrganizationInput",
+        "kind": "interface",
+        "file": "src\\lib\\actions\\organizations.ts",
+        "line": 26,
+        "exported": true
+      },
+      {
+        "name": "CreateProjectDialogProps",
+        "kind": "interface",
+        "file": "src\\components\\projects\\CreateProjectDialog.tsx",
+        "line": 39,
+        "exported": true
+      },
+      {
+        "name": "CreateProjectInput",
+        "kind": "interface",
+        "file": "src\\types\\projects.ts",
+        "line": 24,
+        "exported": true
+      },
+      {
+        "name": "CvmValidationResult",
+        "kind": "interface",
+        "file": "src\\lib\\enrichment\\types.ts",
+        "line": 224,
+        "exported": true
+      },
+      {
+        "name": "DataConfirmationProps",
+        "kind": "interface",
+        "file": "src\\components\\onboarding\\DataConfirmation.tsx",
+        "line": 51,
+        "exported": true
+      },
+      {
+        "name": "DescriptionContext",
+        "kind": "interface",
+        "file": "src\\lib\\enrichment\\types.ts",
+        "line": 191,
+        "exported": true
+      },
+      {
+        "name": "EligibilityFormProps",
+        "kind": "interface",
+        "file": "src\\components\\onboarding\\EligibilityForm.tsx",
+        "line": 32,
+        "exported": true
+      },
+      {
+        "name": "EligibilityInput",
+        "kind": "interface",
+        "file": "src\\types\\onboarding.ts",
+        "line": 208,
+        "exported": true
+      },
+      {
+        "name": "EligibilityResult",
+        "kind": "interface",
+        "file": "src\\types\\onboarding.ts",
+        "line": 220,
+        "exported": true
+      },
+      {
+        "name": "EmailAttachment",
+        "kind": "interface",
+        "file": "src\\lib\\email\\index.ts",
+        "line": 40,
+        "exported": true
+      },
+      {
+        "name": "EmailRecipient",
+        "kind": "interface",
+        "file": "src\\lib\\email\\index.ts",
+        "line": 35,
+        "exported": true
+      },
+      {
+        "name": "EnrichedCepData",
+        "kind": "interface",
+        "file": "src\\lib\\enrichment\\types.ts",
+        "line": 172,
+        "exported": true
+      },
+      {
+        "name": "EnrichedCnpjData",
+        "kind": "interface",
+        "file": "src\\types\\onboarding.ts",
+        "line": 76,
+        "exported": true
+      },
+      {
+        "name": "EnrichedCompanyData",
+        "kind": "interface",
+        "file": "src\\lib\\enrichment\\types.ts",
+        "line": 64,
+        "exported": true
+      },
+      {
+        "name": "EnrichedWebsiteData",
+        "kind": "interface",
+        "file": "src\\lib\\enrichment\\types.ts",
+        "line": 127,
+        "exported": true
+      },
+      {
+        "name": "EnrichedWebsiteDataResult",
+        "kind": "interface",
+        "file": "src\\types\\onboarding.ts",
+        "line": 132,
+        "exported": true
+      },
+      {
+        "name": "EnrichmentResult",
+        "kind": "interface",
+        "file": "src\\lib\\enrichment\\types.ts",
+        "line": 243,
+        "exported": true
+      },
+      {
+        "name": "ExistingOrgCheck",
+        "kind": "interface",
+        "file": "src\\types\\onboarding.ts",
+        "line": 66,
+        "exported": true
+      },
+      {
+        "name": "ExistingOrgData",
+        "kind": "interface",
+        "file": "src\\types\\onboarding.ts",
+        "line": 57,
+        "exported": true
+      },
+      {
+        "name": "FieldMetadata",
+        "kind": "interface",
+        "file": "src\\types\\projects.ts",
+        "line": 89,
+        "exported": true
+      },
+      {
+        "name": "FieldMetadataLevel",
+        "kind": "interface",
+        "file": "src\\types\\projects.ts",
+        "line": 73,
+        "exported": true
+      },
+      {
+        "name": "FullNavigationContext",
+        "kind": "interface",
+        "file": "src\\types\\navigation.ts",
+        "line": 104,
+        "exported": true
+      },
+      {
+        "name": "GeneratedDescription",
+        "kind": "interface",
+        "file": "src\\lib\\enrichment\\types.ts",
+        "line": 200,
+        "exported": true
+      },
+      {
+        "name": "GeneratedDescriptionResult",
+        "kind": "interface",
+        "file": "src\\types\\onboarding.ts",
+        "line": 147,
+        "exported": true
+      },
+      {
+        "name": "InitiateMfaResult",
+        "kind": "interface",
+        "file": "src\\lib\\actions\\auth.ts",
+        "line": 82,
+        "exported": true
+      },
+      {
+        "name": "InputProps",
+        "kind": "interface",
+        "file": "src\\components\\ui\\input.tsx",
+        "line": 5,
+        "exported": true
+      },
+      {
+        "name": "InvestorProfileDetails",
+        "kind": "interface",
+        "file": "src\\types\\onboarding.ts",
+        "line": 169,
+        "exported": true
+      }
+    ],
+    "functions": [
+      {
+        "name": "acceptInvite",
+        "kind": "function",
+        "file": "src\\lib\\actions\\invites.ts",
+        "line": 230,
+        "exported": true
+      },
+      {
+        "name": "acceptTerms",
+        "kind": "function",
+        "file": "src\\lib\\actions\\onboarding.ts",
+        "line": 1302,
+        "exported": true
+      },
+      {
+        "name": "applyBulkL1Metadata",
+        "kind": "function",
+        "file": "src\\lib\\readiness\\score.ts",
+        "line": 252,
+        "exported": true
+      },
+      {
+        "name": "applyFieldMetadata",
+        "kind": "function",
+        "file": "src\\lib\\readiness\\score.ts",
+        "line": 200,
+        "exported": true
+      },
+      {
+        "name": "AssetDashboard",
+        "kind": "function",
+        "file": "src\\components\\dashboard\\AssetDashboard.tsx",
+        "line": 32,
+        "exported": true
+      },
+      {
+        "name": "AssetDashboardSkeleton",
+        "kind": "function",
+        "file": "src\\components\\dashboard\\AssetDashboard.tsx",
+        "line": 290,
+        "exported": true
+      },
+      {
+        "name": "auditField",
+        "kind": "function",
+        "file": "src\\lib\\actions\\readiness.ts",
+        "line": 291,
+        "exported": true
+      },
+      {
+        "name": "buildTaxonomyTree",
+        "kind": "function",
+        "file": "src\\lib\\taxonomy\\maics.ts",
+        "line": 18,
+        "exported": true
+      },
+      {
+        "name": "calculateL2PlusCoverage",
+        "kind": "function",
+        "file": "src\\lib\\readiness\\score.ts",
+        "line": 112,
+        "exported": true
+      },
+      {
+        "name": "calculateOverallConfidence",
+        "kind": "function",
+        "file": "src\\lib\\enrichment\\index.ts",
+        "line": 169,
+        "exported": true
+      },
+      {
+        "name": "calculateProgress",
+        "kind": "function",
+        "file": "src\\types\\onboarding.ts",
+        "line": 422,
+        "exported": true
+      },
+      {
+        "name": "calculateReadinessScore",
+        "kind": "function",
+        "file": "src\\lib\\actions\\readiness.ts",
+        "line": 55,
+        "exported": true
+      },
+      {
+        "name": "calculateScore",
+        "kind": "function",
+        "file": "src\\lib\\readiness\\score.ts",
+        "line": 28,
+        "exported": true
+      },
+      {
+        "name": "cancelInvite",
+        "kind": "function",
+        "file": "src\\lib\\actions\\invites.ts",
+        "line": 358,
+        "exported": true
+      },
+      {
+        "name": "changeProjectStatus",
+        "kind": "function",
+        "file": "src\\lib\\actions\\projects.ts",
+        "line": 508,
+        "exported": true
+      },
+      {
+        "name": "checkAdminAccess",
+        "kind": "function",
+        "file": "src\\lib\\actions\\navigation.ts",
+        "line": 346,
+        "exported": true
+      },
+      {
+        "name": "checkAdvisorConflict",
+        "kind": "function",
+        "file": "src\\lib\\actions\\advisor.ts",
+        "line": 65,
+        "exported": true
+      },
+      {
+        "name": "checkCodenameAvailability",
+        "kind": "function",
+        "file": "src\\lib\\actions\\projects.ts",
+        "line": 613,
+        "exported": true
+      },
+      {
+        "name": "checkCountryChange",
+        "kind": "function",
+        "file": "src\\lib\\auth\\device.ts",
+        "line": 200,
+        "exported": true
+      },
+      {
+        "name": "checkCvmRegistration",
+        "kind": "function",
+        "file": "src\\lib\\enrichment\\cvm-validator.ts",
+        "line": 29,
+        "exported": true
+      },
+      {
+        "name": "checkExistingOnboarding",
+        "kind": "function",
+        "file": "src\\lib\\actions\\onboarding.ts",
+        "line": 158,
+        "exported": true
+      },
+      {
+        "name": "checkLogoExists",
+        "kind": "function",
+        "file": "src\\lib\\enrichment\\clearbit-logo.ts",
+        "line": 56,
+        "exported": true
+      },
+      {
+        "name": "checkRateLimit",
+        "kind": "function",
+        "file": "src\\lib\\auth\\rate-limit.ts",
+        "line": 60,
+        "exported": true
+      },
+      {
+        "name": "checkSlugAvailability",
+        "kind": "function",
+        "file": "src\\lib\\actions\\organizations.ts",
+        "line": 369,
+        "exported": true
+      },
+      {
+        "name": "cleanCep",
+        "kind": "function",
+        "file": "src\\lib\\enrichment\\viacep.ts",
+        "line": 20,
+        "exported": true
+      },
+      {
+        "name": "cleanCnpj",
+        "kind": "function",
+        "file": "src\\lib\\enrichment\\brasil-api.ts",
+        "line": 20,
+        "exported": true
+      },
+      {
+        "name": "cn",
+        "kind": "function",
+        "file": "src\\lib\\utils.ts",
+        "line": 4,
+        "exported": true
+      },
+      {
+        "name": "CnpjInput",
+        "kind": "function",
+        "file": "src\\components\\onboarding\\CnpjInput.tsx",
+        "line": 88,
+        "exported": true
+      },
+      {
+        "name": "completeOnboarding",
+        "kind": "function",
+        "file": "src\\lib\\actions\\onboarding.ts",
+        "line": 991,
+        "exported": true
+      },
+      {
+        "name": "ConfidenceIndicator",
+        "kind": "function",
+        "file": "src\\components\\onboarding\\ConfidenceIndicator.tsx",
+        "line": 60,
+        "exported": true
+      },
+      {
+        "name": "confirmOnboardingData",
+        "kind": "function",
+        "file": "src\\lib\\actions\\onboarding.ts",
+        "line": 1182,
+        "exported": true
+      },
+      {
+        "name": "createAdminClient",
+        "kind": "function",
+        "file": "src\\lib\\supabase\\server.ts",
+        "line": 34,
+        "exported": true
+      },
+      {
+        "name": "createAdvisorAssignment",
+        "kind": "function",
+        "file": "src\\lib\\actions\\advisor.ts",
+        "line": 127,
+        "exported": true
+      },
+      {
+        "name": "createClient",
+        "kind": "function",
+        "file": "src\\lib\\supabase\\server.ts",
+        "line": 6,
+        "exported": true
+      },
+      {
+        "name": "createClient",
+        "kind": "function",
+        "file": "src\\lib\\supabase\\client.ts",
+        "line": 27,
+        "exported": true
+      },
+      {
+        "name": "createCurrencyHandler",
+        "kind": "function",
+        "file": "src\\lib\\format\\currency.ts",
+        "line": 68,
+        "exported": true
+      },
+      {
+        "name": "createInvite",
+        "kind": "function",
+        "file": "src\\lib\\actions\\invites.ts",
+        "line": 87,
+        "exported": true
+      },
+      {
+        "name": "createOrganization",
+        "kind": "function",
+        "file": "src\\lib\\actions\\organizations.ts",
+        "line": 87,
+        "exported": true
+      },
+      {
+        "name": "createOtp",
+        "kind": "function",
+        "file": "src\\lib\\auth\\otp.ts",
+        "line": 36,
+        "exported": true
+      },
+      {
+        "name": "createProject",
+        "kind": "function",
+        "file": "src\\lib\\actions\\projects.ts",
+        "line": 55,
+        "exported": true
+      },
+      {
+        "name": "CreateProjectDialog",
+        "kind": "function",
+        "file": "src\\components\\projects\\CreateProjectDialog.tsx",
+        "line": 57,
+        "exported": true
+      },
+      {
+        "name": "createSession",
+        "kind": "function",
+        "file": "src\\lib\\auth\\session.ts",
+        "line": 91,
+        "exported": true
+      },
+      {
+        "name": "DataConfirmation",
+        "kind": "function",
+        "file": "src\\components\\onboarding\\DataConfirmation.tsx",
+        "line": 161,
+        "exported": true
+      },
+      {
+        "name": "deleteOrganization",
+        "kind": "function",
+        "file": "src\\lib\\actions\\organizations.ts",
+        "line": 315,
+        "exported": true
+      },
+      {
+        "name": "deleteProject",
+        "kind": "function",
+        "file": "src\\lib\\actions\\projects.ts",
+        "line": 563,
+        "exported": true
+      },
+      {
+        "name": "EligibilityForm",
+        "kind": "function",
+        "file": "src\\components\\onboarding\\EligibilityForm.tsx",
+        "line": 79,
+        "exported": true
+      },
+      {
+        "name": "enrichFromCnpj",
+        "kind": "function",
+        "file": "src\\lib\\enrichment\\index.ts",
+        "line": 78,
+        "exported": true
+      },
+      {
+        "name": "enrichFromCnpjAction",
+        "kind": "function",
+        "file": "src\\lib\\actions\\onboarding.ts",
+        "line": 352,
+        "exported": true
+      },
+      {
+        "name": "enrichFromWebsite",
+        "kind": "function",
+        "file": "src\\lib\\enrichment\\index.ts",
+        "line": 86,
+        "exported": true
+      },
+      {
+        "name": "enrichFromWebsiteAction",
+        "kind": "function",
+        "file": "src\\lib\\actions\\onboarding.ts",
+        "line": 519,
+        "exported": true
+      }
+    ],
+    "types": [
+      {
+        "name": "AdvisorProjectAssignment",
+        "kind": "type",
+        "file": "src\\types\\database.ts",
+        "line": 1135,
+        "exported": true
+      },
+      {
+        "name": "AdvisorProjectAssignmentInsert",
+        "kind": "type",
+        "file": "src\\types\\database.ts",
+        "line": 1138,
+        "exported": true
+      },
+      {
+        "name": "AdvisorSide",
+        "kind": "type",
+        "file": "src\\types\\database.ts",
+        "line": 1105,
+        "exported": true
+      },
+      {
+        "name": "AnalyticsEvent",
+        "kind": "type",
+        "file": "src\\lib\\analytics.ts",
+        "line": 14,
+        "exported": true
+      },
+      {
+        "name": "AuditAction",
+        "kind": "type",
+        "file": "src\\types\\database.ts",
+        "line": 1108,
+        "exported": true
+      },
+      {
+        "name": "AuditAction",
+        "kind": "type",
+        "file": "src\\lib\\audit.ts",
+        "line": 4,
+        "exported": true
+      },
+      {
+        "name": "ConfidenceLevel",
+        "kind": "type",
+        "file": "src\\components\\onboarding\\ConfidenceIndicator.tsx",
+        "line": 20,
+        "exported": true
+      },
+      {
+        "name": "CurrencyCode",
+        "kind": "type",
+        "file": "src\\lib\\format\\currency.ts",
+        "line": 10,
+        "exported": true
+      },
+      {
+        "name": "CvmParticipant",
+        "kind": "type",
+        "file": "src\\types\\database.ts",
+        "line": 1223,
+        "exported": true
+      },
+      {
+        "name": "CvmParticipantInsert",
+        "kind": "type",
+        "file": "src\\types\\database.ts",
+        "line": 1226,
+        "exported": true
+      },
+      {
+        "name": "CvmParticipantType",
+        "kind": "type",
+        "file": "src\\types\\database.ts",
+        "line": 1220,
+        "exported": true
+      },
+      {
+        "name": "CvmParticipantType",
+        "kind": "type",
+        "file": "src\\lib\\enrichment\\types.ts",
+        "line": 214,
+        "exported": true
+      },
+      {
+        "name": "Database",
+        "kind": "type",
+        "file": "src\\types\\database.ts",
+        "line": 9,
+        "exported": true
+      },
+      {
+        "name": "Dictionary",
+        "kind": "type",
+        "file": "src\\lib\\i18n.ts",
+        "line": 3,
+        "exported": true
+      },
+      {
+        "name": "EnrichmentStatus",
+        "kind": "type",
+        "file": "src\\lib\\enrichment\\types.ts",
+        "line": 240,
+        "exported": true
+      },
+      {
+        "name": "Enums",
+        "kind": "type",
+        "file": "src\\types\\database.ts",
+        "line": 1074,
+        "exported": true
+      },
+      {
+        "name": "FieldSource",
+        "kind": "type",
+        "file": "src\\types\\projects.ts",
+        "line": 68,
+        "exported": true
+      },
+      {
+        "name": "Json",
+        "kind": "type",
+        "file": "src\\types\\database.ts",
+        "line": 1,
+        "exported": true
+      },
+      {
+        "name": "MemberRole",
+        "kind": "type",
+        "file": "src\\types\\database.ts",
+        "line": 1099,
+        "exported": true
+      },
+      {
+        "name": "MfaChannel",
+        "kind": "type",
+        "file": "src\\lib\\auth\\mfa.ts",
+        "line": 16,
+        "exported": true
+      },
+      {
+        "name": "NavKey",
+        "kind": "type",
+        "file": "src\\types\\navigation.ts",
+        "line": 151,
+        "exported": true
+      },
+      {
+        "name": "OnboardingStep",
+        "kind": "type",
+        "file": "src\\types\\database.ts",
+        "line": 1217,
+        "exported": true
+      },
+      {
+        "name": "Organization",
+        "kind": "type",
+        "file": "src\\types\\database.ts",
+        "line": 1111,
+        "exported": true
+      },
+      {
+        "name": "OrganizationInsert",
+        "kind": "type",
+        "file": "src\\types\\database.ts",
+        "line": 1114,
+        "exported": true
+      },
+      {
+        "name": "OrganizationInvite",
+        "kind": "type",
+        "file": "src\\types\\database.ts",
+        "line": 1129,
+        "exported": true
+      },
+      {
+        "name": "OrganizationInviteInsert",
+        "kind": "type",
+        "file": "src\\types\\database.ts",
+        "line": 1132,
+        "exported": true
+      },
+      {
+        "name": "OrganizationMember",
+        "kind": "type",
+        "file": "src\\types\\database.ts",
+        "line": 1120,
+        "exported": true
+      },
+      {
+        "name": "OrganizationMemberInsert",
+        "kind": "type",
+        "file": "src\\types\\database.ts",
+        "line": 1123,
+        "exported": true
+      },
+      {
+        "name": "OrganizationMemberUpdate",
+        "kind": "type",
+        "file": "src\\types\\database.ts",
+        "line": 1126,
+        "exported": true
+      },
+      {
+        "name": "OrganizationProfile",
+        "kind": "type",
+        "file": "src\\types\\database.ts",
+        "line": 1096,
+        "exported": true
+      },
+      {
+        "name": "OrganizationUpdate",
+        "kind": "type",
+        "file": "src\\types\\database.ts",
+        "line": 1117,
+        "exported": true
+      },
+      {
+        "name": "ProfileDetailsInput",
+        "kind": "type",
+        "file": "src\\types\\onboarding.ts",
+        "line": 198,
+        "exported": true
+      },
+      {
+        "name": "Project",
+        "kind": "type",
+        "file": "src\\types\\database.ts",
+        "line": 1346,
+        "exported": true
+      },
+      {
+        "name": "ProjectFieldMetadata",
+        "kind": "type",
+        "file": "src\\types\\projects.ts",
+        "line": 102,
+        "exported": true
+      },
+      {
+        "name": "ProjectInsert",
+        "kind": "type",
+        "file": "src\\types\\database.ts",
+        "line": 1349,
+        "exported": true
+      },
+      {
+        "name": "ProjectObjective",
+        "kind": "type",
+        "file": "src\\types\\database.ts",
+        "line": 1343,
+        "exported": true
+      },
+      {
+        "name": "ProjectStatus",
+        "kind": "type",
+        "file": "src\\types\\database.ts",
+        "line": 1340,
+        "exported": true
+      },
+      {
+        "name": "ProjectUpdate",
+        "kind": "type",
+        "file": "src\\types\\database.ts",
+        "line": 1352,
+        "exported": true
+      },
+      {
+        "name": "SectorCode",
+        "kind": "type",
+        "file": "src\\lib\\constants\\sectors.ts",
+        "line": 103,
+        "exported": true
+      },
+      {
+        "name": "StepValidationMap",
+        "kind": "type",
+        "file": "src\\types\\onboarding.ts",
+        "line": 285,
+        "exported": true
+      },
+      {
+        "name": "Tables",
+        "kind": "type",
+        "file": "src\\types\\database.ts",
+        "line": 995,
+        "exported": true
+      },
+      {
+        "name": "TablesInsert",
+        "kind": "type",
+        "file": "src\\types\\database.ts",
+        "line": 1024,
+        "exported": true
+      },
+      {
+        "name": "TablesUpdate",
+        "kind": "type",
+        "file": "src\\types\\database.ts",
+        "line": 1049,
+        "exported": true
+      },
+      {
+        "name": "TaxonomyMaics",
+        "kind": "type",
+        "file": "src\\types\\database.ts",
+        "line": 1355,
+        "exported": true
+      },
+      {
+        "name": "TaxonomyMaicsInsert",
+        "kind": "type",
+        "file": "src\\types\\database.ts",
+        "line": 1358,
+        "exported": true
+      },
+      {
+        "name": "VerificationStatus",
+        "kind": "type",
+        "file": "src\\types\\database.ts",
+        "line": 1102,
+        "exported": true
+      },
+      {
+        "name": "ConflictCheckResult",
+        "kind": "type",
+        "file": "src\\lib\\actions\\index.ts",
+        "line": 53,
+        "exported": false
+      },
+      {
+        "name": "CreateAssignmentInput",
+        "kind": "type",
+        "file": "src\\lib\\actions\\index.ts",
+        "line": 54,
+        "exported": false
+      },
+      {
+        "name": "CreateInviteInput",
+        "kind": "type",
+        "file": "src\\lib\\actions\\index.ts",
+        "line": 42,
+        "exported": false
+      },
+      {
+        "name": "CreateOrganizationInput",
+        "kind": "type",
+        "file": "src\\lib\\actions\\index.ts",
+        "line": 19,
+        "exported": false
+      }
+    ],
+    "enums": []
+  },
+  "publicAPI": [
+    {
+      "name": "acceptInvite",
+      "kind": "function",
+      "file": "src\\lib\\actions\\invites.ts",
+      "line": 230,
+      "exported": true
+    },
+    {
+      "name": "acceptTerms",
+      "kind": "function",
+      "file": "src\\lib\\actions\\onboarding.ts",
+      "line": 1302,
+      "exported": true
+    },
+    {
+      "name": "ActionResult",
+      "kind": "interface",
+      "file": "src\\types\\projects.ts",
+      "line": 353,
+      "exported": true
+    },
+    {
+      "name": "ActionResult",
+      "kind": "interface",
+      "file": "src\\types\\onboarding.ts",
+      "line": 28,
+      "exported": true
+    },
+    {
+      "name": "ActionResult",
+      "kind": "interface",
+      "file": "src\\lib\\actions\\organizations.ts",
+      "line": 20,
+      "exported": true
+    },
+    {
+      "name": "ActionResult",
+      "kind": "interface",
+      "file": "src\\lib\\actions\\navigation.ts",
+      "line": 27,
+      "exported": true
+    },
+    {
+      "name": "ActionResult",
+      "kind": "interface",
+      "file": "src\\lib\\actions\\members.ts",
+      "line": 17,
+      "exported": true
+    },
+    {
+      "name": "ActionResult",
+      "kind": "interface",
+      "file": "src\\lib\\actions\\invites.ts",
+      "line": 18,
+      "exported": true
+    },
+    {
+      "name": "ActionResult",
+      "kind": "interface",
+      "file": "src\\lib\\actions\\auth.ts",
+      "line": 35,
+      "exported": true
+    },
+    {
+      "name": "ActionResult",
+      "kind": "interface",
+      "file": "src\\lib\\actions\\advisor.ts",
+      "line": 17,
+      "exported": true
+    },
+    {
+      "name": "ActiveOrganizationResult",
+      "kind": "interface",
+      "file": "src\\lib\\actions\\navigation.ts",
+      "line": 33,
+      "exported": true
+    },
+    {
+      "name": "AdvisorProfileDetails",
+      "kind": "interface",
+      "file": "src\\types\\onboarding.ts",
+      "line": 190,
+      "exported": true
+    },
+    {
+      "name": "AdvisorProjectAssignment",
+      "kind": "type",
+      "file": "src\\types\\database.ts",
+      "line": 1135,
+      "exported": true
+    },
+    {
+      "name": "AdvisorProjectAssignmentInsert",
+      "kind": "type",
+      "file": "src\\types\\database.ts",
+      "line": 1138,
+      "exported": true
+    },
+    {
+      "name": "AdvisorSide",
+      "kind": "type",
+      "file": "src\\types\\database.ts",
+      "line": 1105,
+      "exported": true
+    },
+    {
+      "name": "AnalyticsEvent",
+      "kind": "type",
+      "file": "src\\lib\\analytics.ts",
+      "line": 14,
+      "exported": true
+    },
+    {
+      "name": "applyBulkL1Metadata",
+      "kind": "function",
+      "file": "src\\lib\\readiness\\score.ts",
+      "line": 252,
+      "exported": true
+    },
+    {
+      "name": "applyFieldMetadata",
+      "kind": "function",
+      "file": "src\\lib\\readiness\\score.ts",
+      "line": 200,
+      "exported": true
+    },
+    {
+      "name": "AssetDashboard",
+      "kind": "function",
+      "file": "src\\components\\dashboard\\AssetDashboard.tsx",
+      "line": 32,
+      "exported": true
+    },
+    {
+      "name": "AssetDashboardSkeleton",
+      "kind": "function",
+      "file": "src\\components\\dashboard\\AssetDashboard.tsx",
+      "line": 290,
+      "exported": true
+    },
+    {
+      "name": "AssetProfileDetails",
+      "kind": "interface",
+      "file": "src\\types\\onboarding.ts",
+      "line": 179,
+      "exported": true
+    },
+    {
+      "name": "AuditAction",
+      "kind": "type",
+      "file": "src\\types\\database.ts",
+      "line": 1108,
+      "exported": true
+    },
+    {
+      "name": "AuditAction",
+      "kind": "type",
+      "file": "src\\lib\\audit.ts",
+      "line": 4,
+      "exported": true
+    },
+    {
+      "name": "auditField",
+      "kind": "function",
+      "file": "src\\lib\\actions\\readiness.ts",
+      "line": 291,
+      "exported": true
+    },
+    {
+      "name": "BadgeProps",
+      "kind": "interface",
+      "file": "src\\components\\ui\\badge.tsx",
+      "line": 26,
+      "exported": true
+    },
+    {
+      "name": "BrasilApiCnae",
+      "kind": "interface",
+      "file": "src\\lib\\enrichment\\types.ts",
+      "line": 21,
+      "exported": true
+    },
+    {
+      "name": "BrasilApiCnpjResponse",
+      "kind": "interface",
+      "file": "src\\lib\\enrichment\\types.ts",
+      "line": 27,
+      "exported": true
+    },
+    {
+      "name": "BrasilApiShareholder",
+      "kind": "interface",
+      "file": "src\\lib\\enrichment\\types.ts",
+      "line": 11,
+      "exported": true
+    },
+    {
+      "name": "buildTaxonomyTree",
+      "kind": "function",
+      "file": "src\\lib\\taxonomy\\maics.ts",
+      "line": 18,
+      "exported": true
+    },
+    {
+      "name": "ButtonProps",
+      "kind": "interface",
+      "file": "src\\components\\ui\\button.tsx",
+      "line": 43,
+      "exported": true
+    },
+    {
+      "name": "CalculatedPermissions",
+      "kind": "interface",
+      "file": "src\\types\\navigation.ts",
+      "line": 92,
+      "exported": true
+    },
+    {
+      "name": "calculateL2PlusCoverage",
+      "kind": "function",
+      "file": "src\\lib\\readiness\\score.ts",
+      "line": 112,
+      "exported": true
+    },
+    {
+      "name": "calculateOverallConfidence",
+      "kind": "function",
+      "file": "src\\lib\\enrichment\\index.ts",
+      "line": 169,
+      "exported": true
+    },
+    {
+      "name": "calculateProgress",
+      "kind": "function",
+      "file": "src\\types\\onboarding.ts",
+      "line": 422,
+      "exported": true
+    },
+    {
+      "name": "calculateReadinessScore",
+      "kind": "function",
+      "file": "src\\lib\\actions\\readiness.ts",
+      "line": 55,
+      "exported": true
+    },
+    {
+      "name": "calculateScore",
+      "kind": "function",
+      "file": "src\\lib\\readiness\\score.ts",
+      "line": 28,
+      "exported": true
+    },
+    {
+      "name": "cancelInvite",
+      "kind": "function",
+      "file": "src\\lib\\actions\\invites.ts",
+      "line": 358,
+      "exported": true
+    },
+    {
+      "name": "changeProjectStatus",
+      "kind": "function",
+      "file": "src\\lib\\actions\\projects.ts",
+      "line": 508,
+      "exported": true
+    },
+    {
+      "name": "checkAdminAccess",
+      "kind": "function",
+      "file": "src\\lib\\actions\\navigation.ts",
+      "line": 346,
+      "exported": true
+    },
+    {
+      "name": "checkAdvisorConflict",
+      "kind": "function",
+      "file": "src\\lib\\actions\\advisor.ts",
+      "line": 65,
+      "exported": true
+    },
+    {
+      "name": "checkCodenameAvailability",
+      "kind": "function",
+      "file": "src\\lib\\actions\\projects.ts",
+      "line": 613,
+      "exported": true
+    },
+    {
+      "name": "checkCountryChange",
+      "kind": "function",
+      "file": "src\\lib\\auth\\device.ts",
+      "line": 200,
+      "exported": true
+    },
+    {
+      "name": "checkCvmRegistration",
+      "kind": "function",
+      "file": "src\\lib\\enrichment\\cvm-validator.ts",
+      "line": 29,
+      "exported": true
+    },
+    {
+      "name": "checkExistingOnboarding",
+      "kind": "function",
+      "file": "src\\lib\\actions\\onboarding.ts",
+      "line": 158,
+      "exported": true
+    },
+    {
+      "name": "checkLogoExists",
+      "kind": "function",
+      "file": "src\\lib\\enrichment\\clearbit-logo.ts",
+      "line": 56,
+      "exported": true
+    },
+    {
+      "name": "checkRateLimit",
+      "kind": "function",
+      "file": "src\\lib\\auth\\rate-limit.ts",
+      "line": 60,
+      "exported": true
+    },
+    {
+      "name": "checkSlugAvailability",
+      "kind": "function",
+      "file": "src\\lib\\actions\\organizations.ts",
+      "line": 369,
+      "exported": true
+    },
+    {
+      "name": "cleanCep",
+      "kind": "function",
+      "file": "src\\lib\\enrichment\\viacep.ts",
+      "line": 20,
+      "exported": true
+    },
+    {
+      "name": "cleanCnpj",
+      "kind": "function",
+      "file": "src\\lib\\enrichment\\brasil-api.ts",
+      "line": 20,
+      "exported": true
+    },
+    {
+      "name": "ClearbitLogoResult",
+      "kind": "interface",
+      "file": "src\\lib\\enrichment\\types.ts",
+      "line": 141,
+      "exported": true
+    }
+  ],
+  "dependencies": {
+    "mostImported": [
+      {
+        "file": "C:\\Users\\asdom\\OneDrive\\Área de Trabalho\\projects\\project_mary\\src\\lib\\enrichment\\brasil-api.ts",
+        "importedBy": 2
+      },
+      {
+        "file": "C:\\Users\\asdom\\OneDrive\\Área de Trabalho\\projects\\project_mary\\src\\lib\\enrichment\\jina-reader.ts",
+        "importedBy": 2
+      },
+      {
+        "file": "C:\\Users\\asdom\\OneDrive\\Área de Trabalho\\projects\\project_mary\\src\\lib\\email\\index.ts",
+        "importedBy": 2
+      },
+      {
+        "file": "C:\\Users\\asdom\\OneDrive\\Área de Trabalho\\projects\\project_mary\\src\\lib\\auth\\whatsapp.ts",
+        "importedBy": 2
+      },
+      {
+        "file": "C:\\Users\\asdom\\OneDrive\\Área de Trabalho\\projects\\project_mary\\src\\components\\onboarding\\StepIndicator.tsx",
+        "importedBy": 2
+      },
+      {
+        "file": "C:\\Users\\asdom\\OneDrive\\Área de Trabalho\\projects\\project_mary\\src\\components\\onboarding\\ProfileSelector.tsx",
+        "importedBy": 2
+      },
+      {
+        "file": "C:\\Users\\asdom\\OneDrive\\Área de Trabalho\\projects\\project_mary\\src\\components\\onboarding\\CnpjInput.tsx",
+        "importedBy": 2
+      },
+      {
+        "file": "C:\\Users\\asdom\\OneDrive\\Área de Trabalho\\projects\\project_mary\\src\\components\\onboarding\\ConfidenceIndicator.tsx",
+        "importedBy": 2
+      },
+      {
+        "file": "C:\\Users\\asdom\\OneDrive\\Área de Trabalho\\projects\\project_mary\\src\\components\\ui\\input.tsx",
+        "importedBy": 2
+      },
+      {
+        "file": "C:\\Users\\asdom\\OneDrive\\Área de Trabalho\\projects\\project_mary\\src\\types\\database.ts",
+        "importedBy": 1
+      },
+      {
+        "file": "C:\\Users\\asdom\\OneDrive\\Área de Trabalho\\projects\\project_mary\\src\\i18n\\dictionaries\\pt-br.json",
+        "importedBy": 1
+      },
+      {
+        "file": "C:\\Users\\asdom\\OneDrive\\Área de Trabalho\\projects\\project_mary\\src\\lib\\supabase.ts",
+        "importedBy": 1
+      },
+      {
+        "file": "C:\\Users\\asdom\\OneDrive\\Área de Trabalho\\projects\\project_mary\\src\\lib\\logger.ts",
+        "importedBy": 1
+      },
+      {
+        "file": "C:\\Users\\asdom\\OneDrive\\Área de Trabalho\\projects\\project_mary\\src\\lib\\readiness\\checklist.ts",
+        "importedBy": 1
+      },
+      {
+        "file": "C:\\Users\\asdom\\OneDrive\\Área de Trabalho\\projects\\project_mary\\src\\lib\\enrichment\\types.ts",
+        "importedBy": 1
+      },
+      {
+        "file": "C:\\Users\\asdom\\OneDrive\\Área de Trabalho\\projects\\project_mary\\src\\lib\\enrichment\\clearbit-logo.ts",
+        "importedBy": 1
+      },
+      {
+        "file": "C:\\Users\\asdom\\OneDrive\\Área de Trabalho\\projects\\project_mary\\src\\lib\\enrichment\\cvm-validator.ts",
+        "importedBy": 1
+      },
+      {
+        "file": "C:\\Users\\asdom\\OneDrive\\Área de Trabalho\\projects\\project_mary\\src\\lib\\enrichment\\openai-description.ts",
+        "importedBy": 1
+      },
+      {
+        "file": "C:\\Users\\asdom\\OneDrive\\Área de Trabalho\\projects\\project_mary\\src\\lib\\auth\\otp.ts",
+        "importedBy": 1
+      },
+      {
+        "file": "C:\\Users\\asdom\\OneDrive\\Área de Trabalho\\projects\\project_mary\\src\\lib\\auth\\sms.ts",
+        "importedBy": 1
+      }
+    ]
+  },
+  "stats": {
+    "totalSymbols": 778,
+    "exportedSymbols": 450,
+    "analysisTimeMs": 217
+  }
+}

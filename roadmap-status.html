@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Mary AI — Status do Roadmap</title>
+<style>
+  body {
+    font-family: 'DM Sans', -apple-system, sans-serif;
+    background: #0f1419;
+    color: #e8eaed;
+    padding: 32px;
+    max-width: 1100px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+  h1 { font-size: 24px; margin-bottom: 8px; color: #fff; }
+  h2 {
+    font-size: 18px;
+    margin-top: 40px;
+    margin-bottom: 12px;
+    color: #fff;
+    border-bottom: 1px solid #2a3038;
+    padding-bottom: 8px;
+  }
+  .subtitle { color: #8a9199; font-size: 13px; margin-bottom: 8px; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #1a1f27;
+    border-radius: 8px;
+    overflow: hidden;
+    font-size: 14px;
+  }
+  th {
+    background: #222831;
+    color: #fff;
+    text-align: left;
+    padding: 12px 16px;
+    font-weight: 600;
+    font-size: 13px;
+  }
+  td {
+    padding: 12px 16px;
+    border-top: 1px solid #2a3038;
+    vertical-align: middle;
+  }
+  td.id { font-weight: 600; color: #fff; width: 70px; }
+  .progress-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 140px;
+  }
+  .bar {
+    flex: 1;
+    height: 6px;
+    background: #2a3038;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .fill { height: 100%; border-radius: 3px; }
+  .fill.complete { background: #22c55e; }
+  .fill.done { background: #4ade80; }
+  .fill.progress { background: #fbbf24; }
+  .fill.zero { background: #2a3038; }
+  .pct { font-size: 12px; color: #8a9199; min-width: 36px; text-align: right; }
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .badge.complete { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
+  .badge.caveat { background: rgba(74, 222, 128, 0.15); color: #4ade80; }
+  .badge.wait { background: rgba(251, 191, 36, 0.15); color: #fbbf24; }
+  .badge.blocked { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
+  .badge.backlog { background: rgba(138, 145, 153, 0.15); color: #8a9199; }
+  .summary {
+    background: #1a1f27;
+    padding: 16px 20px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+  }
+  .summary-title { font-size: 13px; color: #8a9199; margin-bottom: 4px; }
+  .summary-value { font-size: 20px; font-weight: 600; color: #fff; }
+  .summary-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .border-green { border-left: 3px solid #22c55e; }
+  .border-caveat { border-left: 3px solid #4ade80; }
+  .border-yellow { border-left: 3px solid #fbbf24; }
+  .border-gray { border-left: 3px solid #8a9199; }
+  .row-approved { background: rgba(34, 197, 94, 0.04); }
+  .row-caveat { background: rgba(74, 222, 128, 0.03); }
+  .note { font-size: 12px; color: #8a9199; margin-top: 8px; padding: 8px 12px; background: #1a1f27; border-radius: 6px; border-left: 2px solid #8a9199; }
+  .note + .note { margin-top: 6px; }
+  .note strong { color: #e8eaed; }
+</style>
+</head>
+<body>
+
+<h1>Mary AI Platform — Status do Roadmap</h1>
+<div class="subtitle">Atualizado em 06/04/2026 — H0.6 aprovado com ressalvas</div>
+
+<div class="summary-grid">
+  <div class="summary border-green">
+    <div class="summary-title">E0 — Realinhamento Excalidraw</div>
+    <div class="summary-value">~93% concluído</div>
+  </div>
+  <div class="summary border-green">
+    <div class="summary-title">Aprovados</div>
+    <div class="summary-value">3 (H0.2, H0.3, H0.4)</div>
+  </div>
+  <div class="summary border-caveat">
+    <div class="summary-title">Aprovados c/ ressalvas</div>
+    <div class="summary-value">2 (H0.5, H0.6)</div>
+  </div>
+  <div class="summary border-yellow">
+    <div class="summary-title">Aguardando aceite</div>
+    <div class="summary-value">2 (H0.1, H0.7)</div>
+  </div>
+</div>
+
+<h2>E0 — Realinhamento Excalidraw (H0.x)</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>H0.x</th>
+      <th>Foco</th>
+      <th>Gap</th>
+      <th>Progresso</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="id">H0.1</td>
+      <td>Onboarding Ativo (4 passos)</td>
+      <td>— (novo fluxo)</td>
+      <td><div class="progress-wrap"><div class="bar"><div class="fill done" style="width:90%"></div></div><span class="pct">90%</span></div></td>
+      <td><span class="badge wait">Aguardando aceite</span></td>
+    </tr>
+    <tr class="row-approved">
+      <td class="id">H0.2</td>
+      <td>Tese de Investidor (campos)</td>
+      <td>E2</td>
+      <td><div class="progress-wrap"><div class="bar"><div class="fill complete" style="width:100%"></div></div><span class="pct">100%</span></div></td>
+      <td><span class="badge complete">Aprovado 60/60</span></td>
+    </tr>
+    <tr class="row-approved">
+      <td class="id">H0.3</td>
+      <td>Pipeline 5→12 fases</td>
+      <td>E4</td>
+      <td><div class="progress-wrap"><div class="bar"><div class="fill complete" style="width:100%"></div></div><span class="pct">100%</span></div></td>
+      <td><span class="badge complete">Aprovado 49/49</span></td>
+    </tr>
+    <tr class="row-approved">
+      <td class="id">H0.4</td>
+      <td>Breadcrumbs globais</td>
+      <td>— (novo)</td>
+      <td><div class="progress-wrap"><div class="bar"><div class="fill complete" style="width:100%"></div></div><span class="pct">100%</span></div></td>
+      <td><span class="badge complete">Aprovado (4 rodadas)</span></td>
+    </tr>
+    <tr class="row-caveat">
+      <td class="id">H0.5</td>
+      <td>Mary AI como Sidebar</td>
+      <td>— (bloqueia E6)</td>
+      <td><div class="progress-wrap"><div class="bar"><div class="fill done" style="width:95%"></div></div><span class="pct">95%</span></div></td>
+      <td><span class="badge caveat">Aprovado c/ ressalvas</span></td>
+    </tr>
+    <tr class="row-caveat">
+      <td class="id">H0.6</td>
+      <td>Auto-save + Tooltips globais</td>
+      <td>— (cross-cutting)</td>
+      <td><div class="progress-wrap"><div class="bar"><div class="fill done" style="width:73%"></div></div><span class="pct">73%</span></div></td>
+      <td><span class="badge caveat">Aprovado c/ ressalvas</span></td>
+    </tr>
+    <tr>
+      <td class="id">H0.7</td>
+      <td>Menus laterais por perfil</td>
+      <td>E1</td>
+      <td><div class="progress-wrap"><div class="bar"><div class="fill done" style="width:90%"></div></div><span class="pct">90%</span></div></td>
+      <td><span class="badge wait">Aguardando aceite N2/N3</span></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="note">
+  <strong>H0.5 — Ressalvas (3):</strong>
+  G2: CTAs sem variação granular por rota &bull;
+  G3: Saudação "Prazer..." reaparece via sessionStorage &bull;
+  G5: Race condition perde histórico entre rotas
+</div>
+<div class="note">
+  <strong>H0.6 — Ressalvas (4 pendências):</strong>
+  1 linha de código (export TOOLTIPS em constants/index.ts) &bull;
+  Decisão de escopo: Settings auto-save/tooltips &bull;
+  10 itens não exercitados E2E &bull;
+  12 itens parciais pendentes reconfirmação visual
+</div>
+
+<h2>Épicos a partir do E5</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Épico</th>
+      <th>Foco</th>
+      <th>Dependências</th>
+      <th>Progresso</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="id">E5</td>
+      <td>Feed, Alertas e Recorrência</td>
+      <td>E0 concluído</td>
+      <td><div class="progress-wrap"><div class="bar"><div class="fill zero" style="width:0%"></div></div><span class="pct">0%</span></div></td>
+      <td><span class="badge blocked">Bloqueado por E0</span></td>
+    </tr>
+    <tr>
+      <td class="id">E6</td>
+      <td>IA Assistiva (Mary AI)</td>
+      <td>E0 (H0.5), E3, E4</td>
+      <td><div class="progress-wrap"><div class="bar"><div class="fill zero" style="width:0%"></div></div><span class="pct">0%</span></div></td>
+      <td><span class="badge wait">Desbloqueado (H0.5 aprovado)</span></td>
+    </tr>
+    <tr>
+      <td class="id">E7</td>
+      <td>Hardening de Segurança</td>
+      <td>E3, E6</td>
+      <td><div class="progress-wrap"><div class="bar"><div class="fill zero" style="width:0%"></div></div><span class="pct">0%</span></div></td>
+      <td><span class="badge backlog">Pendente</span></td>
+    </tr>
+    <tr>
+      <td class="id">E8</td>
+      <td>Advisor (escopo parcial)</td>
+      <td>E0 concluído</td>
+      <td><div class="progress-wrap"><div class="bar"><div class="fill zero" style="width:0%"></div></div><span class="pct">0%</span></div></td>
+      <td><span class="badge blocked">Bloqueado por E0</span></td>
+    </tr>
+    <tr>
+      <td class="id">E9</td>
+      <td>Pós-MVP</td>
+      <td>MVP completo</td>
+      <td><div class="progress-wrap"><div class="bar"><div class="fill zero" style="width:0%"></div></div><span class="pct">0%</span></div></td>
+      <td><span class="badge backlog">Backlog</span></td>
+    </tr>
+  </tbody>
+</table>
+
+</body>
+</html>

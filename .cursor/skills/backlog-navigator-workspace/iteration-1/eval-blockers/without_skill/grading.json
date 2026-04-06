@@ -1,0 +1,11 @@
+{
+  "eval_id": 2,
+  "configuration": "without_skill",
+  "expectations": [
+    {"text": "identifica_decisoes_pendentes", "passed": true, "evidence": "Seção 9 menciona T7.1 e T7.2 como decisões pendentes com urgência"},
+    {"text": "analisa_dependencias", "passed": true, "evidence": "Menciona que E0 é pré-requisito para E5-E8 e que desenvolvimento linear passou a reconciliação"},
+    {"text": "menciona_lacunas_criticas", "passed": true, "evidence": "Menciona assinatura, upload, calibragem MRS. Também radar ativo e advisor."},
+    {"text": "apresenta_impacto", "passed": true, "evidence": "Cada blocker tem seção de impacto com bullet points"},
+    {"text": "sugere_mitigacao", "passed": false, "evidence": "Recomendações genéricas ('comunicar cliente', 'executar E0'). Falta recomendação específica para T7.1/T7.2 (valores, prazos, cenários). Não propõe quadro de ação dia-a-dia."}
+  ]
+}

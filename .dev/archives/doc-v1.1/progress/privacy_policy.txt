@@ -1,0 +1,488 @@
+# POLÍTICA DE PRIVACIDADE
+Bem-vindo à Mary Digital Ecosystem!
+
+A Mary preza pela excelência no atendimento de seus clientes e preocupa-se com a sua privacidade e com a proteção de seus dados pessoais. Durante sua navegação em nossas plataformas e para que possamos oferecer nossos serviços é necessário que tenhamos acesso a determinadas informações sobre você ou associadas a você, por esta razão, é muito importante para nós que você saiba como tratamos seus dados pessoais ("Dados Pessoais").
+
+SOBRE A MARY
+A Mary é um ecossistema digital voltado para transações de Fusões e Aquisições (M&A) acessível pela URL https://www.mary.network/ ("Plataforma" ou "Ecossistema"), desenvolvida e disponibilizada pela Mary Digital Ecosystem Ltda., inscrita no CNPJ sob o nº 62.135.811/0001-57, com sede na Alameda César Nascimento, nº 646, sala comercial, bairro Jurerê, na Cidade de Florianópolis, Estado de Santa Catarina, CEP 88.053-500 ("Mary", "nós" ou "nossos").
+
+A Mary é uma plataforma digital desenvolvida para facilitar, acelerar e estruturar transações de M&A (Fusões e Aquisições), conectando empresas (ativos), investidores (financeiros e estratégicos), advisors (assessores) e agentes de mercado de forma inteligente, segura e eficiente.
+
+Nosso Ecossistema oferece uma infraestrutura completa para originação, qualificação e condução de oportunidades de M&A, com ferramentas que auxiliam desde o cadastro das teses de investimento, publicação e validação de ativos, até a automação de documentos e negociação de contratos. Utilizamos tecnologia, curadoria e dados estruturados para reduzir atritos e trazer mais fluidez às transações.
+
+Algumas funcionalidades específicas disponibilizadas pela Mary dependem de um cadastro prévio na Plataforma.
+
+Em nossos Termos de Uso, explicamos com detalhes como nossa Plataforma funciona.
+
+Esta Política de Privacidade ("Política") explica, de maneira simples, objetiva e transparente, quais Dados Pessoais são coletados, usados e de outras formas tratados pela Mary e para quais finalidades, além de indicar com quem eles podem ser compartilhados e como os Usuários podem gerenciar seus Dados Pessoais.
+
+Embora esta Política trate, principalmente, do tratamento de Dados Pessoais (referentes a pessoas físicas), a Mary também poderá tratar dados de natureza institucional ou empresarial (como razão social, CNPJ, endereço corporativo e outros). Esses dados podem estar vinculados a uma pessoa natural identificável — por exemplo, representantes legais, colaboradores ou sócios — e, nesse caso, também serão protegidos e tratados conforme os princípios desta Política e da LGPD.
+
+Não é possível oferecer as funcionalidades e Serviços da Plataforma sem ter acesso a esses Dados Pessoais. Ou seja, o tratamento dos Dados Pessoais é condição para utilizar a Plataforma e os Serviços.
+
+Por favor, leia atentamente esta Política para entender como utilizamos os seus Dados Pessoais em nossa Plataforma.
+
+ÍNDICE
+Sobre a Mary
+1. Informações Gerais
+2. Dados Pessoais de menores de 18 anos
+3. Quais Dados Pessoais coletamos e tratamos?
+4. Uso de cookies e outras tecnologias de monitoramento
+5. Para que utilizamos seus Dados Pessoais?
+6. Quando excluímos os Dados Pessoais?
+7. Com quem compartilhamos os Dados Pessoais e por quais motivos?
+8. Quais os seus direitos com relação aos seus Dados Pessoais
+9. Como armazenamos e protegemos os seus Dados Pessoais
+10. Exclusão de Conta
+11. O que você precisa saber sobre sua conta e senha de acesso?
+12. Segurança da Internet
+13. Qual é a sua responsabilidade sobre seus Dados Pessoais?
+14. Quando precisamos do seu consentimento?
+15. Atualizações nesta Política
+16. Como fazer uma reclamação
+
+Glossário
+1. Informações Gerais
+
+1.1. Os Dados Pessoais que coletamos por meio de seu cadastro na Plataforma permitirão que você tenha acesso aos Serviços e determinadas funcionalidades da Plataforma, conforme descritas em nossos Termos de Uso. Também coletamos Dados Pessoais relacionados ao seu uso e comportamento dentro de nossa Plataforma.
+
+1.2. Por meio desta Política, queremos dar a você transparência de quais Dados Pessoais coletamos e utilizamos a seu respeito. Lembramos que alguns dos seus Dados Pessoais poderão ser compartilhados com parceiros e prestadores de serviço contratados pela Mary, sempre com a finalidade exclusiva de viabilizar a operação técnica da Plataforma e a prestação dos Serviços contratados. Isso pode incluir, por exemplo, provedores de infraestrutura em nuvem, soluções de autenticação, ferramentas de análise e comunicação, ou integrações com bases externas autorizadas.
+
+1.3. A Mary não comercializa seus dados pessoais com terceiros, nem os compartilha para fins publicitários ou alheios à operação da Plataforma.
+
+1.4. Portanto, os Dados Pessoais são: (i) fornecidos por você; ou (ii) obtidos de diversas plataformas de bases públicas e oficiais disponíveis, e utilizados para que possamos, de maneira geral:
+
+Efetuar seu cadastro na Plataforma;
+Realizar a autenticação de sua identidade;
+Disponibilizar e prestar os Serviços;
+Comunicar-nos com você sempre que necessário;
+Disponibilizar e aprimorar as funcionalidades da Plataforma.
+Os Dados Pessoais são coletados, utilizados e tratados com fundamento em diferentes bases legais (conforme previsto na Lei Geral de Proteção de Dados Pessoais, a "LGPD"), como: execução de contrato; legítimo interesse; prevenção à fraude; consentimento; dentre outras bases legais previstas na LGPD.
+
+1.5. Se, após a leitura desta Política, você ainda tiver qualquer dúvida, ou por qualquer razão precisar se comunicar conosco para assuntos envolvendo os seus Dados Pessoais, você pode entrar em contato pelos canais abaixo:
+
+Encarregado: Leonardo Grisotto
+
+E-mail: help@mary.network
+
+2. Dados Pessoais de menores de 18 anos
+
+2.1. Proibição de cadastro
+O uso da Plataforma é restrito a pessoas maiores de 18 (dezoito) anos.
+
+Usuários menores de idade não devem tentar se registrar, utilizar os Serviços ou fornecer quaisquer Dados Pessoais por meio da Plataforma.
+
+Caso a Mary identifique que um menor de idade realizou cadastro indevido, a conta será imediatamente cancelada, e os dados eventualmente coletados serão excluídos de forma segura, em conformidade com a LGPD.
+
+2.2. Tratamento incidental de dados públicos de menores
+Em situações específicas e pontuais, a Mary poderá ter acesso a Dados Pessoais de menores de idade que estejam publicamente disponíveis em bases oficiais governamentais (como quadros societários ou vínculos empregatícios), quando tais dados forem fornecidos por terceiros ou coletados de forma automatizada por meio de integrações autorizadas.
+
+Nesses casos, a Mary compromete-se a utilizar tais dados apenas para fins legítimos e estritamente necessários à prestação dos Serviços, adotando medidas de segurança compatíveis com a sensibilidade dessas informações e respeitando o melhor interesse do menor, conforme previsto na LGPD.
+
+3. Quais Dados Pessoais coletamos e tratamos?
+
+3.1. A Mary atuará como Controladora de Dados Pessoais de seus Usuários enquanto for competente para a tomada de decisões referentes ao tratamento de Dados Pessoais, conforme descrito abaixo.
+
+3.2. A Mary recebe ou de outra forma coleta informações diretamente através do processo de cadastro e navegação na Plataforma, contratação de nossos Serviços, contatos em nossas Centrais de Comunicação, entre outros meios, como por exemplo em casos de reclamações e comentários envolvendo diretamente a Mary e/ou a Plataforma em canais de reclamação e mídias sociais.
+
+Podemos tratar os seguintes Dados Pessoas de nossos Usuários:
+
+(A). Dados de cadastro
+São as informações solicitadas e fornecidas diretamente pelo Usuário ao se cadastrar e solicitar Serviços na Plataforma:
+
+Nome completo
+E-mail
+Senha
+CPF
+Data de nascimento
+Telefone celular
+Sempre que o Usuário for uma pessoa jurídica, o e-mail utilizado para o cadastro será considerado como o administrador do perfil do Usuário na Plataforma ("Administrador"). O Administrador será responsável por indicar o e-mail e o nome de cada um dos colaboradores que possuirão acesso à Plataforma para usufruir dos Serviços e funcionalidades disponíveis para o Usuários institucional.
+
+O Administrador declara e garante que possui legitimidade (e bases legais) para fornecer os Dados Pessoais destes colaboradores à Mary e para a criação do cadastro deles junto à Plataforma.
+
+Após a criação do perfil dos colaboradores autorizados a acessar a Plataforma, o colaborador poderá alterar ou atualizar seus Dados Pessoais diretamente através de sua área logada na Plataforma.
+
+(B). Dados de Pagamento
+Para execução dos repasses financeiros previstos contratualmente, a Mary poderá tratar dados de pagamento vinculados a pessoas físicas ou jurídicas envolvidas nos processos de M&A, tais como:
+
+Nome completo ou razão social do beneficiário
+CPF ou CNPJ
+Dados bancários (banco, agência, conta)
+Chave Pix
+Dados de identificação fiscal (quando necessário para emissão de documentos)
+Informações transacionais e de split:
+
+valores repassados
+datas de liquidação
+porcentuais de success fee e take rate da Mary
+vinculação a contratos (SPA/CCV)
+Estes dados são utilizados exclusivamente para operacionalizar os repasses financeiros entre as partes, conforme regras contratuais, mantendo rastreabilidade, segurança e conformidade fiscal. Nenhuma transação é processada sem vínculo contratual legítimo entre as partes envolvidas.
+
+(C). Dados de atividade
+Coletamos informações relacionadas ao uso da Plataforma e das atividades desempenhadas durante o uso desta, tais como:
+
+Tipo e versão de navegador
+Páginas visitadas na Plataforma
+Página de origem
+Duração do uso da Plataforma
+Caminhos de visualização da Plataforma
+Endereço IP / IPv6
+Geolocalização
+Tipo de dispositivo de acesso (móvel/computador)
+Resolução de tela
+Cookies
+Movimentação do mouse ("heatmap")
+Cliques / toques
+Rolagens de telas / conteúdos
+Histórico de consultas e relatórios emitidos na Plataforma nos últimos 6 meses
+(D). Dados de consultas
+Conforme descrito em nossos Termos de Uso, a Plataforma oferece o Serviço de consultas de informações sobre pessoas físicas ou pessoas jurídicas constantes de diversas plataformas de bases públicas e oficiais disponíveis, além de outros serviços disponíveis, como por exemplo, serviços de verificação de identidade para prevenção à fraude.
+
+Para a prestação dos Serviços, poderemos coletar e tratar informações obtidas diretamente de bases públicas e oficiais disponíveis, que podem incluir, conforme aplicável:
+
+Informações cadastrais e fiscais (como situação do CPF, certidões, CADIN, restituições de IR)
+Dados funcionais e eleitorais (como vínculos com o setor público, elegibilidade eleitoral, RAIS, eSocial)
+Registros de sanções, inidoneidade e penalidades (como CEIS, CNEP, processos judiciais e autuações ambientais)
+Sinais de vulnerabilidade ou risco (como envolvimento em programas sociais, PEPs, Sanction Lists)
+Dados biométricos e outros dados necessários para validações de identidade e prevenção à fraude
+
+3.3. A Mary poderá acessar tais informações exclusivamente para fins legítimos, como validação prévia (KYC, KYE), compliance, prevenção à fraude e cumprimento de obrigações legais.
+
+3.4. Além das informações relacionadas a pessoas físicas, a Mary poderá também consultar e tratar informações públicas ou obtidas de bases oficiais e comerciais sobre pessoas jurídicas, tais como:
+
+Dados cadastrais (razão social, CNPJ, CNAE, porte, endereço, e-mail)
+Estrutura societária (quadros societários e administradores)
+Situação cadastral na Receita Federal
+Certidões negativas (federais, estaduais, trabalhistas)
+Indicadores de saúde financeira (quando provenientes de fontes legítimas e públicas)
+Participação em licitações ou contratos públicos
+Registro de infrações ou penalidades públicas
+Envolvimento em ações judiciais (extraídos de fontes públicas como TJs, STJ, TST, etc.)
+Dados relacionados a sanções administrativas, fiscais ou ambientais
+Essas informações são utilizadas para fins legítimos, como análise de risco, qualificação de ativos, due diligence prévia, cumprimento de obrigações regulatórias e prevenção a ilícitos.
+
+3.5. Todo e qualquer resultado da consulta realizada por um Usuário apenas poderá ser utilizado para finalidades legítimas, tais como para prevenção à fraude e lavagem de dinheiro, cumprimento de medidas anticorrupção, cumprimento de obrigações legais e regulatórias, Know Your Client (KYC), Know You Partner (KYP), Know Your Supplier (KYS), Know Your Employee (KYE).
+
+3.6. Ressaltamos que os dados obtidos por meio da Plataforma não substituem análises profissionais, técnicas ou jurídicas, e não devem ser utilizados como única base para decisões de investimento ou negociação.
+
+3.7. Como previsto em nossos Termos de Uso, a Mary não tem ingerência e tampouco manipula quaisquer informações constantes das bases públicas governamentais e oficiais, incluindo registros, certidões, processos, diários oficiais e publicações.
+
+3.8. Caso seja verificada qualquer informação desatualizada ou incorreta nas consultas, o Usuário poderá solicitar a revisão de tais informações através do nosso canal de atendimento help@mary.network.
+
+3.9. Caberá ao Usuário validar as informações obtidas junto às entidades governamentais, sendo de sua única e exclusiva responsabilidade a forma de uso de tais informações. Além disso, caberá ao Usuário garantir que qualquer decisão que tome não será baseada única e exclusivamente nas informações obtidas por meio da Plataforma.
+
+3.10. Todos os dados obtidos de fontes externas são utilizados exclusivamente para finalidades legítimas e previstas nesta Política, sendo vedada sua redistribuição, armazenamento indevido ou uso para fins distintos dos permitidos. A Mary não manipula, edita ou altera qualquer conteúdo oriundo das fontes públicas consultadas, e não se responsabiliza por informações desatualizadas, inexatas ou incompletas provenientes dessas bases.
+
+4. Uso de cookies e outras tecnologias de monitoramento
+
+4.1. Como indicado acima, podemos utilizar certas tecnologias de monitoramento das atividades realizadas na Plataforma. As informações coletadas por meio de tais tecnologias são utilizadas para realizar métricas de performance da Plataforma, identificar problemas no uso, captar o comportamento dos Usuários de forma geral e coletar dados de impressão de conteúdo. As tecnologias de terceiro que utilizamos para monitoramento e que coletam informações são: Cookies, Google Analytics, Twitter Ads, Facebook Analytics, Linkedin e MailChimp.
+
+4.2. Sobre os Cookies: Um cookie é um arquivo texto, colocado no disco rígido por um servidor web, sem capacidade de executar programas nem infectar seu computador com vírus. Em nossa Plataforma, o uso de cookies serve para personalizar a sua experiência online, poupando o seu tempo e otimizando sua navegação.
+
+Utilizamos cookies para coletar dados de navegação automaticamente, incluindo informações como tipo de dispositivo (celular ou computador, por exemplo), navegador, páginas acessadas, termos de busca, entre outros. Nós utilizamos os cookies para identificar características gerais de nosso público e para adaptar nosso Serviço para oferecer uma melhor experiência ao Usuário.
+
+Os cookies utilizados não coletam informações pessoais sensíveis ou bancárias, e os dados coletados são tratados de forma anonimizada, agregada ou pseudonimizada, conforme aplicável, respeitando os princípios da LGPD.
+
+Vale lembrar que é possível desativar a utilização de cookies na configuração de seu navegador, entretanto, algumas funcionalidades da Plataforma podem deixar de funcionar corretamente caso essa seja sua escolha.
+
+5. Para que utilizamos seus Dados Pessoais?
+
+5.1. A Mary trata seus Dados Pessoais com seriedade, sempre com base em finalidades legítimas e dentro dos limites da legislação vigente. Abaixo, explicamos de forma transparente por que utilizamos cada tipo de dado:
+
+Dados de cadastro:
+Realizar e validar o cadastro e identificação dos Usuários junto à Plataforma, inclusive mediante e-mail e/ou SMS
+Vincular sua conta da Plataforma com redes sociais terceiras
+Possibilitar o acesso do Usuário à Plataforma, por meio de autenticação de sua identidade
+Permitir a criação de conta do Administrador e colaboradores por ele autorizados
+Prestação de Serviços da Mary
+Contato com o Usuário, quando necessário, pelos meios fornecidos
+Esclarecer dúvidas e reclamações
+Gerir canais de comunicação
+Cumprir obrigações legais, regulatórias e de agências fiscalizadoras
+Enviar e acompanhar e-mails de marketing
+Realizar verificação antifraude
+Realizar auditoria interna
+Cumprir com decisões judiciais ou de outras autoridades na medida do determinado por lei
+Observar o exercício regular de direito em processos judiciais, administrativos ou arbitrais
+Dados de pagamento:
+Executar os repasses financeiros previstos em contrato, nos processos de M&A mediados pela Plataforma
+Processar transações conforme os termos do SPA/CCV
+Exibir extratos e históricos de transações para fins de transparência
+Emissão de documentos fiscais, quando aplicável
+Cumprimento de obrigações legais e regulatórias relacionadas à rastreabilidade de pagamentos
+Dados de atividades:
+Personalização da Plataforma de acordo com a experiência do Usuário
+Enviar comunicações necessárias, comunicados e alertas customizados conforme o perfil do Usuário e conforme a geolocalização deste
+Aprimorar as funcionalidades da Plataforma
+Garantir a segurança dos processos internos e Serviços fornecidos
+Realização de auditoria interna
+Identificação estatística do caminho de acesso à Plataforma
+Cumprir com a obrigação do Marco Civil da Internet em relação à guarda de IPS e logs de acesso por, no mínimo, 6 meses
+Disponibilizar o do histórico de consultas e relatório realizados pelos Usuários pelo período de 6 meses
+Dados de consultas:
+Fornecer os Serviços da Plataforma
+Garantir a eficiência na prestação dos Serviços
+Permitir a melhoria contínua dos Serviços
+Fornecer informações completas, de acordo com o que consta em bases públicas e oficiais disponíveis
+Prevenir fraudes
+Verificar identidades
+Produzir scores de autenticação do usuário, nos termos da legislação vigente
+Cumprir obrigações contratuais com o Usuário que contratou os Serviços
+Garantir o legítimo interesse da Mary e de terceiros
+O tratamento das informações oriundas dessas consultas se baseia em finalidades legítimas, cumprimento de obrigações legais, execução de contrato e exercício regular de direitos, conforme previsto na LGPD.
+
+6. Quando excluímos os Dados Pessoais?
+
+6.1. Seus Dados Pessoais são mantidos apenas pelo tempo necessário para cumprir com as finalidades descritas nesta Política, respeitando os prazos legais e contratuais aplicáveis. O tempo de retenção pode variar conforme o tipo de dado, sua finalidade e obrigações legais específicas, como, por exemplo, prazos fiscais, contábeis, trabalhistas ou relacionados à prevenção à lavagem de dinheiro.
+
+Alguns dados, como logs de acesso, são armazenados por pelo menos 6 meses, conforme exigido pelo Marco Civil da Internet (Lei nº 12.965/2014).
+
+6.2. Podemos manter seus Dados Pessoais mesmo após o encerramento da relação com a Mary, quando necessário para cumprimento de obrigações legais, exercício regular de direitos em processos judiciais, administrativos ou arbitrais, ou para prevenção e combate à fraude.
+
+6.3. Sempre que possível, e caso não haja mais necessidade de manter os dados em formato identificado, a Mary poderá convertê-los em dados anonimizados, para uso estatístico ou analítico, sem qualquer possibilidade de identificação do titular.
+
+7. Com quem compartilhamos os Dados Pessoais e por quais motivos?
+
+7.1. A Mary poderá compartilhar seus Dados Pessoais com terceiros estritamente necessários à operação da Plataforma e à prestação dos Serviços, sempre em conformidade com a legislação aplicável, especialmente a Lei Geral de Proteção de Dados Pessoais (LGPD).
+
+O compartilhamento ocorre apenas quando necessário para viabilizar funcionalidades, integrar ferramentas tecnológicas, cumprir obrigações legais ou garantir a segurança da Plataforma. Nenhum dado é vendido ou transferido para terceiros para fins não autorizados.
+
+Abaixo listamos os principais tipos de compartilhamento, seus destinatários e respectivas finalidades:
+
+(A) Dados de Atividade e Navegação
+Ferramentas: Google Analytics, Meta Ads (Facebook/Instagram), LinkedIn Ads, Hotjar, MailChimp, entre outras.
+
+Finalidades:
+
+Análise de performance e usabilidade da Plataforma
+Diagnóstico técnico e aprimoramento da experiência do Usuário
+Direcionamento e segmentação de campanhas publicitárias (B2B), conforme perfil institucional
+Automação de marketing e envio de comunicações relevantes
+(B) Dados de Pagamento
+Prestadores: PagSeguro, Pagar.me, e outras soluções de pagamento eventualmente contratadas.
+
+Finalidades:
+
+Viabilização de repasses financeiros conforme previsto nos contratos de M&A (SPA/CCV)
+Execução da splitagem de pagamentos entre partes (Ativo, Advisor, Mary, Agente)
+Emissão de comprovantes, faturas e registros de transações
+(C) Dados de Cadastro e de Consultas
+Destinatários: Autoridades públicas, órgãos reguladores, e prestadores de serviço especializados.
+
+Finalidades:
+
+Cumprimento de obrigações legais, regulatórias e contratuais
+Verificação de identidade, prevenção à fraude, validação cadastral
+Execução de consultas em bases públicas ou oficiais, conforme funcionalidades da Plataforma
+Atendimento a ordens judiciais ou administrativas, quando aplicável
+(D) Dados Compartilhados com Colaboradores e Parceiros do Grupo Mary
+Finalidades:
+
+Operação e suporte técnico da Plataforma
+Atendimento ao cliente e suporte ao Usuário
+Desenvolvimento de funcionalidades e melhorias de produto
+(E) Compartilhamento entre Usuários da Plataforma
+Finalidade:
+
+Entrega dos resultados de interações legítimas e autorizadas entre Usuários (ex: acesso a Teasers, CIMs, Readiness Score, etc.) durante processos de M&A em que ambas as partes estejam envolvidas contratualmente ou mediante NDA.
+
+(F) Reestruturações societárias
+Você reconhece que, em caso de fusão, aquisição, incorporação, reorganização societária ou venda de ativos, os Dados Pessoais dos Usuários poderão ser transferidos como parte dos ativos da Mary, respeitando a legislação vigente e mantendo os mesmos padrões de proteção previstos nesta Política.
+
+(G) Requisições legais
+A Mary poderá compartilhar Dados Pessoais quando necessário para:
+
+Cumprir obrigação legal ou regulatória
+Atender a requisições judiciais ou de autoridades competentes
+Garantir a segurança da Plataforma, dos Usuários ou de terceiros
+
+8. Quais os seus direitos com relação aos seus Dados Pessoais
+
+8.1. Você, enquanto titular dos seus Dados Pessoais, tem uma série de direitos garantidos pela Lei Geral de Proteção de Dados (LGPD). A Mary respeita esses direitos e oferece meios práticos para que você possa exercê-los com facilidade e transparência.
+
+Nós disponibilizamos mecanismos, detalhados abaixo, para que os Usuários tenham clareza e transparência no exercício de seus direitos. Sempre que necessário, nossa equipe estará pronta para atender eventuais solicitações.
+
+Conforme previsto na LGPD, em relação aos seus Dados Pessoais, os Usuários possuem os direitos de solicitar:
+
+a confirmação de que realizamos o tratamento dos seus Dados Pessoais
+o acesso aos seus Dados Pessoais
+a correção de Dados Pessoais que estejam incompletos, inexatos ou desatualizados
+a anonimização, bloqueio ou eliminação de Dados Pessoais desnecessários, excessivos ou tratados em desconformidade com o disposto na LGPD
+a portabilidade dos seus Dados Pessoais a outro fornecedor de serviço ou produto, observados os nossos segredos comerciais e industriais, após a regulamentação pela Autoridade Nacional de Proteção de Dados
+a eliminação dos Dados Pessoais tratados com base no seu consentimento, exceto nas hipóteses de conservação previstas na LGPD, como obrigação legal, exercício regular de direitos ou legítimo interesse devidamente fundamentado
+informação sobre com quem compartilhamos os seus Dados Pessoais
+informação sobre a possibilidade de não fornecer o seu consentimento e as consequências
+revogação do seu consentimento para o tratamento dos seus Dados Pessoais, quando os Dados Pessoais forem tratados com base no seu consentimento
+oposição a tratamento que viole a LGPD
+revisão de decisões tomadas unicamente com base em tratamento automatizado de seus Dados Pessoais (por exemplo, decisões baseadas em algoritmos de análise de risco ou elegibilidade automatizada)
+Você pode exercer quaisquer dos direitos acima enviando um e-mail para nosso Encarregado: help@mary.network
+
+Reforçamos que você pode utilizar nossa Plataforma para gerenciar seus Dados Pessoais.
+
+Quando estiver conectado na Plataforma, você poderá verificar todos os Dados Pessoais fornecidos à Mary durante o seu cadastro e poderá alterá-los por meio da própria Plataforma, na área do seu perfil.
+
+8.2. Se você decidir interromper o uso da Plataforma, seus Dados Pessoais continuarão sendo tratados com segurança e em conformidade com esta Política, sendo armazenados apenas pelo tempo necessário para cumprir obrigações legais, regulatórias ou contratuais.
+
+8.3. Caso você solicite a exclusão definitiva dos seus Dados Pessoais e queira utilizar novamente os nossos Serviços, você deverá realizar novo cadastro e realizar novamente todos os procedimentos necessários, conforme previsto nos Termos de Uso.
+
+9. Como armazenamos e protegemos os seus Dados Pessoais
+
+9.1. Durante a fase atual da Plataforma, os seus Dados Pessoais são armazenados em ambientes de servidores contratados por prestadores de serviço especializados, como o Lovable e o HostGator, que operam em conformidade com padrões reconhecidos de segurança da informação.
+
+9.2. A Mary adota práticas técnicas e administrativas adequadas para proteger os Dados Pessoais contra acessos não autorizados, destruição, perda, alteração, comunicação ou qualquer forma de tratamento inadequado ou ilícito.
+
+9.3. À medida que a Plataforma evolui, poderemos migrar nossa infraestrutura para provedores com maior robustez e escala, como a Amazon Web Services (AWS), Google Cloud ou equivalentes, comprometendo-nos a sempre adotar medidas técnicas e contratuais que garantam o tratamento seguro e em conformidade com a legislação vigente.
+
+9.4. Se você tiver qualquer preocupação ou suspeita de que seus Dados Pessoais estão em risco, como, por exemplo, acesso não autorizado à sua conta, entre em contato imediatamente pelos canais "contato@marydeals.com" ou "help@mary.network".
+
+9.5. Em caso de transferência internacional de dados, garantiremos a adoção de cláusulas contratuais adequadas e outros mecanismos legais exigidos pela LGPD, para manter o nível de proteção adequado.
+
+10. Exclusão de Conta
+
+10.1. Caso deseje excluir sua conta na Plataforma, você poderá enviar um e-mail para "help@mary.network" com o título "Exclusão de Conta", contendo as seguintes informações:
+
+Nome completo
+CPF
+E-mail cadastrado na Plataforma
+CNPJ da instituição vinculada (se aplicável)
+Motivo da exclusão (opcional)
+⚠️ Para segurança, a solicitação deve ser feita pelo e-mail cadastrado, garantindo que não se trate de um pedido fraudulento.
+
+A exclusão da conta poderá envolver dois cenários:
+
+(i) Exclusão de perfil individual (pessoa física):
+O perfil será removido do ecossistema, mas, caso esteja vinculado a uma empresa ou organização cadastrada (como Investidor, Ativo, Advisor ou Agente), os dados institucionais não serão excluídos, permanecendo ativos sob responsabilidade de outros Administradores vinculados àquela instituição.
+
+(ii) Exclusão de perfil institucional (pessoa jurídica):
+Nesse caso, a exclusão deverá ser solicitada exclusivamente pelo Administrador da conta da instituição, com a devida comprovação de vínculo e autorização legal. A exclusão será analisada conforme a existência de obrigações contratuais e financeiras ainda vigentes, como parcelas diferidas, earnouts, repasses de success fee ou indicações pendentes.
+
+Créditos e pendências financeiras:
+Caso existam créditos a receber (como comissões, earnouts ou repasses futuros), a exclusão da conta implicará na renúncia definitiva a esses valores, salvo quando acordado em contrato específico entre as partes. A Mary se reserva o direito de manter os dados estritamente necessários à liquidação das obrigações previstas contratualmente, mesmo após a exclusão da conta.
+
+Após análise, você receberá um e-mail confirmando a exclusão ou informando a impossibilidade, caso existam impedimentos legais, contratuais ou operacionais.
+
+11. O que você precisa saber sobre sua conta e senha de acesso?
+
+11.1. A segurança da sua conta começa com você. Sua senha de acesso à Plataforma é pessoal, intransferível e confidencial, inclusive nos casos de usuários vinculados a perfis institucionais (como empresas, investidores ou assessorias). O uso indevido de credenciais poderá resultar em responsabilização direta do Usuário.
+
+11.2. Você é o único responsável pela guarda e sigilo de suas credenciais, bem como por todas as atividades realizadas em sua conta. Recomenda-se:
+
+Utilizar senhas fortes (alfa-numéricas e com caracteres especiais);
+Evitar senhas óbvias (como datas de nascimento ou nomes);
+Alterar a senha periodicamente;
+Atualizar a senha imediatamente em caso de suspeita de acesso indevido.
+
+11.3. A Mary não solicita suas credenciais por e-mail, telefone, mensagens ou qualquer outro canal externo. Caso receba comunicações suspeitas em nome da Mary solicitando dados sensíveis, não interaja e envie imediatamente uma cópia para a nossa Central de Suporte: contato@marydeals.com.
+
+11.4. Caso identifique qualquer uso não autorizado de sua conta, acesso indevido, ou suspeita de violação de segurança, comunique imediatamente a Mary, pelos nossos canais de suporte. A não comunicação imediata pode acarretar responsabilidade integral por prejuízos decorrentes de tal omissão.
+
+Sobre comunicações institucionais e publicitárias
+
+11.5. A Mary poderá utilizar seu e-mail cadastrado para envio de comunicações transacionais (como confirmações, alertas de atividade, mudanças de segurança) e informativos institucionais relevantes ao funcionamento da Plataforma.
+
+11.6. Ao aceitar esta Política, você concorda com o envio de comunicações de marketing e novidades da Plataforma. Caso deseje interromper esse envio, você poderá optar por não receber mais esses conteúdos clicando em "descadastrar" (opt-out) no rodapé dos e-mails ou acessando suas preferências dentro da Plataforma.
+
+12. Segurança da Internet
+
+12.1. A Mary adota medidas técnicas e organizacionais compatíveis com o estado da arte para proteger os Dados Pessoais dos Usuários, utilizando-se de criptografia, autenticação segura, firewalls, controle de acessos e práticas robustas de segurança da informação. Esses recursos visam prevenir o mau uso, perda, acesso não autorizado, divulgação ou alteração indevida dos dados.
+
+12.2. Apesar desses esforços, nenhum ambiente digital é totalmente livre de riscos. A transmissão de dados pela internet está sujeita a falhas técnicas, vulnerabilidades de rede, ação de terceiros mal-intencionados e outros fatores fora do nosso controle.
+
+12.3. Por isso, a Mary não pode garantir a segurança absoluta das informações transmitidas ou armazenadas na Plataforma, embora adote medidas contínuas para mitigar os riscos.
+
+12.4. O Usuário também é responsável por manter o sigilo de suas credenciais de acesso, utilizar dispositivos seguros e manter seus dados atualizados, contribuindo para um ambiente mais protegido. Recomendamos:
+
+Usar senhas fortes e exclusivas;
+Evitar redes públicas sem proteção adequada;
+Atualizar o navegador e sistemas operacionais;
+Manter antivírus e firewalls ativados.
+
+12.5. Em caso de suspeita de violação de segurança, acesse imediatamente nossa Central de Suporte ou entre em contato com nosso Encarregado de Dados pelo e-mail: help@mary.network.
+
+13. Qual é a sua responsabilidade sobre seus Dados Pessoais?
+
+13.1. Você é responsável por garantir a veracidade, precisão e atualização dos Dados Pessoais fornecidos à Mary. Caso identifiquemos, de forma razoável, qualquer inconsistência, omissão ou falsidade nos dados informados, poderemos suspender ou cancelar sua conta a qualquer momento, mesmo sem notificação prévia.
+
+13.2. Você também é responsável por manter o sigilo de suas credenciais de acesso à Plataforma e aos canais de atendimento da Mary, sendo essas informações de uso pessoal, intransferível e exclusivo.
+
+13.3. As consultas disponibilizadas pela Mary visam facilitar o acesso a informações públicas e oficiais, obtidas de bases legítimas, para fins lícitos, como análise prévia, qualificação, validação ou due diligence.
+
+13.4. Os resultados dessas consultas são armazenados de forma segura em nossos sistemas e deverão ser utilizados exclusivamente para os fins legítimos e previstos na legislação vigente, conforme descrito nesta Política e nos Termos de Uso.
+
+13.5. É vedado o repasse, compartilhamento, redistribuição ou revenda das informações obtidas por meio da Plataforma, sob pena de responsabilização civil, administrativa e criminal. O uso indevido poderá ensejar bloqueio de acesso, cancelamento de conta e comunicação às autoridades competentes.
+
+13.6. Você será o único e exclusivo responsável por qualquer uso indevido das informações acessadas na Plataforma, inclusive por danos causados a terceiros ou à própria Mary.
+
+14. Quando precisamos do seu consentimento?
+
+14.1. Nem sempre precisamos do seu consentimento para tratar seus Dados Pessoais.
+
+A Lei Geral de Proteção de Dados Pessoais (LGPD) permite que empresas como a Mary utilizem seus dados com base em diferentes fundamentos legais — chamados de "bases legais" — mesmo sem a sua autorização expressa, desde que o uso seja legítimo e respeite seus direitos.
+
+14.2. Isso significa que, ao utilizar a Plataforma, seus dados podem ser tratados, por exemplo, para:
+
+viabilizar o acesso e uso da Plataforma (execução de contrato ou medidas preliminares);
+cumprir obrigações legais ou regulatórias;
+prevenir fraudes e garantir a segurança das operações;
+exercer direitos da Mary em processos judiciais, administrativos ou arbitrais;
+proteger o crédito e validar informações;
+atender a interesses legítimos da Mary ou de terceiros, sempre de forma equilibrada e segura.
+
+14.3. Sempre que a LGPD exigir o seu consentimento expresso, nós iremos solicitar de forma clara, destacada e objetiva. E você poderá revogar esse consentimento a qualquer momento, conforme explicado nesta Política.
+
+15. Atualizações nesta Política
+
+15.1. Esta Política de Privacidade poderá passar por atualizações para refletir melhorias na Plataforma, mudanças legais ou ajustes em nossos serviços.
+
+15.2. Sempre que ocorrerem alterações relevantes no conteúdo desta Política, elas serão comunicadas de forma clara e acessível, por um ou mais dos seguintes meios:
+
+Publicação da nova versão em nossa Plataforma;
+Envio de aviso por e-mail ao endereço cadastrado;
+Exibição de comunicado direto dentro da Plataforma.
+
+15.3. Recomendamos que você revise esta Política periodicamente para se manter informado sobre como seus dados estão sendo utilizados.
+
+15.4. Caso você não concorde com as atualizações realizadas, poderá solicitar a exclusão da sua conta ou entrar em contato conosco para esclarecimentos. O uso continuado da Plataforma após a divulgação das alterações será interpretado como aceitação dos novos termos.
+
+16. Como fazer uma reclamação
+
+16.1. Se você tiver qualquer dúvida, sugestão, reclamação ou quiser exercer seus direitos relacionados ao tratamento de seus Dados Pessoais, entre em contato com a Mary por meio dos canais oficiais:
+
+E-mail: help@mary.network
+Seção "Central de Suporte" na Plataforma: https://www.mary.network
+
+16.2. Nossa equipe de privacidade e suporte está comprometida em analisar e responder às solicitações com agilidade, clareza e respeito, buscando sempre a melhor solução para você.
+
+16.3. Caso a resposta da Mary não seja satisfatória ou se você desejar registrar uma reclamação diretamente com a Autoridade Nacional de Proteção de Dados (ANPD), poderá fazê-lo por meio dos canais disponíveis no site oficial:https://www.gov.br/anpd
+
+Glossário
+Termo	Definição
+Dados Pessoais	Informações que identificam ou podem identificar uma pessoa natural, como nome, CPF, e-mail, endereço IP.
+Usuário	Pessoa física ou jurídica que acessa ou utiliza os serviços da Plataforma Mary.
+Plataforma	Ambiente digital da Mary onde os serviços e funcionalidades são oferecidos.
+Ecossistema	Conjunto integrado de ferramentas, perfis e serviços disponibilizados pela Mary.
+Controladora de Dados	Pessoa jurídica responsável pelas decisões relacionadas ao tratamento dos Dados Pessoais.
+Tratamento de Dados	Toda operação realizada com Dados Pessoais, como coleta, uso, compartilhamento, armazenamento ou exclusão.
+LGPD	Lei Geral de Proteção de Dados Pessoais (Lei nº 13.709/2018), que regula o uso de dados pessoais no Brasil.
+Base Legal	Justificativa prevista em lei que autoriza o tratamento dos Dados Pessoais, como consentimento, execução de contrato ou obrigação legal.
+Consentimento	Autorização expressa dada pelo titular dos dados para que seus Dados Pessoais sejam tratados.
+Cookies	Arquivos de texto armazenados no navegador do Usuário que registram preferências de navegação e dados técnicos.
+Dados de Cadastro	Informações fornecidas pelo Usuário ao criar uma conta na Plataforma, como nome, e-mail e CPF.
+Dados de Atividade	Dados relacionados à navegação e comportamento do Usuário dentro da Plataforma.
+Dados de Pagamento	Informações financeiras e bancárias utilizadas para execução de repasses e splits entre as partes.
+Dados de Consulta	Informações obtidas em bases públicas ou oficiais durante o uso das funcionalidades da Plataforma.
+KYC / KYE / KYP / KYS	Procedimentos de verificação de identidade e integridade de clientes, parceiros, fornecedores e colaboradores.
+Success Fee	Comissão paga a um Advisor por uma transação de M&A concluída com sucesso.
+Take Rate	Percentual retido pela Mary sobre o valor do success fee recebido por Advisors.
+Split de Pagamentos	Mecanismo de divisão automática de valores entre empresa, advisor, agente e a própria Mary.
+SPA / CCV	Contratos formais utilizados em transações de M&A para regular a compra e venda de participações societárias.
+Anonimização	Técnica que remove a identificação de dados, impedindo a associação direta com uma pessoa.
+Revogação de Consentimento	Ato do titular dos dados de retirar a autorização previamente concedida.
+Sanction Lists	Listas públicas que registram pessoas ou empresas sujeitas a sanções legais ou administrativas.
+Biometria	Dados físicos ou comportamentais usados para autenticação, como impressões digitais ou reconhecimento facial.
+Encarregado (DPO)	Pessoa indicada pela Mary para atuar como canal de comunicação entre a empresa, os titulares dos dados e a ANPD.
+ANPD	Autoridade Nacional de Proteção de Dados, órgão responsável por fiscalizar e orientar o cumprimento da LGPD.
+
+Política de Privacidade – Versão 1.0 | Atualizada em: 10 de janeiro de 2026
+
+Esta Política de Privacidade deve ser interpretada em conjunto com os Termos de Uso da Mary, disponíveis em /terms

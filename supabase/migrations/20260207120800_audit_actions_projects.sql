@@ -1,0 +1,9 @@
+-- Add new audit action values for project members/invites/visibility
+ALTER TYPE audit_action ADD VALUE IF NOT EXISTS 'project.visibility_changed';
+ALTER TYPE audit_action ADD VALUE IF NOT EXISTS 'project.invite_sent';
+ALTER TYPE audit_action ADD VALUE IF NOT EXISTS 'project.invite_accepted';
+ALTER TYPE audit_action ADD VALUE IF NOT EXISTS 'project.invite_cancelled';
+ALTER TYPE audit_action ADD VALUE IF NOT EXISTS 'project.invite_expired';
+ALTER TYPE audit_action ADD VALUE IF NOT EXISTS 'project.member_added';
+ALTER TYPE audit_action ADD VALUE IF NOT EXISTS 'project.member_removed';
+ALTER TYPE audit_action ADD VALUE IF NOT EXISTS 'project.member_role_changed';

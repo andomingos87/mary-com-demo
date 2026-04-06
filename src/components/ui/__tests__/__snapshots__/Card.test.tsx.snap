@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card Component Snapshots renders Card correctly 1`] = `
+<div
+  class="rounded-lg border bg-card text-card-foreground shadow-sm"
+>
+  Card Content
+</div>
+`;
+
+exports[`Card Component Snapshots renders CardContent correctly 1`] = `
+<div
+  class="p-6 pt-0"
+>
+  Test Content
+</div>
+`;
+
+exports[`Card Component Snapshots renders CardDescription correctly 1`] = `
+<p
+  class="text-sm text-muted-foreground"
+>
+  Test Description
+</p>
+`;
+
+exports[`Card Component Snapshots renders CardFooter correctly 1`] = `
+<div
+  class="flex items-center p-6 pt-0"
+>
+  Test Footer
+</div>
+`;
+
+exports[`Card Component Snapshots renders CardHeader correctly 1`] = `
+<div
+  class="flex flex-col space-y-1.5 p-6"
+>
+  <h3
+    class="text-2xl font-semibold leading-none tracking-tight"
+  >
+    Title
+  </h3>
+</div>
+`;
+
+exports[`Card Component Snapshots renders CardTitle correctly 1`] = `
+<h3
+  class="text-2xl font-semibold leading-none tracking-tight"
+>
+  Test Title
+</h3>
+`;
+
+exports[`Card Component Snapshots renders full Card structure correctly 1`] = `
+<div
+  class="rounded-lg border bg-card text-card-foreground shadow-sm"
+>
+  <div
+    class="flex flex-col space-y-1.5 p-6"
+  >
+    <h3
+      class="text-2xl font-semibold leading-none tracking-tight"
+    >
+      Card Title
+    </h3>
+    <p
+      class="text-sm text-muted-foreground"
+    >
+      Card Description
+    </p>
+  </div>
+  <div
+    class="p-6 pt-0"
+  >
+    Card Content
+  </div>
+  <div
+    class="flex items-center p-6 pt-0"
+  >
+    Card Footer
+  </div>
+</div>
+`;

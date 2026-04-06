@@ -1,0 +1,11 @@
+{
+  "eval_id": 2,
+  "configuration": "with_skill",
+  "expectations": [
+    {"text": "identifica_decisoes_pendentes", "passed": true, "evidence": "Seções BLOCKER C (T7.1) e BLOCKER D (T7.2) com análise detalhada de cenários e recomendações"},
+    {"text": "analisa_dependencias", "passed": true, "evidence": "BLOCKER E mostra cascata E5→E8 dependendo de E0, com tabela de dependências e cronograma"},
+    {"text": "menciona_lacunas_criticas", "passed": true, "evidence": "Menciona assinatura, upload, Mary AI sidebar, calibragem MRS, smoke E2E de E4"},
+    {"text": "apresenta_impacto", "passed": true, "evidence": "Cada blocker tem seção 'Por que bloqueia' com impacto específico, incluindo valores financeiros"},
+    {"text": "sugere_mitigacao", "passed": true, "evidence": "Seção 4 com tabela de riscos/mitigações. Seção 5 com 'Quadro de Comando' dia-a-dia. Recomendações concretas para T7.1 e T7.2"}
+  ]
+}

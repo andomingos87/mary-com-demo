@@ -1,0 +1,49 @@
+{
+  "skill_name": "backlog-navigator",
+  "iteration": 1,
+  "timestamp": "2026-04-03T12:00:00Z",
+  "configurations": [
+    {
+      "name": "with_skill",
+      "pass_rate": 1.0,
+      "total_assertions": 15,
+      "passed_assertions": 15,
+      "avg_tokens": 73472,
+      "avg_duration_seconds": 95.6,
+      "evals": [
+        {"eval_name": "eval-proxima-etapa", "pass_rate": 1.0, "passed": 5, "total": 5, "tokens": 64700, "duration_seconds": 58.2},
+        {"eval_name": "eval-marcar-concluido", "pass_rate": 1.0, "passed": 5, "total": 5, "tokens": 73360, "duration_seconds": 107.0},
+        {"eval_name": "eval-blockers", "pass_rate": 1.0, "passed": 5, "total": 5, "tokens": 82357, "duration_seconds": 121.5}
+      ]
+    },
+    {
+      "name": "without_skill",
+      "pass_rate": 0.73,
+      "total_assertions": 15,
+      "passed_assertions": 11,
+      "avg_tokens": 71376,
+      "avg_duration_seconds": 81.2,
+      "evals": [
+        {"eval_name": "eval-proxima-etapa", "pass_rate": 0.8, "passed": 4, "total": 5, "tokens": 60255, "duration_seconds": 49.9},
+        {"eval_name": "eval-marcar-concluido", "pass_rate": 0.4, "passed": 2, "total": 5, "tokens": 76612, "duration_seconds": 103.8},
+        {"eval_name": "eval-blockers", "pass_rate": 0.8, "passed": 4, "total": 5, "tokens": 77262, "duration_seconds": 90.0}
+      ]
+    }
+  ],
+  "delta": {
+    "pass_rate_improvement": 0.27,
+    "token_overhead_pct": 2.9,
+    "duration_overhead_pct": 17.7
+  },
+  "analysis": {
+    "key_findings": [
+      "Skill garante 100% de pass rate vs 73% sem skill (+27%)",
+      "Maior ganho no eval-marcar-concluido (100% vs 40%) — sem skill, agente confundiu spec pronta com implementação concluída, não verificou cascata, não recomendou próxima etapa",
+      "eval-proxima-etapa teve menor delta (100% vs 80%) — sem skill já consegue resposta razoável, mas sem formato estruturado",
+      "eval-blockers teve delta moderado (100% vs 80%) — sem skill faltou mitigações específicas com prazos e valores",
+      "Overhead de tokens é mínimo (+2.9%), overhead de tempo é moderado (+17.7%) justificado pela profundidade de validação"
+    ],
+    "non_discriminating_assertions": ["leu_backlog — ambas configurações passam; backlog é encontrado facilmente"],
+    "high_value_assertions": ["valida_evidencia — apenas com skill detectou corretamente que código NÃO foi implementado", "verifica_cascata — apenas com skill analisa dependências downstream", "sugere_mitigacao — apenas com skill propõe ações concretas com prazo"]
+  }
+}

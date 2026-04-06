@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Label Component Snapshots renders default label correctly 1`] = `
+<label
+  class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+>
+  Email Address
+</label>
+`;
+
+exports[`Label Component Snapshots renders label with complex children correctly 1`] = `
+<label
+  class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+>
+  Email Address 
+  <span
+    class="text-destructive"
+  >
+    *
+  </span>
+</label>
+`;
+
+exports[`Label Component Snapshots renders label with htmlFor correctly 1`] = `
+<label
+  class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+  for="email"
+>
+  Email Address
+</label>
+`;

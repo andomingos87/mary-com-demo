@@ -1,0 +1,1 @@
+Me de uma resposta objetiva e clara de no máximo 1 paragrafo.

@@ -1,0 +1,285 @@
+# Arquitetura Mestre - Plataforma Mary v2
+
+## Mary: Contexto Amplo e Abrangente da Plataforma
+
+### **Visão Geral da Plataforma**
+
+Mary é uma **plataforma inteligente de ecossistema M&A (Fusões e Aquisições)** que revoluciona o mercado brasileiro de investimentos e transações corporativas. A plataforma atua como um **hub unificado** que conecta e acelera relacionamentos entre investidores, empresas (ativos), advisors e agentes, transformando processos tradicionalmente fragmentados em operações estruturadas, eficientes e transparentes.
+
+### **Missão e Propósito**
+
+A Mary nasce para resolver a **fragmentação crônica do mercado de M&A**, onde:
+- A busca por oportunidades ainda depende de networking informal
+- Os dados circulam em planilhas soltas e desorganizadas
+- A triagem é subjetiva e ineficiente
+- A negociação é truncada e demorada
+- A maioria dos deals simplesmente não acontece
+
+A plataforma atua como **"ecossistema digital"**, organizando dados, clarificando intenções e qualificando conexões através de tecnologia, inteligência de mercado e processos estruturados.
+
+### **Diferencial Competitivo**
+
+#### **1. Abordagem Sistêmica**
+- Não apenas acelera a ponta final do processo
+- **Trabalha na origem**: preparação e direcionamento estratégico
+- **Estrutura, qualifica e conecta** de forma integrada
+
+#### **2. Dados Estruturados**
+- **Padronização** de informações empresariais
+- **Comparabilidade** entre oportunidades
+- **Redução de assimetria** informacional
+
+#### **3. Curadoria Inteligente**
+- **Qualidade sobre quantidade** nas conexões
+- **Filtros sofisticados** de compatibilidade
+- **Redução de deal flow** não qualificado
+
+#### **4. Transparência e Confiança**
+- **Visibilidade completa** do processo
+- **Auditoria** de todas as interações
+- **Compliance** integrado
+- **Confidencialidade extrema** em todas as instâncias
+
+### **Modelo de Negócio**
+
+#### **Estrutura de Receita**
+- **Freemium**: Funcionalidades básicas gratuitas
+- **Planos Premium**: Acesso a funcionalidades avançadas
+- **Success Fees**: Comissões sobre transações fechadas
+- **Service Marketplace**: Taxa sobre serviços conectados
+
+#### **Monetização por Perfil**
+- **Investidores**: Acesso premium a deal flow qualificado
+- **Ativos**: Só paga no sucesso. Ferramentas de preparação e exposição. Se o Advisor quiser, Mary podem efetuar cobranças de Retainers por eles. Mas como padrão, Mary não cobra nada de retainer dos Ativos.
+- **Advisors**: Eficiência operacional e gestão de mandatos
+- **Agentes**: Monetização estruturada de network
+
+### **Impacto no Mercado**
+
+#### **Para o Ecossistema M&A**
+- **Democratização** do acesso a oportunidades
+- **Profissionalização** de processos informais
+- **Aceleração** de 4x no fechamento de deals
+- **Redução de custos** operacionais
+- **Aumento da assertividade** nas conexões
+- **Economia real** ao integrar dezenas de ferramentas numa mesma plataforma
+
+#### **Para os Usuários**
+- **Investidores**: Deal flow mais qualificado e processo mais eficiente
+- **Empresas**: Maior exposição e melhor preparação para transações
+- **Advisors**: Ferramentas profissionais e gestão otimizada
+- **Agentes**: Estrutura para monetizar relacionamentos
+
+### **Visão de Futuro**
+
+Mary posiciona-se como um **"Ecossistema global de M&A"**, evoluindo para se tornar a infraestrutura digital fundamental para todas as transações corporativas no Brasil e no mundo. A plataforma visa criar um **ecossistema autossustentável** onde cada transação gera dados que melhoram a eficiência de futuras operações, criando um **ciclo virtuoso de evolução do mercado**.
+
+O objetivo final é transformar o M&A de um **mercado analógico, fragmentado e ineficiente** em um **ecossistema digital, estruturado e altamente eficaz**, estabelecendo novos padrões de qualidade, velocidade e transparência para toda a indústria.
+
+
+#
+
+### 💼 **Área do Investidor**
+- **Perfil**: Private Equity (PE), Venture Capital (VC), Family Offices (FO), Corporate (grandes corporações), Angels, Corporate Venture Capital (CVC), Venture Builder (VB), Sovereigns (fundos soberanos), Pension Funds (fundos de pensão), Search Funds (SF), Aceleradoras, Incubadoras.
+/:investorname/*. Slug criado logo após a autenticação do e-mail (no callback).
+```
+/:investorname/ v1                → Dashboard Principal 
+├── thesis     v1                → Teses. Criar/Gerenciar Lista de Teses. Investidor pode cadastrar uma ou múltiplas teses
+│   ├── thesis/:thesisId v1      → Detalhes de Tese Específica
+├── opportunities v1             → Radar de Oportunidades de Investimento. Screening automatizado baseado no matching com as Teses cadastradas em /thesis/*. Gestão completa do funil de investimentos. Análise de compatibilidade entre teses e ativos. É possível buscar e selecionar ativos manualmente. Nesta tela, Investidor vê snapshots/cards dos Ativos, que exibirão as seguintes infos: (Codenome, Segmento, Faturamento, EBITDA, Overview confidencial do negócio, produtos e serviços e Objetivo). Caso o Investidor se interesse por este Ativo, ao final do card, clica no CTA "Acessar o Teaser". Esse link leva para o Teaser do projeto. Neste momento, é criado um card do projeto no /pipeline da Investidor, na primeira etapa "Teaser" e segue por lá.
+├── pipeline v1                  → Pipeline de projetos em andamento, de acordo com fase de cada um. Dentro da página de cada projeto, acessa infos do projeto específica compartilhadas pelo Ativo. É possível buscar e selecionar ativos manualmente. Envio de notificações aos usuários envolvidos, após mudanças de etapas. Pipeline do Investidor é espelhado com o do Ativo. Etapas: Teaser, NDA, Pré-DD, IoI, Management Meetings, NBO, DD / SPA, Signing, CP's, Closing, Disclosure, Declinado.
+├── mary-ai-private v1           →   Assistente IA especializada em M&A. Usuário poderá acioná-la quando quiser no botão inferior direito, abrindo para perguntas e repostas (Q&As) dinâmicas e objetivas sobre os ativos em avaliação e toda plataforma Mary. Ela será contextual e extremamente segura e confidencial. Mary AI (Private) só opera dentro da área logada para fins de confidencialidade e só responde àquilo que o usuário tem permissão para acessar. Similar à "Notion AI".
+├── tasks (TBD)                     → Gestão de tarefas global. Sistema com tabela simples, filtráveis e ordenáveis com os campos: Projeto, Etapa (Pipeline), Tarefa, Responsável, Prazo, Prioridade, Status, Comentários. Integração com WhatsApp, Gmail, Outlook, Apple, etc). É possível de criar subetapas com os mesmos campos. Integrar com Notion, ClickUp, etc.
+├── inbox v1 (TBD)                    → Central de Comunicação: Canal direto e seguro com todos os envolvidos nos projetos + Sistema de notificações, alertas para movimentações e atualizações nos processos e documentos. Integração com WhatsApp, Gmail, Outlook, Apple, etc). Sistema de Notificações e Alertas: Uso de push via WhatsApp, e-mail e in-app. Criação de notificacoes a partir de Novas interações (ex: investidor interessado, documento visualizado), Alertas de expiração de links/documentos, Atualizações no deal pipeline, Notificações por e-mail + badge no menu, upload docs > vdrs, follow-ups automáticos quando definidos pelo usuário.
+├── documents (TBD)            → Gestão de documentos personalizados e versionamento para usar no processo de M&A (Modelos padrão como NDA, Q&A, NBO, DD checklists, SPA, etc). Usa modelo do VDR.
+├── signatures (TBD)           → Integração com ferramenta de assinaturas digitais (Clicksign) dentro da mary, para facilitar trâmites de assinaturas entre as partes envolvidas nos projetos
+├── smart-contracts (TBD)      → Smart Contracts: Sistema de pagamentos via blockchain, tokens e escrow account para split de liquidação segura da transação, conforme SPA final
+├── pmi (TBD)                  → PMI (Post Merger Integration): Gestão do processo de integração após aquisição/investimento. Gestão compartilhada entre Investidor, Ativo e Advisor
+├── bi (TBD)                    → Business Intelligence completo para o ecossistema. Benchmarking setorial e regional. Tendências de mercado em tempo real. Performance tracking de transações. Logs & Tracking Rastreamento de tudo o que acontece na plataforma, em todos os perfis e projetos.
+├── marketplace (TBD)          → Marketplace de Serviços: Conexão com service providers: Boutiques de M&A, advogados, consultores, auditores, etc. Gestão de fornecedores especializados em M&A. Rating e reviews de profissionais.
+├── ranking (TBD)              → Rankings: Trimestralmente, a Mary publicará um ranking de Investidores e Advisors, com base no seu engajamento, quantidade e volume de projetos, deals fechados, etc. Deals Fechados (Tombstones): Após fechar um deal, Mary publicará o tombstone em página específica, desde que autorizada pelas partes. O deal ficará registrado nos perfis de todos os envolvidos. Tombstones automáticos quando deals forem concluídos via Mary.
+├── mary-deals-club (TBD)      → Mary Deals Club: Programa de pontos e benefícios. Categorias: Gold → Platinum → Black → Diamond. Pontuação por uso: criar deals, validar readiness, participar de Q&As, fechar transações, etc. Benefícios: descontos nas fees Mary, privilégios no marketplace de parceiros, upgrades de plano, destaque nos rankings. Futuro: pontos atrelados a tokens Mary, convertíveis em benefícios financeiros/reais. Quanto maior o uso, mais pontos, mais vantagens.
+│   ├── invite (TBD)           → Sistema de Indicações e Convites: Sistema para convidar outros perfis para fazer parte da Mary e seguir o processo por dentro da plataforma. Eles poderão gerar link único e rastreável para convite, tanto para monetizar e ganhar ainda mais pontos por lá. Nisso ganharão mais pontos, bem como ter todos os benefícios de trazer os demais perfis pra dentro do ecossistema. 
+├── embed (TBD)                → Embedding: Investidores poderão adicionar formulário de captura de ativos interessados, integrado com a Mary, direto em uma página em seus websites, para recepcionar potenciais empresas que queiram receber investimentos ou serem adquiridas. Com a Mary, fundos e corporates, terão um padrão de captura e os ativos irão direto para o radar de oportunidades, na área do investidor. Esse processo vai agilizar e qualificar os ativos de forma significativa para os investidores. 
+├── profile v1                   → Perfil do Investidor --> Dados devem vir de /onboarding/investor. Usuário poderá editar, se necessário.
+│   ├── public-page (TBD)      → Página pública, acessível via link ou marketplace Mary. Investidor decide o que quer compartilhar, usando dados do Perfil + Teses.
+│   ├── private-page (TBD)     → Página privada, acessível exclusivamente por dentro da plataforma. Investidor decide o que quer compartilhar, usando dados do Perfil + Teses.
+│   ├── deals (TBD)            → Lista de Deals, investimentos realizados por meio da Mary e seus tombstones
+├── settings v1                  → Configurações 
+│   ├── account                → Conta: Gerencie suas informações da conta, configurações de segurança, backups, preferências e logs de atividade.
+│   ├── users                  → Gestão completa de usuários, convites e permissões de acesso à conta.
+│   ├── plans                  → Planos e Recursos: Visualize e gerencie seu plano atual, recursos disponíveis e opções de upgrade.
+│   ├── billing                → Contrato e Faturamento: Acesse informações sobre contratos, faturas, splits e histórico de pagamentos.
+│   ├── support                → Acesso à Mary AI Private
+│   ├── exit                   → Logout seguro do sistema
+└── mary  v1                     → Tudo sobre a Mary
+│   ├── news (TBD)             → Novidades e atualizações
+│   ├── mary-deals-club (TBD)  → Informações, regras e detalhes sobre o programa, convites, pontuações, categorias, etc.
+│   ├── mary-academy (TBD)     → Acesso à plataforma de educação
+│   ├── terms                  → Acesso aos Termos e Usos
+│   ├── privacy                → Acesso à política de privacidade
+│   ├── security               → Acesso à política de segurança
+
+
+### 🏢 **Área da Empresa/Ativo**
+- **Perfil**: Empresas em processos de venda, captação de recursos ou fusões
+
+/:assetname/*. Slug criado logo após a autenticação do e-mail (no callback).
+```
+/:assetname/  v1                    → Dashboard Empresa
+├── assetvdr v1                    → Virtual Data Room Institucional: Sistema completo e seguro de gestão documental para análise prévia. Perfil completo com dados financeiros, operacionais e estratégicos. Integração com bases de dados (Ex: Kronoos, entre outras) para enriquecimento do perfil do ativo. Estrutura em árvore com níveis e subníveis padronizados, mas que permite inserção de novos itens (não exclusão dos itens padrão).
+├── financials v1                  → AI e modelos para padronizar demonstrações financeiras. Conversão, classificação e padronização automática de Demonstrações Financeiras com IA. Integrar com balancete.ai. Função MVP: Apenas importar modelos padrão.
+├── banking (TBD)                → Integração Bancária e Financeira. Open Banking importação e validação automática de dados, extratos e movimentações financeiras. Conectividade com sistemas contábeis. Integração com registros públicos (CNPJ, CVM, etc.)
+├── cap-table v1  (TBD)                 → Cap table: Gestão completa do cap table da empresa e dos sócios (estrutura juridica, econômica e projetada). Link shareable and trackeable
+├── kpis v1                        → Gestão de KPIs de todas as áreas do Ativo. Busca dados de diversas fontes como /profile, /assetvdr, /financials, /banking e /cap-table
+├── readiness v1                   → Mary Readiness Score. Avaliação automatizada do nível de preparação para M&A, usando /profile, /assetvdr, /financials, /banking, /cap-table e /kpis. Critérios estruturados para comparação e Roadmap de melhorias para aumentar atratividade. Roaomap de melhorias integrado com /tasks.
+├── projects v1                    → Lista (hub) de Projetos (venda, captação de recursos, fusão, etc.) + Botão "Novo Projeto"
+├── projects/:codename/ v1         → Área do Projeto Específico
+│   ├── overview  v1               → Overview do Projeto (Venda, captação, etc.)
+│   ├── teaser  v1                 → Teaser do Projeto. Geração automatizada com IA, tudo em blocos de textos, imagens e vídeos scrolável em formato de chat. Link shareable and trackeable
+│   ├── valuation  v1              → Valuation do Projeto. Geração automatizada com IA, baseado em múltiplos de mercado e modelos, eventualmente com APIs, tudo em blocos de textos, imagens e vídeos scrolável em formato de chat. Link shareable and trackeable
+│   ├── cim v1                     → Confidential Info Memo do Projeto (CIM). Tudo em blocos de textos, imagens e vídeos scrolável em formato de chat. Aqui dentro terá link shareable and trackeable
+│   ├── investors   v1             → Lista de Investidores (links levam a página privada do investidor). A lista de investidores pode ser construída de 2 formas: 1) Sistema gera automaticamente lista com base no matching de teses e 2)É possível buscar, selecionar investidores manualmente e enviar mensagens in-app para os investidores selecionados. Página integrada com /:assetname/pipeline
+│   │   └── :investorname/vdr  v1  → VDR para cada Investidor, após NDA e autorização dos sócios do Ativo. VDR importa dados do Asset VDR e abre para upload de Q&A do Investidor. VDRs por investidor DEVEM ser completamente separados, isolados para garantir segurança e confidencialidade.
+│   ├── pipeline  v1               → Pipeline do Projeto (investidores e fases). Pipeline é integrado com /:assetname/investors. Envio de notificações automáticas aos usuários envolvidos, após mudanças de etapas.
+├── mary-ai-private  v1          →   Assistente IA especializada em M&A. Usuário poderá acioná-la quando quiser no botão inferior direito, abrindo para perguntas e repostas (Q&As) dinâmicas e objetivas sobre os ativos em avaliação e toda plataforma Mary. Ela será contextual e extremamente segura e confidencial. Mary AI (Private) só pera dentro da área logada para fins de confidencialidade e só responde àquilo que o usuário tem permissão para acessar. Similar à "Notion AI".
+├── tasks   v1   (TBD)                → Gestão de tarefas global. Sistema com tabela simples, filtráveis e ordenáveis com os campos: Projeto, Etapa (Pipeline), Tarefa, Responsável, Prazo, Prioridade, Status, Comentários. Integração com WhatsApp, Gmail, Outlook, Apple, etc). É possível de criar subetapas com os mesmos campos.
+├── inbox   v1   (TBD)                → Central de Comunicação: Canal direto e seguro com todos os envolvidos nos projetos + Sistema de notificações, alertas para movimentações e atualizações nos processos e documentos. Integração com WhatsApp, Gmail, Outlook, Apple, etc). Sistema de Notificações e Alertas: Uso de push via WhatsApp, e-mail e in-app. Criação de notificacoes a partir de Novas interações (ex: investidor interessado, documento visualizado), Alertas de expiração de links/documentos, Atualizações no deal pipeline, Notificações por e-mail + badge no menu, upload docs > vdrs, follow-ups automáticos quando definidos pelo usuário.
+├── signatures (TBD)                → Integração com ferramenta de assinaturas digitais (Clicksign) dentro da mary, para facilitar trâmites de assinaturas entre as partes envolvidas nos projetos. Envio de notificações aos usuários envolvidos, após conclusões de etapas.
+├── smart-contracts (TBD)      → Smart Contracts: Sistema de pagamentos via blockchain, tokens e escrow account para split de liquidação segura da transação, conforme SPA final
+├── tokens (TBD)               → Tokenização: Sócios poderão tokenizar suas cotas/ações para negociá-las em mercados secundários via blockchain. Negociações entram como Projetos.
+├── pmi (TBD)                  → PMI (Post Merger Integration): Gestão do processo de integração após aquisição/investimento. Gestão compartilhada entre Investidor, Ativo e Advisor
+├── bi (TBD)                    → Business Intelligence completo para o ecossistema. Benchmarking setorial e regional. Tendências de mercado em tempo real. Performance tracking de transações. Logs & Tracking Rastreamento de tudo o que acontece na plataforma, em todos os perfis e projetos.
+├── marketplace (TBD)          → Marketplace de Serviços: Conexão com service providers: Boutiques de M&A, advogados, consultores, auditores, etc. Gestão de fornecedores especializados em M&A. Rating e reviews de profissionais.
+├── ranking (TBD)              → Rankings: Trimestralmente, a Mary publicará um ranking de Investidores e Advisors, com base no seu engajamento, quantidade e volume de projetos, deals fechados, etc. Deals Fechados (Tombstones): Após fechar um deal, Mary publicará o tombstone em página específica, desde que autorizada pelas partes. O deal ficará registrado nos perfis de todos os envolvidos. Tombstones automáticos quando deals forem concluídos via Mary.
+├── mary-deals-club (TBD)      → Mary Deals Club: Programa de pontos e benefícios. Categorias: Gold → Platinum → Black → Diamond. Pontuação por uso: criar deals, validar readiness, participar de Q&As, fechar transações, etc. Benefícios: descontos nas fees Mary, privilégios no marketplace de parceiros, upgrades de plano, destaque nos rankings. Futuro: pontos atrelados a tokens Mary, convertíveis em benefícios financeiros/reais. Quanto maior o uso, mais pontos, mais vantagens.
+│   ├── invite (TBD)           → Sistema de Indicações e Convites: Sistema para convidar outros perfis para fazer parte da Mary e seguir o processo por dentro da plataforma. Eles poderão gerar link único e rastreável para convite, tanto para monetizar e ganhar ainda mais pontos por lá. Nisso ganharão mais pontos, bem como ter todos os benefícios de trazer os demais perfis pra dentro do ecossistema. 
+├── profile   v1                 → Perfil do Ativo --> Dados devem vir de /onboarding/asset. Usuário poderá editar, se necessário.
+│   ├── public-page (TBD)           → Página pública, acessível via link ou marketplace Mary. Sócios decidem o que quer compartilhar, usando dados do Perfil + Projetos.
+│   ├── private-page (TBD)          → Página privada, acessível exclusivamente por dentro da plataforma. Sócios decidem o que quer compartilhar, usando dados do Perfil + Projetos.
+│   ├── deals (TBD)                 → Lista de Deals realizados por meio da Mary e seus tombstones
+│   ├── quiz  (TBD)                 → Quiz de Auto Representação: Ajuda a determinar se os sócios estão preparados para avançar sozinhos numa negociação. Caso negativo, precisam contratar advisor.
+├── settings   v1                → Configurações 
+│   ├── account                → Conta: Gerencie suas informações da conta, configurações de segurança, backups, preferências e logs de atividade.
+│   ├── users                  → Gestão completa de usuários, convites e permissões de acesso à conta.
+│   ├── plans                  → Planos e Recursos: Visualize e gerencie seu plano atual, recursos disponíveis e opções de upgrade.
+│   ├── billing                → Contrato e Faturamento: Acesse informações sobre contratos, faturas, splits e histórico de pagamentos.
+│   ├── support                → Acesso à Mary AI Private
+│   ├── exit                   → Logout seguro do sistema
+└── mary   v1                    → Tudo sobre a Mary
+│   ├── news (TBD)                  → Novidades e atualizações
+│   ├── mary-deals-club (TBD)       → Informações, regras e detalhes sobre o programa, convites, pontuações, categorias, etc.
+│   ├── mary-academy (TBD)     → Acesso à plataforma de educação
+│   ├── terms                  → Acesso aos Termos e Usos
+│   ├── privacy                → Acesso à política de privacidade
+│   ├── security               → Acesso à política de segurança
+
+
+### 🎯 **Área do Advisor**
+- **Perfil**: Bancos de investimento, consultorias M&A, advisory boutiques, escritórios de advocacia, escritórios de contabilidade, auditorias
+
+```
+/advisor/  v1                      → Dashboard Advisor
+├── projects   v1                → Lista de Projetos do Advisor. Advisor não cria nada na área dele, apenas por dentro da área do Ativo ou Investidor, quando autorizado. Aqui ele visualiza e acessa os projetos.
+├── mary-ai-private  v1          → Assistente IA especializada em M&A. Usuário poderá acioná-la quando quiser no botão inferior direito, abrindo para perguntas e repostas (Q&As) dinâmicas e objetivas sobre os ativos em avaliação e toda plataforma Mary. Ela será contextual e extremamente segura e confidencial. Mary AI (Private) só opera dentro da área logada para fins de confidencialidade e só responde àquilo que o usuário tem permissão para acessar.Similar à "Notion AI".
+├── tasks    v1    (TBD)              → Gestão de tarefas global. Sistema com tabela simples, filtráveis e ordenáveis com os campos: Projeto, Etapa (Pipeline), Tarefa, Responsável, Prazo, Prioridade, Status, Comentários. Integração com WhatsApp, Gmail, Outlook, Apple, etc). É possível de criar subetapas com os mesmos campos. Tarefas mencionando @advisorusers na área do Ativo, se integram automaticamente aqui
+├── inbox   v1    (TBD)               → Central de Comunicação: Canal direto e seguro com todos os envolvidos nos projetos + Sistema de notificações, alertas para movimentações e atualizações nos processos e documentos. Integração com WhatsApp, Gmail, Outlook, Apple, etc). Sistema de Notificações e Alertas: Uso de push via WhatsApp, e-mail e in-app. Criação de notificacoes a partir de Novas interações (ex: investidor interessado, documento visualizado), Alertas de expiração de links/documentos, Atualizações no deal pipeline, Notificações por e-mail + badge no menu, upload docs > vdrs, follow-ups automáticos quando definidos pelo usuário.
+├── fees (TBD)                  → Acompanhamento de comissões: Transparência total no processo de remuneração
+├── bi (TBD)                    → Business Intelligence completo para o ecossistema. Benchmarking setorial e regional. Tendências de mercado em tempo real. Performance tracking de transações. Logs & Tracking Rastreamento de tudo o que acontece na plataforma, em todos os perfis e projetos.
+├── marketplace (TBD)          → Marketplace de Serviços: Conexão com service providers: Boutiques de M&A, advogados, consultores, auditores, etc. Gestão de fornecedores especializados em M&A. Rating e reviews de profissionais.
+├── ranking (TBD)               → Rankings: Trimestralmente, a Mary publicará um ranking de Investidores e Advisors, com base no seu engajamento, quantidade e volume de projetos, deals fechados, etc. Deals Fechados (Tombstones): Após fechar um deal, Mary publicará o tombstone em página específica, desde que autorizada pelas partes. O deal ficará registrado nos perfis de todos os envolvidos. Tombstones automáticos quando deals forem concluídos via Mary.
+├── mary-deals-club (TBD)      → Mary Deals Club: Programa de pontos e benefícios. Categorias: Gold → Platinum → Black → Diamond. Pontuação por uso: criar deals, validar readiness, participar de Q&As, fechar transações, etc. Benefícios: descontos nas fees Mary, privilégios no marketplace de parceiros, upgrades de plano, destaque nos rankings. Futuro: pontos atrelados a tokens Mary, convertíveis em benefícios financeiros/reais. Quanto maior o uso, mais pontos, mais vantagens.
+│   ├── invite (TBD)           → Sistema de Indicações e Convites: Sistema para convidar outros perfis para fazer parte da Mary e seguir o processo por dentro da plataforma. Eles poderão gerar link único e rastreável para convite, tanto para monetizar e ganhar ainda mais pontos por lá. Nisso ganharão mais pontos, bem como ter todos os benefícios de trazer os demais perfis pra dentro do ecossistema. 
+├── profile  v1                  → Perfil do Advisor --> Dados devem vir de /onboarding/advisor. Usuário poderá editar, se necessário.
+│   ├── public-page (TBD)           → Página pública, acessível via link ou marketplace Mary. Advisors decidem o que quer compartilhar, usando dados do Perfil + Projetos.
+│   ├── private-page (TBD)          → Página privada, acessível exclusivamente por dentro da plataforma. Advisors decidem o que quer compartilhar, usando dados do Perfil + Projetos.
+│   ├── deals (TBD)                 → Lista de Deals realizados por meio da Mary e seus tombstones
+├── settings   v1                → Configurações 
+│   ├── account                → Conta: Gerencie suas informações da conta, configurações de segurança, backups, preferências e logs de atividade.
+│   ├── users                  → Gestão completa de usuários, convites e permissões de acesso à conta.
+│   ├── plans                  → Planos e Recursos: Visualize e gerencie seu plano atual, recursos disponíveis e opções de upgrade.
+│   ├── billing                → Contrato e Faturamento: Acesse informações sobre contratos, faturas, splits e histórico de pagamentos.
+│   ├── support                → Acesso à Mary AI Private
+│   ├── exit                   → Logout seguro do sistema
+└── mary   v1                    → Tudo sobre a Mary
+│   ├── news  (TBD)                 → Novidades e atualizações
+│   ├── mary-deals-club (TBD)       → Informações, regras e detalhes sobre o programa, convites, pontuações, categorias, etc.
+│   ├── mary-academy (TBD)     → Acesso à plataforma de educação
+│   ├── terms                  → Acesso aos Termos e Usos
+│   ├── privacy                → Acesso à política de privacidade
+│   ├── security               → Acesso à política de segurança
+
+```
+
+### 👤 **Área do Agente** - TBD
+- **Perfil**: Profissionais que monetizam redes de contatos e indicações
+```
+/agent/ TBD
+├── projects (TBD)                   → Lista de Projetos do Agente. Agente não cria nada, apenas visualiza e acessa overview e pipeline dos projetos.
+├── mary-ai-private (TBD)            →   Assistente IA especializada em M&A. Usuário poderá acioná-la quando quiser no botão inferior direito, abrindo para perguntas e repostas (Q&As) dinâmicas e objetivas sobre os ativos em avaliação e toda plataforma Mary. Ela será contextual e extremamente segura e confidencial. Mary AI (Private) só pera dentro da área logada para fins de confidencialidade e só responde àquilo que o usuário tem permissão para acessar. Similar à "Notion AI".
+├── tasks (TBD)                      → Gestão de tarefas global. Sistema com tabela simples, filtráveis e ordenáveis com os campos: Projeto, Etapa (Pipeline), Tarefa, Responsável, Prazo, Prioridade, Status, Comentários. Integração com WhatsApp, Gmail, Outlook, Apple, etc). É possível de criar subetapas com os mesmos campos.
+├── inbox  (TBD)                     → Central de Comunicação: Canal direto e seguro com todos os envolvidos nos projetos + Sistema de notificações, alertas para movimentações e atualizações nos processos e documentos. Integração com WhatsApp, Gmail, Outlook, Apple, etc). Sistema de Notificações e Alertas: Uso de push via WhatsApp, e-mail e in-app. Criação de notificações a partir de Novas interações (ex: investidor interessado, documento visualizado), Alertas de expiração de links/documentos, Atualizações no deal pipeline, Notificações por e-mail + badge no menu, upload docs > vdrs, follow-ups automáticos quando definidos pelo usuário.
+├── crm  (TBD)                     →  Gestão de relacionamentos: CRM básico e especializado para agentes
+├── fees (TBD)                     → Acompanhamento de comissões: Transparência total no processo de remuneração
+├── marketplace (TBD)          → Marketplace de Serviços: Conexão com service providers: Boutiques de M&A, advogados, consultores, auditores, etc. Gestão de fornecedores especializados em M&A. Rating e reviews de profissionais.
+├── ranking (TBD)              → Rankings: Trimestralmente, a Mary publicará um ranking de Investidores e Advisors, com base no seu engajamento, quantidade e volume de projetos, deals fechados, etc. Deals Fechados (Tombstones): Após fechar um deal, Mary publicará o tombstone em página específica, desde que autorizada pelas partes. O deal ficará registrado nos perfis de todos os envolvidos. Tombstones automáticos quando deals forem concluídos via Mary.
+├── mary-deals-club (TBD)      → Mary Deals Club: Programa de pontos e benefícios. Categorias: Gold → Platinum → Black → Diamond. Pontuação por uso: criar deals, validar readiness, participar de Q&As, fechar transações, etc. Benefícios: descontos nas fees Mary, privilégios no marketplace de parceiros, upgrades de plano, destaque nos rankings. Futuro: pontos atrelados a tokens Mary, convertíveis em benefícios financeiros/reais. Quanto maior o uso, mais pontos, mais vantagens.
+│   ├── invite (TBD)           → Sistema de Indicações e Convites: Sistema para convidar outros perfis para fazer parte da Mary e seguir o processo por dentro da plataforma. Eles poderão gerar link único e rastreável para convite, tanto para monetizar e ganhar ainda mais pontos por lá. Nisso ganharão mais pontos, bem como ter todos os benefícios de trazer os demais perfis pra dentro do ecossistema. 
+├── profile  (TBD)                   → Perfil do Agente --> Dados devem vir de /onboarding/agent. Usuário poderá editar, se necessário.
+│   ├── public-page (TBD)           → Página pública, acessível via link ou marketplace Mary. Advisors decidem o que quer compartilhar, usando dados do Perfil + Projetos.
+│   ├── private-page (TBD)          → Página privada, acessível exclusivamente por dentro da plataforma. Advisors decidem o que quer compartilhar, usando dados do Perfil + Projetos.
+│   ├── deals (TBD)                 → Lista de Deals realizados por meio da Mary e seus tombstones
+├── settings  (TBD)                  → Configurações 
+│   ├── account                → Conta: Gerencie suas informações da conta, configurações de segurança, backups, preferências e logs de atividade.
+│   ├── users                  → Gestão completa de usuários, convites e permissões de acesso à conta.
+│   ├── plans                  → Planos e Recursos: Visualize e gerencie seu plano atual, recursos disponíveis e opções de upgrade.
+│   ├── billing                → Contrato e Faturamento: Acesse informações sobre contratos, faturas, splits e histórico de pagamentos.
+│   ├── support                → Acesso à Mary AI Private
+│   ├── exit                   → Logout seguro do sistema
+└── mary  (TBD)                      → Tudo sobre a Mary
+│   ├── news (TBD)                  → Novidades e atualizações
+│   ├── mary-deals-club (TBD)       → Informações, regras e detalhes sobre o programa, convites, pontuações, categorias, etc.
+│   ├── mary-academy (TBD)     → Acesso à plataforma de educação
+│   ├── terms                  → Acesso aos Termos e Usos
+│   ├── privacy                → Acesso à política de privacidade
+│   ├── security               → Acesso à política de segurança
+
+
+```
+
+
+### 🏢 **Mary Admin - Área de Ops e gestão interna da Mary**
+- **Perfil**: Equipe interna da Mary
+
+```
+/admin/    v1                      → Dashboard Interno Mary Team. KPIs gerais (usuários, ativos, deals, tickets)
+├── support v1                    → Gestão completa de tickets abertos (solicitações de usuários), tanto via Mary AI pública quanto privada
+├── users  v1                     → Lista de usuários + perfis + detalhes de cada usuário (permissões, etc)
+├── mary-ai-public   v1           → Monitoramento da Mary AI (intents, taxa de acerto, custo API)
+├── mary-ai-private  v1           → Monitoramento da Mary AI (intents, taxa de acerto, custo API)
+├── contracts (TBD)             → Contratos e Faturamento: Acesse informações sobre contratos, faturas, billings, splits, gateways e histórico de recebimentos.
+├── logs (TBD)                  → Logs de acesso, auditoria, uso da IA
+├── bi (TBD)                    → Business Intelligence completo para o ecossistema. Uso interno por enquanto. Business Intelligence completo para o ecossistema. Benchmarking setorial e regional. Tendências de mercado em tempo real. Performance tracking de transações. Logs & Tracking Rastreamento de tudo o que acontece na plataforma, em todos os perfis e projetos.
+├── marketplace (TBD)           → Gestão do marketplace
+├── rankings (TBD)              → Rankings: Trimestralmente, a Mary publicará um ranking de Investidores e Advisors, com base no seu engajamento, quantidade e volume de projetos, deals fechados, etc. Deals Fechados (Tombstones): Após fechar um deal, Mary publicará o tombstone em página específica, desde que autorizada pelas partes. O deal ficará registrado nos perfis de todos os envolvidos. Tombstones automáticos quando deals forem concluídos via Mary (elemento visual + prova social).
+├── dealsclub (TBD)             → Gestão do Mary Deals Club
+├── embeddings (TBD)            → Gestão dos formulários, acessos, usuários dessa feature.
+
+```
+
+INSTRUÇÕES E REQUISITOS IMPORTANTES:
+- Cada rota (tela) deve ser possuir área extremamente intuitiva, minimalista e user-friendly. Todos os campos, valores, linhas e colunas devem ser filtráveis e o ordenáveis. A ideia é que não precisemos de relatórios e sim filtros potentes e intuitivos, onde a própria área de trabalho (tela sendo exibida) é o relatório, bastando filtrar o que se procura e juntar múltiplos filtros, se necessário.
+- NÃO desenvolver NENHUMA TELA POR ENQUANTO, estamos apena planejando a arquitetura mestre do sistema como um todo, antes de entrar no desenvolvimento de cada tela, rota em específico.
+- Atue como um advisor de M&A com mais de 20 anos de experiência em advisory e investment banking e já transacionou mais de US$ 100 bilhões worldwide. Já sentou no conselho dos maiores fundos globais de PE e VC, bem como advisory de grandes corporações serial acquirers multinacionais. Você sabe exatamente como pensam os investidores mais criteriosos e bem sucedidos do planeta. Vocês já atuou com centenas de ativos (empresas) dos mais diferentes segmentos e portes em todos os continentes, e também conhece como pensam e estão estruturados esses negócios. Você será o consultor técnico da Mary, para analisar minuciosamente cada aspecto, cada funcionalidade, cada botão dentro do processo de M&A. Sua missão é tornar a experiência inteligente, fluída, SEGURA, eficiente, eficaz, efetiva. 
+- Também atue como full-stack operator: strategist, copywriter, designer and growth hacker, expert em UX/UI para plataformas B2B SaaS. Leia, interprete estas telas e estruturas acima. Sua tarefa é contribuir para a construção da Mary.
+- Por enquanto vamos focar na arquitetura, UX, campos e front end. Futuramente entrarmos na parte do backend integrando o Supabase.
+- Rotas devem ser SEMPRE 100% EN-US. Conteúdos, neste momento, estarão em PT-BR, mas rotas sempre EN US como padrão.
+- Preparar multilíngue - i18n
+- Moeda devem ser 100% em Dólar USD, incluindo rótulos e formatos.
+- TBD (To Be Developed) são features mais complexas, que exigirão time profissional para desenvolvimento. Não vamos desenvolver isso agora, devido à complexidade. Listei aqui para ter visão geral do roadmap do projeto. Sempre que apontado "TBD" em frente à uma feature/rota, se trata disso.
+
+
+IMPORTANTE: Faça perguntas dentro deste contexto ANTES de responder, para que eu posso orientá-lo sobre minhas preferências.
+
+
+

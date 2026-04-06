@@ -1,0 +1,11 @@
+{
+  "eval_id": 0,
+  "configuration": "with_skill",
+  "expectations": [
+    {"text": "leu_backlog", "passed": true, "evidence": "Menciona fase ativa, épico E0, progresso 0/7, data de referência 02/04/2026"},
+    {"text": "identifica_fase_atual", "passed": true, "evidence": "Primeira linha: 'Fase ativa: Fase 0 — Realinhamento Excalidraw'"},
+    {"text": "recomenda_proxima_com_justificativa", "passed": true, "evidence": "Recomenda H0.1 com 5 justificativas: P0, sem deps, impacto visual, spec pronta, componentes reutilizáveis"},
+    {"text": "mostra_sequencia", "passed": true, "evidence": "Lista H0.7, H0.4, B0.8, H0.2, H0.3, H0.6 como sequência futura em sprints"},
+    {"text": "formato_estruturado", "passed": true, "evidence": "Usa formato da skill: Status, Em Andamento, Próxima Etapa, Sequência, Blockers"}
+  ]
+}

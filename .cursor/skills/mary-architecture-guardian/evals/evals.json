@@ -1,0 +1,23 @@
+{
+  "skill_name": "mary-architecture-guardian",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Roda uma auditoria completa na arquitetura de context engineering do projeto Mary. Quero saber se tem alguma inconsistência entre as camadas.",
+      "expected_output": "Relatório estruturado com inconsistências organizadas por severidade (crítica, média, baixa), incluindo módulos incompletos, specialists órfãos, e problemas no JIT Index.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Acabei de criar um novo módulo chamado 'notifications' com context.md em .context/modules/notifications/. Preciso garantir que ele está completo em todas as camadas. Atualiza tudo que falta.",
+      "expected_output": "Identificação de arquivos faltantes nas 5 camadas (agents.md, skills.md, SKILL.md do Cursor, specialist, entrada no README e module-index.json) e criação/atualização de cada um.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "A documentação do projeto está atualizada? Preciso entregar um review gate amanhã e quero garantir que nada está fora de sincronia.",
+      "expected_output": "Execução do checklist pré-entrega: verificação de módulos nas 5 camadas, JIT Index, specialists, stubs vazios, e recomendações priorizadas de correção antes da entrega.",
+      "files": []
+    }
+  ]
+}

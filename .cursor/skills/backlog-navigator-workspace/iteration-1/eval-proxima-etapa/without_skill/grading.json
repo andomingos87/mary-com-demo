@@ -1,0 +1,11 @@
+{
+  "eval_id": 0,
+  "configuration": "without_skill",
+  "expectations": [
+    {"text": "leu_backlog", "passed": true, "evidence": "Leu o backlog, menciona PRD v3.0, tabela de reconciliação"},
+    {"text": "identifica_fase_atual", "passed": true, "evidence": "Identifica E0 em andamento desde 02/04/2026"},
+    {"text": "recomenda_proxima_com_justificativa", "passed": true, "evidence": "Recomenda H0.1 com justificativa de impacto visual e ausência de deps"},
+    {"text": "mostra_sequencia", "passed": true, "evidence": "Lista todas as 8 histórias de E0 em sequência sugerida"},
+    {"text": "formato_estruturado", "passed": false, "evidence": "Formato genérico de relatório, não segue template consistente da skill. Mistura tabelas, seções e listas sem padrão navegável"}
+  ]
+}

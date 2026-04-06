@@ -1,0 +1,218 @@
+**Mary Taxonomy v1**
+Estrutura inicial robusta e legalmente livre (sem restrição de copyright), mas compatível com os padrões globais (NAICS) e nacionais (CNAE).
+Abaixo está a **versão base hierárquica** — 12 macrosetores, cada um com subsetores principais, e equivalências aproximadas NAICS + CNAE.
+> ⚙️  Esta versão serve como **Layer 2 (comparabilidade e matching)** na Mary, interoperando com CNAE (Layer 1 compliance) e servindo de base para IA e Readiness Score®.
+
+---
+
+# 📘 MARY TAXONOMY v1
+
+*(Mary Industry Classification Standard – MAICS)*
+**Estrutura:**
+
+* **Level 1:** Macrosetor (12)
+* **Level 2:** Setor
+* **Level 3:** Subsetor
+* Campos equivalentes: `naics_codes[]`, `cnae_codes[]`
+
+---
+
+## 🏦 1. Financial & Professional Services
+
+**Descrição:** Consultoria, serviços financeiros, seguros, contabilidade, jurídico e gestão corporativa.
+
+| Código Mary | Nome                            | NAICS      | CNAE                 |
+| ----------- | ------------------------------- | ---------- | -------------------- |
+| MICS-01.1   | Banking & Capital Markets       | 5221, 5222 | 6422-1/00, 6437-8/00 |
+| MICS-01.2   | Investment & Asset Management   | 5239       | 6630-4/00            |
+| MICS-01.3   | Insurance & Reinsurance         | 5241, 5242 | 6520-1/00            |
+| MICS-01.4   | Accounting & Tax Services       | 5412       | 6920-6/01            |
+| MICS-01.5   | Legal & Compliance              | 5411       | 6911-7/01            |
+| MICS-01.6   | Corporate Consulting & Advisory | 5416       | 7020-4/00            |
+
+---
+
+## 💻 2. Technology & Digital Infrastructure
+
+**Descrição:** Software, hardware, infraestrutura digital, dados e automação.
+
+| Código Mary | Nome                            | NAICS      | CNAE                 |
+| ----------- | ------------------------------- | ---------- | -------------------- |
+| MICS-02.1   | Software & SaaS                 | 5112, 5415 | 6201-5/00            |
+| MICS-02.2   | IT Services & Cloud             | 5182, 5415 | 6209-1/00            |
+| MICS-02.3   | Cybersecurity & Data Protection | 5415       | 6209-1/00, 6202-3/00 |
+| MICS-02.4   | Hardware & Devices              | 3341, 3342 | 2621-8/00            |
+| MICS-02.5   | AI, Automation & Robotics       | 5417       | 7210-0/00            |
+
+---
+
+## 🌿 3. Energy, Utilities & Sustainability
+
+**Descrição:** Energia, óleo & gás, saneamento, renováveis, gestão ambiental e ESG.
+
+| Código Mary | Nome                                  | NAICS      | CNAE                 |
+| ----------- | ------------------------------------- | ---------- | -------------------- |
+| MICS-03.1   | Oil & Gas                             | 2111, 2131 | 0610-1/01            |
+| MICS-03.2   | Electricity & Power Generation        | 2211       | 3511-5/00            |
+| MICS-03.3   | Renewable Energy (Solar, Wind, Hydro) | 2211, 2213 | 3514-0/00            |
+| MICS-03.4   | Water, Waste & Environmental Services | 2213, 5622 | 3811-4/00, 3702-9/00 |
+| MICS-03.5   | ESG & Carbon Management               | 5416       | 7490-1/99            |
+
+---
+
+## 🏭 4. Industrial, Manufacturing & Engineering
+
+**Descrição:** Produção industrial, engenharia, automação, manutenção.
+
+| Código Mary | Nome                       | NAICS      | CNAE                 |
+| ----------- | -------------------------- | ---------- | -------------------- |
+| MICS-04.1   | Machinery & Equipment      | 3332, 3339 | 2825-9/00            |
+| MICS-04.2   | Industrial Automation      | 3339, 5413 | 2829-1/00            |
+| MICS-04.3   | Engineering & Construction | 5413, 2362 | 7112-0/00, 4211-1/01 |
+| MICS-04.4   | Aerospace & Defense        | 3364, 3369 | 3031-5/00            |
+| MICS-04.5   | Chemicals & Materials      | 3251, 3259 | 2011-8/00, 2019-3/00 |
+
+---
+
+## 🚚 5. Logistics, Supply Chain & Mobility
+
+**Descrição:** Transporte, armazenagem, cadeias de suprimentos e mobilidade urbana.
+
+| Código Mary | Nome                             | NAICS      | CNAE      |
+| ----------- | -------------------------------- | ---------- | --------- |
+| MICS-05.1   | Transport & Freight              | 4841, 4885 | 4930-2/01 |
+| MICS-05.2   | Warehousing & Distribution       | 4931       | 5211-7/01 |
+| MICS-05.3   | Supply Chain Tech & Optimization | 5416, 5191 | 6209-1/00 |
+| MICS-05.4   | Mobility & Urban Logistics       | 4853, 4859 | 4929-9/02 |
+
+---
+
+## 🏪 6. Retail, Consumer & E-Commerce
+
+**Descrição:** Varejo físico e digital, marketplaces, bens de consumo e marcas D2C.
+
+| Código Mary | Nome                         | NAICS      | CNAE                 |
+| ----------- | ---------------------------- | ---------- | -------------------- |
+| MICS-06.1   | Retail (Physical & Online)   | 4521, 4541 | 4711-3/00, 4791-3/00 |
+| MICS-06.2   | E-Commerce & Marketplaces    | 4541       | 4791-3/02            |
+| MICS-06.3   | Consumer Goods & Brands      | 3118, 3152 | 4649-4/02, 4641-9/01 |
+| MICS-06.4   | Food & Beverage Distribution | 3118, 4244 | 4639-7/01, 4632-0/01 |
+
+---
+
+## 🏥 7. Healthcare, Pharma & Life Sciences
+
+**Descrição:** Hospitais, clínicas, biotecnologia, farma e dispositivos médicos.
+
+| Código Mary | Nome                      | NAICS      | CNAE                 |
+| ----------- | ------------------------- | ---------- | -------------------- |
+| MICS-07.1   | Hospitals & Clinics       | 6221, 6211 | 8610-1/01            |
+| MICS-07.2   | Pharmaceuticals           | 3254       | 2121-1/01            |
+| MICS-07.3   | Biotechnology             | 5417       | 7210-0/00            |
+| MICS-07.4   | Medical Devices           | 3391       | 3250-6/00            |
+| MICS-07.5   | HealthTech & Telemedicine | 6215, 5182 | 6209-1/00, 8650-0/00 |
+
+---
+
+## 🏫 8. Education, Training & Human Capital
+
+**Descrição:** Ensino, edtechs, recrutamento, gestão de talentos e produtividade.
+
+| Código Mary | Nome                             | NAICS      | CNAE                 |
+| ----------- | -------------------------------- | ---------- | -------------------- |
+| MICS-08.1   | Education (K-12, Higher Ed)      | 6111–6113  | 8511-2/00, 8532-5/00 |
+| MICS-08.2   | EdTech & Digital Learning        | 6114, 5182 | 8599-6/04, 6209-1/00 |
+| MICS-08.3   | HRTech & Recruitment             | 5613, 5416 | 7810-8/00            |
+| MICS-08.4   | Corporate Training & Development | 6114, 6117 | 8599-6/01            |
+
+---
+
+## 🏘️ 9. Real Estate, Construction & Infrastructure
+
+**Descrição:** Imóveis, engenharia civil, infraestrutura e gestão patrimonial.
+
+| Código Mary | Nome                             | NAICS      | CNAE      |
+| ----------- | -------------------------------- | ---------- | --------- |
+| MICS-09.1   | Real Estate Development          | 2361, 5311 | 4110-7/00 |
+| MICS-09.2   | Construction & Civil Engineering | 2362, 2373 | 4211-1/01 |
+| MICS-09.3   | Facilities Management            | 5612       | 8112-3/00 |
+| MICS-09.4   | PropTech & Smart Buildings       | 5415, 5182 | 6209-1/00 |
+
+---
+
+## 📡 10. Media, Telecom & Entertainment
+
+**Descrição:** Comunicação, mídia, conteúdo, telecomunicações e streaming.
+
+| Código Mary | Nome                      | NAICS      | CNAE      |
+| ----------- | ------------------------- | ---------- | --------- |
+| MICS-10.1   | Telecommunications        | 5171       | 6110-8/00 |
+| MICS-10.2   | Media & Advertising       | 5111, 5418 | 7319-0/02 |
+| MICS-10.3   | Entertainment & Streaming | 5121, 5122 | 5911-1/01 |
+| MICS-10.4   | Gaming & Esports          | 5191, 5415 | 6209-1/00 |
+| MICS-10.5   | Creator & Digital Economy | 5191       | 6399-0/00 |
+
+---
+
+## 🌱 11. Agriculture, Food & Agritech
+
+**Descrição:** Produção agrícola, insumos, tecnologia agro, alimentos e bebidas.
+
+| Código Mary | Nome                                 | NAICS      | CNAE      |
+| ----------- | ------------------------------------ | ---------- | --------- |
+| MICS-11.1   | Agriculture & Farming                | 1110, 1120 | 0111-3/01 |
+| MICS-11.2   | Food Processing                      | 3111–3116  | 1011-2/00 |
+| MICS-11.3   | Agritech & Precision Farming         | 1151, 5416 | 0161-0/01 |
+| MICS-11.4   | Supply & Inputs (Fertilizers, Seeds) | 3253       | 2012-6/00 |
+
+---
+
+## 🎯 12. Public, Nonprofit & Impact
+
+**Descrição:** Governo, ONGs, impacto social, investimentos sustentáveis e fundações.
+
+| Código Mary | Nome                               | NAICS      | CNAE      |
+| ----------- | ---------------------------------- | ---------- | --------- |
+| MICS-12.1   | Government & Public Administration | 9211–9231  | 8411-6/00 |
+| MICS-12.2   | Nonprofits & Foundations           | 8131–8139  | 9499-5/00 |
+| MICS-12.3   | Impact & ESG Investment            | 5239, 5416 | 6630-4/00 |
+| MICS-12.4   | Smart Cities & CivicTech           | 5415, 9211 | 6209-1/00 |
+
+---
+
+## 🗂️  Estrutura de tabela sugerida (Supabase)
+
+```sql
+CREATE TABLE mary_taxonomy (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  level INT, -- 1=macro, 2=setor, 3=subsetor
+  code TEXT UNIQUE,
+  name TEXT,
+  parent_code TEXT,
+  description TEXT,
+  naics_codes TEXT[],
+  cnae_codes TEXT[],
+  created_at TIMESTAMP DEFAULT now()
+);
+```
+
+---
+
+## 🔗 Uso interno da plataforma
+
+* **Matching AI:** as embeddings e filtros operam sobre o `mary_taxonomy.code`.
+* **Interoperabilidade:** sempre que o usuário informar CNPJ, o campo `cnae_principal` será mapeado para um ou mais `mary_code` (ex.: via tabela `mary_taxonomy_mapping`).
+* **Relatórios:** dashboards e análises podem usar o `mary_code` como eixo primário, mantendo rastreabilidade legal com `cnae_codes`.
+* **Flexibilidade:** como é *open schema*, você pode evoluir (ex.: adicionar “ClimateTech”, “Health Data Infra”, etc.) sem quebrar nada.
+
+---
+
+## ✅ Conclusão
+
+> **Mary Taxonomy v1** é híbrida, aberta e escalável:
+>
+> * Baseada em **NAICS** (livre de royalties).
+> * Conectada a **CNAE** (compliance local).
+> * Totalmente compatível com uso interno, IA e comparabilidade global.
+> * Pode evoluir para **v2** com mais granularidade conforme os clusters Mary cresçam.
+

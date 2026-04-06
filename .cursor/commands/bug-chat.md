@@ -1,0 +1,1 @@
+Compreenda o bug e me responda no chat, não altere nada no codigo. Se necessário use o MCP do Supabase ou Playwright para testes e debug.

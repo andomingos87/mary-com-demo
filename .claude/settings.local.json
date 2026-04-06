@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls:*)",
+      "Bash(find C:UsersasdomOneDriveDocumentosProjetosproject_mary.agents -type f -name *.md)",
+      "Bash(for mod:*)",
+      "Bash(do mkdir:*)",
+      "Bash(done)",
+      "Bash(mkdir -p \".context/modules/_templates\")",
+      "Bash(npx jest:*)"
+    ]
+  }
+}

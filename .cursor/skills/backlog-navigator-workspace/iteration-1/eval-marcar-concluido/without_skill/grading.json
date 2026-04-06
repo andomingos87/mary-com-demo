@@ -1,0 +1,11 @@
+{
+  "eval_id": 1,
+  "configuration": "without_skill",
+  "expectations": [
+    {"text": "valida_evidencia", "passed": false, "evidence": "Verificou spec mas interpretou erroneamente que spec pronta = história concluída. Não detectou que código NÃO foi implementado (confundiu spec com implementação)."},
+    {"text": "pede_confirmacao", "passed": true, "evidence": "Pede confirmação ('Confirmar com stakeholder') mas de forma genérica, não como gate de segurança"},
+    {"text": "atualiza_backlog", "passed": true, "evidence": "Propõe edição com formato correto: ✅ + (CONCLUÍDO) + data + evidências"},
+    {"text": "recomenda_proxima_apos_update", "passed": false, "evidence": "Não recomenda próxima etapa após atualização. Foca em impacto e recomendações genéricas."},
+    {"text": "verifica_cascata", "passed": false, "evidence": "Menciona impacto indireto mas não analisa cascata de dependências nem status do épico pai"}
+  ]
+}

@@ -1,0 +1,121 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Spinner Component Snapshots renders all color variants correctly 1`] = `
+<div
+  class="animate-spin rounded-full border-2 border-current border-t-transparent h-5 w-5 text-primary"
+>
+  <span
+    class="sr-only"
+  >
+    Carregando...
+  </span>
+</div>
+`;
+
+exports[`Spinner Component Snapshots renders all color variants correctly 2`] = `
+<div
+  class="animate-spin rounded-full border-2 border-current border-t-transparent h-5 w-5 text-secondary-foreground"
+>
+  <span
+    class="sr-only"
+  >
+    Carregando...
+  </span>
+</div>
+`;
+
+exports[`Spinner Component Snapshots renders all color variants correctly 3`] = `
+<div
+  class="animate-spin rounded-full border-2 border-current border-t-transparent h-5 w-5 text-muted-foreground"
+>
+  <span
+    class="sr-only"
+  >
+    Carregando...
+  </span>
+</div>
+`;
+
+exports[`Spinner Component Snapshots renders all color variants correctly 4`] = `
+<div
+  class="animate-spin rounded-full border-2 border-current border-t-transparent h-5 w-5 text-destructive"
+>
+  <span
+    class="sr-only"
+  >
+    Carregando...
+  </span>
+</div>
+`;
+
+exports[`Spinner Component Snapshots renders all color variants correctly 5`] = `
+<div
+  class="animate-spin rounded-full border-2 border-current border-t-transparent h-5 w-5 text-white"
+>
+  <span
+    class="sr-only"
+  >
+    Carregando...
+  </span>
+</div>
+`;
+
+exports[`Spinner Component Snapshots renders all size variants correctly 1`] = `
+<div
+  class="animate-spin rounded-full border-2 border-current border-t-transparent h-5 w-5 text-primary"
+>
+  <span
+    class="sr-only"
+  >
+    Carregando...
+  </span>
+</div>
+`;
+
+exports[`Spinner Component Snapshots renders all size variants correctly 2`] = `
+<div
+  class="animate-spin rounded-full border-2 border-current border-t-transparent h-4 w-4 text-primary"
+>
+  <span
+    class="sr-only"
+  >
+    Carregando...
+  </span>
+</div>
+`;
+
+exports[`Spinner Component Snapshots renders all size variants correctly 3`] = `
+<div
+  class="animate-spin rounded-full border-2 border-current border-t-transparent h-8 w-8 text-primary"
+>
+  <span
+    class="sr-only"
+  >
+    Carregando...
+  </span>
+</div>
+`;
+
+exports[`Spinner Component Snapshots renders all size variants correctly 4`] = `
+<div
+  class="animate-spin rounded-full border-2 border-current border-t-transparent h-12 w-12 text-primary"
+>
+  <span
+    class="sr-only"
+  >
+    Carregando...
+  </span>
+</div>
+`;
+
+exports[`Spinner Component Snapshots renders default spinner correctly 1`] = `
+<div
+  class="animate-spin rounded-full border-2 border-current border-t-transparent h-5 w-5 text-primary"
+>
+  <span
+    class="sr-only"
+  >
+    Carregando...
+  </span>
+</div>
+`;

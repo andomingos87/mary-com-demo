@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skills Catalog — Mary AI Platform</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --burgundy: #771323;
+    --burgundy-light: #9A182E;
+    --burgundy-bg: #FDF2F4;
+    --burgundy-glow: rgba(119, 19, 35, 0.12);
+    --dark: #18181B;
+    --gray-900: #27272A;
+    --gray-700: #3F3F46;
+    --gray-600: #52525B;
+    --gray-500: #71717A;
+    --gray-400: #A1A1AA;
+    --gray-300: #D4D4D8;
+    --gray-200: #E4E4E7;
+    --gray-100: #F4F4F5;
+    --gray-50: #FAFAFA;
+    --white: #FFFFFF;
+    --radius: 8px;
+    --shadow-card: 0 2px 8px -2px rgba(24, 24, 27, 0.08);
+    --shadow-elegant: 0 8px 25px -8px rgba(24, 24, 27, 0.12);
+    --shadow-glow: 0 0 40px rgba(119, 19, 35, 0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: var(--dark);
+    background: var(--gray-50);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Cover ── */
+  .cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, var(--white) 0%, var(--burgundy-bg) 50%, var(--white) 100%);
+    position: relative;
+    overflow: hidden;
+    padding: 60px 24px;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, var(--burgundy), var(--burgundy-light));
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, var(--burgundy-light), var(--burgundy));
+  }
+  .cover-logo {
+    width: 180px;
+    margin-bottom: 48px;
+    filter: drop-shadow(0 4px 12px rgba(119, 19, 35, 0.15));
+  }
+  .cover h1 {
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--burgundy);
+    margin-bottom: 16px;
+    letter-spacing: -1px;
+    text-align: center;
+  }
+  .cover-subtitle {
+    font-size: 18px;
+    color: var(--gray-600);
+    text-align: center;
+    max-width: 520px;
+    line-height: 1.7;
+    margin-bottom: 40px;
+  }
+  .cover-stats {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 48px;
+  }
+  .stat {
+    text-align: center;
+  }
+  .stat-number {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--burgundy);
+    display: block;
+    line-height: 1.2;
+  }
+  .stat-label {
+    font-size: 13px;
+    color: var(--gray-500);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 500;
+  }
+  .cover-version {
+    font-size: 13px;
+    color: var(--gray-400);
+    letter-spacing: 0.5px;
+  }
+  .cover-scroll {
+    position: absolute;
+    bottom: 32px;
+    animation: bounce 2s infinite;
+    color: var(--gray-400);
+    font-size: 13px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+  }
+  .cover-scroll svg { width: 20px; height: 20px; }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+  }
+
+  /* ── Navigation / TOC ── */
+  .toc-section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 80px 24px 40px;
+  }
+  .section-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--burgundy);
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+  }
+  .section-divider {
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--burgundy), var(--burgundy-light));
+    border-radius: 2px;
+    margin-bottom: 32px;
+  }
+  .toc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 20px;
+  }
+  .toc-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: var(--shadow-card);
+    border: 1px solid var(--gray-200);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .toc-card:hover {
+    box-shadow: var(--shadow-elegant);
+    border-color: var(--burgundy);
+    transform: translateY(-2px);
+  }
+  .toc-card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--gray-100);
+  }
+  .toc-card-icon {
+    font-size: 22px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--burgundy-bg);
+    border-radius: var(--radius);
+    flex-shrink: 0;
+  }
+  .toc-card-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--dark);
+  }
+  .toc-card-count {
+    font-size: 11px;
+    color: var(--gray-500);
+    background: var(--gray-100);
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-left: auto;
+    font-weight: 500;
+  }
+  .toc-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .toc-links a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    color: var(--gray-700);
+    text-decoration: none;
+    font-size: 13.5px;
+    transition: all 0.2s;
+  }
+  .toc-links a:hover {
+    background: var(--burgundy-bg);
+    color: var(--burgundy);
+  }
+  .toc-links a::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    background: var(--gray-300);
+    border-radius: 50%;
+    flex-shrink: 0;
+    transition: background 0.2s;
+  }
+  .toc-links a:hover::before {
+    background: var(--burgundy);
+  }
+
+  /* ── Content ── */
+  .content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+  .category-section {
+    margin-top: 64px;
+  }
+  .category-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--burgundy);
+  }
+  .category-icon {
+    font-size: 28px;
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--burgundy-bg);
+    border-radius: var(--radius);
+  }
+  .category-name {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--burgundy);
+    letter-spacing: -0.3px;
+  }
+
+  /* ── Skill Card ── */
+  .skill-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 28px 32px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-card);
+    border: 1px solid var(--gray-200);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .skill-card:hover {
+    box-shadow: var(--shadow-elegant);
+    border-color: rgba(119, 19, 35, 0.25);
+  }
+  .skill-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .skill-name::before {
+    content: '';
+    width: 4px;
+    height: 20px;
+    background: linear-gradient(180deg, var(--burgundy), var(--burgundy-light));
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  .skill-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--burgundy);
+    margin-bottom: 6px;
+    margin-top: 16px;
+  }
+  .skill-desc {
+    font-size: 14px;
+    color: var(--gray-700);
+    line-height: 1.7;
+  }
+  .skill-usage {
+    font-size: 13.5px;
+    color: var(--gray-600);
+    line-height: 1.65;
+    padding: 10px 14px;
+    background: var(--gray-50);
+    border-radius: 6px;
+    border-left: 3px solid var(--gray-300);
+    margin-top: 6px;
+  }
+  .prompt-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 8px;
+  }
+  .prompt-item {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 13.5px;
+    color: var(--gray-600);
+    padding: 10px 14px;
+    background: var(--burgundy-bg);
+    border-radius: 6px;
+    line-height: 1.55;
+    font-style: italic;
+  }
+  .prompt-num {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--burgundy);
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--white);
+    border-radius: 50%;
+    font-size: 11px;
+    margin-top: 1px;
+    box-shadow: 0 1px 3px rgba(119, 19, 35, 0.15);
+  }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center;
+    padding: 48px 24px 64px;
+    background: linear-gradient(180deg, var(--gray-50), var(--burgundy-bg));
+    border-top: 1px solid var(--gray-200);
+  }
+  .footer-logo { width: 120px; margin-bottom: 16px; opacity: 0.8; }
+  .footer-title { font-size: 20px; font-weight: 700; color: var(--burgundy); margin-bottom: 4px; }
+  .footer-sub { font-size: 14px; color: var(--gray-500); margin-bottom: 20px; }
+  .footer-note { font-size: 12px; color: var(--gray-400); max-width: 460px; margin: 0 auto; line-height: 1.6; }
+
+  /* ── Back to top ── */
+  .back-top {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 44px;
+    height: 44px;
+    background: var(--burgundy);
+    color: var(--white);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-elegant);
+    transition: all 0.3s;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 100;
+    text-decoration: none;
+  }
+  .back-top.visible { opacity: 1; pointer-events: auto; }
+  .back-top:hover { background: var(--burgundy-light); transform: translateY(-2px); }
+  .back-top svg { width: 20px; height: 20px; }
+
+  /* ── Smooth scroll ── */
+  html { scroll-behavior: smooth; }
+
+  /* ── Print ── */
+  @media print {
+    .cover { min-height: auto; page-break-after: always; }
+    .toc-section { page-break-after: always; }
+    .category-section { page-break-before: always; }
+    .skill-card { break-inside: avoid; }
+    .back-top { display: none; }
+    .cover-scroll { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════ COVER ══════════ -->
+<section class="cover" id="top">
+  <img src="data:image/png;base64,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" alt="Mary" class="cover-logo">
+  <h1>Skills Catalog</h1>
+  <p class="cover-subtitle">
+    Catálogo completo de skills para context engineering<br>
+    Mary AI Platform — Assistente Inteligente para M&A
+  </p>
+  <div class="cover-stats">
+    <div class="stat">
+      <span class="stat-number">35</span>
+      <span class="stat-label">Skills</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number">7</span>
+      <span class="stat-label">Categorias</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number">105</span>
+      <span class="stat-label">Prompts</span>
+    </div>
+  </div>
+  <p class="cover-version">Versão 2.2 — Abril 2026</p>
+  <a href="#toc" class="cover-scroll">
+    <span>Explorar</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+  </a>
+</section>
+
+<!-- ══════════ TABLE OF CONTENTS ══════════ -->
+<section class="toc-section" id="toc">
+  <h2 class="section-title">Sumário</h2>
+  <div class="section-divider"></div>
+  <div class="toc-grid">
+
+    <div class="toc-card">
+      <div class="toc-card-header">
+        <div class="toc-card-icon">&#127963;</div>
+        <div class="toc-card-title">Governança & Arquitetura</div>
+        <span class="toc-card-count">4 skills</span>
+      </div>
+      <ul class="toc-links">
+        <li><a href="#agents-md-generator">agents-md-generator</a></li>
+        <li><a href="#mary-architecture-guardian">mary-architecture-guardian</a></li>
+        <li><a href="#create-module-specialist">create-module-specialist</a></li>
+        <li><a href="#skill-creator">skill-creator</a></li>
+      </ul>
+    </div>
+
+    <div class="toc-card">
+      <div class="toc-card-header">
+        <div class="toc-card-icon">&#128203;</div>
+        <div class="toc-card-title">Produto & Backlog</div>
+        <span class="toc-card-count">3 skills</span>
+      </div>
+      <ul class="toc-links">
+        <li><a href="#backlog-creator">backlog-creator</a></li>
+        <li><a href="#backlog-navigator">backlog-navigator</a></li>
+        <li><a href="#epic-client-validation">epic-client-validation</a></li>
+      </ul>
+    </div>
+
+    <div class="toc-card">
+      <div class="toc-card-header">
+        <div class="toc-card-icon">&#9989;</div>
+        <div class="toc-card-title">Qualidade & Validação</div>
+        <span class="toc-card-count">5 skills</span>
+      </div>
+      <ul class="toc-links">
+        <li><a href="#spec-validator">spec-validator</a></li>
+        <li><a href="#spec-tester">spec-tester</a></li>
+        <li><a href="#doc-app-gap-analysis">doc-app-gap-analysis</a></li>
+        <li><a href="#ux-ui-compliance-checklist">ux-ui-compliance-checklist</a></li>
+        <li><a href="#evidence-pack-generator">evidence-pack-generator</a></li>
+      </ul>
+    </div>
+
+    <div class="toc-card">
+      <div class="toc-card-header">
+        <div class="toc-card-icon">&#129513;</div>
+        <div class="toc-card-title">Módulos do Produto</div>
+        <span class="toc-card-count">8 skills</span>
+      </div>
+      <ul class="toc-links">
+        <li><a href="#auth">auth</a></li>
+        <li><a href="#onboarding">onboarding</a></li>
+        <li><a href="#radar">radar</a></li>
+        <li><a href="#dashboard-frontend">dashboard-frontend</a></li>
+        <li><a href="#projects">projects</a></li>
+        <li><a href="#thesis">thesis</a></li>
+        <li><a href="#mais-infos">mais-infos</a></li>
+        <li><a href="#collaboration">collaboration</a></li>
+      </ul>
+    </div>
+
+    <div class="toc-card">
+      <div class="toc-card-header">
+        <div class="toc-card-icon">&#9889;</div>
+        <div class="toc-card-title">Melhores Práticas</div>
+        <span class="toc-card-count">6 skills</span>
+      </div>
+      <ul class="toc-links">
+        <li><a href="#vercel-react-best-practices">vercel-react-best-practices</a></li>
+        <li><a href="#supabase-postgres-best-practices">supabase-postgres-best-practices</a></li>
+        <li><a href="#systematic-debugging">systematic-debugging</a></li>
+        <li><a href="#frontend-design">frontend-design</a></li>
+        <li><a href="#tailwind-design-system">tailwind-design-system</a></li>
+        <li><a href="#mary-design">mary-design</a></li>
+      </ul>
+    </div>
+
+    <div class="toc-card">
+      <div class="toc-card-header">
+        <div class="toc-card-icon">&#128295;</div>
+        <div class="toc-card-title">Planejamento de Refactoring</div>
+        <span class="toc-card-count">3 skills</span>
+      </div>
+      <ul class="toc-links">
+        <li><a href="#frontend-refactor-planner">frontend-refactor-planner</a></li>
+        <li><a href="#excalidraw-front-alignment">excalidraw-front-alignment</a></li>
+        <li><a href="#vercel-deploy">vercel-deploy</a></li>
+      </ul>
+    </div>
+
+    <div class="toc-card">
+      <div class="toc-card-header">
+        <div class="toc-card-icon">&#129521;</div>
+        <div class="toc-card-title">Skills Base (Foundation)</div>
+        <span class="toc-card-count">6 skills</span>
+      </div>
+      <ul class="toc-links">
+        <li><a href="#code-review">code-review</a></li>
+        <li><a href="#test-generation">test-generation</a></li>
+        <li><a href="#security-audit">security-audit</a></li>
+        <li><a href="#documentation">documentation</a></li>
+        <li><a href="#api-design">api-design</a></li>
+        <li><a href="#refactoring">refactoring</a></li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════ SKILLS CONTENT ══════════ -->
+<div class="content">
+
+  <!-- ── Governança & Arquitetura ── -->
+  <section class="category-section" id="cat-governanca">
+    <div class="category-header">
+      <div class="category-icon">&#127963;</div>
+      <h2 class="category-name">Governança & Arquitetura</h2>
+    </div>
+
+    <div class="skill-card" id="agents-md-generator">
+      <div class="skill-name">agents-md-generator</div>
+      <div class="skill-label">Descrição</div>
+      <p class="skill-desc">Gera estruturas hierárquicas AGENTS.md para codebases com indexação JIT (Just-In-Time). Garante que a documentação de agentes esteja sempre atualizada e sincronizada com a estrutura real do projeto.</p>
+      <div class="skill-label">Como usar</div>
+      <p class="skill-usage">Use quando precisar criar ou atualizar o arquivo AGENTS.md do projeto, reorganizar a hierarquia de agentes ou sincronizar a documentação com mudanças na estrutura de pastas.</p>
+      <div class="skill-label">Exemplos de prompt</div>
+      <ul class="prompt-list">
+        <li class="prompt-item"><span class="prompt-num">1</span>"Gere o AGENTS.md a partir da estrutura atual do projeto, incluindo todos os módulos e specialists"</li>
+        <li class="prompt-item"><span class="prompt-num">2</span>"Atualize o AGENTS.md para refletir os novos módulos que adicionamos na sprint"</li>
+        <li class="prompt-item"><span class="prompt-num">3</span>"Crie uma estrutura AGENTS.md com JIT index para o monorepo, agrupando por domínio"</li>
+      </ul>
+    </div>
+
+    <div class="skill-card" id="mary-architecture-guardian">
+      <div class="skill-name">mary-architecture-guardian</div>
+      <div class="skill-label">Descrição</div>
+      <p class="skill-desc">Audita e mantém a consistência entre as 5 camadas de context engineering do projeto: CLAUDE.md, AGENTS.md, .context/, .cursor/ e .agents/. Detecta conflitos, gaps e inconsistências.</p>
+      <div class="skill-label">Como usar</div>
+      <p class="skill-usage">Use sempre que fizer mudanças estruturais no projeto, antes de releases, ou periodicamente para garantir que toda a documentação de contexto está alinhada.</p>
+      <div class="skill-label">Exemplos de prompt</div>
+      <ul class="prompt-list">
+        <li class="prompt-item"><span class="prompt-num">1</span>"Faça uma auditoria completa das 5 camadas de context engineering e liste inconsistências"</li>
+        <li class="prompt-item"><span class="prompt-num">2</span>"Verifique se todos os módulos têm context.md, SKILL.md e specialist correspondentes"</li>
+        <li class="prompt-item"><span class="prompt-num">3</span>"Compare o AGENTS.md com a estrutura real de pastas e aponte divergências"</li>
+      </ul>
+    </div>
+
+    <div class="skill-card" id="create-module-specialist">
+      <div class="skill-name">create-module-specialist</div>
+      <div class="skill-label">Descrição</div>
+      <p class="skill-desc">Cria estruturas padronizadas de módulo com context, specialist e skill. Garante que novos módulos sigam o padrão arquitetural do projeto.</p>
+      <div class="skill-label">Como usar</div>
+      <p class="skill-usage">Use ao criar um novo módulo funcional no projeto, garantindo que todos os artefatos de documentação e contexto sejam gerados seguindo o padrão.</p>
+      <div class="skill-label">Exemplos de prompt</div>
+      <ul class="prompt-list">
+        <li class="prompt-item"><span class="prompt-num">1</span>"Crie a estrutura completa do módulo notifications com context, skill e specialist"</li>
+        <li class="prompt-item"><span class="prompt-num">2</span>"Scaffolde um novo módulo chamado billing seguindo o padrão Mary"</li>
+        <li class="prompt-item"><span class="prompt-num">3</span>"Gere os artefatos de context engineering para o módulo de relatórios"</li>
+      </ul>
+    </div>
+
+    <div class="skill-card" id="skill-creator">
+      <div class="skill-name">skill-creator</div>
+      <div class="skill-label">Descrição</div>
+      <p class="skill-desc">Cria novas skills, modifica existentes e mede performance com evals. Permite iterar e otimizar skills para que os agentes trabalhem com mais qualidade.</p>
+      <div class="skill-label">Como usar</div>
+      <p class="skill-usage">Use quando precisar criar uma skill totalmente nova, melhorar uma existente que não está performando bem, ou rodar benchmarks para validar a qualidade.</p>
+      <div class="skill-label">Exemplos de prompt</div>
+      <ul class="prompt-list">
+        <li class="prompt-item"><span class="prompt-num">1</span>"Crie uma skill para gerar relatórios de progresso semanal do projeto"</li>
+        <li class="prompt-item"><span class="prompt-num">2</span>"Melhore a skill de code-review para cobrir padrões específicos do Next.js 14"</li>
+        <li class="prompt-item"><span class="prompt-num">3</span>"Rode evals na skill de test-generation e sugira otimizações"</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── Produto & Backlog ── -->
+  <section class="category-section" id="cat-produto">
+    <div class="category-header">
+      <div class="category-icon">&#128203;</div>
+      <h2 class="category-name">Produto & Backlog</h2>
+    </div>
+
+    <div class="skill-card" id="backlog-creator">
+      <div class="skill-name">backlog-creator</div>
+      <div class="skill-label">Descrição</div>
+      <p class="skill-desc">Cria backlogs priorizados a partir de PRDs ou ideias, organizando em épicos, histórias e tarefas com critérios de aceitação e estimativas.</p>
+      <div class="skill-label">Como usar</div>
+      <p class="skill-usage">Use quando tiver um PRD, documento de requisitos ou lista de ideias e precisar transformar em um backlog estruturado e priorizado para a equipe.</p>
+      <div class="skill-label">Exemplos de prompt</div>
+      <ul class="prompt-list">
+        <li class="prompt-item"><span class="prompt-num">1</span>"Transforme este PRD do módulo Radar em um backlog com épicos, stories e tasks priorizados"</li>
+        <li class="prompt-item"><span class="prompt-num">2</span>"Crie um backlog para a feature de NDA digital baseado nos requisitos do Excalidraw"</li>
+        <li class="prompt-item"><span class="prompt-num">3</span>"Gere stories com critérios de aceitação para o épico de onboarding v2"</li>
+      </ul>
+    </div>
+
+    <div class="skill-card" id="backlog-navigator">
+      <div class="skill-name">backlog-navigator</div>
+      <div class="skill-label">Descrição</div>
+      <p class="skill-desc">Consulta status do backlog, valida estágios de execução e atualiza histórico de conclusão. Permite navegar pelo backlog como um dashboard interativo.</p>
+      <div class="skill-label">Como usar</div>
+      <p class="skill-usage">Use para consultar o progresso atual das entregas, verificar o que está bloqueado, ou atualizar o status de tarefas concluídas.</p>
+      <div class="skill-label">Exemplos de prompt</div>
+      <ul class="prompt-list">
+        <li class="prompt-item"><span class="prompt-num">1</span>"Qual o status atual do épico de autenticação? Liste o que falta entregar"</li>
+        <li class="prompt-item"><span class="prompt-num">2</span>"Mostre todas as tasks bloqueadas e sugira ações para desbloqueá-las"</li>
+        <li class="prompt-item"><span class="prompt-num">3</span>"Atualize o backlog marcando as tasks da sprint 12 como concluídas"</li>
+      </ul>
+    </div>
+
+    <div class="skill-card" id="epic-client-validation">
+      <div class="skill-name">epic-client-validation</div>
+      <div class="skill-label">Descrição</div>
+      <p class="skill-desc">Gera documentos de validação para clientes em linguagem não-técnica, com checklists UAT (User Acceptance Testing) claros e objetivos.</p>
+      <div class="skill-label">Como usar</div>
+      <p class="skill-usage">Use quando precisar apresentar funcionalidades para validação do cliente, gerando documentos que qualquer pessoa não-técnica consiga entender e aprovar.</p>
+      <div class="skill-label">Exemplos de prompt</div>
+      <ul class="prompt-list">
+        <li class="prompt-item"><span class="prompt-num">1</span>"Gere um documento de validação do módulo Dashboard para o cliente revisar"</li>
+        <li class="prompt-item"><span class="prompt-num">2</span>"Crie um checklist UAT do fluxo de onboarding em linguagem simples"</li>
+        <li class="prompt-item"><span class="prompt-num">3</span>"Prepare o documento de aceite do épico Radar para apresentar ao stakeholder"</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── Qualidade & Validação ── -->
+  <section class="category-section" id="cat-qualidade">
+    <div class="category-header">
+      <div class="category-icon">&#9989;</div>
+      <h2 class="category-name">Qualidade & Validação</h2>
+    </div>
+
+    <div class="skill-card" id="spec-validator">
+      <div class="skill-name">spec-validator</div>
+      <div class="skill-label">Descrição</div>
+      <p class="skill-desc">Gera checklists de validação padronizados para implementações baseadas em specs. Compara o que foi especificado com o que precisa ser verificado.</p>
+      <div class="skill-label">Como usar</div>
+      <p class="skill-usage">Use após implementar uma spec para gerar automaticamente um checklist de tudo que precisa ser testado e validado antes de considerar a entrega completa.</p>
+      <div class="skill-label">Exemplos de prompt</div>
+      <ul class="prompt-list">
+        <li class="prompt-item"><span class="prompt-num">1</span>"Gere um checklist de validação para a spec H0.3 do módulo de autenticação"</li>
+        <li class="prompt-item"><span class="prompt-num">2</span>"Crie validações automatizadas para todas as specs pendentes do módulo Radar"</li>
+        <li class="prompt-item"><span class="prompt-num">3</span>"Valide a implementação atual contra a spec do fluxo de MFA"</li>
+      </ul>
+    </div>
+
+    <div class="skill-card" id="spec-tester">
+      <div class="skill-name">spec-tester</div>
+      <div class="skill-label">Descrição</div>
+      <p class="skill-desc">Executa checklists de validação automatizados usando ferramentas de automação. Testa a implementação real contra os critérios da spec.</p>
+      <div class="skill-label">Como usar</div>
+      <p class="skill-usage">Use após gerar o checklist com spec-validator para executar os testes automaticamente e obter um relatório de conformidade.</p>
+      <div class="skill-label">Exemplos de prompt</div>
+      <ul class="prompt-list">
+        <li class="prompt-item"><span class="prompt-num">1</span>"Execute o checklist de validação do módulo Dashboard e gere relatório"</li>
+        <li class="prompt-item"><span class="prompt-num">2</span>"Teste automaticamente todos os critérios da spec de onboarding"</li>
+        <li class="prompt-item"><span class="prompt-num">3</span>"Rode os testes de conformidade do fluxo de login e MFA"</li>
+      </ul>
+    </div>
+
+    <div class="skill-card" id="doc-app-gap-analysis">
+      <div class="skill-name">doc-app-gap-analysis</div>
+      <div class="skill-label">Descrição</div>
+      <p class="skill-desc">Compara documentação Excalidraw (fonte de verdade) com a implementação real, gerando uma matriz de gaps campo a campo.</p>
+      <div class="skill-label">Como usar</div>
+      <p class="skill-usage">Use quando precisar identificar divergências entre o que foi documentado/aprovado pelo cliente e o que está implementado no código.</p>
+      <div class="skill-label">Exemplos de prompt</div>
+      <ul class="prompt-list">
+        <li class="prompt-item"><span class="prompt-num">1</span>"Compare o Excalidraw do módulo Radar com a implementação atual e liste os gaps"</li>
+        <li class="prompt-item"><span class="prompt-num">2</span>"Gere a matriz de gaps completa entre documentação e código do módulo Projects"</li>
+        <li class="prompt-item"><span class="prompt-num">3</span>"Identifique campos faltantes na implementação comparando com o Excalidraw de Settings"</li>
+      </ul>
+    </div>
+
+    <div class="skill-card" id="ux-ui-compliance-checklist">
+      <div class="skill-name">ux-ui-compliance-checklist</div>
+      <div class="skill-label">Descrição</div>
+      <p class="skill-desc">Executa verificação de conformidade UX/UI baseada nas regras globais do Excalidraw. Garante que a interface segue os padrões visuais aprovados.</p>
+      <div class="skill-label">Como usar</div>
+      <p class="skill-usage">Use antes de entregar qualquer tela nova ou refatorada para garantir que está em conformidade com o design system e as regras globais.</p>
+      <div class="skill-label">Exemplos de prompt</div>
+      <ul class="prompt-list">
+        <li class="prompt-item"><span class="prompt-num">1</span>"Verifique a conformidade UX/UI da tela de Dashboard contra as regras globais"</li>
+        <li class="prompt-item"><span class="prompt-num">2</span>"Execute o checklist de compliance visual do fluxo de onboarding"</li>
+        <li class="prompt-item"><span class="prompt-num">3</span>"Audite todas as telas do módulo Radar para conformidade com o design system"</li>
+      </ul>
+    </div>
+
+    <div class="skill-card" id="evidence-pack-generator">
+      <div class="skill-name">evidence-pack-generator</div>
+      <div class="skill-label">Descrição</div>
+      <p class="skill-desc">Gera pacotes de evidências auditáveis para revisão e aprovação, com rastreabilidade completa de cada item validado.</p>
+      <div class="skill-label">Como usar</div>
+      <p class="skill-usage">Use quando precisar documentar formalmente que uma entrega foi validada, gerando evidências que podem ser auditadas posteriormente.</p>
+      <div class="skill-label">Exemplos de prompt</div>
+      <ul class="prompt-list">
+        <li class="prompt-item"><span class="prompt-num">1</span>"Gere um pacote de evidências da entrega do épico de autenticação"</li>
+        <li class="prompt-item"><span class="prompt-num">2</span>"Crie evidências auditáveis para a validação do módulo de NDA"</li>
+        <li class="prompt-item"><span class="prompt-num">3</span>"Monte o evidence pack completo da sprint 12 para revisão do cliente"</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── Módulos do Produto ── -->
+  <section class="category-section" id="cat-modulos">
+    <div class="category-header">
+      <div class="category-icon">&#129513;</div>
+      <h2 class="category-name">Módulos do Produto</h2>
+    </div>
+
+    <div class="skill-card" id="auth"><div class="skill-name">auth</div><div class="skill-label">Descrição</div><p class="skill-desc">Módulo de autenticação — login, MFA, OTP, rate-limiting, gerenciamento de sessão. Cobre todo o fluxo de segurança de acesso à plataforma.</p><div class="skill-label">Como usar</div><p class="skill-usage">Use ao trabalhar em qualquer funcionalidade relacionada a login, registro, verificação MFA, tokens de sessão ou políticas de rate-limiting.</p><div class="skill-label">Exemplos de prompt</div><ul class="prompt-list"><li class="prompt-item"><span class="prompt-num">1</span>"Implemente o fluxo de MFA com fallback para SMS usando a Z-API"</li><li class="prompt-item"><span class="prompt-num">2</span>"Revise as políticas de rate-limiting do login e sugira melhorias"</li><li class="prompt-item"><span class="prompt-num">3</span>"Corrija o bug de sessão expirada que não redireciona para o login"</li></ul></div>
+
+    <div class="skill-card" id="onboarding"><div class="skill-name">onboarding</div><div class="skill-label">Descrição</div><p class="skill-desc">Fluxo de onboarding — steps, gates de elegibilidade, CNPJ, termos de uso, configuração MFA. Controla a jornada de entrada do usuário na plataforma.</p><div class="skill-label">Como usar</div><p class="skill-usage">Use ao trabalhar no fluxo de primeiro acesso, cadastro de empresa, validação de CNPJ ou qualquer step do wizard de onboarding.</p><div class="skill-label">Exemplos de prompt</div><ul class="prompt-list"><li class="prompt-item"><span class="prompt-num">1</span>"Implemente o step de validação de CNPJ no fluxo de onboarding"</li><li class="prompt-item"><span class="prompt-num">2</span>"Adicione gate de elegibilidade antes do step de configuração MFA"</li><li class="prompt-item"><span class="prompt-num">3</span>"Corrija a inconsistência de estado entre steps do wizard de onboarding"</li></ul></div>
+
+    <div class="skill-card" id="radar"><div class="skill-name">radar</div><div class="skill-label">Descrição</div><p class="skill-desc">Discovery e matching de oportunidades — filtros, quick actions, score de aderência, teaser pré-NDA, solicitação de NDA e follow.</p><div class="skill-label">Como usar</div><p class="skill-usage">Use ao trabalhar no motor de descoberta de oportunidades, sistema de matching, filtros de busca ou qualquer sub-módulo do Radar.</p><div class="skill-label">Exemplos de prompt</div><ul class="prompt-list"><li class="prompt-item"><span class="prompt-num">1</span>"Implemente o sistema de score de aderência com explicabilidade do match"</li><li class="prompt-item"><span class="prompt-num">2</span>"Crie os filtros avançados do Radar com persistência de estado"</li><li class="prompt-item"><span class="prompt-num">3</span>"Desenvolva o componente de teaser pré-NDA com limites de exposição de dados"</li></ul></div>
+
+    <div class="skill-card" id="dashboard-frontend"><div class="skill-name">dashboard-frontend</div><div class="skill-label">Descrição</div><p class="skill-desc">Componentes do Dashboard — rotas por perfil, modo read-only, navegação consistente. Tela principal após login com visão consolidada.</p><div class="skill-label">Como usar</div><p class="skill-usage">Use ao trabalhar na tela principal do dashboard, componentes de visualização, ou na lógica de rotas baseadas em perfil do usuário.</p><div class="skill-label">Exemplos de prompt</div><ul class="prompt-list"><li class="prompt-item"><span class="prompt-num">1</span>"Implemente o dashboard com cards de resumo baseados no perfil do usuário"</li><li class="prompt-item"><span class="prompt-num">2</span>"Adicione modo read-only para perfil observador no dashboard"</li><li class="prompt-item"><span class="prompt-num">3</span>"Crie a navegação lateral do dashboard seguindo o design system Mary"</li></ul></div>
+
+    <div class="skill-card" id="projects"><div class="skill-name">projects</div><div class="skill-label">Descrição</div><p class="skill-desc">CRUD de projetos — status, visibilidade, membros, convites, readiness check. Gerencia os projetos de M&A dentro da plataforma.</p><div class="skill-label">Como usar</div><p class="skill-usage">Use ao trabalhar em criação/edição de projetos, gerenciamento de membros, controle de status ou verificações de readiness.</p><div class="skill-label">Exemplos de prompt</div><ul class="prompt-list"><li class="prompt-item"><span class="prompt-num">1</span>"Implemente o readiness check que valida se o projeto está pronto para publicação"</li><li class="prompt-item"><span class="prompt-num">2</span>"Crie o fluxo de convite de membros com roles e permissões"</li><li class="prompt-item"><span class="prompt-num">3</span>"Desenvolva o componente de timeline de status do projeto"</li></ul></div>
+
+    <div class="skill-card" id="thesis"><div class="skill-name">thesis</div><div class="skill-label">Descrição</div><p class="skill-desc">Módulo de tese de investimento — perfil de acesso, tese ativa, integração com discovery. Define critérios de busca do investidor.</p><div class="skill-label">Como usar</div><p class="skill-usage">Use ao trabalhar na configuração de teses de investimento, critérios de matching ou integração da tese com o motor de discovery.</p><div class="skill-label">Exemplos de prompt</div><ul class="prompt-list"><li class="prompt-item"><span class="prompt-num">1</span>"Implemente o formulário de criação de tese com critérios de setor e faturamento"</li><li class="prompt-item"><span class="prompt-num">2</span>"Integre a tese ativa do investidor com o score de aderência do Radar"</li><li class="prompt-item"><span class="prompt-num">3</span>"Crie a visualização de teses com filtros e comparação lado a lado"</li></ul></div>
+
+    <div class="skill-card" id="mais-infos"><div class="skill-name">mais-infos</div><div class="skill-label">Descrição</div><p class="skill-desc">Data room complementar — documentos extras, compartilhamento granular, Q&A assíncrono. Área de due diligence leve pré-NDA.</p><div class="skill-label">Como usar</div><p class="skill-usage">Use ao trabalhar no sistema de documentos complementares, controles de compartilhamento ou no módulo de perguntas e respostas.</p><div class="skill-label">Exemplos de prompt</div><ul class="prompt-list"><li class="prompt-item"><span class="prompt-num">1</span>"Implemente o upload de documentos com controle granular de compartilhamento"</li><li class="prompt-item"><span class="prompt-num">2</span>"Crie o sistema de Q&A assíncrono com notificações"</li><li class="prompt-item"><span class="prompt-num">3</span>"Desenvolva a visualização de documentos com permissões por papel"</li></ul></div>
+
+    <div class="skill-card" id="collaboration"><div class="skill-name">collaboration</div><div class="skill-label">Descrição</div><p class="skill-desc">Convites de organização/projeto, roles, expiração e notificações. Gerencia como os usuários colaboram dentro da plataforma.</p><div class="skill-label">Como usar</div><p class="skill-usage">Use ao trabalhar em convites, gerenciamento de papéis, expiração de acessos ou sistema de notificações de colaboração.</p><div class="skill-label">Exemplos de prompt</div><ul class="prompt-list"><li class="prompt-item"><span class="prompt-num">1</span>"Implemente convites por email com expiração automática após 7 dias"</li><li class="prompt-item"><span class="prompt-num">2</span>"Crie o sistema de roles com herança de permissões"</li><li class="prompt-item"><span class="prompt-num">3</span>"Desenvolva notificações em tempo real para aceite/recusa de convites"</li></ul></div>
+  </section>
+
+  <!-- ── Melhores Práticas ── -->
+  <section class="category-section" id="cat-praticas">
+    <div class="category-header">
+      <div class="category-icon">&#9889;</div>
+      <h2 class="category-name">Melhores Práticas de Plataforma</h2>
+    </div>
+
+    <div class="skill-card" id="vercel-react-best-practices"><div class="skill-name">vercel-react-best-practices</div><div class="skill-label">Descrição</div><p class="skill-desc">64 regras de otimização React/Next.js organizadas em 8 categorias: waterfalls, bundle size, server-side, client-side, re-renders, rendering, JS e avançado.</p><div class="skill-label">Como usar</div><p class="skill-usage">Use ao revisar performance do frontend, otimizar bundle size, resolver problemas de re-render ou implementar server components.</p><div class="skill-label">Exemplos de prompt</div><ul class="prompt-list"><li class="prompt-item"><span class="prompt-num">1</span>"Analise o bundle size do projeto e sugira otimizações de code splitting"</li><li class="prompt-item"><span class="prompt-num">2</span>"Revise os componentes do Dashboard para eliminar re-renders desnecessários"</li><li class="prompt-item"><span class="prompt-num">3</span>"Converta componentes client para server components onde possível"</li></ul></div>
+
+    <div class="skill-card" id="supabase-postgres-best-practices"><div class="skill-name">supabase-postgres-best-practices</div><div class="skill-label">Descrição</div><p class="skill-desc">Otimização de Postgres em 8 categorias: query, conexões, segurança, schema, concorrência, acesso a dados, monitoramento e avançado.</p><div class="skill-label">Como usar</div><p class="skill-usage">Use ao otimizar queries, configurar RLS policies, revisar schema de banco ou resolver problemas de performance no Supabase.</p><div class="skill-label">Exemplos de prompt</div><ul class="prompt-list"><li class="prompt-item"><span class="prompt-num">1</span>"Otimize as queries do módulo Radar que estão lentas com muitos joins"</li><li class="prompt-item"><span class="prompt-num">2</span>"Revise todas as RLS policies e garanta que seguem o princípio do menor privilégio"</li><li class="prompt-item"><span class="prompt-num">3</span>"Crie índices otimizados para as queries mais frequentes do dashboard"</li></ul></div>
+
+    <div class="skill-card" id="systematic-debugging"><div class="skill-name">systematic-debugging</div><div class="skill-label">Descrição</div><p class="skill-desc">Metodologia de debugging em 4 fases: investigação de causa raiz, análise de padrões, teste de hipóteses e implementação da correção.</p><div class="skill-label">Como usar</div><p class="skill-usage">Use ao enfrentar bugs complexos que não têm causa óbvia, problemas intermitentes ou bugs que afetam múltiplos módulos.</p><div class="skill-label">Exemplos de prompt</div><ul class="prompt-list"><li class="prompt-item"><span class="prompt-num">1</span>"Investigue o bug de sessão que ocorre intermitentemente após deploy"</li><li class="prompt-item"><span class="prompt-num">2</span>"Use a metodologia de 4 fases para debugar o erro de hydration no Dashboard"</li><li class="prompt-item"><span class="prompt-num">3</span>"Analise o padrão dos erros 500 que aparecem só em produção"</li></ul></div>
+
+    <div class="skill-card" id="frontend-design"><div class="skill-name">frontend-design</div><div class="skill-label">Descrição</div><p class="skill-desc">Criação de interfaces production-grade distintas, evitando estética genérica de AI. Foco em UX profissional e design diferenciado.</p><div class="skill-label">Como usar</div><p class="skill-usage">Use ao criar novas interfaces que precisam ter visual premium e profissional, alinhado com a identidade visual da Mary.</p><div class="skill-label">Exemplos de prompt</div><ul class="prompt-list"><li class="prompt-item"><span class="prompt-num">1</span>"Crie a interface da página de landing do Radar com visual premium Mary"</li><li class="prompt-item"><span class="prompt-num">2</span>"Redesenhe o componente de card de projeto para parecer mais profissional"</li><li class="prompt-item"><span class="prompt-num">3</span>"Desenvolva a tela de empty state do dashboard com visual elegante"</li></ul></div>
+
+    <div class="skill-card" id="tailwind-design-system"><div class="skill-name">tailwind-design-system</div><div class="skill-label">Descrição</div><p class="skill-desc">Construção de design systems escaláveis com Tailwind CSS v4, design tokens e padrões responsivos. Base para consistência visual.</p><div class="skill-label">Como usar</div><p class="skill-usage">Use ao criar ou estender componentes do design system, adicionar novos tokens ou garantir consistência visual entre telas.</p><div class="skill-label">Exemplos de prompt</div><ul class="prompt-list"><li class="prompt-item"><span class="prompt-num">1</span>"Estenda o design system com componentes de data table e pagination"</li><li class="prompt-item"><span class="prompt-num">2</span>"Crie tokens responsivos para o layout mobile do dashboard"</li><li class="prompt-item"><span class="prompt-num">3</span>"Audite o uso de classes Tailwind e substitua hardcodes por tokens semânticos"</li></ul></div>
+
+    <div class="skill-card" id="mary-design"><div class="skill-name">mary-design</div><div class="skill-label">Descrição</div><p class="skill-desc">Design system Mary — burgundy #771323, tokens de cor, tipografia DM Sans, animações. Fonte de verdade para identidade visual.</p><div class="skill-label">Como usar</div><p class="skill-usage">Use sempre que precisar consultar cores, tipografia, sombras, transições ou qualquer elemento visual da identidade Mary.</p><div class="skill-label">Exemplos de prompt</div><ul class="prompt-list"><li class="prompt-item"><span class="prompt-num">1</span>"Quais são os tokens corretos para o card de destaque com glow burgundy?"</li><li class="prompt-item"><span class="prompt-num">2</span>"Crie um componente seguindo exatamente os padrões do design system Mary"</li><li class="prompt-item"><span class="prompt-num">3</span>"Revise esta tela e aponte onde não está usando os tokens Mary corretamente"</li></ul></div>
+  </section>
+
+  <!-- ── Planejamento de Refactoring ── -->
+  <section class="category-section" id="cat-refactoring">
+    <div class="category-header">
+      <div class="category-icon">&#128295;</div>
+      <h2 class="category-name">Planejamento de Refactoring</h2>
+    </div>
+
+    <div class="skill-card" id="frontend-refactor-planner"><div class="skill-name">frontend-refactor-planner</div><div class="skill-label">Descrição</div><p class="skill-desc">Transforma gaps documentados em waves de refactoring priorizadas. Organiza o trabalho de correção em ondas incrementais e seguras.</p><div class="skill-label">Como usar</div><p class="skill-usage">Use após um gap analysis para planejar como abordar as correções de forma organizada, em waves que minimizam risco.</p><div class="skill-label">Exemplos de prompt</div><ul class="prompt-list"><li class="prompt-item"><span class="prompt-num">1</span>"Transforme os gaps do módulo Radar em waves de refactoring priorizadas"</li><li class="prompt-item"><span class="prompt-num">2</span>"Planeje 3 waves de correção para os gaps de UI encontrados no Dashboard"</li><li class="prompt-item"><span class="prompt-num">3</span>"Crie um plano de refactoring incremental para alinhar o módulo Projects com o Excalidraw"</li></ul></div>
+
+    <div class="skill-card" id="excalidraw-front-alignment"><div class="skill-name">excalidraw-front-alignment</div><div class="skill-label">Descrição</div><p class="skill-desc">Orquestra o alinhamento do frontend com documentos Excalidraw — gaps, refactoring, UX/UI. Skill de orquestração que coordena as demais.</p><div class="skill-label">Como usar</div><p class="skill-usage">Use como ponto de entrada quando precisar realizar o ciclo completo de alinhamento: análise de gap, planejamento de refactoring e execução.</p><div class="skill-label">Exemplos de prompt</div><ul class="prompt-list"><li class="prompt-item"><span class="prompt-num">1</span>"Execute o ciclo completo de alinhamento do módulo Dashboard com o Excalidraw"</li><li class="prompt-item"><span class="prompt-num">2</span>"Orquestre o realinhamento frontend do módulo Radar em todas as fases"</li><li class="prompt-item"><span class="prompt-num">3</span>"Inicie o processo de alignment do módulo Settings seguindo o fluxo completo"</li></ul></div>
+
+    <div class="skill-card" id="vercel-deploy"><div class="skill-name">vercel-deploy</div><div class="skill-label">Descrição</div><p class="skill-desc">Guia de deploy com checklist e troubleshooting para Vercel. Garante que deploys sejam consistentes e problemas sejam resolvidos rapidamente.</p><div class="skill-label">Como usar</div><p class="skill-usage">Use antes de fazer deploy para seguir o checklist completo, ou quando enfrentar problemas de build/deploy na Vercel.</p><div class="skill-label">Exemplos de prompt</div><ul class="prompt-list"><li class="prompt-item"><span class="prompt-num">1</span>"Execute o checklist de pre-deploy antes de publicar a sprint 12"</li><li class="prompt-item"><span class="prompt-num">2</span>"O build está falhando na Vercel com erro de type — diagnostique e corrija"</li><li class="prompt-item"><span class="prompt-num">3</span>"Configure o deploy preview para a branch feature/radar-v2"</li></ul></div>
+  </section>
+
+  <!-- ── Skills Base ── -->
+  <section class="category-section" id="cat-base">
+    <div class="category-header">
+      <div class="category-icon">&#129521;</div>
+      <h2 class="category-name">Skills Base (Foundation)</h2>
+    </div>
+
+    <div class="skill-card" id="code-review"><div class="skill-name">code-review</div><div class="skill-label">Descrição</div><p class="skill-desc">Review de qualidade de código, padrões e melhores práticas. Analisa PRs e mudanças antes de merge com foco em segurança, performance e legibilidade.</p><div class="skill-label">Como usar</div><p class="skill-usage">Use antes de merge de PRs ou ao revisar código de outros desenvolvedores para garantir qualidade e consistência.</p><div class="skill-label">Exemplos de prompt</div><ul class="prompt-list"><li class="prompt-item"><span class="prompt-num">1</span>"Revise este PR do módulo auth focando em segurança e edge cases"</li><li class="prompt-item"><span class="prompt-num">2</span>"Faça code review do componente RadarCard verificando performance e acessibilidade"</li><li class="prompt-item"><span class="prompt-num">3</span>"Analise as mudanças da migration e verifique se as RLS policies estão corretas"</li></ul></div>
+
+    <div class="skill-card" id="test-generation"><div class="skill-name">test-generation</div><div class="skill-label">Descrição</div><p class="skill-desc">Gera casos de teste abrangentes para código. Cobre unit tests, integration tests e edge cases baseados na implementação.</p><div class="skill-label">Como usar</div><p class="skill-usage">Use após implementar funcionalidades para gerar automaticamente testes que cobrem os cenários mais importantes.</p><div class="skill-label">Exemplos de prompt</div><ul class="prompt-list"><li class="prompt-item"><span class="prompt-num">1</span>"Gere testes unitários para o hook useAuth cobrindo todos os edge cases"</li><li class="prompt-item"><span class="prompt-num">2</span>"Crie testes de integração para o fluxo completo de onboarding"</li><li class="prompt-item"><span class="prompt-num">3</span>"Gere testes E2E para o fluxo de login → MFA → dashboard"</li></ul></div>
+
+    <div class="skill-card" id="security-audit"><div class="skill-name">security-audit</div><div class="skill-label">Descrição</div><p class="skill-desc">Checklist de revisão de segurança para código e infraestrutura. Verifica vulnerabilidades, configurações e práticas de segurança.</p><div class="skill-label">Como usar</div><p class="skill-usage">Use periodicamente ou antes de releases para verificar se o código e a infraestrutura seguem as melhores práticas de segurança.</p><div class="skill-label">Exemplos de prompt</div><ul class="prompt-list"><li class="prompt-item"><span class="prompt-num">1</span>"Execute uma auditoria de segurança completa do módulo de autenticação"</li><li class="prompt-item"><span class="prompt-num">2</span>"Verifique se há vulnerabilidades de XSS ou CSRF nos formulários do projeto"</li><li class="prompt-item"><span class="prompt-num">3</span>"Audite as variáveis de ambiente e secrets para garantir que nada está exposto"</li></ul></div>
+
+    <div class="skill-card" id="documentation"><div class="skill-name">documentation</div><div class="skill-label">Descrição</div><p class="skill-desc">Gera e atualiza documentação técnica. Mantém READMEs, docs de API, guias de contribuição e documentação de arquitetura.</p><div class="skill-label">Como usar</div><p class="skill-usage">Use ao criar documentação para novas features, atualizar docs existentes ou gerar documentação de API automaticamente.</p><div class="skill-label">Exemplos de prompt</div><ul class="prompt-list"><li class="prompt-item"><span class="prompt-num">1</span>"Gere documentação técnica do módulo Radar com exemplos de uso da API"</li><li class="prompt-item"><span class="prompt-num">2</span>"Atualize o README do projeto com as novas features da sprint 12"</li><li class="prompt-item"><span class="prompt-num">3</span>"Crie um guia de contribuição para novos desenvolvedores do projeto"</li></ul></div>
+
+    <div class="skill-card" id="api-design"><div class="skill-name">api-design</div><div class="skill-label">Descrição</div><p class="skill-desc">Design de APIs RESTful seguindo melhores práticas. Define endpoints, payloads, validações e padrões de resposta.</p><div class="skill-label">Como usar</div><p class="skill-usage">Use ao projetar novos endpoints, revisar APIs existentes ou padronizar o design de API do projeto.</p><div class="skill-label">Exemplos de prompt</div><ul class="prompt-list"><li class="prompt-item"><span class="prompt-num">1</span>"Projete a API REST do módulo de convites com todos os endpoints necessários"</li><li class="prompt-item"><span class="prompt-num">2</span>"Revise os endpoints do módulo Projects e sugira melhorias de design"</li><li class="prompt-item"><span class="prompt-num">3</span>"Padronize os responses de erro de todas as APIs seguindo RFC 7807"</li></ul></div>
+
+    <div class="skill-card" id="refactoring"><div class="skill-name">refactoring</div><div class="skill-label">Descrição</div><p class="skill-desc">Refactoring seguro de código com abordagem step-by-step. Garante que mudanças estruturais não quebrem funcionalidades existentes.</p><div class="skill-label">Como usar</div><p class="skill-usage">Use quando precisar reestruturar código existente de forma segura, mantendo o comportamento enquanto melhora a qualidade.</p><div class="skill-label">Exemplos de prompt</div><ul class="prompt-list"><li class="prompt-item"><span class="prompt-num">1</span>"Refatore o componente RadarPage extraindo sub-componentes reutilizáveis"</li><li class="prompt-item"><span class="prompt-num">2</span>"Reestruture os hooks de autenticação para usar o pattern de composição"</li><li class="prompt-item"><span class="prompt-num">3</span>"Migre os server actions do módulo Projects para o novo padrão com validação Zod"</li></ul></div>
+  </section>
+
+</div>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="footer">
+  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAjkAAACiCAYAAACj1dzEAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8" alt="Mary" class="footer-logo">
+  <div class="footer-title">Mary AI Platform</div>
+  <div class="footer-sub">Sua assistente inteligente para M&A</div>
+  <p class="footer-note">Este catálogo é gerado a partir das skills configuradas no projeto. Mantenha as skills atualizadas para que este documento reflita o estado real da plataforma.</p>
+</footer>
+
+<!-- ══════════ BACK TO TOP ══════════ -->
+<a href="#top" class="back-top" id="backTop">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+</a>
+
+<script>
+  // Back to top visibility
+  const btn = document.getElementById('backTop');
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('visible', window.scrollY > 400);
+  });
+</script>
+
+</body>
+</html>

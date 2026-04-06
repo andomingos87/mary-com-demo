@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mary M&A — Design Tokens</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">M</span>
+                    <div class="logo-text">
+                        <h1>Mary M&A</h1>
+                        <span class="subtitle">Design Tokens</span>
+                    </div>
+                </div>
+                <div class="header-meta">
+                    <span class="last-update">Última atualização: Janeiro 2026</span>
+                </div>
+            </div>
+        </header>
+
+        <nav class="doc-nav">
+            <a href="index.html">Design</a>
+            <a href="telas.html">Documentação de Telas</a>
+            <a href="design-tokens.html">Design Tokens</a>
+        </nav>
+
+        <section class="doc-section">
+            <h2>Fontes dos tokens</h2>
+            <p>Tokens base definidos em <code>src/app/globals.css</code>. Mapeamento para Tailwind em <code>tailwind.config.ts</code>. A paleta usa HSL para suportar modo claro e escuro.</p>
+        </section>
+
+        <section class="doc-section">
+            <h2>Tokens de cor (light)</h2>
+            <table class="doc-table">
+                <thead>
+                    <tr>
+                        <th>Token</th>
+                        <th>HSL</th>
+                        <th>Hex</th>
+                        <th>Preview</th>
+                        <th>Copiar</th>
+                        <th>Uso</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>--background</code></td>
+                        <td><code>0 0% 100%</code></td>
+                        <td><code>#FFFFFF</code></td>
+                        <td><div class="color-swatch" style="background-color: #FFFFFF;"></div></td>
+                        <td><button class="copy-btn" data-copy="#FFFFFF">Copiar</button></td>
+                        <td>Fundo padrão</td>
+                    </tr>
+                    <tr>
+                        <td><code>--foreground</code></td>
+                        <td><code>240 7% 10%</code></td>
+                        <td><code>#18181B</code></td>
+                        <td><div class="color-swatch" style="background-color: #18181B;"></div></td>
+                        <td><button class="copy-btn" data-copy="#18181B">Copiar</button></td>
+                        <td>Texto padrão</td>
+                    </tr>
+                    <tr>
+                        <td><code>--card</code></td>
+                        <td><code>240 5% 96%</code></td>
+                        <td><code>#F4F4F5</code></td>
+                        <td><div class="color-swatch" style="background-color: #F4F4F5;"></div></td>
+                        <td><button class="copy-btn" data-copy="#F4F4F5">Copiar</button></td>
+                        <td>Fundo de cards</td>
+                    </tr>
+                    <tr>
+                        <td><code>--card-foreground</code></td>
+                        <td><code>240 7% 10%</code></td>
+                        <td><code>#18181B</code></td>
+                        <td><div class="color-swatch" style="background-color: #18181B;"></div></td>
+                        <td><button class="copy-btn" data-copy="#18181B">Copiar</button></td>
+                        <td>Texto em cards</td>
+                    </tr>
+                    <tr>
+                        <td><code>--popover</code></td>
+                        <td><code>240 5% 96%</code></td>
+                        <td><code>#F4F4F5</code></td>
+                        <td><div class="color-swatch" style="background-color: #F4F4F5;"></div></td>
+                        <td><button class="copy-btn" data-copy="#F4F4F5">Copiar</button></td>
+                        <td>Fundo de popovers</td>
+                    </tr>
+                    <tr>
+                        <td><code>--popover-foreground</code></td>
+                        <td><code>240 7% 10%</code></td>
+                        <td><code>#18181B</code></td>
+                        <td><div class="color-swatch" style="background-color: #18181B;"></div></td>
+                        <td><button class="copy-btn" data-copy="#18181B">Copiar</button></td>
+                        <td>Texto em popovers</td>
+                    </tr>
+                    <tr>
+                        <td><code>--primary</code></td>
+                        <td><code>350 73% 27%</code></td>
+                        <td><code>#771323</code></td>
+                        <td><div class="color-swatch" style="background-color: #771323;"></div></td>
+                        <td><button class="copy-btn" data-copy="#771323">Copiar</button></td>
+                        <td>Marca (burgundy)</td>
+                    </tr>
+                    <tr>
+                        <td><code>--primary-foreground</code></td>
+                        <td><code>0 0% 100%</code></td>
+                        <td><code>#FFFFFF</code></td>
+                        <td><div class="color-swatch" style="background-color: #FFFFFF;"></div></td>
+                        <td><button class="copy-btn" data-copy="#FFFFFF">Copiar</button></td>
+                        <td>Texto sobre primary</td>
+                    </tr>
+                    <tr>
+                        <td><code>--secondary</code></td>
+                        <td><code>240 5% 96%</code></td>
+                        <td><code>#F4F4F5</code></td>
+                        <td><div class="color-swatch" style="background-color: #F4F4F5;"></div></td>
+                        <td><button class="copy-btn" data-copy="#F4F4F5">Copiar</button></td>
+                        <td>Superfícies secundárias</td>
+                    </tr>
+                    <tr>
+                        <td><code>--secondary-foreground</code></td>
+                        <td><code>240 7% 10%</code></td>
+                        <td><code>#18181B</code></td>
+                        <td><div class="color-swatch" style="background-color: #18181B;"></div></td>
+                        <td><button class="copy-btn" data-copy="#18181B">Copiar</button></td>
+                        <td>Texto sobre secondary</td>
+                    </tr>
+                    <tr>
+                        <td><code>--muted</code></td>
+                        <td><code>240 5% 96%</code></td>
+                        <td><code>#F4F4F5</code></td>
+                        <td><div class="color-swatch" style="background-color: #F4F4F5;"></div></td>
+                        <td><button class="copy-btn" data-copy="#F4F4F5">Copiar</button></td>
+                        <td>Neutro discreto</td>
+                    </tr>
+                    <tr>
+                        <td><code>--muted-foreground</code></td>
+                        <td><code>240 7% 10%</code></td>
+                        <td><code>#18181B</code></td>
+                        <td><div class="color-swatch" style="background-color: #18181B;"></div></td>
+                        <td><button class="copy-btn" data-copy="#18181B">Copiar</button></td>
+                        <td>Texto discreto</td>
+                    </tr>
+                    <tr>
+                        <td><code>--accent</code></td>
+                        <td><code>240 5% 96%</code></td>
+                        <td><code>#F4F4F5</code></td>
+                        <td><div class="color-swatch" style="background-color: #F4F4F5;"></div></td>
+                        <td><button class="copy-btn" data-copy="#F4F4F5">Copiar</button></td>
+                        <td>Realce</td>
+                    </tr>
+                    <tr>
+                        <td><code>--accent-foreground</code></td>
+                        <td><code>240 7% 10%</code></td>
+                        <td><code>#18181B</code></td>
+                        <td><div class="color-swatch" style="background-color: #18181B;"></div></td>
+                        <td><button class="copy-btn" data-copy="#18181B">Copiar</button></td>
+                        <td>Texto sobre accent</td>
+                    </tr>
+                    <tr>
+                        <td><code>--destructive</code></td>
+                        <td><code>0 84% 60%</code></td>
+                        <td><code>#EF4343</code></td>
+                        <td><div class="color-swatch" style="background-color: #EF4343;"></div></td>
+                        <td><button class="copy-btn" data-copy="#EF4343">Copiar</button></td>
+                        <td>Ações destrutivas</td>
+                    </tr>
+                    <tr>
+                        <td><code>--destructive-foreground</code></td>
+                        <td><code>0 0% 100%</code></td>
+                        <td><code>#FFFFFF</code></td>
+                        <td><div class="color-swatch" style="background-color: #FFFFFF;"></div></td>
+                        <td><button class="copy-btn" data-copy="#FFFFFF">Copiar</button></td>
+                        <td>Texto sobre destructive</td>
+                    </tr>
+                    <tr>
+                        <td><code>--border</code></td>
+                        <td><code>240 9% 91%</code></td>
+                        <td><code>#E6E6EA</code></td>
+                        <td><div class="color-swatch" style="background-color: #E6E6EA;"></div></td>
+                        <td><button class="copy-btn" data-copy="#E6E6EA">Copiar</button></td>
+                        <td>Bordas padrão</td>
+                    </tr>
+                    <tr>
+                        <td><code>--input</code></td>
+                        <td><code>240 5% 96%</code></td>
+                        <td><code>#F4F4F5</code></td>
+                        <td><div class="color-swatch" style="background-color: #F4F4F5;"></div></td>
+                        <td><button class="copy-btn" data-copy="#F4F4F5">Copiar</button></td>
+                        <td>Fundo de inputs</td>
+                    </tr>
+                    <tr>
+                        <td><code>--ring</code></td>
+                        <td><code>350 73% 27%</code></td>
+                        <td><code>#771323</code></td>
+                        <td><div class="color-swatch" style="background-color: #771323;"></div></td>
+                        <td><button class="copy-btn" data-copy="#771323">Copiar</button></td>
+                        <td>Focus ring</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>Para modo escuro, ver a seção seguinte e o bloco <code>.dark</code> em <code>src/app/globals.css</code>.</p>
+        </section>
+
+        <section class="doc-section">
+            <h2>Tokens de cor (dark)</h2>
+            <table class="doc-table">
+                <thead>
+                    <tr>
+                        <th>Token</th>
+                        <th>HSL</th>
+                        <th>Hex</th>
+                        <th>Preview</th>
+                        <th>Copiar</th>
+                        <th>Uso</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>--background</code></td>
+                        <td><code>240 10% 3.9%</code></td>
+                        <td><code>#09090B</code></td>
+                        <td><div class="color-swatch" style="background-color: #09090B;"></div></td>
+                        <td><button class="copy-btn" data-copy="#09090B">Copiar</button></td>
+                        <td>Fundo padrão</td>
+                    </tr>
+                    <tr>
+                        <td><code>--foreground</code></td>
+                        <td><code>0 0% 98%</code></td>
+                        <td><code>#FAFAFA</code></td>
+                        <td><div class="color-swatch" style="background-color: #FAFAFA;"></div></td>
+                        <td><button class="copy-btn" data-copy="#FAFAFA">Copiar</button></td>
+                        <td>Texto padrão</td>
+                    </tr>
+                    <tr>
+                        <td><code>--card</code></td>
+                        <td><code>240 10% 3.9%</code></td>
+                        <td><code>#09090B</code></td>
+                        <td><div class="color-swatch" style="background-color: #09090B;"></div></td>
+                        <td><button class="copy-btn" data-copy="#09090B">Copiar</button></td>
+                        <td>Fundo de cards</td>
+                    </tr>
+                    <tr>
+                        <td><code>--card-foreground</code></td>
+                        <td><code>0 0% 98%</code></td>
+                        <td><code>#FAFAFA</code></td>
+                        <td><div class="color-swatch" style="background-color: #FAFAFA;"></div></td>
+                        <td><button class="copy-btn" data-copy="#FAFAFA">Copiar</button></td>
+                        <td>Texto em cards</td>
+                    </tr>
+                    <tr>
+                        <td><code>--popover</code></td>
+                        <td><code>240 10% 3.9%</code></td>
+                        <td><code>#09090B</code></td>
+                        <td><div class="color-swatch" style="background-color: #09090B;"></div></td>
+                        <td><button class="copy-btn" data-copy="#09090B">Copiar</button></td>
+                        <td>Fundo de popovers</td>
+                    </tr>
+                    <tr>
+                        <td><code>--popover-foreground</code></td>
+                        <td><code>0 0% 98%</code></td>
+                        <td><code>#FAFAFA</code></td>
+                        <td><div class="color-swatch" style="background-color: #FAFAFA;"></div></td>
+                        <td><button class="copy-btn" data-copy="#FAFAFA">Copiar</button></td>
+                        <td>Texto em popovers</td>
+                    </tr>
+                    <tr>
+                        <td><code>--primary</code></td>
+                        <td><code>350 73% 35%</code></td>
+                        <td><code>#9A182E</code></td>
+                        <td><div class="color-swatch" style="background-color: #9A182E;"></div></td>
+                        <td><button class="copy-btn" data-copy="#9A182E">Copiar</button></td>
+                        <td>Marca (burgundy)</td>
+                    </tr>
+                    <tr>
+                        <td><code>--primary-foreground</code></td>
+                        <td><code>0 0% 100%</code></td>
+                        <td><code>#FFFFFF</code></td>
+                        <td><div class="color-swatch" style="background-color: #FFFFFF;"></div></td>
+                        <td><button class="copy-btn" data-copy="#FFFFFF">Copiar</button></td>
+                        <td>Texto sobre primary</td>
+                    </tr>
+                    <tr>
+                        <td><code>--secondary</code></td>
+                        <td><code>240 3.7% 15.9%</code></td>
+                        <td><code>#27272A</code></td>
+                        <td><div class="color-swatch" style="background-color: #27272A;"></div></td>
+                        <td><button class="copy-btn" data-copy="#27272A">Copiar</button></td>
+                        <td>Superfícies secundárias</td>
+                    </tr>
+                    <tr>
+                        <td><code>--secondary-foreground</code></td>
+                        <td><code>0 0% 98%</code></td>
+                        <td><code>#FAFAFA</code></td>
+                        <td><div class="color-swatch" style="background-color: #FAFAFA;"></div></td>
+                        <td><button class="copy-btn" data-copy="#FAFAFA">Copiar</button></td>
+                        <td>Texto sobre secondary</td>
+                    </tr>
+                    <tr>
+                        <td><code>--muted</code></td>
+                        <td><code>240 3.7% 15.9%</code></td>
+                        <td><code>#27272A</code></td>
+                        <td><div class="color-swatch" style="background-color: #27272A;"></div></td>
+                        <td><button class="copy-btn" data-copy="#27272A">Copiar</button></td>
+                        <td>Neutro discreto</td>
+                    </tr>
+                    <tr>
+                        <td><code>--muted-foreground</code></td>
+                        <td><code>240 5% 64.9%</code></td>
+                        <td><code>#A1A1AA</code></td>
+                        <td><div class="color-swatch" style="background-color: #A1A1AA;"></div></td>
+                        <td><button class="copy-btn" data-copy="#A1A1AA">Copiar</button></td>
+                        <td>Texto discreto</td>
+                    </tr>
+                    <tr>
+                        <td><code>--accent</code></td>
+                        <td><code>240 3.7% 15.9%</code></td>
+                        <td><code>#27272A</code></td>
+                        <td><div class="color-swatch" style="background-color: #27272A;"></div></td>
+                        <td><button class="copy-btn" data-copy="#27272A">Copiar</button></td>
+                        <td>Realce</td>
+                    </tr>
+                    <tr>
+                        <td><code>--accent-foreground</code></td>
+                        <td><code>0 0% 98%</code></td>
+                        <td><code>#FAFAFA</code></td>
+                        <td><div class="color-swatch" style="background-color: #FAFAFA;"></div></td>
+                        <td><button class="copy-btn" data-copy="#FAFAFA">Copiar</button></td>
+                        <td>Texto sobre accent</td>
+                    </tr>
+                    <tr>
+                        <td><code>--destructive</code></td>
+                        <td><code>0 62.8% 30.6%</code></td>
+                        <td><code>#7F1D1D</code></td>
+                        <td><div class="color-swatch" style="background-color: #7F1D1D;"></div></td>
+                        <td><button class="copy-btn" data-copy="#7F1D1D">Copiar</button></td>
+                        <td>Ações destrutivas</td>
+                    </tr>
+                    <tr>
+                        <td><code>--destructive-foreground</code></td>
+                        <td><code>0 0% 98%</code></td>
+                        <td><code>#FAFAFA</code></td>
+                        <td><div class="color-swatch" style="background-color: #FAFAFA;"></div></td>
+                        <td><button class="copy-btn" data-copy="#FAFAFA">Copiar</button></td>
+                        <td>Texto sobre destructive</td>
+                    </tr>
+                    <tr>
+                        <td><code>--border</code></td>
+                        <td><code>240 3.7% 15.9%</code></td>
+                        <td><code>#27272A</code></td>
+                        <td><div class="color-swatch" style="background-color: #27272A;"></div></td>
+                        <td><button class="copy-btn" data-copy="#27272A">Copiar</button></td>
+                        <td>Bordas padrão</td>
+                    </tr>
+                    <tr>
+                        <td><code>--input</code></td>
+                        <td><code>240 3.7% 15.9%</code></td>
+                        <td><code>#27272A</code></td>
+                        <td><div class="color-swatch" style="background-color: #27272A;"></div></td>
+                        <td><button class="copy-btn" data-copy="#27272A">Copiar</button></td>
+                        <td>Fundo de inputs</td>
+                    </tr>
+                    <tr>
+                        <td><code>--ring</code></td>
+                        <td><code>350 73% 35%</code></td>
+                        <td><code>#9A182E</code></td>
+                        <td><div class="color-swatch" style="background-color: #9A182E;"></div></td>
+                        <td><button class="copy-btn" data-copy="#9A182E">Copiar</button></td>
+                        <td>Focus ring</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="doc-section">
+            <h2>Sidebar tokens (light)</h2>
+            <table class="doc-table">
+                <thead>
+                    <tr>
+                        <th>Token</th>
+                        <th>HSL</th>
+                        <th>Hex</th>
+                        <th>Preview</th>
+                        <th>Copiar</th>
+                        <th>Uso</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>--sidebar</code></td>
+                        <td><code>0 0% 98%</code></td>
+                        <td><code>#FAFAFA</code></td>
+                        <td><div class="color-swatch" style="background-color: #FAFAFA;"></div></td>
+                        <td><button class="copy-btn" data-copy="#FAFAFA">Copiar</button></td>
+                        <td>Fundo da sidebar</td>
+                    </tr>
+                    <tr>
+                        <td><code>--sidebar-foreground</code></td>
+                        <td><code>240 5.3% 26.1%</code></td>
+                        <td><code>#3F3F46</code></td>
+                        <td><div class="color-swatch" style="background-color: #3F3F46;"></div></td>
+                        <td><button class="copy-btn" data-copy="#3F3F46">Copiar</button></td>
+                        <td>Texto na sidebar</td>
+                    </tr>
+                    <tr>
+                        <td><code>--sidebar-primary</code></td>
+                        <td><code>240 5.9% 10%</code></td>
+                        <td><code>#18181B</code></td>
+                        <td><div class="color-swatch" style="background-color: #18181B;"></div></td>
+                        <td><button class="copy-btn" data-copy="#18181B">Copiar</button></td>
+                        <td>Item ativo</td>
+                    </tr>
+                    <tr>
+                        <td><code>--sidebar-primary-foreground</code></td>
+                        <td><code>0 0% 98%</code></td>
+                        <td><code>#FAFAFA</code></td>
+                        <td><div class="color-swatch" style="background-color: #FAFAFA;"></div></td>
+                        <td><button class="copy-btn" data-copy="#FAFAFA">Copiar</button></td>
+                        <td>Texto em item ativo</td>
+                    </tr>
+                    <tr>
+                        <td><code>--sidebar-accent</code></td>
+                        <td><code>240 4.8% 95.9%</code></td>
+                        <td><code>#F4F4F5</code></td>
+                        <td><div class="color-swatch" style="background-color: #F4F4F5;"></div></td>
+                        <td><button class="copy-btn" data-copy="#F4F4F5">Copiar</button></td>
+                        <td>Hover/realce</td>
+                    </tr>
+                    <tr>
+                        <td><code>--sidebar-accent-foreground</code></td>
+                        <td><code>240 5.9% 10%</code></td>
+                        <td><code>#18181B</code></td>
+                        <td><div class="color-swatch" style="background-color: #18181B;"></div></td>
+                        <td><button class="copy-btn" data-copy="#18181B">Copiar</button></td>
+                        <td>Texto no hover</td>
+                    </tr>
+                    <tr>
+                        <td><code>--sidebar-border</code></td>
+                        <td><code>220 13% 91%</code></td>
+                        <td><code>#E5E7EB</code></td>
+                        <td><div class="color-swatch" style="background-color: #E5E7EB;"></div></td>
+                        <td><button class="copy-btn" data-copy="#E5E7EB">Copiar</button></td>
+                        <td>Bordas da sidebar</td>
+                    </tr>
+                    <tr>
+                        <td><code>--sidebar-ring</code></td>
+                        <td><code>217.2 91.2% 59.8%</code></td>
+                        <td><code>#3B82F6</code></td>
+                        <td><div class="color-swatch" style="background-color: #3B82F6;"></div></td>
+                        <td><button class="copy-btn" data-copy="#3B82F6">Copiar</button></td>
+                        <td>Focus ring sidebar</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="doc-section">
+            <h2>Sidebar tokens (dark)</h2>
+            <table class="doc-table">
+                <thead>
+                    <tr>
+                        <th>Token</th>
+                        <th>HSL</th>
+                        <th>Hex</th>
+                        <th>Preview</th>
+                        <th>Copiar</th>
+                        <th>Uso</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>--sidebar</code></td>
+                        <td><code>240 5.9% 10%</code></td>
+                        <td><code>#18181B</code></td>
+                        <td><div class="color-swatch" style="background-color: #18181B;"></div></td>
+                        <td><button class="copy-btn" data-copy="#18181B">Copiar</button></td>
+                        <td>Fundo da sidebar</td>
+                    </tr>
+                    <tr>
+                        <td><code>--sidebar-foreground</code></td>
+                        <td><code>240 4.8% 95.9%</code></td>
+                        <td><code>#F4F4F5</code></td>
+                        <td><div class="color-swatch" style="background-color: #F4F4F5;"></div></td>
+                        <td><button class="copy-btn" data-copy="#F4F4F5">Copiar</button></td>
+                        <td>Texto na sidebar</td>
+                    </tr>
+                    <tr>
+                        <td><code>--sidebar-primary</code></td>
+                        <td><code>350 73% 35%</code></td>
+                        <td><code>#9A182E</code></td>
+                        <td><div class="color-swatch" style="background-color: #9A182E;"></div></td>
+                        <td><button class="copy-btn" data-copy="#9A182E">Copiar</button></td>
+                        <td>Item ativo</td>
+                    </tr>
+                    <tr>
+                        <td><code>--sidebar-primary-foreground</code></td>
+                        <td><code>0 0% 100%</code></td>
+                        <td><code>#FFFFFF</code></td>
+                        <td><div class="color-swatch" style="background-color: #FFFFFF;"></div></td>
+                        <td><button class="copy-btn" data-copy="#FFFFFF">Copiar</button></td>
+                        <td>Texto em item ativo</td>
+                    </tr>
+                    <tr>
+                        <td><code>--sidebar-accent</code></td>
+                        <td><code>240 3.7% 15.9%</code></td>
+                        <td><code>#27272A</code></td>
+                        <td><div class="color-swatch" style="background-color: #27272A;"></div></td>
+                        <td><button class="copy-btn" data-copy="#27272A">Copiar</button></td>
+                        <td>Hover/realce</td>
+                    </tr>
+                    <tr>
+                        <td><code>--sidebar-accent-foreground</code></td>
+                        <td><code>240 4.8% 95.9%</code></td>
+                        <td><code>#F4F4F5</code></td>
+                        <td><div class="color-swatch" style="background-color: #F4F4F5;"></div></td>
+                        <td><button class="copy-btn" data-copy="#F4F4F5">Copiar</button></td>
+                        <td>Texto no hover</td>
+                    </tr>
+                    <tr>
+                        <td><code>--sidebar-border</code></td>
+                        <td><code>240 3.7% 15.9%</code></td>
+                        <td><code>#27272A</code></td>
+                        <td><div class="color-swatch" style="background-color: #27272A;"></div></td>
+                        <td><button class="copy-btn" data-copy="#27272A">Copiar</button></td>
+                        <td>Bordas da sidebar</td>
+                    </tr>
+                    <tr>
+                        <td><code>--sidebar-ring</code></td>
+                        <td><code>217.2 91.2% 59.8%</code></td>
+                        <td><code>#3B82F6</code></td>
+                        <td><div class="color-swatch" style="background-color: #3B82F6;"></div></td>
+                        <td><button class="copy-btn" data-copy="#3B82F6">Copiar</button></td>
+                        <td>Focus ring sidebar</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="doc-section">
+            <h2>Raios, sombras e transições</h2>
+            <table class="doc-table">
+                <thead>
+                    <tr>
+                        <th>Token</th>
+                        <th>Valor</th>
+                        <th>Uso</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><code>--radius</code></td><td><code>0.5rem</code></td><td>Raio base</td></tr>
+                    <tr><td><code>--shadow-card</code></td><td><code>0 2px 8px -2px hsl(240 7% 10% / 0.08)</code></td><td>Shadow cards</td></tr>
+                    <tr><td><code>--shadow-elegant</code></td><td><code>0 8px 25px -8px hsl(240 7% 10% / 0.12)</code></td><td>Shadow destaque</td></tr>
+                    <tr><td><code>--shadow-glow</code></td><td><code>0 0 40px hsl(350 73% 27% / 0.2)</code></td><td>Glow de marca</td></tr>
+                    <tr><td><code>--transition-smooth</code></td><td><code>all 0.3s cubic-bezier(0.4, 0, 0.2, 1)</code></td><td>Transição padrão</td></tr>
+                    <tr><td><code>--transition-bounce</code></td><td><code>all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55)</code></td><td>Transição com bounce</td></tr>
+                    <tr><td><code>--transition-elegant</code></td><td><code>all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)</code></td><td>Transição suave</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="doc-section">
+            <h2>Mapeamento Tailwind</h2>
+            <p>Os tokens são expostos no Tailwind via <code>tailwind.config.ts</code> (ex.: <code>bg-background</code>, <code>text-foreground</code>, <code>border-border</code>, <code>ring-ring</code>).</p>
+        </section>
+
+        <footer class="footer">
+            <p>Mary M&A Platform — Design Tokens</p>
+            <p class="footer-note">Fonte primária: <code>src/app/globals.css</code></p>
+        </footer>
+    </div>
+
+    <script>
+        function setCopiedState(button) {
+            button.classList.add('copied');
+            const originalText = button.textContent;
+            button.textContent = 'Copiado';
+            setTimeout(() => {
+                button.classList.remove('copied');
+                button.textContent = originalText;
+            }, 1500);
+        }
+
+        async function copyText(text, button) {
+            try {
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    await navigator.clipboard.writeText(text);
+                } else {
+                    const tempInput = document.createElement('input');
+                    tempInput.value = text;
+                    document.body.appendChild(tempInput);
+                    tempInput.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(tempInput);
+                }
+                setCopiedState(button);
+            } catch (error) {
+                button.textContent = 'Falhou';
+                setTimeout(() => {
+                    button.textContent = 'Copiar';
+                }, 1500);
+            }
+        }
+
+        document.querySelectorAll('[data-copy]').forEach((button) => {
+            button.addEventListener('click', () => {
+                const value = button.getAttribute('data-copy');
+                if (value) {
+                    copyText(value, button);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,207 @@
+{
+  "landing": {
+    "hero_title": "Unlocking Private Markets, Globally.",
+    "hero_subtitle": "Mary es una infraestructura de Market Network nativa en IA, liderada por personas, que impulsa los mercados privados a escala global.",
+    "login_cta": "Entrar",
+    "profile_select_title": "Elige tu perfil y comienza",
+    "profile_select_subtitle": "Selecciona el tipo de cuenta que mejor te representa a ti o a tu organización para una experiencia personalizada.",
+    "profile_investor": "Inversor",
+    "profile_investor_desc": "PEs, VCs, Family Offices, Angels, CVCs y más",
+    "profile_asset": "Empresa",
+    "profile_asset_desc": "Cualquier tamaño, sector o región",
+    "profile_advisor": "Advisor",
+    "profile_advisor_desc": "IBs, boutiques M&A, abogacía, contabilidad",
+    "register_as": "Registrarse como",
+    "feature_deal_flow": "Accede a deal flow cualificado",
+    "feature_thesis": "Tesis de inversión inteligentes",
+    "feature_pipeline": "Pipeline de oportunidades",
+    "feature_dd": "Due diligence automatizada",
+    "feature_connect": "Conéctate con inversores",
+    "feature_valuation": "Valuación automatizada",
+    "feature_vdr": "Data room seguro (VDR)",
+    "feature_ma": "Preparación para M&A",
+    "feature_deals": "Gestión de múltiples deals",
+    "feature_firewall": "Firewall buy/sell side",
+    "feature_crm": "CRM integrado",
+    "feature_analytics": "Analytics avanzado",
+    "professionals_title": "Red de Profesionales",
+    "professionals_subtitle": "Únete a la red de profesionales que referencian negocios y reciben comisión",
+    "has_account": "¿Ya tienes una cuenta?",
+    "do_login": "Iniciar sesión",
+    "profile_required": "Selecciona tu perfil abajo para crear tu cuenta y comenzar.",
+    "footer_copyright": "© 2026 Mary Digital Ecosystem."
+  },
+  "common": {
+    "welcome": "Bienvenido a Mary AI",
+    "login": "Entrar",
+    "home": "Inicio",
+    "loading": "Cargando...",
+    "error": "Error",
+    "success": "Éxito",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "back": "Volver",
+    "next": "Siguiente",
+    "submit": "Enviar",
+    "logout": "Salir"
+  },
+  "home": {
+    "title": "Mary AI Platform",
+    "description": "Tu asistente inteligente para M&A."
+  },
+  "login": {
+    "title": "Entrar",
+    "subtitle": "Ingresa tus credenciales para acceder",
+    "submit": "Entrar",
+    "placeholder_email": "tu@email.com",
+    "placeholder_password": "tu contraseña",
+    "remember_me": "Recordarme",
+    "forgot_password": "¿Olvidaste la contraseña?",
+    "no_account": "¿No tienes una cuenta?",
+    "signup_link": "Regístrate",
+    "error_invalid": "Email o contraseña incorrectos",
+    "error_connection": "Error de conexión. Intenta de nuevo."
+  },
+  "signup": {
+    "title": "Registro",
+    "subtitle": "Completa los datos para crear tu cuenta",
+    "submit": "Crear cuenta",
+    "name_label": "Nombre completo",
+    "email_label": "Email",
+    "phone_label": "WhatsApp",
+    "phone_hint": "Usado para verificación en dos pasos",
+    "password_label": "Contraseña",
+    "password_hint": "Mínimo 8 caracteres",
+    "confirm_password_label": "Confirmar contraseña",
+    "terms_accept": "He leído y acepto los",
+    "terms_link": "Términos de Uso",
+    "privacy_link": "Política de Privacidad",
+    "has_account": "¿Ya tienes una cuenta?",
+    "login_link": "Entrar",
+    "success_title": "Verifica tu email",
+    "success_message": "Enviamos un enlace de confirmación a tu email. Haz clic para activar tu cuenta."
+  },
+  "mfa": {
+    "title": "Verificación",
+    "subtitle": "Ingresa el código de 6 dígitos enviado a tu",
+    "whatsapp": "WhatsApp",
+    "sms": "SMS",
+    "verify": "Verificar",
+    "resend": "¿No lo recibiste? Reenviar código",
+    "resend_countdown": "Reenviar código en",
+    "expires_hint": "El código expira en 5 minutos",
+    "error_invalid": "Código inválido",
+    "error_expired": "Código expirado",
+    "error_max_attempts": "Máximo de intentos excedido"
+  },
+  "recovery": {
+    "title": "¿Olvidaste la contraseña?",
+    "subtitle": "Ingresa tu email y te enviaremos un enlace para restablecer tu contraseña",
+    "submit": "Enviar enlace de recuperación",
+    "success_title": "Revisa tu email",
+    "success_message": "Si el email está registrado, recibirás un enlace para restablecer tu contraseña.",
+    "expires_hint": "El enlace expira en 15 minutos",
+    "rate_limit": "Por seguridad, puedes solicitar hasta 3 recuperaciones por hora"
+  },
+  "reset_password": {
+    "title": "Nueva contraseña",
+    "subtitle": "Crea una nueva contraseña para tu cuenta",
+    "password_label": "Nueva contraseña",
+    "confirm_label": "Confirmar contraseña",
+    "submit": "Restablecer contraseña",
+    "success_title": "¡Contraseña restablecida!",
+    "success_message": "Tu contraseña fue cambiada con éxito. Serás redirigido al login.",
+    "requirements": {
+      "title": "Tu contraseña debe tener:",
+      "min_length": "Al menos 8 caracteres",
+      "match": "Las contraseñas coinciden"
+    }
+  },
+  "navigation": {
+    "dashboard": "Dashboard",
+    "thesis": "Tesis",
+    "opportunities": "Oportunidades",
+    "pipeline": "Pipeline",
+    "projects": "Proyectos",
+    "assetvdr": "VDR",
+    "mary_ai": "Mary AI",
+    "profile": "Perfil",
+    "settings": "Configuración",
+    "admin": "Admin",
+    "logout": "Salir"
+  },
+  "dashboard": {
+    "welcome": "¡Bienvenido de vuelta!",
+    "session": {
+      "title": "Sesión Activa",
+      "subtitle": "Autenticación verificada",
+      "mfa_verified": "MFA Verificado",
+      "device": "Dispositivo",
+      "expires": "Expira en"
+    },
+    "profile": { "title": "Perfil", "subtitle": "Tu información" },
+    "actions": {
+      "title": "Acciones Rápidas",
+      "subtitle": "Acceso rápido",
+      "edit_profile": "Editar Perfil",
+      "settings": "Configuración"
+    },
+    "investor": {
+      "title": "Dashboard del Inversor",
+      "thesis_active": "Tesis Activas",
+      "opportunities": "Oportunidades",
+      "pipeline": "Pipeline",
+      "deal_flow": "Deal Flow",
+      "create_thesis": "Crear Tesis de Inversión",
+      "explore_opportunities": "Explorar Oportunidades",
+      "manage_pipeline": "Gestionar Pipeline"
+    },
+    "asset": {
+      "title": "Dashboard de la Empresa",
+      "readiness_score": "Mary Readiness Score®",
+      "projects_active": "Proyectos Activos",
+      "documents_vdr": "Documentos en VDR",
+      "interested_investors": "Inversores Interesados",
+      "pending_tasks": "Tareas Pendientes",
+      "create_project": "Crear Proyecto",
+      "setup_vdr": "Configurar VDR",
+      "complete_profile": "Completar Perfil"
+    },
+    "advisor": {
+      "title": "Dashboard del Advisor",
+      "active_projects": "Proyectos Activos",
+      "sell_side": "Sell-Side",
+      "buy_side": "Buy-Side",
+      "conflict_alerts": "Alertas de Conflicto"
+    }
+  },
+  "permissions": {
+    "read_only_title": "Cuenta en análisis",
+    "read_only_message": "Tu cuenta está siendo verificada. Algunas acciones están temporalmente deshabilitadas.",
+    "access_denied": "Acceso denegado",
+    "wrong_profile": "Esta página no está disponible para tu tipo de cuenta.",
+    "not_member": "No eres miembro de esta organización.",
+    "onboarding_required": "Completa el onboarding para acceder a esta página."
+  },
+  "admin": {
+    "title": "Área Administrativa",
+    "under_construction": "En Construcción",
+    "under_construction_message": "El panel administrativo completo está en desarrollo.",
+    "total_users": "Total de Usuarios",
+    "organizations": "Organizaciones",
+    "pending_verification": "Pendientes de Verificación",
+    "system_status": "Estado del Sistema"
+  },
+  "errors": {
+    "required_field": "Este campo es obligatorio",
+    "invalid_email": "Email inválido",
+    "invalid_phone": "Número de teléfono inválido",
+    "password_mismatch": "Las contraseñas no coinciden",
+    "password_too_short": "La contraseña debe tener al menos 8 caracteres",
+    "rate_limit": "Demasiados intentos. Intenta más tarde.",
+    "server_error": "Error interno del servidor",
+    "connection_error": "Error de conexión. Intenta de nuevo.",
+    "not_found": "Página no encontrada",
+    "unauthorized": "No autorizado"
+  }
+}

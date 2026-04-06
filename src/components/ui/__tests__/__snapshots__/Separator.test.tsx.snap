@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Separator Component Snapshots renders horizontal separator correctly 1`] = `
+<div
+  class="shrink-0 bg-border h-[1px] w-full"
+  role="none"
+/>
+`;
+
+exports[`Separator Component Snapshots renders non-decorative separator correctly 1`] = `
+<div
+  aria-orientation="horizontal"
+  class="shrink-0 bg-border h-[1px] w-full"
+  role="separator"
+/>
+`;
+
+exports[`Separator Component Snapshots renders vertical separator correctly 1`] = `
+<div
+  class="shrink-0 bg-border h-full w-[1px]"
+  role="none"
+/>
+`;

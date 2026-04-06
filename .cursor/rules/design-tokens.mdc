@@ -1,0 +1,98 @@
+---
+description: Regras de design tokens para frontend — garante que todo código UI respeite o design system da Mary M&A
+globs:
+  - src/**/*.tsx
+  - src/**/*.ts
+  - src/**/*.css
+  - src/**/*.jsx
+---
+
+# Design Tokens — Mary M&A
+
+## Regra principal
+Todo código de frontend DEVE usar os design tokens definidos em `src/app/globals.css` via classes Tailwind. Nunca hardcode cores, sombras ou font-families.
+
+## Cores — SEMPRE usar tokens semânticos
+
+### Proibido
+```
+bg-[#771323]        ← hex hardcoded
+text-[#18181B]      ← hex hardcoded
+bg-red-500          ← cor genérica do Tailwind
+text-gray-900       ← cor genérica do Tailwind
+border-[#E6E6EA]    ← hex hardcoded
+style="color: #771323"  ← inline hardcoded
+```
+
+### Correto
+```
+bg-primary           → burgundy da marca
+text-foreground      → texto padrão
+bg-card              → fundo de cards
+border-border        → borda padrão
+bg-destructive       → ações destrutivas
+bg-muted             → neutro discreto
+```
+
+## Pareamento superfície + texto
+Sempre usar o par correto:
+
+| Background | Texto |
+|-----------|-------|
+| `bg-background` | `text-foreground` |
+| `bg-primary` | `text-primary-foreground` |
+| `bg-secondary` | `text-secondary-foreground` |
+| `bg-card` | `text-card-foreground` |
+| `bg-muted` | `text-muted-foreground` |
+| `bg-accent` | `text-accent-foreground` |
+| `bg-destructive` | `text-destructive-foreground` |
+| `bg-popover` | `text-popover-foreground` |
+| `bg-sidebar` | `text-sidebar-foreground` |
+
+## Sombras — usar customizadas
+
+### Proibido
+```
+shadow-lg    ← shadow genérica do Tailwind
+shadow-xl    ← shadow genérica do Tailwind
+shadow-2xl   ← shadow genérica do Tailwind
+```
+
+### Correto
+```
+shadow-card      → cards padrão
+shadow-elegant   → elevação/destaque
+shadow-glow      → glow burgundy (marca)
+```
+
+Exceção: `shadow-sm` e `shadow` do Tailwind são aceitáveis para casos muito sutis.
+
+## Border Radius
+- `rounded-sm` = 4px
+- `rounded-md` = 6px
+- `rounded-lg` = 8px (padrão, preferido)
+- Nunca usar `rounded-[Xpx]` com valor arbitrário
+
+## Transições
+- `transition-smooth` — padrão (300ms)
+- `transition-bounce` — interações lúdicas (400ms)
+- `transition-elegant` — movimentos suaves (500ms)
+
+## Tipografia
+- Font: **DM Sans** (configurada globalmente)
+- Nunca usar `font-[outra-fonte]` ou `style="font-family: ..."`
+- Pesos: `font-normal` (400), `font-medium` (500), `font-semibold` (600), `font-bold` (700)
+
+## Dark Mode
+- Tokens se adaptam automaticamente via classe `.dark`
+- Nunca usar `dark:bg-[#hex]` ou `dark:text-[#hex]`
+- Usar `dark:` apenas com tokens semânticos quando necessário (raro)
+
+## Componentes
+- Preferir componentes de `src/components/ui/` (shadcn/ui) que já respeitam os tokens
+- Ao criar componentes customizados, seguir o mesmo padrão de tokens
+
+## Referência rápida de arquivos
+- Tokens CSS: `src/app/globals.css`
+- Config Tailwind: `tailwind.config.ts`
+- Spec completa: `.context/docs/design-system.md`

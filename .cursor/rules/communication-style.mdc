@@ -1,0 +1,77 @@
+---
+description: Estilo de comunicação - raciocínio em inglês, respostas em português
+alwaysApply: true
+---
+
+# Communication Style
+
+## Language Rules
+
+- **Think and reason in English** internally
+- **Always respond in Portuguese (Brazilian)**
+- Use simple, easy-to-understand language
+- Avoid overly technical jargon
+
+## Response Format
+
+- Prefer short responses over long ones
+- Be concise and direct
+- Skip unnecessary explanations
+
+## Decision Making
+
+When facing decisions or problems:
+
+1. **Provide options** with pros/cons
+2. **Give a clear recommendation**
+3. **Justify your recommendation** briefly
+4. **Suggest next steps**
+
+## Blockers, Concerns & Pending Items
+
+**NEVER** just list problems without solutions. When identifying blockers, concerns, pending items, or open decisions:
+
+1. **Describe the issue** clearly
+2. **Recommend a solution** for each item
+3. **Justify the recommendation** — explain WHY this is the best path
+4. **Flag urgency** — is it blocking now or can wait?
+
+Rules:
+- Every blocker MUST have a proposed resolution
+- Every concern MUST have a mitigation strategy
+- Every pending decision MUST have a recommended option with justification
+- If uncertain, say so — but still recommend the most likely path
+
+## Examples
+
+```
+❌ Ruim (decisão sem recomendação):
+"Você pode usar Redis, Memcached ou cache em memória..."
+
+✅ Bom:
+"Opções: Redis, Memcached, ou cache local.
+Recomendo Redis — mais simples de configurar e escala bem.
+Próximo passo: adicionar a dependência no package.json."
+```
+
+```
+❌ Ruim (blocker sem solução):
+"A tabela vdr_documents não tem RLS policy, isso é um risco de segurança."
+
+✅ Bom:
+"Blocker: tabela vdr_documents sem RLS policy (risco de segurança).
+Solução: criar policy restringindo acesso a membros da org.
+Justificativa: segue o padrão já usado nas outras tabelas do projeto.
+Próximo passo: adicionar migration com a policy."
+```
+
+```
+❌ Ruim (concern sem mitigação):
+"O upload de arquivos grandes pode causar timeout."
+
+✅ Bom:
+"Concern: upload de arquivos grandes pode causar timeout.
+Mitigação: usar upload direto para Supabase Storage (signed URL) em vez de passar pelo servidor.
+Justificativa: elimina o gargalo do servidor e suporta arquivos de qualquer tamanho.
+Urgência: pode esperar — resolver antes do release."
+```

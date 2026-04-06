@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mary M&A — Documentação de Telas</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">M</span>
+                    <div class="logo-text">
+                        <h1>Mary M&A</h1>
+                        <span class="subtitle">Documentação de Telas</span>
+                    </div>
+                </div>
+                <div class="header-meta">
+                    <span class="last-update">Última atualização: Janeiro 2026</span>
+                </div>
+            </div>
+        </header>
+
+        <nav class="doc-nav">
+            <a href="index.html">Design</a>
+            <a href="telas.html">Documentação de Telas</a>
+            <a href="design-tokens.html">Design Tokens</a>
+        </nav>
+
+        <section class="doc-section">
+            <h2>Visão geral</h2>
+            <p>Mapeamento das telas a partir das rotas em <code>src/app</code> (arquivos <code>page.tsx</code>). As rotas protegidas vivem no grupo <code>(protected)</code>.</p>
+        </section>
+
+        <section class="doc-section">
+            <h2>Telas públicas e legais</h2>
+            <table class="doc-table">
+                <thead>
+                    <tr>
+                        <th>Rota</th>
+                        <th>Arquivo</th>
+                        <th>Descrição</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>/</code></td>
+                        <td><code>src/app/page.tsx</code></td>
+                        <td>Landing page</td>
+                    </tr>
+                    <tr>
+                        <td><code>/privacy</code></td>
+                        <td><code>src/app/privacy/page.tsx</code></td>
+                        <td>Política de privacidade</td>
+                    </tr>
+                    <tr>
+                        <td><code>/terms</code></td>
+                        <td><code>src/app/terms/page.tsx</code></td>
+                        <td>Termos de uso</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="doc-section">
+            <h2>Autenticação</h2>
+            <table class="doc-table">
+                <thead>
+                    <tr>
+                        <th>Rota</th>
+                        <th>Arquivo</th>
+                        <th>Descrição</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>/login</code></td>
+                        <td><code>src/app/login/page.tsx</code></td>
+                        <td>Login</td>
+                    </tr>
+                    <tr>
+                        <td><code>/signup</code></td>
+                        <td><code>src/app/signup/page.tsx</code></td>
+                        <td>Cadastro</td>
+                    </tr>
+                    <tr>
+                        <td><code>/signup/success</code></td>
+                        <td><code>src/app/signup/success/page.tsx</code></td>
+                        <td>Sucesso pós-cadastro</td>
+                    </tr>
+                    <tr>
+                        <td><code>/forgot-password</code></td>
+                        <td><code>src/app/forgot-password/page.tsx</code></td>
+                        <td>Recuperação de senha</td>
+                    </tr>
+                    <tr>
+                        <td><code>/reset-password</code></td>
+                        <td><code>src/app/reset-password/page.tsx</code></td>
+                        <td>Redefinição de senha</td>
+                    </tr>
+                    <tr>
+                        <td><code>/verify-mfa</code></td>
+                        <td><code>src/app/verify-mfa/page.tsx</code></td>
+                        <td>MFA obrigatório</td>
+                    </tr>
+                    <tr>
+                        <td><code>/auth/error</code></td>
+                        <td><code>src/app/auth/error/page.tsx</code></td>
+                        <td>Erro de autenticação</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>Documentação: <code>docs/features/auth/</code></p>
+        </section>
+
+        <section class="doc-section">
+            <h2>Onboarding</h2>
+            <table class="doc-table">
+                <thead>
+                    <tr>
+                        <th>Rota</th>
+                        <th>Arquivo</th>
+                        <th>Descrição</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>/onboarding</code></td>
+                        <td><code>src/app/onboarding/page.tsx</code></td>
+                        <td>Redirect/entrada do fluxo</td>
+                    </tr>
+                    <tr>
+                        <td><code>/onboarding/[step]</code></td>
+                        <td><code>src/app/onboarding/[step]/page.tsx</code></td>
+                        <td>Wizard por step</td>
+                    </tr>
+                    <tr>
+                        <td><code>/onboarding/pending-review</code></td>
+                        <td><code>src/app/onboarding/pending-review/page.tsx</code></td>
+                        <td>Revisão manual pendente</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>Documentação: <code>docs/features/onboarding/ONBOARDING_DOCUMENTATION.md</code></p>
+        </section>
+
+        <section class="doc-section">
+            <h2>Dashboard e organizações</h2>
+            <table class="doc-table">
+                <thead>
+                    <tr>
+                        <th>Rota</th>
+                        <th>Arquivo</th>
+                        <th>Descrição</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>/dashboard</code></td>
+                        <td><code>src/app/dashboard/page.tsx</code></td>
+                        <td>Dashboard geral</td>
+                    </tr>
+                    <tr>
+                        <td><code>/dashboard/organizations</code></td>
+                        <td><code>src/app/dashboard/organizations/page.tsx</code></td>
+                        <td>Lista de organizações</td>
+                    </tr>
+                    <tr>
+                        <td><code>/dashboard/organizations/[orgId]/members</code></td>
+                        <td><code>src/app/dashboard/organizations/[orgId]/members/page.tsx</code></td>
+                        <td>Gestão de membros</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="doc-section">
+            <h2>Org workspace (protegido)</h2>
+            <table class="doc-table">
+                <thead>
+                    <tr>
+                        <th>Rota</th>
+                        <th>Arquivo</th>
+                        <th>Descrição</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>/[orgSlug]/dashboard</code></td>
+                        <td><code>src/app/(protected)/[orgSlug]/dashboard/page.tsx</code></td>
+                        <td>Dashboard da organização</td>
+                    </tr>
+                    <tr>
+                        <td><code>/[orgSlug]/projects</code></td>
+                        <td><code>src/app/(protected)/[orgSlug]/projects/page.tsx</code></td>
+                        <td>Projetos</td>
+                    </tr>
+                    <tr>
+                        <td><code>/[orgSlug]/projects/[codename]</code></td>
+                        <td><code>src/app/(protected)/[orgSlug]/projects/[codename]/page.tsx</code></td>
+                        <td>Projeto (overview)</td>
+                    </tr>
+                    <tr>
+                        <td><code>/[orgSlug]/pipeline</code></td>
+                        <td><code>src/app/(protected)/[orgSlug]/pipeline/page.tsx</code></td>
+                        <td>Pipeline</td>
+                    </tr>
+                    <tr>
+                        <td><code>/[orgSlug]/opportunities</code></td>
+                        <td><code>src/app/(protected)/[orgSlug]/opportunities/page.tsx</code></td>
+                        <td>Oportunidades</td>
+                    </tr>
+                    <tr>
+                        <td><code>/[orgSlug]/thesis</code></td>
+                        <td><code>src/app/(protected)/[orgSlug]/thesis/page.tsx</code></td>
+                        <td>Teses</td>
+                    </tr>
+                    <tr>
+                        <td><code>/[orgSlug]/mary-ai-private</code></td>
+                        <td><code>src/app/(protected)/[orgSlug]/mary-ai-private/page.tsx</code></td>
+                        <td>Mary AI private</td>
+                    </tr>
+                    <tr>
+                        <td><code>/[orgSlug]/assetvdr</code></td>
+                        <td><code>src/app/(protected)/[orgSlug]/assetvdr/page.tsx</code></td>
+                        <td>VDR do ativo</td>
+                    </tr>
+                    <tr>
+                        <td><code>/[orgSlug]/profile</code></td>
+                        <td><code>src/app/(protected)/[orgSlug]/profile/page.tsx</code></td>
+                        <td>Perfil</td>
+                    </tr>
+                    <tr>
+                        <td><code>/[orgSlug]/settings</code></td>
+                        <td><code>src/app/(protected)/[orgSlug]/settings/page.tsx</code></td>
+                        <td>Configurações</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="doc-section">
+            <h2>Advisor (protegido)</h2>
+            <table class="doc-table">
+                <thead>
+                    <tr>
+                        <th>Rota</th>
+                        <th>Arquivo</th>
+                        <th>Descrição</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>/advisor/dashboard</code></td>
+                        <td><code>src/app/(protected)/advisor/dashboard/page.tsx</code></td>
+                        <td>Dashboard do advisor</td>
+                    </tr>
+                    <tr>
+                        <td><code>/advisor/projects</code></td>
+                        <td><code>src/app/(protected)/advisor/projects/page.tsx</code></td>
+                        <td>Projetos do advisor</td>
+                    </tr>
+                    <tr>
+                        <td><code>/advisor/mary-ai-private</code></td>
+                        <td><code>src/app/(protected)/advisor/mary-ai-private/page.tsx</code></td>
+                        <td>Mary AI private</td>
+                    </tr>
+                    <tr>
+                        <td><code>/advisor/profile</code></td>
+                        <td><code>src/app/(protected)/advisor/profile/page.tsx</code></td>
+                        <td>Perfil do advisor</td>
+                    </tr>
+                    <tr>
+                        <td><code>/advisor/settings</code></td>
+                        <td><code>src/app/(protected)/advisor/settings/page.tsx</code></td>
+                        <td>Configurações</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="doc-section">
+            <h2>Admin (protegido)</h2>
+            <table class="doc-table">
+                <thead>
+                    <tr>
+                        <th>Rota</th>
+                        <th>Arquivo</th>
+                        <th>Descrição</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>/admin/dashboard</code></td>
+                        <td><code>src/app/(protected)/admin/dashboard/page.tsx</code></td>
+                        <td>Dashboard administrativo</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <footer class="footer">
+            <p>Mary M&A Platform — Documentação de Telas</p>
+            <p class="footer-note">Rotas mapeadas a partir de <code>src/app/**/page.tsx</code></p>
+        </footer>
+    </div>
+</body>
+</html>
