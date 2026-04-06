@@ -1,7 +1,7 @@
 export {
   useAutoSave,
   type UseAutoSaveOptions,
-  type AutoSaveContext,
-  type SaveStatus,
+  type AutoSaveStatus,
   type RegisteredField,
+  type UseAutoSaveReturn,
 } from './useAutoSave'

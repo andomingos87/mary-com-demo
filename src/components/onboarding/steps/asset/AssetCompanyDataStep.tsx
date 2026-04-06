@@ -24,6 +24,7 @@ interface AssetCompanyDataStepProps {
   onSave: (data: AssetCompanyData) => void
   onBack: () => void
   onAskMaryAi?: (context: string) => void
+  onAutoSave?: (data: AssetCompanyData) => Promise<void>
 }
 
 const EMPTY_GEO: GeographySelection = {

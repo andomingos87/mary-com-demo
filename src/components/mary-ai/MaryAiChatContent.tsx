@@ -275,7 +275,7 @@ export function MaryAiChatContent({
       const sanitized = filterTransientMessages(parsed)
       const withGreeting =
         showFirstGreeting && !sanitized.some((messageItem) => messageItem.id === 'assistant-first-greeting')
-          ? [{ id: 'assistant-first-greeting', role: 'assistant', content: firstGreetingMessage }, ...sanitized]
+          ? [{ id: 'assistant-first-greeting', role: 'assistant' as const, content: firstGreetingMessage }, ...sanitized]
           : sanitized
       setMessages(withGreeting)
       hasHydratedStorageRef.current = true

@@ -21,7 +21,13 @@ import type {
   EligibilityResult,
 } from '@/types/onboarding'
 import { STEP_ORDER, SKIPPABLE_STEPS, calculateProgress } from '@/types/onboarding'
-import type { OnboardingDraft } from './useAutoSave'
+export interface OnboardingDraft {
+  organizationId: string | null
+  profileType: OrganizationProfile | null
+  currentStep: OnboardingStep
+  formData: Record<string, unknown>
+  lastSavedAt?: string
+}
 
 // ============================================
 // Types

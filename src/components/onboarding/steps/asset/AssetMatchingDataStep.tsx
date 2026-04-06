@@ -17,6 +17,7 @@ interface AssetMatchingDataStepProps {
   initialData?: Partial<AssetMatchingData>
   onSave: (data: AssetMatchingData) => void
   onBack: () => void
+  onAutoSave?: (data: AssetMatchingData) => Promise<void>
 }
 
 const EMPTY_HEADQUARTERS: HeadquartersValue = { city: '', state: '', country: '' }

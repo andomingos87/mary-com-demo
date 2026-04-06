@@ -15,6 +15,7 @@ interface AssetCodenameStepProps {
   initialData?: Partial<AssetCodenameData>
   onSave: (data: AssetCodenameData) => void
   onBack: () => void
+  onAutoSave?: (data: AssetCodenameData) => Promise<void>
 }
 
 export function AssetCodenameStep({ organizationId, initialData, onSave, onBack }: AssetCodenameStepProps) {

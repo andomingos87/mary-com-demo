@@ -16,6 +16,7 @@ interface AssetTeamStepProps {
   initialData?: Partial<AssetTeamData>
   onSave: (data: AssetTeamData) => void
   onBack: () => void
+  onAutoSave?: (data: AssetTeamData) => Promise<void>
 }
 
 interface InvitedMember {
