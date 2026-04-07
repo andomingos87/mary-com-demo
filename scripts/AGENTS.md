@@ -15,6 +15,7 @@
 
 ## Arquivos chave
 - `scripts/check-bundle-size.js`
+- `scripts/delete-users-by-domain.mjs` — limpeza por domínio de e-mail (Postgres direto; ver cabeçalho do arquivo)
 - `scripts/validate-env.js`
 - `scripts/debug/README.md` — documentação dos scripts de diagnóstico
 - `scripts/debug/cleanup-corrupted-user.ts`
