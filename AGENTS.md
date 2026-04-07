@@ -82,3 +82,25 @@ npm run lint && npm run test && npm run build
 # Ou validação completa:
 npm run validate
 ```
+
+## Cursor Cloud specific instructions
+
+### Environment variables
+Three secrets are required and must be configured as Cursor Cloud secrets:
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+- `SUPABASE_SERVICE_ROLE_KEY`
+
+On first setup, create `.env.local` from these env vars (see `.env.example` for full template). The dev server reads `.env.local` automatically.
+
+### Starting the dev server
+```bash
+npm run dev   # http://localhost:3000
+```
+No Docker, no local database, no Redis — Supabase is fully cloud-hosted. External integrations (email via Brevo, WhatsApp via Z-API, SMS) auto-fallback to mock mode when credentials are absent.
+
+### Caveats
+- `SHOW_MFA_CODE=true` in `.env.local` enables OTP display on `/verify-mfa` (dev only).
+- `WHATSAPP_FORCE_MOCK=true` prevents real WhatsApp messages in dev.
+- The `next-intl` webpack cache warning on startup is benign and can be ignored.
+- Build (`npm run build`) takes ~40s; the full `npm run validate` script also runs bundle size check + tests.
