@@ -34,7 +34,7 @@ export default async function RootLayout({
         <Script
           id="buug-embed"
           src="https://buug.io/embed.js"
-          data-project="cf2d3116-88dc-4ecb-9684-692a9dee6ec2"
+          data-project="98f68c3d-bf07-4864-a74a-c36f08378d40"
           strategy="afterInteractive"
         />
       </body>
