@@ -26,11 +26,12 @@ const nextConfig = {
     // CSP Header - allows Supabase, Vercel Analytics, Buug widget, and necessary inline scripts
     const cspHeader = `
       default-src 'self';
-      script-src 'self' 'unsafe-eval' 'unsafe-inline' https://va.vercel-scripts.com https://buug.io https://*.buug.io;
+      script-src 'self' 'unsafe-eval' 'unsafe-inline' https://va.vercel-scripts.com https://vercel.live https://*.vercel.live https://buug.io https://*.buug.io;
+      script-src-elem 'self' 'unsafe-inline' https://va.vercel-scripts.com https://vercel.live https://*.vercel.live https://buug.io https://*.buug.io;
       style-src 'self' 'unsafe-inline';
       img-src 'self' data: blob: https://*.supabase.co https://buug.io https://*.buug.io;
       font-src 'self';
-      connect-src 'self' https://*.supabase.co wss://*.supabase.co https://va.vercel-scripts.com https://buug.io https://*.buug.io;
+      connect-src 'self' https://*.supabase.co wss://*.supabase.co https://va.vercel-scripts.com https://vercel.live https://*.vercel.live https://buug.io https://*.buug.io;
       frame-src 'self' https://buug.io https://*.buug.io;
       frame-ancestors 'none';
       form-action 'self';
