@@ -7,6 +7,13 @@ const nextConfig = {
   // Disable x-powered-by header for security
   poweredByHeader: false,
 
+  experimental: {
+    // Keep design docs available in serverless build for /design route.
+    outputFileTracingIncludes: {
+      "/design/[[...slug]]": ["./.dev/design/**/*"],
+    },
+  },
+
   images: {
     remotePatterns: [
       { protocol: 'https', hostname: '*.supabase.co', pathname: '/**' },

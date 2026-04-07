@@ -47,3 +47,5 @@ contrato.pdf
 
 # playwright
 .playwright-mcp/
+*storybook.log
+storybook-static
