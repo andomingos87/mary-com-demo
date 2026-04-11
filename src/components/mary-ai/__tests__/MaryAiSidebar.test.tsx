@@ -46,7 +46,7 @@ jest.mock('@/components/mary-ai/MaryAiChatContent', () => ({
     ]
   },
   buildMaryAiDisclaimer: (organizationName: string) =>
-    `A Mary AI pode cometer erros. A Mary não usa dados da "${organizationName}" para treinar os modelos. Consulte a governança de IA e revise respostas antes de compartilhar dados sensíveis.`,
+    `A Mary AI pode cometer erros. A Mary não usa dados da "${organizationName}" para treinar os modelos.`,
   MaryAiChatContent: ({
     icebreakers,
     disclaimerText,
@@ -141,11 +141,9 @@ describe('MaryAiSidebar', () => {
   it('renders greeting and disclaimer with company name', () => {
     render(<MaryAiSidebar />)
 
-    expect(screen.getByText('Olá, Ana')).toBeInTheDocument()
+    expect(screen.getByText('Olá Ana, vamos começar?')).toBeInTheDocument()
     expect(
-      screen.getByText(
-        'A Mary AI pode cometer erros. A Mary não usa dados da "Acme Capital" para treinar os modelos. Consulte a governança de IA e revise respostas antes de compartilhar dados sensíveis.'
-      )
+      screen.getByText('A Mary AI pode cometer erros. A Mary não usa dados da "Acme Capital" para treinar os modelos.')
     ).toBeInTheDocument()
   })
 })

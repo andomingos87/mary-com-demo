@@ -4,7 +4,6 @@ import { Suspense, useState, useTransition, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useTranslations } from 'next-intl';
 import {
   Button,
   Input,
@@ -21,36 +20,9 @@ import {
 } from '@/components/ui';
 import { signupAction } from '@/lib/actions/auth';
 import { isGenericEmail, GENERIC_EMAIL_ERROR_MESSAGE } from '@/lib/validation/email';
-import { INVESTOR_TYPE_OPTIONS } from '@/lib/constants/investor-types';
 import { Briefcase, Building2, Users, ArrowLeft } from 'lucide-react';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
 
 type ProfileType = 'investor' | 'asset' | 'advisor';
-
-function normalizeHttpUrl(raw: string): string | null {
-  const t = raw.trim();
-  if (!t) return null;
-  const withProto = /^https?:\/\//i.test(t) ? t : `https://${t}`;
-  try {
-    const u = new URL(withProto);
-    if (!u.hostname || !u.hostname.includes('.')) return null;
-    return u.origin + (u.pathname === '/' ? '' : u.pathname) + u.search + u.hash;
-  } catch {
-    return null;
-  }
-}
-
-const PROFILE_LANDING: Record<ProfileType, string> = {
-  investor: '/invest',
-  asset: '/sell-raise',
-  advisor: '/advise',
-};
 
 const PROFILE_INFO: Record<ProfileType, { name: string; icon: React.ReactNode; description: string }> = {
   investor: {
@@ -84,13 +56,9 @@ function SignupLoading() {
 function SignupForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const t = useTranslations('signup');
   const [isPending, startTransition] = useTransition();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [website, setWebsite] = useState('');
-  const [investorType, setInvestorType] = useState('');
-  const [linkedinUrl, setLinkedinUrl] = useState('');
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -208,27 +176,6 @@ function SignupForm() {
       return;
     }
 
-    const siteNorm = normalizeHttpUrl(website);
-    if ((profileParam === 'investor' || profileParam === 'asset' || profileParam === 'advisor') && !siteNorm) {
-      setError(t('validation_website'));
-      return;
-    }
-
-    if (profileParam === 'investor' && !investorType) {
-      setError(t('validation_investor_type'));
-      return;
-    }
-
-    let linkedinNorm: string | undefined;
-    if (profileParam === 'advisor') {
-      const ln = normalizeHttpUrl(linkedinUrl.trim());
-      if (!ln || !ln.toLowerCase().includes('linkedin.com')) {
-        setError(t('validation_linkedin'));
-        return;
-      }
-      linkedinNorm = ln;
-    }
-
     startTransition(async () => {
       try {
         const result = await signupAction({
@@ -236,10 +183,7 @@ function SignupForm() {
           email,
           phone: `+${phoneDigits}`,
           password,
-          profileType: profileParam,
-          website: siteNorm ?? undefined,
-          investorType: profileParam === 'investor' ? investorType : undefined,
-          linkedinUrl: linkedinNorm,
+          profileType: profileParam, // Pass the profile type
         });
 
         if (!result.success) {
@@ -265,7 +209,7 @@ function SignupForm() {
           asChild 
           className="mb-4"
         >
-          <Link href={PROFILE_LANDING[profileParam]}>
+          <Link href="/">
             <ArrowLeft className="mr-2 h-4 w-4" />
             Trocar perfil
           </Link>
@@ -348,61 +292,6 @@ function SignupForm() {
                   disabled={loading}
                 />
               </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="website">{t('website_label')}</Label>
-                <Input
-                  id="website"
-                  type="url"
-                  inputMode="url"
-                  value={website}
-                  onChange={(e) => setWebsite(e.target.value)}
-                  placeholder="https://www.suaempresa.com"
-                  required
-                  disabled={loading}
-                />
-                <p className="text-xs text-muted-foreground">{t('website_hint')}</p>
-              </div>
-
-              {profileParam === 'investor' && (
-                <div className="space-y-2">
-                  <Label>{t('investor_type_label')}</Label>
-                  <Select
-                    value={investorType || undefined}
-                    onValueChange={setInvestorType}
-                    required
-                    disabled={loading}
-                  >
-                    <SelectTrigger aria-label={t('investor_type_label')}>
-                      <SelectValue placeholder={t('investor_type_placeholder')} />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {INVESTOR_TYPE_OPTIONS.map((opt) => (
-                        <SelectItem key={opt.value} value={opt.value}>
-                          {opt.label}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-              )}
-
-              {profileParam === 'advisor' && (
-                <div className="space-y-2">
-                  <Label htmlFor="linkedin">{t('linkedin_label')}</Label>
-                  <Input
-                    id="linkedin"
-                    type="url"
-                    inputMode="url"
-                    value={linkedinUrl}
-                    onChange={(e) => setLinkedinUrl(e.target.value)}
-                    placeholder="https://www.linkedin.com/company/..."
-                    required
-                    disabled={loading}
-                  />
-                  <p className="text-xs text-muted-foreground">{t('linkedin_hint')}</p>
-                </div>
-              )}
 
               <div className="space-y-2">
                 <Label htmlFor="phone">WhatsApp</Label>

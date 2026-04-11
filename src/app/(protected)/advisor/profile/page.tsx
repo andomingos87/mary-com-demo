@@ -1,7 +1,7 @@
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import Image from 'next/image'
-import { PageHeader } from '@/components/navigation/Header'
+import { PageHeader } from '@/components/navigation/PageHeader'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
@@ -57,7 +57,7 @@ export default async function AdvisorProfilePage() {
     <div className="space-y-6">
       <PageHeader
         title="Perfil do Advisor"
-        description="Suas informações profissionais. Use a Mary AI no topo para dúvidas sobre verificação e mandatos."
+        description="Suas informações profissionais"
         actions={
           <Button variant="outline" disabled={readOnlyMode}>
             <Edit className="h-4 w-4 mr-2" />
@@ -65,14 +65,6 @@ export default async function AdvisorProfilePage() {
           </Button>
         }
       />
-
-      <div
-        className="rounded-lg border border-border bg-muted/40 px-4 py-3 text-sm text-muted-foreground shadow-card"
-        role="note"
-      >
-        Nesta área, a Mary AI sugere atalhos contextuais (ex.: equipe e segurança) ao abrir o painel
-        no canto superior da tela.
-      </div>
 
       {/* Status Banner */}
       {org.verification_status === 'pending' && (

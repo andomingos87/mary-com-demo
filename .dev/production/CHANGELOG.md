@@ -8,21 +8,6 @@ Status: Ativo (fonte principal de changelog)
 - `4-CHANGELOG-PIVOT-07-03.md` (deletado — historico no Git)
 - `28-CHANGELOG-CONTEXT-ENGINEERING-FRONTEND.md` (deletado — historico no Git)
 
-## 2026-04-10 | Mercado em escala — matriz, ClickUp e rotas de jornada
-
-### O que mudou
-
-- Documentos: `MATRIZ-JORNADAS-EXCALIDRAW-MERCADO.md`, `PRECEDENCIA-EXCALIDRAW-FONTES.md`, `RUNBOOK-MERCADO-ESCALA.md`, `clickup-import-mary-mercado.csv` em `.dev/production/`.
-- `OrgSwitcher`: menu sempre abre com uma ou mais orgs; CTAs **Gerenciar organizações** e **Nova organização** (B0.8).
-- Redirect `/dashboard/organizations/new` → `/onboarding`.
-- Rotas públicas alinhadas às jornadas: `/invest`, `/sell-raise`, `/advise` → `/signup` com perfil.
-
-### Evidências principais
-
-- `src/components/navigation/OrgSwitcher.tsx`
-- `src/app/dashboard/organizations/new/page.tsx`
-- `src/app/invest/page.tsx`, `src/app/sell-raise/page.tsx`, `src/app/advise/page.tsx`
-
 ## 2026-04-06 | H0.5 - Fechamento final das ressalvas (100%)
 
 ### O que mudou

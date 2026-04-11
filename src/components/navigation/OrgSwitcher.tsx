@@ -72,6 +72,7 @@ export function OrgSwitcher({ className }: OrgSwitcherProps) {
   if (!organization) return null
 
   const ProfileIcon = PROFILE_ICONS[organization.profileType]
+  const hasMultipleOrgs = organizations.length > 1
 
   return (
     <div className={cn('relative', className)} ref={dropdownRef}>
@@ -84,7 +85,6 @@ export function OrgSwitcher({ className }: OrgSwitcherProps) {
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
         aria-haspopup="listbox"
-        aria-label="Organização ativa e opções"
       >
         <div className="flex items-center gap-3 min-w-0">
           {organization.logoUrl ? (
@@ -111,17 +111,18 @@ export function OrgSwitcher({ className }: OrgSwitcherProps) {
             </span>
           </div>
         </div>
-        <ChevronDown
-          className={cn(
-            'h-4 w-4 flex-shrink-0 text-muted-foreground transition-transform',
-            isOpen && 'rotate-180'
-          )}
-          aria-hidden
-        />
+        {hasMultipleOrgs && (
+          <ChevronDown
+            className={cn(
+              'h-4 w-4 text-muted-foreground transition-transform',
+              isOpen && 'rotate-180'
+            )}
+          />
+        )}
       </Button>
 
-      {/* Dropdown: sempre disponível (1 ou N orgs) para Nova organização / troca — B0.8 */}
-      {isOpen && (
+      {/* Dropdown */}
+      {isOpen && hasMultipleOrgs && (
         <div
           className="absolute top-full left-0 right-0 mt-1 bg-popover border border-border rounded-md shadow-md z-50 py-1"
           role="listbox"
@@ -166,26 +167,13 @@ export function OrgSwitcher({ className }: OrgSwitcherProps) {
             )
           })}
 
-          {/* Create / manage orgs */}
-          <div className="border-t border-border mt-1 pt-1 space-y-0.5">
+          {/* Create New Org */}
+          <div className="border-t border-border mt-1 pt-1">
             <button
-              type="button"
               className="w-full flex items-center gap-3 px-3 py-2 text-left hover:bg-accent transition-colors text-muted-foreground"
               onClick={() => {
                 setIsOpen(false)
-                window.location.href = '/dashboard/organizations'
-              }}
-            >
-              <div className="w-8 h-8 border border-border rounded-md flex items-center justify-center bg-muted/40">
-                <Building2 className="h-4 w-4" />
-              </div>
-              <span className="text-sm">Gerenciar organizações</span>
-            </button>
-            <button
-              type="button"
-              className="w-full flex items-center gap-3 px-3 py-2 text-left hover:bg-accent transition-colors text-muted-foreground"
-              onClick={() => {
-                setIsOpen(false)
+                // Navigate to create org page
                 window.location.href = '/onboarding'
               }}
             >

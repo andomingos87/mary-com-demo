@@ -3,8 +3,6 @@ import { redirect, notFound } from 'next/navigation'
 import { PageHeader } from '@/components/navigation/Header'
 import { PipelineBoard } from '@/components/projects/PipelineBoard'
 import type { ProjectStatus } from '@/types/database'
-import { isFrontendDemo } from '@/lib/demo/frontend-demo'
-import { MOCK_PIPELINE_PROJECTS } from '@/lib/demo/mock-pipeline'
 
 // ============================================
 // Pipeline Page (Investor Only)
@@ -36,32 +34,23 @@ export default async function PipelinePage({ params }: PipelinePageProps) {
   }
 
   const readOnlyMode = org.verification_status === 'pending'
+  const { data: projects } = await supabase
+    .from('projects')
+    .select('id, codename, status')
+    .eq('organization_id', org.id)
+    .is('deleted_at', null)
+    .order('updated_at', { ascending: false })
 
-  const normalizedProjects = isFrontendDemo()
-    ? MOCK_PIPELINE_PROJECTS
-    : (await supabase
-        .from('projects')
-        .select('id, codename, status')
-        .eq('organization_id', org.id)
-        .is('deleted_at', null)
-        .order('updated_at', { ascending: false })
-        .then(({ data: projects }) =>
-          (projects ?? []).map((project) => ({
-            id: project.id,
-            codename: project.codename,
-            status: project.status as ProjectStatus,
-          }))
-        ))
+  const normalizedProjects = (projects ?? []).map((project) => ({
+    id: project.id,
+    codename: project.codename,
+    status: project.status as ProjectStatus,
+  }))
 
   return (
     <div className="space-y-6">
       <PageHeader title="Pipeline" description="Acompanhe o progresso dos seus projetos de M&A" />
-      <PipelineBoard
-        orgSlug={orgSlug}
-        initialProjects={normalizedProjects}
-        readOnlyMode={readOnlyMode}
-        demoMode={isFrontendDemo()}
-      />
+      <PipelineBoard orgSlug={orgSlug} initialProjects={normalizedProjects} readOnlyMode={readOnlyMode} />
     </div>
   )
 }

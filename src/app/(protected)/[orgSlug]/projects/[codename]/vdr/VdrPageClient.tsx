@@ -6,8 +6,7 @@ import { PageHeader } from '@/components/navigation/Header'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
-import { Button } from '@/components/ui/button'
+import { TooltipProvider } from '@/components/ui/tooltip'
 import {
   Sheet,
   SheetContent,
@@ -22,7 +21,6 @@ import {
   Users,
   Link as LinkIcon,
   BarChart3,
-  Info,
 } from 'lucide-react'
 import {
   VdrAccordionTable,
@@ -61,7 +59,6 @@ import type {
   VdrBulkUpdateInput,
 } from '@/types/vdr'
 import type { DocumentAction } from '@/components/vdr/VdrDocumentRow'
-import { TOOLTIPS } from '@/lib/constants/tooltips'
 
 interface ResponsibleOption {
   id: string
@@ -380,22 +377,6 @@ export function VdrPageClient({
             <div className="flex items-center gap-2">
               <Lock className="h-5 w-5 text-primary" />
               <CardTitle className="text-sm">Segurança do VDR</CardTitle>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button
-                    type="button"
-                    variant="ghost"
-                    size="icon"
-                    className="h-8 w-8 text-muted-foreground"
-                    aria-label="O que é o VDR complementar (Mais Infos)"
-                  >
-                    <Info className="h-4 w-4" />
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent side="bottom" className="max-w-sm text-left text-xs">
-                  {TOOLTIPS.vdr.complementaryDataRoom}
-                </TooltipContent>
-              </Tooltip>
             </div>
           </CardHeader>
           <CardContent>

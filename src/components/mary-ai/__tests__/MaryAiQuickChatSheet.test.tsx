@@ -6,17 +6,10 @@ import { usePathname } from 'next/navigation'
 
 jest.mock('@/components/ui/sheet', () => ({
   Sheet: ({ open, children }: { open: boolean; children: React.ReactNode }) => (open ? <div>{children}</div> : null),
-  SheetContent: ({
-    children,
-    hideClose: _hideClose,
-    ...props
-  }: {
-    children: React.ReactNode
-    hideClose?: boolean
-  }) => <div {...props}>{children}</div>,
-  SheetTitle: ({ children, className }: { children: React.ReactNode; className?: string }) => (
-    <h2 className={className}>{children}</h2>
-  ),
+  SheetContent: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
+  SheetHeader: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
+  SheetTitle: ({ children }: { children: React.ReactNode }) => <h2>{children}</h2>,
+  SheetDescription: ({ children }: { children: React.ReactNode }) => <p>{children}</p>,
 }))
 
 jest.mock('@/components/ui/scroll-area', () => ({
@@ -97,13 +90,11 @@ describe('MaryAiQuickChatSheet', () => {
   it('renders quick chat sheet with icebreakers', () => {
     render(<MaryAiQuickChatSheet open onOpenChange={jest.fn()} />)
 
-    expect(screen.getByText('Com o que posso ajudar?')).toBeInTheDocument()
+    expect(screen.getByText('Com o que posso te ajudar')).toBeInTheDocument()
     expect(screen.getByRole('button', { name: 'O que a Mary AI pode fazer?' })).toBeInTheDocument()
     expect(screen.getByRole('button', { name: 'Suba Q&As e obtenha respostas' })).toBeInTheDocument()
     expect(
-      screen.getByText(
-        /A Mary AI pode cometer erros\. A Mary não usa dados da "Acme Capital" para treinar os modelos\./
-      )
+      screen.getByText('A Mary AI pode cometer erros. A Mary não usa dados da "Acme Capital" para treinar os modelos.')
     ).toBeInTheDocument()
   })
 

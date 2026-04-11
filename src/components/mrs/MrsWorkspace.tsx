@@ -1,13 +1,13 @@
 'use client'
 
-import { useEffect, useMemo, useRef, useState, useTransition } from 'react'
+import { useMemo, useState, useTransition } from 'react'
 import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
 import { Progress } from '@/components/ui/progress'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { MrsRadarChart } from '@/components/mrs/MrsRadarChart'
-import { MrsStepItemsPanel, type MrsItemDraft } from '@/components/mrs/MrsStepItemsPanel'
-import { mrsStepNavButtonClass } from '@/components/mrs/mrs-step-helpers'
+import { Textarea } from '@/components/ui/textarea'
 import { AutoSaveIndicator } from '@/components/shared/AutoSaveIndicator'
 import {
   addMrsItemFileAction,
@@ -29,7 +29,14 @@ const STEP_LABELS: Record<MrsStepId, string> = {
   4: 'Passo 4',
 }
 
-function ensureDraft(base?: MrsItemDraft): MrsItemDraft {
+type DraftValues = {
+  ownerUserId?: string
+  comments?: string
+  fileName?: string
+  fileUrl?: string
+}
+
+function ensureDraft(base?: DraftValues): DraftValues {
   return {
     ownerUserId: base?.ownerUserId ?? '',
     comments: base?.comments ?? '',
@@ -42,20 +49,10 @@ export function MrsWorkspace({ orgSlug, initialProjects }: MrsWorkspaceProps) {
   const [projects, setProjects] = useState<MrsProjectSummary[]>(initialProjects)
   const [selectedProjectId, setSelectedProjectId] = useState<string>(initialProjects[0]?.id ?? '')
   const [activeStepId, setActiveStepId] = useState<MrsStepId>(1)
-  const [drafts, setDrafts] = useState<Record<string, MrsItemDraft>>({})
+  const [drafts, setDrafts] = useState<Record<string, DraftValues>>({})
   const [globalError, setGlobalError] = useState<string | null>(null)
   const [globalSuccess, setGlobalSuccess] = useState<string | null>(null)
   const [isPending, startTransition] = useTransition()
-  const stepContentRef = useRef<HTMLDivElement>(null)
-  const skipStepScrollOnMount = useRef(true)
-
-  useEffect(() => {
-    if (skipStepScrollOnMount.current) {
-      skipStepScrollOnMount.current = false
-      return
-    }
-    stepContentRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-  }, [activeStepId])
 
   const selectedProject = useMemo(
     () => projects.find((project) => project.id === selectedProjectId) ?? null,
@@ -264,41 +261,29 @@ export function MrsWorkspace({ orgSlug, initialProjects }: MrsWorkspaceProps) {
         </CardHeader>
       </Card>
 
-      <MrsRadarChart
-        axes={selectedProject.mrs.steps.map((step) => ({
-          label: `Passo ${step.id}`,
-          value: Math.min(
-            5,
-            Math.max(0, Number(((selectedProject.mrs.score.stepScores[step.id] / 100) * 5).toFixed(1)))
-          ),
-        }))}
-      />
-
       <Card>
         <CardHeader>
           <CardTitle>Navegação por passos</CardTitle>
           <CardDescription>Passos 1-4 conforme contrato oficial do MRS.</CardDescription>
           <div className="grid grid-cols-2 gap-2 md:grid-cols-4">
             {selectedProject.mrs.steps.map((step) => (
-              <button
+              <Button
                 key={step.id}
                 type="button"
-                aria-pressed={activeStepId === step.id}
+                variant={activeStepId === step.id ? 'default' : 'outline'}
                 onClick={() => setActiveStepId(step.id)}
-                className={mrsStepNavButtonClass(step.id, activeStepId === step.id)}
+                className="justify-between"
               >
-                <span className="flex w-full min-w-0 items-center justify-between gap-2 text-left">
-                  <span>{STEP_LABELS[step.id]}</span>
-                  <span className="tabular-nums opacity-95">{selectedProject.mrs.score.stepScores[step.id]}%</span>
-                </span>
-              </button>
+                <span>{STEP_LABELS[step.id]}</span>
+                <span>{selectedProject.mrs.score.stepScores[step.id]}%</span>
+              </Button>
             ))}
           </div>
         </CardHeader>
       </Card>
 
       {activeStep && (
-        <div ref={stepContentRef} className="space-y-4 scroll-mt-24">
+        <div className="space-y-4">
           <Card>
             <CardHeader>
               <CardTitle>{activeStep.name}</CardTitle>
@@ -308,22 +293,142 @@ export function MrsWorkspace({ orgSlug, initialProjects }: MrsWorkspaceProps) {
             </CardHeader>
           </Card>
 
-          <MrsStepItemsPanel
-            step={activeStep}
-            mode="interactive"
-            drafts={drafts}
-            onDraftChange={(itemId, partial) =>
-              setDrafts((prev) => ({
-                ...prev,
-                [itemId]: { ...ensureDraft(prev[itemId]), ...partial },
-              }))
-            }
-            onStatusChange={handleStatusChange}
-            onPriorityChange={handlePriorityChange}
-            onSaveMetadata={handleSaveMetadata}
-            onRegisterUpload={handleRegisterUpload}
-            disabled={isPending}
-          />
+          {activeStep.themes.map((theme) => (
+            <Card key={theme.id}>
+              <CardHeader>
+                <CardTitle className="text-base">{theme.name}</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                {theme.subthemes.map((subtheme) => (
+                  <div key={subtheme.id} className="space-y-4">
+                    <h4 className="text-sm font-semibold">{subtheme.name}</h4>
+                    {subtheme.items.map((item) => {
+                      const draft = ensureDraft({
+                        ...drafts[item.id],
+                        ownerUserId: drafts[item.id]?.ownerUserId ?? item.ownerUserId ?? '',
+                        comments: drafts[item.id]?.comments ?? item.comments ?? '',
+                      })
+
+                      return (
+                        <div key={item.id} className="rounded-lg border border-border p-4 space-y-4">
+                          <div className="flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+                            <div>
+                              <p className="font-medium">{item.title}</p>
+                              <p className="text-xs text-muted-foreground">Arquivos: {item.filesCount}</p>
+                            </div>
+                            <div className="flex flex-wrap gap-2">
+                              <Select value={item.status} onValueChange={(value) => handleStatusChange(item.id, value as MrsStatus)}>
+                                <SelectTrigger className="w-[150px]">
+                                  <SelectValue />
+                                </SelectTrigger>
+                                <SelectContent>
+                                  <SelectItem value="pendente">Pendente</SelectItem>
+                                  <SelectItem value="parcial">Parcial</SelectItem>
+                                  <SelectItem value="completo">Completo</SelectItem>
+                                  <SelectItem value="na">N/A</SelectItem>
+                                </SelectContent>
+                              </Select>
+                              <Select value={item.priority} onValueChange={(value) => handlePriorityChange(item.id, value as MrsPriority)}>
+                                <SelectTrigger className="w-[150px]">
+                                  <SelectValue />
+                                </SelectTrigger>
+                                <SelectContent>
+                                  <SelectItem value="critica">Crítica</SelectItem>
+                                  <SelectItem value="alta">Alta</SelectItem>
+                                  <SelectItem value="media">Média</SelectItem>
+                                </SelectContent>
+                              </Select>
+                            </div>
+                          </div>
+
+                          <div className="grid gap-3 md:grid-cols-2">
+                            <Input
+                              placeholder="owner_user_id (responsável)"
+                              value={draft.ownerUserId}
+                              onChange={(event) =>
+                                setDrafts((prev) => ({
+                                  ...prev,
+                                  [item.id]: {
+                                    ...ensureDraft(prev[item.id]),
+                                    ownerUserId: event.target.value,
+                                  },
+                                }))
+                              }
+                            />
+                            <Input
+                              placeholder="Nome do arquivo para registrar upload"
+                              value={draft.fileName}
+                              onChange={(event) =>
+                                setDrafts((prev) => ({
+                                  ...prev,
+                                  [item.id]: {
+                                    ...ensureDraft(prev[item.id]),
+                                    fileName: event.target.value,
+                                  },
+                                }))
+                              }
+                            />
+                          </div>
+
+                          <Input
+                            placeholder="URL do arquivo (opcional)"
+                            value={draft.fileUrl}
+                            onChange={(event) =>
+                              setDrafts((prev) => ({
+                                ...prev,
+                                [item.id]: {
+                                  ...ensureDraft(prev[item.id]),
+                                  fileUrl: event.target.value,
+                                },
+                              }))
+                            }
+                          />
+
+                          <Textarea
+                            placeholder="Comentários do item"
+                            value={draft.comments}
+                            onChange={(event) =>
+                              setDrafts((prev) => ({
+                                ...prev,
+                                [item.id]: {
+                                  ...ensureDraft(prev[item.id]),
+                                  comments: event.target.value,
+                                },
+                              }))
+                            }
+                          />
+
+                          <div className="flex flex-wrap gap-2">
+                            <Button
+                              type="button"
+                              variant="outline"
+                              onClick={() => handleSaveMetadata(item.id)}
+                              disabled={isPending}
+                            >
+                              Atualizar metadados
+                            </Button>
+                            <Button
+                              type="button"
+                              onClick={() => handleRegisterUpload(item.id)}
+                              disabled={isPending}
+                            >
+                              Registrar upload
+                            </Button>
+                          </div>
+
+                          {item.lastUploadAt && (
+                            <p className="text-xs text-muted-foreground">
+                              Último upload: {new Date(item.lastUploadAt).toLocaleString('pt-BR')}
+                            </p>
+                          )}
+                        </div>
+                      )
+                    })}
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+          ))}
         </div>
       )}
     </div>

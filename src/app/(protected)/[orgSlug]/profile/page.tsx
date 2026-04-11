@@ -58,7 +58,7 @@ export default async function ProfilePage({ params }: ProfilePageProps) {
     <div className="space-y-6">
       <PageHeader
         title="Perfil da Organização"
-        description="Informações da organização. Use a Mary AI no topo para dúvidas sobre verificação, dados e convites."
+        description="Informações e configurações da sua organização"
         actions={
           <Button variant="outline" disabled={readOnlyMode}>
             <Edit className="h-4 w-4 mr-2" />
@@ -66,14 +66,6 @@ export default async function ProfilePage({ params }: ProfilePageProps) {
           </Button>
         }
       />
-
-      <div
-        className="rounded-lg border border-border bg-muted/40 px-4 py-3 text-sm text-muted-foreground shadow-card"
-        role="note"
-      >
-        Nesta área, a Mary AI sugere atalhos contextuais (ex.: equipe e segurança) ao abrir o painel
-        no canto superior da tela.
-      </div>
 
       {/* Status Banner */}
       <StatusBanner status={org.verification_status} />

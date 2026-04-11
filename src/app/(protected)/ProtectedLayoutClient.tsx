@@ -101,7 +101,7 @@ export function ProtectedLayoutClient({ children }: ProtectedLayoutClientProps) 
       {/* Mobile and tablet fallback */}
       {!isPushMaryMode && <MaryAiQuickChatSheet open={isOpen} onOpenChange={setOpen} />}
 
-      <MaryAiEntryFallback />
+      {hideHeader && <MaryAiEntryFallback />}
     </div>
   )
 }

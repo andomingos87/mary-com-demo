@@ -15,8 +15,6 @@ import type {
   ToggleFollowInput,
   ToggleFollowResult,
 } from '@/types/radar'
-import { isFrontendDemo } from '@/lib/demo/frontend-demo'
-import { getMockRadarResult } from '@/lib/demo/mock-radar-result'
 
 type ProjectRow = Pick<
   Tables<'projects'>,
@@ -129,11 +127,6 @@ export async function listRadarOpportunities(
     const accessResult = await getAuthenticatedInvestorContext(organizationId)
     if (!accessResult.success || !accessResult.data) {
       return { success: false, error: accessResult.error }
-    }
-
-    const readOnlyModeEarly = accessResult.data.verificationStatus === 'pending'
-    if (isFrontendDemo()) {
-      return { success: true, data: getMockRadarResult(readOnlyModeEarly) }
     }
 
     const activeThesisResult = await getActiveThesis(organizationId)
