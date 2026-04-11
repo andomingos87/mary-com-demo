@@ -41,13 +41,18 @@ function isMfaPath(pathname: string): boolean {
   return pathname.startsWith('/verify-mfa');
 }
 
+/** Demo estático: não usa Supabase nem sessão; evita ruído no terminal sem `.env.local`. */
+function isPublicDemoPath(pathname: string): boolean {
+  return pathname === '/demo' || pathname.startsWith('/demo/')
+}
+
 function isDynamicOrgPath(pathname: string): boolean {
   // Matches /:orgSlug/* pattern (but not /login, /signup, etc.)
   const segments = pathname.split('/').filter(Boolean);
   if (segments.length < 1) return false;
   
   // Check if first segment is NOT a known static route
-  const staticRoutes = ['login', 'signup', 'forgot-password', 'reset-password', 'verify-mfa', 'onboarding', 'admin', 'advisor', 'api', 'auth', 'dashboard', 'terms', 'privacy', 'docs', 'vdr', 'validacao-epicos'];
+  const staticRoutes = ['login', 'signup', 'forgot-password', 'reset-password', 'verify-mfa', 'onboarding', 'admin', 'advisor', 'api', 'auth', 'dashboard', 'terms', 'privacy', 'docs', 'vdr', 'validacao-epicos', 'design-system', 'demo'];
   return !staticRoutes.includes(segments[0]);
 }
 
@@ -62,13 +67,27 @@ function extractOrgSlug(pathname: string): string | null {
 // ============================================
 
 export async function updateSession(request: NextRequest) {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  const pathname = request.nextUrl.pathname;
+
+  if (!supabaseUrl || !supabaseAnonKey) {
+    if (isPublicDemoPath(pathname)) {
+      return NextResponse.next({ request });
+    }
+    console.warn(
+      `[Middleware] NEXT_PUBLIC_SUPABASE_URL / NEXT_PUBLIC_SUPABASE_ANON_KEY ausentes — sessão ignorada para ${pathname}. Configure .env.local para auth completo.`
+    );
+    return NextResponse.next({ request });
+  }
+
   let supabaseResponse = NextResponse.next({
     request,
   });
 
   const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    supabaseUrl,
+    supabaseAnonKey,
     {
       cookies: {
         getAll() {
@@ -95,7 +114,6 @@ export async function updateSession(request: NextRequest) {
     error: userError,
   } = await supabase.auth.getUser();
 
-  const pathname = request.nextUrl.pathname;
   const marySessionId = request.cookies.get(MARY_SESSION_COOKIE_NAME)?.value;
 
   /** Load user_sessions row and require is_active, expires_at in future, mfa_verified */

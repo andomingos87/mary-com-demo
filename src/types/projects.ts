@@ -21,7 +21,7 @@ import type {
 /**
  * Input para criar um novo projeto
  */
-export type ProjectVisibility = 'public' | 'private'
+export type ProjectVisibility = 'public' | 'private' | 'restricted'
 
 export type ProjectMemberRole = 'viewer' | 'editor' | 'manager'
 

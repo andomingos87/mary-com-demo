@@ -27,6 +27,8 @@ export interface RadarResult {
   opportunities: RadarOpportunity[]
   fallbackUsed: boolean
   readOnlyMode: boolean
+  /** Quando true, CTAs usam estado local (sem persistir NDA/follow no banco). */
+  demoMode?: boolean
 }
 
 export interface RadarQueryOptions {

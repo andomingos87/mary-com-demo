@@ -24,11 +24,13 @@ import {
   Calendar,
   Globe,
   Lock,
+  Users,
 } from 'lucide-react'
 import type { Project, ProjectObjective } from '@/types/database'
 import { PROJECT_OBJECTIVE_LABELS } from '@/types/database'
 import { ProjectStatusBadge } from './ProjectStatusBadge'
 import { ReadinessIndicator } from './ReadinessIndicator'
+import { isProjectRadarMary } from '@/lib/constants/project-sharing'
 
 export interface ProjectCardProps {
   /** Project data */
@@ -70,6 +72,12 @@ export function ProjectCard({
   const objectiveColor = OBJECTIVE_COLORS[project.objective]
 
   const projectUrl = `/${orgSlug}/projects/${project.codename}`
+  const visibilityLabel =
+    project.visibility === 'restricted'
+      ? 'Restrito'
+      : isProjectRadarMary(project.visibility)
+        ? 'Radar Mary'
+        : 'Privado'
 
   return (
     <Link
@@ -105,9 +113,11 @@ export function ProjectCard({
           </div>
 
           <div className="flex items-center gap-2">
-            <span aria-label={project.visibility === 'public' ? 'Publico' : 'Privado'}>
-              {project.visibility === 'public' ? (
+            <span aria-label={visibilityLabel}>
+              {isProjectRadarMary(project.visibility) ? (
                 <Globe className="h-4 w-4 text-muted-foreground" />
+              ) : project.visibility === 'restricted' ? (
+                <Users className="h-4 w-4 text-muted-foreground" />
               ) : (
                 <Lock className="h-4 w-4 text-muted-foreground" />
               )}

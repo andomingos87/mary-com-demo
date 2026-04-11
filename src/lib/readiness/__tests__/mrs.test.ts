@@ -1,3 +1,4 @@
+import type { MrsStep } from '@/types/projects'
 import {
   addMrsItemFile,
   calculateMrsGates,
@@ -8,6 +9,25 @@ import {
   updateMrsItem,
 } from '../mrs'
 
+function setOtherStepItemsToNa(step: MrsStep, exceptIds: string[]) {
+  for (const theme of step.themes) {
+    for (const sub of theme.subthemes) {
+      for (const item of sub.items) {
+        if (!exceptIds.includes(item.id)) {
+          item.status = 'na'
+        }
+      }
+    }
+  }
+}
+
+/** Zera contribuição ao score nos passos indicados (todos os itens N/A). */
+function naAllItemsInSteps(steps: MrsStep[], fromStepIndex: number) {
+  for (let i = fromStepIndex; i < steps.length; i++) {
+    setOtherStepItemsToNa(steps[i], [])
+  }
+}
+
 describe('mrs canonical score', () => {
   it('calcula score por passo e total usando pesos oficiais', () => {
     const steps = createDefaultMrsSteps()
@@ -17,6 +37,8 @@ describe('mrs canonical score', () => {
 
     itemA.status = 'completo'
     itemB.status = 'parcial'
+    setOtherStepItemsToNa(step1, [itemA.id, itemB.id])
+    naAllItemsInSteps(steps, 1)
 
     const score = calculateMrsScore(steps)
     expect(score.stepScores[1]).toBe(80)
@@ -34,6 +56,7 @@ describe('mrs canonical score', () => {
 
     criticalItem.status = 'na'
     highItem.status = 'completo'
+    setOtherStepItemsToNa(step1, [highItem.id])
 
     const score = calculateMrsScore(steps)
     expect(score.stepScores[1]).toBe(100)

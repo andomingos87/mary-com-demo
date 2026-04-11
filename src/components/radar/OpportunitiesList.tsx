@@ -20,6 +20,8 @@ interface OpportunitiesListProps {
   opportunities: RadarOpportunity[]
   readOnlyMode: boolean
   fallbackUsed: boolean
+  /** Interações apenas no cliente (modo NEXT_PUBLIC_FRONTEND_DEMO). */
+  demoMode?: boolean
 }
 
 function formatDate(value: string) {
@@ -34,6 +36,7 @@ export function OpportunitiesList({
   opportunities,
   readOnlyMode,
   fallbackUsed,
+  demoMode = false,
 }: OpportunitiesListProps) {
   const [items, setItems] = useState(opportunities)
   const [globalError, setGlobalError] = useState<string | null>(null)
@@ -45,7 +48,24 @@ export function OpportunitiesList({
     [items, teaserOpenId]
   )
 
-  const handleToggleFollow = (projectId: string) =>
+  const handleToggleFollow = (projectId: string) => {
+    if (demoMode) {
+      setGlobalError(null)
+      setItems((prev) =>
+        prev.map((item) =>
+          item.projectId === projectId
+            ? {
+                ...item,
+                ctaState: {
+                  ...item.ctaState,
+                  isFollowing: !item.ctaState.isFollowing,
+                },
+              }
+            : item
+        )
+      )
+      return
+    }
     startTransition(async () => {
       setGlobalError(null)
       const result = await toggleFollowOpportunity({ organizationId, projectId })
@@ -66,8 +86,27 @@ export function OpportunitiesList({
         )
       )
     })
+  }
 
-  const handleRequestNda = (projectId: string) =>
+  const handleRequestNda = (projectId: string) => {
+    if (demoMode) {
+      setGlobalError(null)
+      setItems((prev) =>
+        prev.map((item) =>
+          item.projectId === projectId
+            ? {
+                ...item,
+                ctaState: {
+                  ...item.ctaState,
+                  hasNdaRequest: true,
+                  canRequestNda: false,
+                },
+              }
+            : item
+        )
+      )
+      return
+    }
     startTransition(async () => {
       setGlobalError(null)
       const result = await requestNdaForOpportunity({ organizationId, projectId })
@@ -92,9 +131,20 @@ export function OpportunitiesList({
         )
       )
     })
+  }
 
   return (
     <div className="space-y-4">
+      {demoMode && (
+        <Card className="border-primary/30 bg-primary/5">
+          <CardContent className="py-3 text-sm text-muted-foreground">
+            <span className="font-medium text-foreground">Modo demonstração</span> — oportunidades e ações
+            (seguir / NDA) são simuladas; nada é gravado no banco. Desative com{' '}
+            <code className="rounded bg-muted px-1 text-xs">NEXT_PUBLIC_FRONTEND_DEMO=false</code>.
+          </CardContent>
+        </Card>
+      )}
+
       {fallbackUsed && (
         <Card>
           <CardContent className="py-4 text-sm text-muted-foreground">
@@ -161,7 +211,7 @@ export function OpportunitiesList({
                   size="sm"
                   onClick={() => handleRequestNda(opportunity.projectId)}
                   disabled={
-                    isPending ||
+                    (!demoMode && isPending) ||
                     readOnlyMode ||
                     !opportunity.ctaState.canRequestNda ||
                     opportunity.ctaState.hasNdaRequest
@@ -175,7 +225,7 @@ export function OpportunitiesList({
                   size="sm"
                   variant={opportunity.ctaState.isFollowing ? 'default' : 'outline'}
                   onClick={() => handleToggleFollow(opportunity.projectId)}
-                  disabled={isPending || readOnlyMode}
+                  disabled={(!demoMode && isPending) || readOnlyMode}
                 >
                   <Heart className="h-4 w-4 mr-2" />
                   {opportunity.ctaState.isFollowing ? 'Seguindo' : 'Seguir'}

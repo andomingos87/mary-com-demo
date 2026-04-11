@@ -18,6 +18,7 @@ import type {
   ProjectWithDetails,
   ActionResult,
   ProjectFieldMetadata,
+  ProjectVisibility,
 } from '@/types/projects'
 import { isValidCodename, CODENAME_MIN_LENGTH, CODENAME_MAX_LENGTH } from '@/types/projects'
 import { applyBulkL1Metadata, calculateScore, parseFieldMetadata } from '@/lib/readiness'
@@ -193,6 +194,12 @@ export async function createProject(
       return { success: false, error: 'Equity mínimo não pode ser maior que o equity máximo' }
     }
 
+    const requestedVisibility: ProjectVisibility = input.visibility || 'private'
+    const allowedVisibility: ProjectVisibility[] = ['public', 'private', 'restricted']
+    if (!allowedVisibility.includes(requestedVisibility)) {
+      return { success: false, error: 'Valor de visibilidade inválido.' }
+    }
+
     // Create project
     const projectData = {
       organization_id: input.organizationId,
@@ -206,7 +213,7 @@ export async function createProject(
       sector_l3: input.sectorL3,
       created_by: user.id,
       field_metadata: fieldMetadata as Json,
-      visibility: input.visibility || 'private',
+      visibility: requestedVisibility,
       contacts: (input.contacts || []) as unknown as Json,
       advisor_preference: input.advisorPreference || null,
       advisor_email: input.advisorEmail || null,
@@ -677,6 +684,13 @@ export async function updateProject(
 
     if (fetchError || !currentProject) {
       return { success: false, error: 'Projeto não encontrado' }
+    }
+
+    if (input.visibility !== undefined) {
+      const allowed: ProjectVisibility[] = ['public', 'private', 'restricted']
+      if (!allowed.includes(input.visibility)) {
+        return { success: false, error: 'Valor de visibilidade inválido.' }
+      }
     }
 
     // Validate codename if changing

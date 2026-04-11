@@ -2,16 +2,10 @@
 
 import { useEffect, useMemo, useState } from 'react'
 import { usePathname } from 'next/navigation'
-import { Bot, Sparkles } from 'lucide-react'
-import { Badge } from '@/components/ui/badge'
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-} from '@/components/ui/sheet'
-import { buildMaryAiDisclaimer, getMaryAiIcebreakers, MaryAiChatContent } from '@/components/mary-ai/MaryAiChatContent'
+import { History, PanelLeft, X } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { Sheet, SheetContent, SheetTitle } from '@/components/ui/sheet'
+import { buildMaryAiDisclaimer, getMaryAiIcebreakers, getMaryAiPageBrief, MaryAiChatContent } from '@/components/mary-ai/MaryAiChatContent'
 import { useOrganization } from '@/components/providers/OrganizationProvider'
 
 interface MaryAiQuickChatSheetProps {
@@ -44,6 +38,10 @@ export function MaryAiQuickChatSheet({ open, onOpenChange, initialMessage }: Mar
     () => getMaryAiIcebreakers(profileType ?? null, { currentPage: pathname, projectCodename }),
     [profileType, pathname, projectCodename]
   )
+  const pageBrief = useMemo(
+    () => getMaryAiPageBrief(profileType ?? null, { currentPage: pathname, projectCodename }),
+    [profileType, pathname, projectCodename]
+  )
 
   const disclaimerText = useMemo(() => buildMaryAiDisclaimer(organizationName), [organizationName])
   const consumeFirstGreeting = () => {
@@ -55,21 +53,51 @@ export function MaryAiQuickChatSheet({ open, onOpenChange, initialMessage }: Mar
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
-      <SheetContent side="right" className="w-full sm:max-w-xl p-0 flex flex-col">
-        <SheetHeader className="p-4 pb-3 border-b border-border">
-          <SheetTitle className="flex items-center gap-2">
-            <Bot className="h-5 w-5 text-primary" aria-hidden="true" />
-            Mary AI
-            <Badge variant="secondary" className="ml-1">
-              <Sparkles className="h-3 w-3" aria-hidden="true" />
-              Beta
-            </Badge>
-          </SheetTitle>
-          <SheetDescription>Com o que posso te ajudar</SheetDescription>
-        </SheetHeader>
+      <SheetContent
+        side="right"
+        hideClose
+        className="flex w-full flex-col border-l border-border p-0 shadow-elegant sm:max-w-md"
+      >
+        <SheetTitle className="sr-only">Assistente Mary AI</SheetTitle>
+        <div className="flex shrink-0 items-center justify-between border-b border-border px-2 py-2">
+          <Button
+            type="button"
+            variant="ghost"
+            size="icon"
+            className="h-9 w-9 text-muted-foreground hover:text-foreground"
+            aria-label="Recolher painel Mary AI"
+            onClick={() => onOpenChange(false)}
+          >
+            <PanelLeft className="h-4 w-4" aria-hidden />
+          </Button>
+          <div className="flex items-center gap-0.5">
+            <Button
+              type="button"
+              variant="ghost"
+              size="icon"
+              className="h-9 w-9 text-muted-foreground hover:text-foreground"
+              aria-label="Histórico de conversas (em breve)"
+              disabled
+            >
+              <History className="h-4 w-4 opacity-50" aria-hidden />
+            </Button>
+            <Button
+              type="button"
+              variant="ghost"
+              size="icon"
+              className="h-9 w-9 text-muted-foreground hover:text-foreground"
+              aria-label="Fechar Mary AI"
+              onClick={() => onOpenChange(false)}
+            >
+              <X className="h-4 w-4" aria-hidden />
+            </Button>
+          </div>
+        </div>
         <MaryAiChatContent
+          className="min-h-0 flex-1"
           assistantWelcomeMessage="Olá! Sou a Mary AI. Posso te ajudar com contexto de projetos, Q&As e próximos passos de execução."
           icebreakers={icebreakers}
+          pageBrief={pageBrief}
           initialMessage={initialMessage}
           disclaimerText={disclaimerText}
           storageKey={storageKey}
@@ -81,4 +109,3 @@ export function MaryAiQuickChatSheet({ open, onOpenChange, initialMessage }: Mar
     </Sheet>
   )
 }
-

@@ -65,6 +65,12 @@
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     --transition-elegant: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+    /* MRS — botões Passo 1–4 (hex referência UI) */
+    --mrs-step-nav-1: #4276e6;
+    --mrs-step-nav-2: #f15f5f;
+    --mrs-step-nav-3: #f9ab2d;
+    --mrs-step-nav-4: #27c05b;
   }
 
   .dark {
@@ -116,6 +122,11 @@
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    --mrs-step-nav-1: #4276e6;
+    --mrs-step-nav-2: #f15f5f;
+    --mrs-step-nav-3: #f9ab2d;
+    --mrs-step-nav-4: #27c05b;
   }
 }
 
@@ -126,6 +137,38 @@
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .mrs-step-nav-btn {
+    @apply relative flex w-full items-center justify-center gap-2 rounded-lg px-3 py-3 text-center text-sm font-semibold text-white shadow-card transition-smooth;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+
+  .mrs-step-nav-fill-1 {
+    background-color: var(--mrs-step-nav-1);
+  }
+
+  .mrs-step-nav-fill-2 {
+    background-color: var(--mrs-step-nav-2);
+  }
+
+  .mrs-step-nav-fill-3 {
+    background-color: var(--mrs-step-nav-3);
+  }
+
+  .mrs-step-nav-fill-4 {
+    background-color: var(--mrs-step-nav-4);
+  }
+
+  /* Passo 4: traço branco interno (referência UI) */
+  .mrs-step-nav-step4-inner {
+    box-shadow: inset 0 0 0 2px #ffffff;
+  }
+
+  .mrs-step-nav-active {
+    @apply z-[1] ring-2 ring-white ring-offset-2 ring-offset-background;
   }
 }
 

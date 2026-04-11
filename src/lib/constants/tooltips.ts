@@ -59,6 +59,19 @@ export const TOOLTIPS = {
     summary: 'Resumo executivo do projeto para comunicação com stakeholders.',
     stage: 'Fase atual da operação no pipeline de execução.',
     visibility: 'Define quem pode visualizar detalhes e documentos do projeto.',
+    visibilityPrivate:
+      'O projeto não aparece em nenhum Radar da Mary. Acesso só para pessoas autorizadas (equipe interna e advisors), mediante permissão.',
+    visibilityRestricted:
+      'O projeto não aparece no Radar geral. Você pode convidar investidores específicos na Mary (ex.: por convite ao projeto).',
+    visibilityRadarMary:
+      'O projeto é publicado e aparece no Radar geral da Mary para matching. O deal não fica acessível fora do ambiente Mary.',
+    sharingLoginRule:
+      'Todos os modos (Privado, Restrito e Radar Mary) exigem cadastro e login na Mary para acessar o projeto e o VDR complementar.',
+  },
+  vdr: {
+    /** VDR complementar / “Mais Infos” no contexto do projeto (requisito de produto). */
+    complementaryDataRoom:
+      'Inclui informações adicionais sobre empresa e projeto, Q&A de investidores, documentos personalizados, materiais específicos de M&A e demais solicitações feitas ao MRS. Trata-se de um data room complementar e auxiliar, vinculado ao projeto.',
   },
 } as const
 

@@ -42,88 +42,340 @@ function createDefaultItem(id: string, title: string, priority: MrsPriority = 'm
   }
 }
 
+/** Passo 1 padrão: Fundamentos, Institucional e Comercial (contrato UX MRS ativo). */
+function createDefaultMrsStep1(): MrsStep {
+  return {
+    id: 1,
+    name: 'Fundamentos, institucional e comercial',
+    themes: [
+      {
+        id: 'step1-fundamentos',
+        name: 'Fundamentos',
+        subthemes: [
+          {
+            id: 'step1-fundamentos-societario',
+            name: 'Societário',
+            items: [
+              {
+                ...createDefaultItem('s1_i1', 'Dossiê Completo', 'critica'),
+                ownerUserId: 'Sócio',
+              },
+              {
+                id: 's1_i2',
+                title: 'Organograma Societário',
+                status: 'parcial',
+                priority: 'alta',
+                comments: 'Aguardando consolidação',
+                ownerUserId: 'Advogado',
+                filesCount: 1,
+                lastUploadAt: '2026-03-02T12:00:00.000Z',
+                files: [
+                  {
+                    id: 's1_i2_f1',
+                    fileName: 'Organograma societário.pdf',
+                    uploadedAt: '2026-03-02T12:00:00.000Z',
+                    uploadedBy: 'Advogado',
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'step1-institucional',
+        name: 'Institucional',
+        subthemes: [
+          {
+            id: 'step1-institucional-sub',
+            name: 'Institucional',
+            items: [
+              {
+                id: 's1_i3',
+                title: 'Apresentação Corporativa',
+                status: 'completo',
+                priority: 'alta',
+                comments: '',
+                ownerUserId: 'Sócio',
+                filesCount: 1,
+                lastUploadAt: '2026-02-28T10:00:00.000Z',
+                files: [
+                  {
+                    id: 's1_i3_f1',
+                    fileName: 'Apresentação corporativa.pdf',
+                    uploadedAt: '2026-02-28T10:00:00.000Z',
+                    uploadedBy: 'Sócio',
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'step1-comercial',
+        name: 'Comercial',
+        subthemes: [
+          {
+            id: 'step1-comercial-sub',
+            name: 'Comercial',
+            items: [
+              {
+                ...createDefaultItem('s1_i4', 'Catálogo de Produtos/Serviços', 'media'),
+                ownerUserId: 'Comercial',
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  }
+}
+
+/** Passo 2 padrão: Financeiro e Projeções (contrato UX MRS ativo). */
+function createDefaultMrsStep2(): MrsStep {
+  return {
+    id: 2,
+    name: 'Financeiro e projeções',
+    themes: [
+      {
+        id: 'step2-financeiro',
+        name: 'Financeiro',
+        subthemes: [
+          {
+            id: 'step2-financeiro-contabil',
+            name: 'Contábil',
+            items: [
+              {
+                id: 's2_i1',
+                title: 'DRE Últimos 3 Anos',
+                status: 'parcial',
+                priority: 'critica',
+                comments: '2 de 3 anos enviados',
+                ownerUserId: 'Contador',
+                filesCount: 1,
+                lastUploadAt: '2026-03-05T14:00:00.000Z',
+                files: [
+                  {
+                    id: 's2_i1_f1',
+                    fileName: 'DRE consolidada parcial.pdf',
+                    uploadedAt: '2026-03-05T14:00:00.000Z',
+                    uploadedBy: 'Contador',
+                  },
+                ],
+              },
+              {
+                ...createDefaultItem('s2_i2', 'Balanço Patrimonial Auditado', 'critica'),
+                ownerUserId: 'Contador',
+              },
+            ],
+          },
+          {
+            id: 'step2-financeiro-indicadores',
+            name: 'Indicadores',
+            items: [
+              {
+                id: 's2_i3',
+                title: 'EBITDA Normalizado (36m)',
+                status: 'parcial',
+                priority: 'alta',
+                comments: 'Ajustes pendentes',
+                ownerUserId: 'Contador',
+                filesCount: 1,
+                lastUploadAt: '2026-03-01T11:00:00.000Z',
+                files: [
+                  {
+                    id: 's2_i3_f1',
+                    fileName: 'EBITDA normalizado draft.xlsx',
+                    uploadedAt: '2026-03-01T11:00:00.000Z',
+                    uploadedBy: 'Contador',
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'step2-projecoes',
+        name: 'Projeções',
+        subthemes: [
+          {
+            id: 'step2-projecoes-sub',
+            name: 'Projeções',
+            items: [
+              {
+                ...createDefaultItem('s2_i4', 'Projeções Financeiras (3-5 anos)', 'media'),
+                ownerUserId: 'Mary AI',
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  }
+}
+
+/** Passo 3 padrão: Jurídicos (contrato UX MRS ativo). */
+function createDefaultMrsStep3(): MrsStep {
+  return {
+    id: 3,
+    name: 'Jurídicos',
+    themes: [
+      {
+        id: 'step3-juridicos',
+        name: 'Jurídicos',
+        subthemes: [
+          {
+            id: 'step3-juridicos-regularidade',
+            name: 'Regularidade',
+            items: [
+              {
+                id: 's3_i1',
+                title: 'Certidões de Regularidade',
+                status: 'completo',
+                priority: 'critica',
+                comments: 'Todas atualizadas',
+                ownerUserId: 'Advogado',
+                filesCount: 1,
+                lastUploadAt: '2026-02-20T10:00:00.000Z',
+                files: [
+                  {
+                    id: 's3_i1_f1',
+                    fileName: 'Certidões de regularidade.pdf',
+                    uploadedAt: '2026-02-20T10:00:00.000Z',
+                    uploadedBy: 'Advogado',
+                  },
+                ],
+              },
+              {
+                id: 's3_i2',
+                title: 'Licenças e Alvarás',
+                status: 'completo',
+                priority: 'alta',
+                comments: '',
+                ownerUserId: 'Advogado',
+                filesCount: 1,
+                lastUploadAt: '2026-02-22T15:00:00.000Z',
+                files: [
+                  {
+                    id: 's3_i2_f1',
+                    fileName: 'Licenças e alvarás.pdf',
+                    uploadedAt: '2026-02-22T15:00:00.000Z',
+                    uploadedBy: 'Advogado',
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            id: 'step3-juridicos-contratos',
+            name: 'Contratos',
+            items: [
+              {
+                ...createDefaultItem('s3_i3', 'Acordo de Sócios', 'alta'),
+                ownerUserId: 'Advogado',
+              },
+              {
+                ...createDefaultItem('s3_i4', 'Contrato Social Consolidado', 'critica'),
+                ownerUserId: 'Advogado',
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  }
+}
+
+/** Passo 4 padrão: Operações, Planejamento e Adicionais (contrato UX MRS ativo). */
+function createDefaultMrsStep4(): MrsStep {
+  return {
+    id: 4,
+    name: 'Operações, planejamento e adicionais',
+    themes: [
+      {
+        id: 'step4-operacoes',
+        name: 'Operações',
+        subthemes: [
+          {
+            id: 'step4-operacoes-clientes',
+            name: 'Clientes',
+            items: [
+              {
+                id: 's4_i1',
+                title: 'Lista Top 20 Clientes',
+                status: 'completo',
+                priority: 'alta',
+                comments: '',
+                ownerUserId: 'Sócio',
+                filesCount: 1,
+                lastUploadAt: '2026-02-15T12:00:00.000Z',
+                files: [
+                  {
+                    id: 's4_i1_f1',
+                    fileName: 'Lista top 20 clientes.xlsx',
+                    uploadedAt: '2026-02-15T12:00:00.000Z',
+                    uploadedBy: 'Sócio',
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            id: 'step4-operacoes-processos',
+            name: 'Processos',
+            items: [
+              {
+                ...createDefaultItem('s4_i2', 'Processos Operacionais Documentados', 'alta'),
+                ownerUserId: 'Sócio',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'step4-planejamento',
+        name: 'Planejamento',
+        subthemes: [
+          {
+            id: 'step4-planejamento-estrategico',
+            name: 'Estratégico',
+            items: [
+              {
+                ...createDefaultItem('s4_i3', 'Plano Estratégico', 'media'),
+                ownerUserId: 'Sócio',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: 'step4-adicionais',
+        name: 'Adicionais',
+        subthemes: [
+          {
+            id: 'step4-adicionais-ma',
+            name: 'M&A',
+            items: [
+              {
+                ...createDefaultItem('s4_i4', 'Teaser Executivo', 'media'),
+                ownerUserId: 'Mary AI',
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  }
+}
+
 export function createDefaultMrsSteps(): MrsStep[] {
   return [
-    {
-      id: 1,
-      name: 'Fundacao do ativo',
-      themes: [
-        {
-          id: 'step1-governanca',
-          name: 'Governanca e estrutura societaria',
-          subthemes: [
-            {
-              id: 'step1-governanca-societario',
-              name: 'Documentos societarios',
-              items: [
-                createDefaultItem('s1_i1', 'Contrato social e ultimas alteracoes', 'critica'),
-                createDefaultItem('s1_i2', 'QSA e quadro societario atualizado', 'alta'),
-              ],
-            },
-          ],
-        },
-      ],
-    },
-    {
-      id: 2,
-      name: 'Qualidade e conformidade',
-      themes: [
-        {
-          id: 'step2-compliance',
-          name: 'Fiscal, juridico e compliance',
-          subthemes: [
-            {
-              id: 'step2-compliance-fiscal',
-              name: 'Regularidade fiscal e legal',
-              items: [
-                createDefaultItem('s2_i1', 'Certidoes negativas e regularidade fiscal', 'critica'),
-                createDefaultItem('s2_i2', 'Politicas de compliance e LGPD', 'alta'),
-              ],
-            },
-          ],
-        },
-      ],
-    },
-    {
-      id: 3,
-      name: 'Operacao e tracao',
-      themes: [
-        {
-          id: 'step3-operacao',
-          name: 'Performance operacional',
-          subthemes: [
-            {
-              id: 'step3-operacao-kpi',
-              name: 'Indicadores e processos',
-              items: [
-                createDefaultItem('s3_i1', 'KPIs operacionais e historico de desempenho', 'alta'),
-                createDefaultItem('s3_i2', 'Processos chave documentados', 'media'),
-              ],
-            },
-          ],
-        },
-      ],
-    },
-    {
-      id: 4,
-      name: 'Preparacao para deal',
-      themes: [
-        {
-          id: 'step4-deal',
-          name: 'Narrativa de transacao',
-          subthemes: [
-            {
-              id: 'step4-deal-readiness',
-              name: 'Materiais de deal',
-              items: [
-                createDefaultItem('s4_i1', 'Premissas financeiras e plano de deal', 'alta'),
-                createDefaultItem('s4_i2', 'Resumo executivo para diligencia', 'media'),
-              ],
-            },
-          ],
-        },
-      ],
-    },
+    createDefaultMrsStep1(),
+    createDefaultMrsStep2(),
+    createDefaultMrsStep3(),
+    createDefaultMrsStep4(),
   ]
 }
 

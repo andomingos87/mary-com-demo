@@ -28,6 +28,8 @@ interface PipelineBoardProps {
   orgSlug: string
   initialProjects: PipelineProject[]
   readOnlyMode: boolean
+  /** Movimentação apenas local (NEXT_PUBLIC_FRONTEND_DEMO). */
+  demoMode?: boolean
 }
 
 const EXIT_ZONES: Array<{ status: ProjectStatus; label: string }> = [
@@ -35,7 +37,7 @@ const EXIT_ZONES: Array<{ status: ProjectStatus; label: string }> = [
   { status: 'closed_lost', label: 'Perdido' },
 ]
 
-export function PipelineBoard({ orgSlug, initialProjects, readOnlyMode }: PipelineBoardProps) {
+export function PipelineBoard({ orgSlug, initialProjects, readOnlyMode, demoMode = false }: PipelineBoardProps) {
   const router = useRouter()
   const [projects, setProjects] = useState(initialProjects)
   const [viewMode, setViewMode] = useState<'pipeline' | 'list'>('pipeline')
@@ -74,6 +76,16 @@ export function PipelineBoard({ orgSlug, initialProjects, readOnlyMode }: Pipeli
 
     setError(null)
     setFeedback(null)
+
+    if (demoMode) {
+      setProjects((previous) =>
+        previous.map((candidate) =>
+          candidate.id === projectId ? { ...candidate, status: toStatus } : candidate
+        )
+      )
+      setFeedback(`[Demo] Card movido para ${PROJECT_STATUS_LABELS[toStatus]}.`)
+      return
+    }
 
     startTransition(async () => {
       const result = await changeProjectStatus(projectId, toStatus)
@@ -160,6 +172,12 @@ export function PipelineBoard({ orgSlug, initialProjects, readOnlyMode }: Pipeli
     <TooltipProvider delayDuration={250}>
       <div className="space-y-4">
         {headerControls}
+
+      {demoMode && (
+        <p className="rounded-lg border border-dashed border-border bg-muted/30 px-3 py-2 text-xs text-muted-foreground">
+          Modo demo: dados são fictícios; arrastar cards não persiste no servidor.
+        </p>
+      )}
 
       {readOnlyMode && (
         <p className="text-xs text-muted-foreground">

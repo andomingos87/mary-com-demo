@@ -31,8 +31,8 @@ export const config = {
     '/onboarding/:path*',
     '/admin/:path*',
     '/advisor/:path*',
-    '/:orgSlug((?!api|auth|_next|login|signup|forgot-password|reset-password|verify-mfa|onboarding|dashboard|profile|settings|admin|advisor|terms|privacy|docs|vdr|validacao-epicos|favicon.ico|.*\\..*).*)',
-    '/:orgSlug((?!api|auth|_next|login|signup|forgot-password|reset-password|verify-mfa|onboarding|dashboard|profile|settings|admin|advisor|terms|privacy|docs|vdr|validacao-epicos|favicon.ico|.*\\..*).*)/:path*',
+    '/demo/:path*',
+    '/:orgSlug((?!api|auth|_next|login|signup|forgot-password|reset-password|verify-mfa|onboarding|dashboard|profile|settings|admin|advisor|terms|privacy|docs|vdr|validacao-epicos|design-system|demo|favicon.ico|.*\\..*).*)',
+    '/:orgSlug((?!api|auth|_next|login|signup|forgot-password|reset-password|verify-mfa|onboarding|dashboard|profile|settings|admin|advisor|terms|privacy|docs|vdr|validacao-epicos|design-system|demo|favicon.ico|.*\\..*).*)/:path*',
   ],
 };
-
