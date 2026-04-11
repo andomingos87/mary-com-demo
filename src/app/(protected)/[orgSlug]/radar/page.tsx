@@ -7,6 +7,8 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { listRadarOpportunities } from '@/lib/actions/radar'
 import { OpportunitiesList } from '@/components/radar/OpportunitiesList'
+import { RadarDemoShowcase } from '@/components/radar/RadarDemoShowcase'
+import { AssetRadarDemoShowcase } from '@/components/radar/AssetRadarDemoShowcase'
 import { Radar, Building2, TrendingUp, Filter, Search, Target, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 
@@ -123,30 +125,33 @@ export default async function RadarPage({ params }: RadarPageProps) {
         )}
 
         {hasActiveThesis && !hasMatches && (
-          <Card>
-            <CardContent className="flex flex-col items-center justify-center py-16">
-              <div className="p-4 bg-primary/10 rounded-full mb-4">
-                <Radar className="h-8 w-8 text-primary" />
-              </div>
-              <h3 className="text-lg font-semibold text-foreground mb-2">
-                Nenhuma oportunidade encontrada
-              </h3>
-              <p className="text-sm text-muted-foreground text-center max-w-md mb-6">
-                Nao encontramos empresas que correspondam as suas teses no momento.
-                Novas oportunidades sao adicionadas diariamente.
-              </p>
-              <div className="flex gap-2">
-                <Button variant="outline" asChild>
-                  <Link href={`/${orgSlug}/thesis`}>
-                    Ajustar Teses
-                  </Link>
-                </Button>
-                <Button disabled>
-                  Ativar Alertas
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
+          <>
+            <Card>
+              <CardContent className="flex flex-col items-center justify-center py-16">
+                <div className="p-4 bg-primary/10 rounded-full mb-4">
+                  <Radar className="h-8 w-8 text-primary" />
+                </div>
+                <h3 className="text-lg font-semibold text-foreground mb-2">
+                  Nenhuma oportunidade encontrada
+                </h3>
+                <p className="text-sm text-muted-foreground text-center max-w-md mb-6">
+                  Nao encontramos empresas que correspondam as suas teses no momento.
+                  Novas oportunidades sao adicionadas diariamente.
+                </p>
+                <div className="flex gap-2">
+                  <Button variant="outline" asChild>
+                    <Link href={`/${orgSlug}/thesis`}>
+                      Ajustar Teses
+                    </Link>
+                  </Button>
+                  <Button disabled>
+                    Ativar Alertas
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+            <RadarDemoShowcase />
+          </>
         )}
 
         {hasMatches && (
@@ -155,6 +160,7 @@ export default async function RadarPage({ params }: RadarPageProps) {
             opportunities={radarResult.data.opportunities}
             readOnlyMode={radarResult.data.readOnlyMode}
             fallbackUsed={radarResult.data.fallbackUsed}
+            demoMode={radarResult.data.demoMode === true}
           />
         )}
 
@@ -232,6 +238,8 @@ export default async function RadarPage({ params }: RadarPageProps) {
           </div>
         </CardContent>
       </Card>
+
+      <AssetRadarDemoShowcase />
     </div>
   )
 }

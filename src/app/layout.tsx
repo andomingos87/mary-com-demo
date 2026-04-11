@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Script from "next/script";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import "./globals.css";
@@ -31,12 +30,6 @@ export default async function RootLayout({
           </ObservabilityProvider>
         </NextIntlClientProvider>
         <Toaster richColors position="top-right" />
-        <Script
-          id="buug-embed"
-          src="https://buug.io/embed.js"
-          data-project="98f68c3d-bf07-4864-a74a-c36f08378d40"
-          strategy="afterInteractive"
-        />
       </body>
     </html>
   );

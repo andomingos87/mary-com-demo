@@ -8,7 +8,9 @@ import { UserPlus, Loader2 } from 'lucide-react'
 import { ProjectMembersPanel } from '@/components/projects/ProjectMembersPanel'
 import { ProjectInvitesList } from '@/components/projects/ProjectInvitesList'
 import { InviteMemberDialog } from '@/components/projects/InviteMemberDialog'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { ProjectVisibilityToggle } from '@/components/projects/ProjectVisibilityToggle'
+import { normalizeProjectVisibility, PROJECT_SHARING_LOGIN_NOTICE } from '@/lib/constants/project-sharing'
 import { listProjectMembers } from '@/lib/actions/project-members'
 import { listProjectInvites } from '@/lib/actions/project-invites'
 import { checkProjectAccess } from '@/lib/actions/project-members'
@@ -43,7 +45,7 @@ export default function ProjectMembersPage() {
 
     const project = projectResult.data
     setProjectId(project.id)
-    setVisibility((project as unknown as { visibility: string }).visibility as ProjectVisibility || 'private')
+    setVisibility(normalizeProjectVisibility((project as { visibility?: string }).visibility))
 
     // Check access
     const accessResult = await checkProjectAccess(project.id, userId)
@@ -98,6 +100,29 @@ export default function ProjectMembersPage() {
           </div>
         }
       />
+
+      <Card className="border-border bg-muted/30">
+        <CardHeader className="pb-2">
+          <CardTitle className="text-sm font-semibold">Compartilhamento na Mary</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2 text-xs text-muted-foreground">
+          <ul className="list-disc space-y-1 pl-4">
+            <li>
+              <strong className="text-foreground">Privado:</strong> não aparece no Radar; acesso só para quem você
+              autorizar (equipe e advisors).
+            </li>
+            <li>
+              <strong className="text-foreground">Restrito:</strong> não aparece no Radar geral; use convites na Mary
+              para investidores específicos.
+            </li>
+            <li>
+              <strong className="text-foreground">Radar Mary:</strong> publicado no Radar da Mary; o deal não fica
+              disponível fora da plataforma.
+            </li>
+          </ul>
+          <p className="text-[11px] leading-snug">{PROJECT_SHARING_LOGIN_NOTICE}</p>
+        </CardContent>
+      </Card>
 
       <ProjectMembersPanel
         projectId={projectId || ''}

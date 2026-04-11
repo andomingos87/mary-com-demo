@@ -210,6 +210,8 @@ export const INVESTOR_MENU: MenuConfig[] = [
   { id: 'thesis', iconName: 'Target', href: (slug) => `/${slug}/thesis` },
   { id: 'feed', iconName: 'Rss', href: (slug) => `/${slug}/feed` },
   { id: 'pipeline', iconName: 'Kanban', href: (slug) => `/${slug}/pipeline` },
+  { id: 'profile', iconName: 'User', href: (slug) => `/${slug}/profile` },
+  { id: 'settings', iconName: 'Settings', href: (slug) => `/${slug}/settings` },
 ]
 
 /** Menu do Asset */
@@ -218,14 +220,18 @@ export const ASSET_MENU: MenuConfig[] = [
   { id: 'radar', iconName: 'Radar', href: (slug) => `/${slug}/radar` },
   { id: 'feed', iconName: 'Rss', href: (slug) => `/${slug}/feed` },
   { id: 'project', iconName: 'FolderKanban', href: (slug) => `/${slug}/projeto` },
+  { id: 'profile', iconName: 'User', href: (slug) => `/${slug}/profile` },
+  { id: 'settings', iconName: 'Settings', href: (slug) => `/${slug}/settings` },
 ]
 
 /** Menu do Advisor */
 export const ADVISOR_MENU: MenuConfig[] = [
+  { id: 'dashboard', iconName: 'LayoutDashboard', href: () => '/advisor/dashboard' },
   { id: 'radar', iconName: 'Radar', href: () => '/advisor/radar' },
   { id: 'profile', iconName: 'User', href: () => '/advisor/profile' },
   { id: 'feed', iconName: 'Rss', href: () => '/advisor/feed' },
   { id: 'projects', iconName: 'Briefcase', href: () => '/advisor/projects' },
+  { id: 'settings', iconName: 'Settings', href: () => '/advisor/settings' },
 ]
 
 /** Obtém menu por tipo de perfil */

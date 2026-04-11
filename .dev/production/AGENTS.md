@@ -15,6 +15,10 @@
 | `CLEANUP_EXECUTION_LOG.md` | Trilha de execucao de limpezas estruturais |
 | `NAMING_MIGRATION_MAP.md` | Mapa de renomeacao de arquivos (parcialmente executado) |
 | `AGENTS.md` | Este arquivo — indice e regras da pasta |
+| `MATRIZ-JORNADAS-EXCALIDRAW-MERCADO.md` | Matriz jornada × rota × backlog × escala (mercado) |
+| `PRECEDENCIA-EXCALIDRAW-FONTES.md` | Precedência `.dev/excalidraw` vs `src/docs` e escopo V2 |
+| `clickup-import-mary-mercado.csv` | Importação de tarefas (ondas W0–W4) no ClickUp |
+| `RUNBOOK-MERCADO-ESCALA.md` | Checklist ops/compliance antes de escala comercial |
 
 ## Hierarquia de precedencia
 

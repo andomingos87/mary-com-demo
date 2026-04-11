@@ -87,6 +87,37 @@ function getRouteSection(pathname?: string): string | null {
   return section || null
 }
 
+function getRoutePath(pathname?: string): string | null {
+  if (!pathname) return null
+  const normalized = pathname.split('?')[0].split('#')[0]
+  const [, ...rest] = normalized.split('/')
+  return rest.length > 0 ? `/${rest.join('/')}` : null
+}
+
+function getPageKey(pathname?: string): string | null {
+  const routePath = getRoutePath(pathname)
+  if (!routePath) return null
+
+  const withoutOrgSlug = routePath.replace(/^\/[^/]+/, '')
+  const normalized = withoutOrgSlug || routePath
+
+  if (normalized === '/mary-ai-private') return 'mary-ai-private'
+  if (normalized === '/dashboard') return 'dashboard'
+  if (normalized === '/settings') return 'settings'
+  if (normalized === '/profile') return 'profile'
+  if (normalized === '/radar') return 'radar'
+  if (normalized === '/feed') return 'feed'
+  if (normalized === '/pipeline') return 'pipeline'
+  if (normalized === '/mrs') return 'mrs'
+  if (normalized === '/projects') return 'projects'
+  if (normalized.startsWith('/projects/')) return 'project'
+  if (normalized === '/invest') return 'invest'
+  if (normalized === '/sell-raise') return 'sell-raise'
+  if (normalized === '/advise') return 'advise'
+  if (normalized === '/indicar') return 'indicar'
+  return normalized.replace(/^\//, '')
+}
+
 function getProfileLabel(profile: MaryAiProfile): string {
   if (profile === 'investor') return 'investidor'
   if (profile === 'asset') return 'empresa'
@@ -104,7 +135,49 @@ function getProfileBrief(profile: MaryAiProfile, baseSummary: string, bullets: s
 
 export function getMaryAiPageBrief(profile: MaryAiProfile, context?: IcebreakerContext): MaryAiPageBrief {
   const routeSection = getRouteSection(context?.currentPage)
+  const pageKey = getPageKey(context?.currentPage)
   const projectCodename = context?.projectCodename?.trim()
+
+  if (pageKey === 'mary-ai-private') {
+    if (profile === 'investor') {
+      return {
+        title: 'Resumo da página',
+        summary: 'Esta página resume o escopo da Mary AI para investidores e mostra como ela ajuda a ler oportunidades, priorizar tese e acelerar decisão.',
+        bullets: [
+          'Explicar o que a Mary AI faz no fluxo do investidor',
+          'Mostrar onde ela atua por página',
+          'Preparar o cliente para validar o escopo',
+          'Apoiar leitura de oportunidades e próximos passos',
+        ],
+      }
+    }
+
+    if (profile === 'asset') {
+      return {
+        title: 'Resumo da página',
+        summary: 'Esta página resume o escopo da Mary AI para empresas e mostra como ela organiza preparação, processo e comunicação com investidores.',
+        bullets: [
+          'Explicar o que a Mary AI faz no fluxo da empresa',
+          'Mostrar onde ela atua por página',
+          'Preparar o cliente para validar o escopo',
+          'Apoiar preparação, processo e comunicação',
+        ],
+      }
+    }
+
+    if (profile === 'advisor') {
+      return {
+        title: 'Resumo da página',
+        summary: 'Esta página resume o escopo da Mary AI para advisors e mostra como ela ajuda a organizar mandatos, resposta e priorização.',
+        bullets: [
+          'Explicar o que a Mary AI faz no fluxo do advisor',
+          'Mostrar onde ela atua por página',
+          'Preparar o cliente para validar o escopo',
+          'Apoiar mandatos, Q&A e follow-ups',
+        ],
+      }
+    }
+  }
 
   if (routeSection === 'settings') {
     if (profile === 'advisor') {

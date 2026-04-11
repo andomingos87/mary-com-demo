@@ -28,6 +28,7 @@ import { getGeoLocation, isKnownDevice, handleNewDevice } from '@/lib/auth/devic
 import { initiateMfa, verifyMfa } from '@/lib/auth/mfa'
 import { shouldExposeOtpInUi } from '@/lib/auth/mfa-test-mode'
 import { logger } from '@/lib/logger'
+import type { Json } from '@/types/database'
 
 const MARY_SESSION_COOKIE_NAME = 'mary_session_id'
 const MARY_SESSION_COOKIE_MAX_AGE_SECONDS = 60 * 60 * 24
@@ -70,6 +71,12 @@ export interface SignupInput {
   phone: string
   /** Profile type for organization creation during signup */
   profileType: 'investor' | 'asset' | 'advisor'
+  /** Site institucional (jornada investidor / ativo / advisor) */
+  website?: string
+  /** Tipo de investidor (jornada investidor) */
+  investorType?: string
+  /** LinkedIn institucional (jornada advisor) */
+  linkedinUrl?: string
 }
 
 export interface SignupResult {
@@ -718,7 +725,7 @@ export async function signupAction(
   input: SignupInput
 ): Promise<ActionResult<SignupResult>> {
   try {
-    const { email, password, name, phone, profileType } = input
+    const { email, password, name, phone, profileType, website, investorType, linkedinUrl } = input
     
     // Validate input
     if (!email || !password) {
@@ -816,6 +823,13 @@ export async function signupAction(
 
     const initialOnboardingStep = profileType === 'investor' ? 'profile_details' : 'cnpj_input'
 
+    const signupPrefill: Record<string, string> = {
+      captured_at: new Date().toISOString(),
+    }
+    if (website?.trim()) signupPrefill.website = website.trim()
+    if (investorType?.trim()) signupPrefill.investor_type = investorType.trim()
+    if (linkedinUrl?.trim()) signupPrefill.linkedin_institutional = linkedinUrl.trim()
+
     // Create organization with profile_type already defined (skipping profile_selection step)
     const { data: org, error: orgError } = await adminSupabase
       .from('organizations')
@@ -831,7 +845,8 @@ export async function signupAction(
             started_at: new Date().toISOString(),
             steps_completed: ['profile_selection'],
             profile_preselected_at_signup: true,
-          }
+          },
+          signup_prefill: signupPrefill as Json,
         },
         verification_status: 'pending',
       })

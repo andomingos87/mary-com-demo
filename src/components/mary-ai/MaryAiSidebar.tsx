@@ -1,12 +1,12 @@
 'use client'
 
 import { useMemo } from 'react'
-import { Bot, Sparkles, X } from 'lucide-react'
-import { Badge } from '@/components/ui/badge'
+import { History, PanelLeft, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import {
   buildMaryAiDisclaimer,
   getMaryAiIcebreakers,
+  getMaryAiPageBrief,
   MaryAiChatContent,
 } from '@/components/mary-ai/MaryAiChatContent'
 import { useMaryAi, useMaryAiToggle } from '@/components/providers/MaryAiProvider'
@@ -39,43 +39,58 @@ export function MaryAiSidebar() {
   }, [currentPage, projectCodename])
 
   const disclaimer = buildMaryAiDisclaimer(organizationName)
+  const pageBrief = useMemo(() => getMaryAiPageBrief(profile, { currentPage, projectCodename }), [profile, currentPage, projectCodename])
   const orgSlugFromPath = currentPage.split('/').filter(Boolean)[0]
   const sessionScope = orgSlugFromPath || organization?.id || organization?.slug || 'global'
   const storageKey = `mary_ai_chat_history:${sessionScope}`
 
   return (
-    <aside className="flex h-full min-h-0 w-full flex-col bg-background">
-      <div className="border-b border-border p-4">
-        <div className="flex items-center justify-between gap-2">
-          <div className="flex items-center gap-2">
-            <Bot className="h-5 w-5 text-primary" aria-hidden="true" />
-            <h2 className="text-base font-semibold text-foreground">Mary AI</h2>
-            <Badge variant="secondary" className="gap-1">
-              <Sparkles className="h-3 w-3" aria-hidden="true" />
-              Beta
-            </Badge>
-          </div>
-
+    <aside className="flex h-full min-h-0 w-full flex-col border-l border-border bg-background shadow-elegant">
+      <div className="flex shrink-0 items-center justify-between border-b border-border px-2 py-2">
+        <Button
+          type="button"
+          variant="ghost"
+          size="icon"
+          className="h-9 w-9 text-muted-foreground hover:text-foreground"
+          aria-label="Recolher painel Mary AI"
+          onClick={() => setOpen(false)}
+        >
+          <PanelLeft className="h-4 w-4" aria-hidden />
+        </Button>
+        <div className="flex items-center gap-0.5">
           <Button
             type="button"
             variant="ghost"
             size="icon"
-            onClick={() => setOpen(false)}
-            aria-label="Fechar Mary AI"
+            className="h-9 w-9 text-muted-foreground hover:text-foreground"
+            aria-label="Histórico de conversas (em breve)"
+            disabled
           >
-            <X className="h-4 w-4" aria-hidden="true" />
+            <History className="h-4 w-4 opacity-50" aria-hidden />
           </Button>
-        </div>
-
-        <div className="mt-3 space-y-1">
-          <p className="text-sm text-muted-foreground">{`Olá ${userName}, vamos começar?`}</p>
-          <p className="text-sm text-muted-foreground">Como posso te ajudar?</p>
+          <Button
+            type="button"
+            variant="ghost"
+            size="icon"
+            className="h-9 w-9 text-muted-foreground hover:text-foreground"
+            aria-label="Fechar Mary AI"
+            onClick={() => setOpen(false)}
+          >
+            <X className="h-4 w-4" aria-hidden />
+          </Button>
         </div>
       </div>
 
+      <p className="sr-only">Assistente Mary AI</p>
+      <div className="shrink-0 border-b border-border px-4 py-2">
+        <p className="text-xs text-muted-foreground">{`Olá, ${userName}`}</p>
+      </div>
+
       <MaryAiChatContent
+        className="min-h-0 flex-1"
         assistantWelcomeMessage="Estou pronta para apoiar com contexto de projeto, documentos e próximos passos."
         icebreakers={icebreakers}
+        pageBrief={pageBrief}
         mentionSuggestions={mentionSuggestions}
         disclaimerText={disclaimer}
         storageKey={storageKey}
@@ -86,4 +101,3 @@ export function MaryAiSidebar() {
     </aside>
   )
 }
-

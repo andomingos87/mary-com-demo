@@ -4,7 +4,7 @@ import React from 'react'
 import { cn } from '@/lib/utils'
 import { useOrganization } from '@/components/providers/OrganizationProvider'
 import { useMaryAiToggle } from '@/components/providers/MaryAiProvider'
-import { Bot, ChevronDown } from 'lucide-react'
+import { ChevronDown } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 export { PageHeader } from '@/components/navigation/PageHeader'
 
@@ -48,12 +48,11 @@ export function Header({ title, actions, className, mobileMenuButton }: HeaderPr
           type="button"
           variant="outline"
           size="sm"
-          className="shrink-0 gap-2"
+          className="shrink-0 gap-1.5 rounded-lg border-destructive bg-background text-destructive shadow-card transition-smooth hover:bg-destructive/5 hover:text-destructive"
           onClick={toggle}
           aria-label={isOpen ? 'Fechar Mary AI' : 'Abrir Mary AI'}
           aria-expanded={isOpen}
         >
-          <Bot className="h-4 w-4" aria-hidden="true" />
           Mary AI
           <ChevronDown className={cn('h-4 w-4 transition-smooth', isOpen && 'rotate-180')} aria-hidden="true" />
         </Button>

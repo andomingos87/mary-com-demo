@@ -36,6 +36,7 @@ import type { MrsStepId } from '@/types/projects'
 import { OrganizationProvider } from '@/components/providers/OrganizationProvider'
 import { MaryAiProvider, useMaryAi, useMaryAiToggle } from '@/components/providers/MaryAiProvider'
 import { MaryAiQuickChatSheet } from '@/components/mary-ai/MaryAiQuickChatSheet'
+import { MaryAiEntryFallback } from '@/components/mary-ai/MaryAiEntryFallback'
 import { createDefaultMrsSteps } from '@/lib/readiness'
 import { MrsRadarChart } from '@/components/mrs/MrsRadarChart'
 import { MrsStepItemsPanel } from '@/components/mrs/MrsStepItemsPanel'
@@ -369,6 +370,8 @@ function PlatformDemoChrome({ profile, segments = [] }: { profile: DemoProfileKe
           {renderRoute(experience, current)}
         </main>
       </div>
+
+      <MaryAiEntryFallback />
     </div>
   )
 }
@@ -1160,5 +1163,4 @@ function ProjectDocsCard({ docs }: { docs: { name: string; status: string; note:
     </div>
   )
 }
-
 

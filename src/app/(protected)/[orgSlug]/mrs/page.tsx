@@ -32,12 +32,13 @@ export default async function MRSPage({ params }: MRSPageProps) {
 
   return (
     <div className="space-y-6">
-      <Card>
+      <Card className="border-primary/15 shadow-card">
         <CardHeader>
-          <CardTitle>Modulo MRS</CardTitle>
+          <CardTitle>Market Readiness Score (MRS)</CardTitle>
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground">
-          Jornada canônica em 4 passos com score e gates de NDA/NBO.
+          Roadmap de preparação em passos com score normativo, upload de documentos e gates de NDA/NBO
+          conforme a jornada do ativo. Use os cartões abaixo para acompanhar o progresso do seu projeto.
         </CardContent>
       </Card>
       <MrsWorkspace orgSlug={orgSlug} initialProjects={projects} />
