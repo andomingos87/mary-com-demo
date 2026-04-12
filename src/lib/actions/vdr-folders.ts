@@ -3,6 +3,7 @@
 import { createClient } from '@/lib/supabase/server'
 import { logAuditEvent } from '@/lib/audit'
 import { DEFAULT_VDR_FOLDERS, DEFAULT_VDR_DOCUMENTS } from '@/types/vdr'
+import type { Database } from '@/types/database'
 import type {
   VdrFolder,
   VdrFolderWithCounts,
@@ -227,7 +228,7 @@ export async function updateFolder(
 
   const { data, error } = await supabase
     .from('vdr_folders')
-    .update(updateData)
+    .update(updateData as Database['public']['Tables']['vdr_folders']['Update'])
     .eq('id', folderId)
     .select()
     .single()

@@ -3,7 +3,10 @@
 import { createClient } from '@/lib/supabase/server'
 import { logAuditEvent } from '@/lib/audit'
 import { triggerReadinessRecalc } from './vdr-utils'
+import type { Database } from '@/types/database'
 import type { VdrBulkUpdateInput } from '@/types/vdr'
+
+type VdrDocumentsUpdate = Database['public']['Tables']['vdr_documents']['Update']
 
 /**
  * Bulk update multiple documents
@@ -71,7 +74,7 @@ export async function bulkUpdateDocuments(
 
       const { error: updateError } = await supabase
         .from('vdr_documents')
-        .update({ ...updateData, tags: currentTags })
+        .update({ ...updateData, tags: currentTags } as VdrDocumentsUpdate)
         .eq('id', doc.id)
 
       if (!updateError) {
@@ -95,7 +98,7 @@ export async function bulkUpdateDocuments(
 
   const { error, count } = await supabase
     .from('vdr_documents')
-    .update(updateData)
+    .update(updateData as VdrDocumentsUpdate)
     .in('id', input.documentIds)
 
   if (error) {

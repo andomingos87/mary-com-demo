@@ -719,7 +719,7 @@ export async function enrichFromWebsiteAction(
 
     const { error: updateError } = await adminSupabase
       .from('organizations')
-      .update(updateData)
+      .update(updateData as Database['public']['Tables']['organizations']['Update'])
       .eq('id', orgId)
 
     if (updateError) {
@@ -936,7 +936,7 @@ export async function saveProfileDetails(
 
     const { error: updateError } = await adminSupabase
       .from('organizations')
-      .update(updateData)
+      .update(updateData as Database['public']['Tables']['organizations']['Update'])
       .eq('id', orgId)
 
     if (updateError) {
@@ -1531,7 +1531,7 @@ export async function confirmOnboardingData(
 
     const { error: updateError } = await adminSupabase
       .from('organizations')
-      .update(updateData)
+      .update(updateData as Database['public']['Tables']['organizations']['Update'])
       .eq('id', orgId)
 
     if (updateError) {

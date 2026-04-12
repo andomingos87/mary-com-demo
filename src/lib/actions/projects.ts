@@ -790,7 +790,7 @@ export async function updateProject(
     // Update project
     const { data: project, error: updateError } = await supabase
       .from('projects')
-      .update(updateData)
+      .update(updateData as Database['public']['Tables']['projects']['Update'])
       .eq('id', projectId)
       .select()
       .single()

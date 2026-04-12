@@ -2,7 +2,7 @@
 
 import { createClient } from '@/lib/supabase/server'
 import type { ActionResult } from './organizations'
-import type { InvestmentThesis, Json } from '@/types/database'
+import type { Database, InvestmentThesis, Json } from '@/types/database'
 import type {
   ActiveThesisResponse,
   CreateThesisInput,
@@ -376,7 +376,9 @@ export async function updateThesis(
 
     const { data, error } = await auth.supabase
       .from('investment_theses')
-      .update(updatePayload)
+      .update(
+        updatePayload as Database['public']['Tables']['investment_theses']['Update']
+      )
       .eq('id', thesisId)
       .is('deleted_at', null)
       .select('*')

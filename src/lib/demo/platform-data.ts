@@ -15,6 +15,7 @@ export type DemoRouteKey =
   | 'projects'
   | 'project'
   | 'profile'
+  | 'settings'
 
 export interface DemoNavItem {
   key: DemoRouteKey
@@ -194,6 +195,30 @@ export interface DemoProfileExperience {
     preferences: DemoFormField[]
     aiQueue: string[]
   }
+  /** Configurações da conta (demo): Conta, Faturamento, Equipe — sem persistência. */
+  settings?: {
+    title: string
+    summary: string
+    account: {
+      intro: string
+      profile: DemoFormField[]
+      security: DemoPanel[]
+      preferences: DemoFormField[]
+      organization: DemoPanel
+    }
+    billing: {
+      plan: { name: string; status: string; renewal: string }
+      usage: DemoStat[]
+      payment: DemoFormField[]
+      invoices: DemoTable
+      fiscalNote: string
+    }
+    team: {
+      members: DemoTable
+      rolesHelp: string
+      externalNote?: string
+    }
+  }
 }
 
 export const DEMO_HOME_PROFILES: Array<{
@@ -300,6 +325,7 @@ export const DEMO_PLATFORM: Record<DemoProfileKey, DemoProfileExperience> = {
       { key: 'feed', label: 'Feed', href: '/demo/investor/feed' },
       { key: 'pipeline', label: 'Pipeline', href: '/demo/investor/pipeline' },
       { key: 'project', label: 'Projeto Tiger', href: '/demo/investor/projects/tiger' },
+      { key: 'settings', label: 'Configurações', href: '/demo/investor/settings' },
     ],
     landing: {
       eyebrow: 'Perfil 1 · Investor journey',
@@ -663,6 +689,70 @@ export const DEMO_PLATFORM: Record<DemoProfileKey, DemoProfileExperience> = {
         },
       ],
     },
+    settings: {
+      title: 'Configurações',
+      summary:
+        'Preferências da conta do fundo, faturamento do workspace Mary e equipe com acesso ao deal flow. Dados mockados para demonstração.',
+      account: {
+        intro: 'Perfil do responsável e segurança da conta institucional.',
+        profile: [
+          { label: 'Nome', value: 'Marina Duarte' },
+          { label: 'E-mail', value: 'marina@fundoxyz.com.br' },
+          { label: 'Cargo', value: 'Partner · Growth' },
+          { label: 'Telefone', value: '+55 11 98888-2200' },
+        ],
+        security: [
+          {
+            title: 'Autenticação',
+            body: 'MFA ativo via app autenticador. Último login simulado: hoje, 09:12.',
+            badges: ['MFA', 'Sessão segura'],
+          },
+        ],
+        preferences: [
+          { label: 'Idioma', value: 'Português (Brasil)' },
+          { label: 'Fuso', value: 'America/Sao_Paulo' },
+          { label: 'Resumo semanal por e-mail', value: true, kind: 'boolean' },
+          { label: 'Alertas de NDA e MRS', value: true, kind: 'boolean' },
+        ],
+        organization: {
+          title: 'Organização ativa',
+          body: 'Fundo XYZ Growth I · CNPJ 00.000.000/0001-00. Conta institucional usada no Radar e no pipeline.',
+          badges: ['Investidor', 'Ativo'],
+        },
+      },
+      billing: {
+        plan: { name: 'Mary Institutional', status: 'Ativo', renewal: 'Renovação em 12/05/2026' },
+        usage: [
+          { label: 'Usuários', value: '4 / 15', helper: 'licenças em uso' },
+          { label: 'NDAs ativos', value: '3', helper: 'no ciclo atual' },
+          { label: 'Armazenamento VDR', value: '8 / 100 GB', helper: 'acumulado' },
+        ],
+        payment: [
+          { label: 'Método', value: 'Cartão corporativo · ****4242' },
+          { label: 'Próxima cobrança', value: 'BRL 4.900,00' },
+        ],
+        invoices: {
+          columns: ['Data', 'Descrição', 'Valor', 'Status'],
+          rows: [
+            ['10/03/2026', 'Assinatura Mary Institutional', 'BRL 4.900,00', 'Pago'],
+            ['10/02/2026', 'Assinatura Mary Institutional', 'BRL 4.900,00', 'Pago'],
+          ],
+        },
+        fiscalNote: 'Notas fiscais e XML enviados para financeiro@fundoxyz.com.br (demo).',
+      },
+      team: {
+        members: {
+          columns: ['Nome', 'E-mail', 'Papel', 'Status'],
+          rows: [
+            ['Marina Duarte', 'marina@fundoxyz.com.br', 'Owner', 'Ativo'],
+            ['Paulo Rezende', 'paulo@fundoxyz.com.br', 'Deal team', 'Ativo'],
+            ['Ana Kim', 'ana@fundoxyz.com.br', 'Leitura', 'Convite pendente'],
+          ],
+        },
+        rolesHelp:
+          'Owner gerencia faturamento e convites; Deal team opera pipeline e NDA; Leitura acompanha oportunidades sem editar teses.',
+      },
+    },
   },
   asset: {
     profile: 'asset',
@@ -683,6 +773,7 @@ export const DEMO_PLATFORM: Record<DemoProfileKey, DemoProfileExperience> = {
       { key: 'feed', label: 'Feed', href: '/demo/asset/feed' },
       { key: 'projects', label: 'Projetos', href: '/demo/asset/projects' },
       { key: 'project', label: 'Projeto Tiger', href: '/demo/asset/projects/tiger' },
+      { key: 'settings', label: 'Configurações', href: '/demo/asset/settings' },
     ],
     landing: {
       eyebrow: 'Perfil 2 · Asset journey',
@@ -1067,6 +1158,69 @@ export const DEMO_PLATFORM: Record<DemoProfileKey, DemoProfileExperience> = {
         },
       ],
     },
+    settings: {
+      title: 'Configurações',
+      summary:
+        'Conta do responsável pela empresa, faturamento do workspace Mary e equipe com acesso ao projeto e ao MRS. Demonstração sem backend.',
+      account: {
+        intro: 'Identidade, segurança e preferências ligadas à Tiger Learning.',
+        profile: [
+          { label: 'Nome', value: 'Anderson Cassio' },
+          { label: 'E-mail', value: 'anderson@tigerlearning.com.br' },
+          { label: 'Cargo', value: 'CEO' },
+          { label: 'WhatsApp (MFA)', value: '+55 11 97777-1188' },
+        ],
+        security: [
+          {
+            title: 'Autenticação',
+            body: 'MFA por WhatsApp ativo. Sessão atual iniciada neste dispositivo (demo).',
+            badges: ['MFA', 'Magic link'],
+          },
+        ],
+        preferences: [
+          { label: 'Idioma', value: 'Português (Brasil)' },
+          { label: 'Fuso', value: 'America/Sao_Paulo' },
+          { label: 'Notificar novo interesse no Radar', value: true, kind: 'boolean' },
+          { label: 'Resumo semanal de MRS', value: true, kind: 'boolean' },
+        ],
+        organization: {
+          title: 'Organização',
+          body: 'Tiger Learning S.A. · CNPJ 12.345.678/0001-90. Dados alinhados ao onboarding e ao mandato sell-side.',
+          badges: ['Asset', 'Radar Mary'],
+        },
+      },
+      billing: {
+        plan: { name: 'Mary Growth', status: 'Em trial', renewal: 'Trial até 01/06/2026' },
+        usage: [
+          { label: 'Projetos ativos', value: '2 / 5', helper: 'inclui Tiger e Cedar' },
+          { label: 'Usuários', value: '3 / 10', helper: 'convites internos' },
+          { label: 'Armazenamento VDR', value: '12 / 50 GB', helper: 'documentos do MRS' },
+        ],
+        payment: [
+          { label: 'Método', value: 'A definir após trial' },
+          { label: 'Próxima etapa', value: 'Upgrade para Mary Growth Plus' },
+        ],
+        invoices: {
+          columns: ['Data', 'Descrição', 'Valor', 'Status'],
+          rows: [['—', 'Nenhuma fatura no trial', '—', '—']],
+        },
+        fiscalNote:
+          'Após contratação, NF-e e dados cadastrais da empresa serão emitidos conforme CNPJ cadastrado (demo).',
+      },
+      team: {
+        members: {
+          columns: ['Nome', 'E-mail', 'Papel', 'Status'],
+          rows: [
+            ['Anderson Cassio', 'anderson@tigerlearning.com.br', 'Admin', 'Ativo'],
+            ['CFO Tiger', 'cfo@tigerlearning.com.br', 'Financeiro', 'Ativo'],
+            ['North Advisors', 'rafael@northadvisors.com', 'Advisor externo', 'Somente leitura'],
+          ],
+        },
+        rolesHelp:
+          'Admin publica materiais e convida investidores; Financeiro acompanha faturamento; Advisor externo enxerga o pipeline acordado.',
+        externalNote: 'North Advisors aparece como contato sell-side vinculado ao mandato Tiger.',
+      },
+    },
   },
   advisor: {
     profile: 'advisor',
@@ -1085,6 +1239,7 @@ export const DEMO_PLATFORM: Record<DemoProfileKey, DemoProfileExperience> = {
       { key: 'radar', label: 'Radar', href: '/demo/advisor/radar' },
       { key: 'feed', label: 'Feed', href: '/demo/advisor/feed' },
       { key: 'projects', label: 'Projetos', href: '/demo/advisor/projects' },
+      { key: 'settings', label: 'Configurações', href: '/demo/advisor/settings' },
       { key: 'profile', label: 'Perfil', href: '/demo/advisor/profile' },
     ],
     landing: {
@@ -1308,6 +1463,71 @@ export const DEMO_PLATFORM: Record<DemoProfileKey, DemoProfileExperience> = {
           typeLabel: 'Buy-side',
         },
       ],
+    },
+    settings: {
+      title: 'Configurações',
+      summary:
+        'Conta do consultor, faturamento da assinatura Mary da boutique e equipe com acesso a mandatos. Conteúdo ilustrativo.',
+      account: {
+        intro: 'Perfil profissional e segurança do usuário North Advisors.',
+        profile: [
+          { label: 'Nome', value: 'Rafael North' },
+          { label: 'E-mail', value: 'rafael@northadvisors.com' },
+          { label: 'Função', value: 'Managing Director' },
+          { label: 'Telefone', value: '+55 11 97700-4411' },
+        ],
+        security: [
+          {
+            title: 'Autenticação',
+            body: 'MFA ativo. Logins recentes simulados a partir de São Paulo e Curitiba.',
+            badges: ['MFA', 'Auditoria'],
+          },
+        ],
+        preferences: [
+          { label: 'Idioma', value: 'Português (Brasil)' },
+          { label: 'Fuso', value: 'America/Sao_Paulo' },
+          { label: 'Digest de mandatos', value: true, kind: 'boolean' },
+          { label: 'Alertas de conflito de interesse', value: true, kind: 'boolean' },
+        ],
+        organization: {
+          title: 'Boutique',
+          body: 'North Advisors · CNPJ 98.765.432/0001-10. Conta usada em mandatos sell-side e buy-side na Mary.',
+          badges: ['Advisor', 'Verificado'],
+        },
+      },
+      billing: {
+        plan: { name: 'Mary Advisor Pro', status: 'Ativo', renewal: 'Renovação em 20/06/2026' },
+        usage: [
+          { label: 'Mandatos ativos', value: '6 / 12', helper: 'limite do plano' },
+          { label: 'Assentos', value: '8 / 20', helper: 'equipe + convidados' },
+          { label: 'Armazenamento', value: '24 / 80 GB', helper: 'data rooms compartilhados' },
+        ],
+        payment: [
+          { label: 'Método', value: 'Transferência · última NF paga' },
+          { label: 'Valor mensal', value: 'BRL 7.200,00' },
+        ],
+        invoices: {
+          columns: ['Data', 'Descrição', 'Valor', 'Status'],
+          rows: [
+            ['05/04/2026', 'Mary Advisor Pro · mensalidade', 'BRL 7.200,00', 'Pago'],
+            ['05/03/2026', 'Mary Advisor Pro · mensalidade', 'BRL 7.200,00', 'Pago'],
+          ],
+        },
+        fiscalNote: 'Razão social North Advisors Ltda. NFS-e enviada para financeiro@northadvisors.com (demo).',
+      },
+      team: {
+        members: {
+          columns: ['Nome', 'E-mail', 'Papel', 'Status'],
+          rows: [
+            ['Rafael North', 'rafael@northadvisors.com', 'Admin boutique', 'Ativo'],
+            ['Julia Mota', 'julia@northadvisors.com', 'Associada', 'Ativo'],
+            ['Estagiário deal', 'deal@northadvisors.com', 'Leitura', 'Ativo'],
+          ],
+        },
+        rolesHelp:
+          'Admin gerencia assinatura e convites; Associado opera mandatos; Leitura acompanha Q&A e timeline.',
+        externalNote: 'Mandatos como Tiger podem incluir usuários do ativo com permissão limitada (simulado).',
+      },
     },
     profilePage: {
       title: 'Perfil do advisor',

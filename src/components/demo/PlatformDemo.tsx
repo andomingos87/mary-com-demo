@@ -4,23 +4,31 @@ import Link from 'next/link'
 import { useMemo, useState } from 'react'
 import {
   ArrowRight,
+  BadgeCheck,
   Bot,
   Briefcase,
   Building2,
+  CheckCircle2,
   ChevronDown,
   ChevronRight,
   Compass,
+  Copy,
   Eye,
   FolderKanban,
   Handshake,
   Home,
   LayoutDashboard,
+  LogOut,
   MapPin,
+  Pencil,
   Radar,
+  Settings,
+  Share2,
   ShieldCheck,
   Sparkles,
   Target,
   UserCircle2,
+  UserPlus,
   Workflow,
 } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
@@ -28,8 +36,18 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Progress } from '@/components/ui/progress'
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog'
+import { Label } from '@/components/ui/label'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Textarea } from '@/components/ui/textarea'
+import { toast } from 'sonner'
 import { cn } from '@/lib/utils'
 import { createDemoMaryAiNavigationContext } from '@/lib/demo/mary-ai-demo-navigation'
 import type { MrsStepId } from '@/types/projects'
@@ -73,6 +91,7 @@ const ROUTE_ICON = {
   projects: FolderKanban,
   project: FolderKanban,
   profile: UserCircle2,
+  settings: Settings,
 } satisfies Record<DemoRouteKey, typeof Home>
 
 function formatDateTime(value: string) {
@@ -94,6 +113,7 @@ function resolveRoute(segments: string[]): { key: DemoRouteKey; codename?: strin
   if (first === 'pipeline') return { key: 'pipeline' }
   if (first === 'mrs') return { key: 'mrs' }
   if (first === 'profile') return { key: 'profile' }
+  if (first === 'settings') return { key: 'settings' }
   if (first === 'projects' && second) return { key: 'project', codename: second }
   if (first === 'projects') return { key: 'projects' }
   return null
@@ -112,6 +132,7 @@ function sectionTitle(experience: DemoProfileExperience, routeKey: DemoRouteKey)
   if (routeKey === 'projects') return experience.projects?.title ?? 'Projetos'
   if (routeKey === 'project') return experience.project?.title ?? 'Projeto'
   if (routeKey === 'profile') return experience.profilePage?.title ?? 'Perfil'
+  if (routeKey === 'settings') return experience.settings?.title ?? 'Configurações'
   return experience.label
 }
 
@@ -439,6 +460,7 @@ function renderRoute(experience: DemoProfileExperience, route: { key: DemoRouteK
   if (route.key === 'projects' && experience.projects) return <ProjectsView experience={experience} />
   if (route.key === 'project' && experience.project && route.codename === experience.project.codename) return <ProjectView experience={experience} />
   if (route.key === 'profile' && experience.profilePage) return <ProfileView experience={experience} />
+  if (route.key === 'settings' && experience.settings) return <SettingsView experience={experience} />
 
   return (
     <Card className="rounded-[32px] border-white/80 bg-white/90 shadow-card">
@@ -1061,26 +1083,186 @@ function ProjectsView({ experience }: { experience: DemoProfileExperience }) {
   )
 }
 
+/** Matriz demo: Resumo → share+edit; Investidores → nenhum; Teaser/Valuation/Deck/+Info → share+approve+edit; demais ids → nenhum */
+type ProjectTabSecondaryAction = 'share' | 'approve' | 'edit'
+
+type ProjectDemoModal = 'invite' | 'share' | 'edit' | 'approve' | null
+
+function getProjectTabSecondaryActions(tabId: string): ProjectTabSecondaryAction[] {
+  switch (tabId) {
+    case 'summary':
+      return ['share', 'edit']
+    case 'investors':
+      return []
+    case 'teaser':
+    case 'valuation':
+    case 'deck':
+    case 'info':
+      return ['share', 'approve', 'edit']
+    default:
+      return []
+  }
+}
+
+function ProjectTabHeaderActions({
+  actions,
+  tabId,
+  isApproved,
+  onShare,
+  onEdit,
+  onApprove,
+}: {
+  actions: ProjectTabSecondaryAction[]
+  tabId: string
+  isApproved: boolean
+  onShare: () => void
+  onEdit: () => void
+  onApprove: () => void
+}) {
+  if (actions.length === 0) return null
+
+  return (
+    <div className="flex flex-wrap items-center justify-end gap-2">
+      {actions.includes('share') ? (
+        <Button
+          type="button"
+          variant="outline"
+          size="sm"
+          className="rounded-lg border-border bg-background shadow-none transition-smooth hover:bg-muted/60"
+          onClick={onShare}
+        >
+          <Share2 className="mr-2 h-4 w-4" aria-hidden />
+          Compartilhar
+        </Button>
+      ) : null}
+      {actions.includes('approve') ? (
+        isApproved ? (
+          <Button
+            type="button"
+            variant="secondary"
+            size="sm"
+            disabled
+            className="rounded-lg border border-border/80 bg-muted/50 text-muted-foreground shadow-none"
+            aria-label={`Material da aba ${tabId} aprovado (demo)`}
+          >
+            <CheckCircle2 className="mr-2 h-4 w-4 text-primary" aria-hidden />
+            Aprovado
+          </Button>
+        ) : (
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            className="rounded-lg border-border bg-background shadow-none transition-smooth hover:bg-muted/60"
+            onClick={onApprove}
+          >
+            <BadgeCheck className="mr-2 h-4 w-4" aria-hidden />
+            Aprovar
+          </Button>
+        )
+      ) : null}
+      {actions.includes('edit') ? (
+        <Button
+          type="button"
+          variant="ghost"
+          size="sm"
+          className="rounded-lg text-foreground transition-smooth hover:bg-muted/60"
+          onClick={onEdit}
+        >
+          <Pencil className="mr-2 h-4 w-4" aria-hidden />
+          Editar
+        </Button>
+      ) : null}
+    </div>
+  )
+}
+
 function ProjectView({ experience }: { experience: DemoProfileExperience }) {
   const project = experience.project!
+  const defaultTabId = project.tabs[0]?.id ?? 'summary'
+  const [activeTabId, setActiveTabId] = useState(defaultTabId)
+  const [openModal, setOpenModal] = useState<ProjectDemoModal>(null)
+  /** Aba alvo para Compartilhar, Editar e Aprovar (mock) */
+  const [modalTabId, setModalTabId] = useState(defaultTabId)
+  const [approvedByTabId, setApprovedByTabId] = useState<Record<string, boolean>>({})
+  const [inviteEmail, setInviteEmail] = useState('')
+  const [editDraft, setEditDraft] = useState('')
+
+  const tabLabel = (id: string) => project.tabs.find((t) => t.id === id)?.label ?? id
+  const mockShareUrl = `https://mary.ai/demo/${experience.profile}/projects/${project.codename}/preview?tab=${modalTabId}`
+
+  const openForTab = (tabId: string, kind: Exclude<ProjectDemoModal, null>) => {
+    setModalTabId(tabId)
+    setOpenModal(kind)
+  }
+
+  const handleInviteSend = () => {
+    toast.success('Convite simulado enviado (demo).')
+    setOpenModal(null)
+    setInviteEmail('')
+  }
+
+  const handleCopyShareLink = async () => {
+    try {
+      await navigator.clipboard.writeText(mockShareUrl)
+      toast.success('Link copiado (demo).')
+    } catch {
+      toast.message('Link (demo)', { description: mockShareUrl })
+    }
+  }
+
+  const handleEditSave = () => {
+    toast.success('Alterações salvas localmente (demo).')
+    setOpenModal(null)
+  }
+
+  const handleApproveConfirm = () => {
+    setApprovedByTabId((prev) => ({ ...prev, [modalTabId]: true }))
+    toast.success(`Material "${tabLabel(modalTabId)}" marcado como aprovado (demo).`)
+    setOpenModal(null)
+  }
 
   return (
     <div className="space-y-6">
       <PanelGrid panels={project.summary} />
-      <Tabs defaultValue={project.tabs[0]?.id} className="space-y-4">
-        <TabsList className="h-auto flex-wrap rounded-2xl p-1">
-          {project.tabs.map((tab) => (
-            <TabsTrigger key={tab.id} value={tab.id} className="rounded-xl">
-              {tab.label}
-            </TabsTrigger>
-          ))}
-        </TabsList>
+      <Tabs value={activeTabId} onValueChange={setActiveTabId} className="space-y-4">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+          <TabsList className="h-auto w-fit max-w-full shrink-0 flex-wrap rounded-2xl p-1">
+            {project.tabs.map((tab) => (
+              <TabsTrigger key={tab.id} value={tab.id} className="rounded-xl">
+                {tab.label}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+          <Button
+            type="button"
+            size="sm"
+            className="shrink-0 rounded-lg transition-smooth"
+            onClick={() => setOpenModal('invite')}
+          >
+            <UserPlus className="mr-2 h-4 w-4" aria-hidden />
+            + Convidar investidores
+          </Button>
+        </div>
         {project.tabs.map((tab) => (
           <TabsContent key={tab.id} value={tab.id} className="space-y-4">
             <Card className="rounded-[32px] border-white/80 bg-white/90 shadow-card">
-              <CardHeader>
-                <CardTitle>{tab.label}</CardTitle>
-                <CardDescription className="text-base leading-7">{tab.intro}</CardDescription>
+              <CardHeader className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
+                <div className="min-w-0 flex-1 space-y-1.5">
+                  <CardTitle>{tab.label}</CardTitle>
+                  <CardDescription className="text-base leading-7">{tab.intro}</CardDescription>
+                </div>
+                <ProjectTabHeaderActions
+                  actions={getProjectTabSecondaryActions(tab.id)}
+                  tabId={tab.id}
+                  isApproved={Boolean(approvedByTabId[tab.id])}
+                  onShare={() => openForTab(tab.id, 'share')}
+                  onEdit={() => {
+                    setEditDraft('')
+                    openForTab(tab.id, 'edit')
+                  }}
+                  onApprove={() => openForTab(tab.id, 'approve')}
+                />
               </CardHeader>
               <CardContent className="space-y-4">
                 {tab.panels?.length ? <PanelGrid panels={tab.panels} /> : null}
@@ -1091,6 +1273,109 @@ function ProjectView({ experience }: { experience: DemoProfileExperience }) {
           </TabsContent>
         ))}
       </Tabs>
+
+      <Dialog open={openModal === 'invite'} onOpenChange={(open) => !open && setOpenModal(null)}>
+        <DialogContent className="rounded-lg border-border bg-card shadow-card sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle>Convidar investidores</DialogTitle>
+            <DialogDescription>
+              Demonstração: nenhum e-mail é enviado de verdade. Preencha para simular o fluxo.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="space-y-2">
+            <Label htmlFor="demo-invite-email">E-mail</Label>
+            <Input
+              id="demo-invite-email"
+              type="email"
+              placeholder="investidor@exemplo.com"
+              value={inviteEmail}
+              onChange={(e) => setInviteEmail(e.target.value)}
+              className="rounded-lg"
+            />
+          </div>
+          <DialogFooter className="gap-2 sm:gap-0">
+            <Button type="button" variant="outline" className="rounded-lg" onClick={() => setOpenModal(null)}>
+              Cancelar
+            </Button>
+            <Button type="button" className="rounded-lg" onClick={handleInviteSend}>
+              Enviar convite
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={openModal === 'share'} onOpenChange={(open) => !open && setOpenModal(null)}>
+        <DialogContent className="rounded-lg border-border bg-card shadow-card sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle>Compartilhar material</DialogTitle>
+            <DialogDescription>
+              Link fictício para a aba <span className="font-medium text-foreground">{tabLabel(modalTabId)}</span>. Apenas
+              demonstração.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="space-y-2">
+            <Label htmlFor="demo-share-url">URL</Label>
+            <Input id="demo-share-url" readOnly value={mockShareUrl} className="rounded-lg font-mono text-xs" />
+          </div>
+          <DialogFooter className="flex flex-col gap-2 sm:flex-row sm:justify-end">
+            <Button type="button" variant="outline" className="rounded-lg" onClick={handleCopyShareLink}>
+              <Copy className="mr-2 h-4 w-4" aria-hidden />
+              Copiar link
+            </Button>
+            <Button type="button" className="rounded-lg" onClick={() => setOpenModal(null)}>
+              Fechar
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={openModal === 'edit'} onOpenChange={(open) => !open && setOpenModal(null)}>
+        <DialogContent className="rounded-lg border-border bg-card shadow-card sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle>Editar · {tabLabel(modalTabId)}</DialogTitle>
+            <DialogDescription>Alterações ficam só no navegador nesta sessão (demo).</DialogDescription>
+          </DialogHeader>
+          <div className="space-y-2">
+            <Label htmlFor="demo-edit-notes">Notas</Label>
+            <Textarea
+              id="demo-edit-notes"
+              placeholder="Ajustes ou comentários internos (mock)…"
+              value={editDraft}
+              onChange={(e) => setEditDraft(e.target.value)}
+              className="min-h-[120px] resize-none rounded-lg"
+            />
+          </div>
+          <DialogFooter className="gap-2 sm:gap-0">
+            <Button type="button" variant="outline" className="rounded-lg" onClick={() => setOpenModal(null)}>
+              Cancelar
+            </Button>
+            <Button type="button" className="rounded-lg" onClick={handleEditSave}>
+              Salvar
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={openModal === 'approve'} onOpenChange={(open) => !open && setOpenModal(null)}>
+        <DialogContent className="rounded-lg border-border bg-card shadow-card sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle>Confirmar aprovação</DialogTitle>
+            <DialogDescription>
+              O material da aba <span className="font-medium text-foreground">{tabLabel(modalTabId)}</span> será
+              marcado como aprovado nesta demonstração. Você pode recarregar a página para recomeçar.
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter className="gap-2 sm:gap-0">
+            <Button type="button" variant="outline" className="rounded-lg" onClick={() => setOpenModal(null)}>
+              Cancelar
+            </Button>
+            <Button type="button" className="rounded-lg" onClick={handleApproveConfirm}>
+              <BadgeCheck className="mr-2 h-4 w-4" aria-hidden />
+              Confirmar aprovação
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   )
 }
@@ -1119,6 +1404,113 @@ function ProfileView({ experience }: { experience: DemoProfileExperience }) {
         <CardContent><FieldsGrid fields={profilePage.preferences} /></CardContent>
       </Card>
       <AiQueueCard prompts={profilePage.aiQueue} />
+    </div>
+  )
+}
+
+function SettingsView({ experience }: { experience: DemoProfileExperience }) {
+  const s = experience.settings!
+
+  return (
+    <div className="space-y-6">
+      <Card className="rounded-[32px] border-white/80 bg-white/90 shadow-card">
+        <CardHeader>
+          <CardTitle>{s.title}</CardTitle>
+          <CardDescription className="text-base leading-7">{s.summary}</CardDescription>
+        </CardHeader>
+      </Card>
+
+      <Tabs defaultValue="account" className="space-y-4">
+        <TabsList className="h-auto w-fit max-w-full flex-wrap rounded-2xl p-1">
+          <TabsTrigger value="account" className="rounded-xl">
+            Conta
+          </TabsTrigger>
+          <TabsTrigger value="billing" className="rounded-xl">
+            Faturamento
+          </TabsTrigger>
+          <TabsTrigger value="team" className="rounded-xl">
+            Equipe
+          </TabsTrigger>
+        </TabsList>
+
+        <TabsContent value="account" className="space-y-4">
+          <Card className="rounded-[32px] border-white/80 bg-white/90 shadow-card">
+            <CardHeader>
+              <CardTitle>Conta</CardTitle>
+              <CardDescription>{s.account.intro}</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div>
+                <p className="mb-3 text-sm font-medium text-foreground">Perfil</p>
+                <FieldsGrid fields={s.account.profile} />
+              </div>
+              {s.account.security.length ? <PanelGrid panels={s.account.security} /> : null}
+              <div>
+                <p className="mb-3 text-sm font-medium text-foreground">Preferências</p>
+                <FieldsGrid fields={s.account.preferences} />
+              </div>
+              <PanelGrid panels={[s.account.organization]} />
+              <Button
+                type="button"
+                variant="outline"
+                className="rounded-lg border-border"
+                onClick={() => toast.message('Sessão encerrada (demo)', { description: 'Nenhuma ação real foi executada.' })}
+              >
+                <LogOut className="mr-2 h-4 w-4" aria-hidden />
+                Sair da sessão (demo)
+              </Button>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="billing" className="space-y-4">
+          <Card className="rounded-[32px] border-white/80 bg-white/90 shadow-card">
+            <CardHeader>
+              <CardTitle>Plano e uso</CardTitle>
+              <CardDescription>
+                {s.billing.plan.name} · {s.billing.plan.status} · {s.billing.plan.renewal}
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <MetricsGrid metrics={s.billing.usage} />
+              <div>
+                <p className="mb-3 text-sm font-medium text-foreground">Pagamento</p>
+                <FieldsGrid fields={s.billing.payment} columns={1} />
+              </div>
+              <div>
+                <p className="mb-3 text-sm font-medium text-foreground">Faturas recentes</p>
+                <DataTable table={s.billing.invoices} />
+              </div>
+              <p className="text-sm text-muted-foreground">{s.billing.fiscalNote}</p>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="team" className="space-y-4">
+          <Card className="rounded-[32px] border-white/80 bg-white/90 shadow-card">
+            <CardHeader className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+              <div>
+                <CardTitle>Equipe</CardTitle>
+                <CardDescription className="text-base leading-7">{s.team.rolesHelp}</CardDescription>
+              </div>
+              <Button
+                type="button"
+                size="sm"
+                className="shrink-0 rounded-lg"
+                onClick={() => toast.success('Convite de membro simulado (demo).')}
+              >
+                Convidar membro
+              </Button>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <DataTable table={s.team.members} />
+              {s.team.externalNote ? (
+                <p className="text-sm text-muted-foreground">{s.team.externalNote}</p>
+              ) : null}
+            </CardContent>
+          </Card>
+        </TabsContent>
+      </Tabs>
     </div>
   )
 }

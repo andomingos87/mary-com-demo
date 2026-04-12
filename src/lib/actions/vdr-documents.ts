@@ -16,7 +16,7 @@ import type {
   VdrDocumentFilters,
   VdrDocumentSort,
 } from '@/types/vdr'
-import type { Json } from '@/types/database'
+import type { Database, Json } from '@/types/database'
 
 /**
  * List documents in a folder or project (basic version)
@@ -356,7 +356,7 @@ export async function updateDocument(
 
   const { data, error } = await supabase
     .from('vdr_documents')
-    .update(updateData)
+    .update(updateData as Database['public']['Tables']['vdr_documents']['Update'])
     .eq('id', documentId)
     .select()
     .single()
