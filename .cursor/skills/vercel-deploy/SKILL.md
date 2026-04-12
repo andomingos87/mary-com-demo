@@ -47,19 +47,29 @@ Problemas comuns:
 - <erro> -> <causa/proxima acao>
 ```
 
-## Instrucoes especificas do projeto (Garageinn App)
-Use estas configuracoes como padrao:
-- Monorepo com app web em `apps/web`
-- Root Directory: `apps/web`
-- Framework: Next.js (auto)
-- Build Command: `npm run build` (no root definido como `apps/web`)
-- Output Directory: `.next` (padrao Next.js)
-- Node version: `18.18.0` (via `.nvmrc`)
-- Variaveis de ambiente (web):
+## Instrucoes especificas — Mary AI Platform (este repositorio)
+- **Layout:** app Next.js na **raiz** do repo (nao e monorepo `apps/web`).
+- **Package manager:** **pnpm** (`pnpm-lock.yaml`). Na Vercel, o install segue o lockfile; use `pnpm install` / `pnpm add` localmente.
+- **Build Command:** `pnpm run build` (equivale a `next build`).
+- **Output Directory:** `.next` (padrao Next.js)
+- **Root Directory no painel Vercel:** raiz do repositorio (vazio ou `.`), salvo projeto forkado com subpasta.
+- **Variaveis de ambiente** (alinhado a `AGENTS.md` / `.env.example`):
   - `NEXT_PUBLIC_SUPABASE_URL`
   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-  - `NEXT_PUBLIC_SITE_URL` (opcional)
   - `SUPABASE_SERVICE_ROLE_KEY` (somente server-side)
+  - `NEXT_PUBLIC_SITE_URL` (opcional)
+
+### Checklist pre-deploy (evitar falhas de CI)
+1. Toda dependencia importada no codigo esta em `dependencies` ou `devDependencies` do `package.json`.
+2. Rodar `pnpm run build` antes do push na branch de producao/preview.
+3. Commitar `pnpm-lock.yaml` junto com mudancas de dependencias.
+
+### Problemas comuns (Mary)
+| Erro no log | Causa provavel | Acao |
+|-------------|----------------|------|
+| `Cannot find module 'X'` | Pacote usado em import mas nao declarado em `package.json` | `pnpm add X` e commit do lockfile |
+| Cache / install estranho | Troca npm vs pnpm sem atualizar lock | Usar apenas pnpm neste repo |
+| 404 apos deploy | Root Directory errado no projeto Vercel | Root = repo root para este app |
 
 ## Notas da documentacao Vercel (Context7)
 - Root Directory restringe acesso a arquivos fora do diretorio configurado
@@ -73,6 +83,6 @@ Use estas configuracoes como padrao:
 - URL incorreta: conferir `NEXT_PUBLIC_SITE_URL` e auto-detect via `NEXT_PUBLIC_VERCEL_URL`
 
 ## Referencias internas
-- `apps/ENV_SETUP.md`
-- `apps/web/next.config.ts`
-- `apps/web/src/lib/utils.ts`
+- `.cursor/rules/vercel-build-gate.mdc` — regra de dependencias e build antes de deploy
+- `AGENTS.md` — variaveis e convencoes do projeto
+- `.env.example` — template de env

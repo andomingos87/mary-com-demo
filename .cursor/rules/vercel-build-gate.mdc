@@ -1,0 +1,31 @@
+---
+description: Gate de build e dependências antes de merge/deploy na Vercel — evita falhas por pacotes não declarados
+globs:
+  - package.json
+  - pnpm-lock.yaml
+  - src/**/*.ts
+  - src/**/*.tsx
+---
+
+# Vercel — build gate e dependências
+
+## Contexto
+O deploy na Vercel executa instalação limpa (`pnpm install` a partir de `pnpm-lock.yaml`). Dependências usadas em `import` que **não** estão em `package.json` causam falha de TypeScript no `next build` (ex.: `Cannot find module 'nanoid'`), mesmo que existam transitivamente no `node_modules` local antigo.
+
+## Regras obrigatórias para agentes e PRs
+
+1. **Declarar dependências:** ao introduzir `import ... from 'pacote'`, adicionar o pacote com `pnpm add pacote` (runtime) ou `pnpm add -D pacote` (dev) e commitar `package.json` + `pnpm-lock.yaml`.
+2. **Não confiar em dependência transitiva** para imports diretos no código da aplicação.
+3. **Antes de merge na branch que dispara deploy:** rodar `pnpm run build` localmente (ou CI equivalente) e garantir exit code 0.
+4. **Lockfile:** alterações de dependência sempre acompanhadas de diff coerente em `pnpm-lock.yaml`.
+
+## Checklist rápido (copiar para PR)
+- [ ] Novos imports têm entrada correspondente em `package.json`
+- [ ] `pnpm run build` passou
+- [ ] `pnpm-lock.yaml` atualizado se deps mudaram
+
+## Troubleshooting
+| Sintoma | Ação |
+|---------|------|
+| `Cannot find module 'X'` no build | `pnpm add X`, commit lockfile |
+| Build local OK, Vercel falha | Conferir que lockfile foi commitado; mesma versão major de Node quando possível |

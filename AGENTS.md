@@ -17,6 +17,20 @@ npm run test         # Jest tests
 npm run validate     # Full validation: build + bundle + test
 ```
 
+Com **pnpm** (recomendado — alinhado ao `pnpm-lock.yaml` e ao install na Vercel):
+```bash
+pnpm install
+pnpm run dev
+pnpm run build
+pnpm run lint
+```
+
+## Deploy na Vercel (gate de build)
+- O build remoto usa **pnpm** a partir de [`pnpm-lock.yaml`](pnpm-lock.yaml): instalação limpa, sem dependências “fantasma” do seu `node_modules` antigo.
+- Todo pacote importado no código (`import … from 'pacote'`) deve estar declarado em [`package.json`](package.json). Se faltar, o TypeScript falha com `Cannot find module` no `next build`.
+- Antes de merge/push que altera código aplicável: rode **`pnpm run build`** e garanta sucesso.
+- Ao adicionar dependência: `pnpm add <pacote>` e commitar **package.json + pnpm-lock.yaml** juntos.
+
 ## Universal Conventions
 - **Imports:** Sempre use `@/` para `src/` (configurado em `tsconfig.json`)
 - **Componentes:** shadcn/ui (Radix primitives) em `src/components/ui`
