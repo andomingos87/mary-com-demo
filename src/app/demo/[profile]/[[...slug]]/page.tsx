@@ -1,4 +1,4 @@
-import { notFound } from 'next/navigation'
+import { notFound, redirect } from 'next/navigation'
 import { PlatformDemo } from '@/components/demo/PlatformDemo'
 import { DemoProfileLandingPage } from '@/components/demo/DemoProfileLandingPage'
 import { adviseLandingData, investLandingData, sellRaiseLandingData } from '@/components/landing/profileLandingData'
@@ -31,6 +31,11 @@ export default function DemoProfilePage({
 
   if (!Object.prototype.hasOwnProperty.call(DEMO_PLATFORM, profile)) {
     notFound()
+  }
+
+  /** Kanban mock consolidado em Projetos; pipeline legado redireciona. */
+  if (profile === 'investor' && params.slug?.[0] === 'pipeline') {
+    redirect('/demo/investor/projects')
   }
 
   if (!params.slug?.length) {

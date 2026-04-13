@@ -1,11 +1,10 @@
 ﻿'use client'
 
 import Link from 'next/link'
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import {
   ArrowRight,
   BadgeCheck,
-  Bot,
   Briefcase,
   Building2,
   CheckCircle2,
@@ -16,6 +15,7 @@ import {
   Eye,
   FolderKanban,
   Handshake,
+  HelpCircle,
   Home,
   LayoutDashboard,
   LogOut,
@@ -27,15 +27,25 @@ import {
   ShieldCheck,
   Sparkles,
   Target,
+  TrendingUp,
   UserCircle2,
   UserPlus,
   Workflow,
 } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import { Checkbox } from '@/components/ui/checkbox'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Progress } from '@/components/ui/progress'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
+import { Slider } from '@/components/ui/slider'
 import {
   Dialog,
   DialogContent,
@@ -47,6 +57,7 @@ import {
 import { Label } from '@/components/ui/label'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Textarea } from '@/components/ui/textarea'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 import { toast } from 'sonner'
 import { cn } from '@/lib/utils'
 import { createDemoMaryAiNavigationContext } from '@/lib/demo/mary-ai-demo-navigation'
@@ -61,14 +72,26 @@ import { MrsStepItemsPanel } from '@/components/mrs/MrsStepItemsPanel'
 import { mrsStepNavButtonClass } from '@/components/mrs/mrs-step-helpers'
 import { OpportunitiesList } from '@/components/radar/OpportunitiesList'
 import { PipelineBoard } from '@/components/projects/PipelineBoard'
+import { DemoAiQueueCard } from '@/components/demo/DemoAiQueueCard'
+import { DemoInvestorFeed } from '@/components/demo/DemoInvestorFeed'
+import { DemoGeographyPicker } from '@/components/demo/DemoGeographyPicker'
+import { DemoInvestorOnboardingStep2Field } from '@/components/demo/DemoInvestorOnboardingStep2Field'
+import { DemoTagsField } from '@/components/demo/DemoTagsField'
+import { DemoInvestorProjectsKanban } from '@/components/demo/DemoInvestorProjectsKanban'
+import { DemoInvestorProjectMrsTab } from '@/components/demo/DemoInvestorProjectMrsTab'
+import { DemoInvestorProjectMoreInfoTab } from '@/components/demo/DemoInvestorProjectMoreInfoTab'
+import { createInvestorPlaceholderProject } from '@/lib/demo/demo-investor-kanban'
 import {
   DEMO_HOME_PROFILES,
   DEMO_PLATFORM,
   type DemoFormField,
+  type DemoFormFieldValue,
+  type DemoInvestorOnboardingStep2Value,
   type DemoPanel,
   type DemoProfileExperience,
   type DemoProfileKey,
   type DemoRouteKey,
+  type DemoStep,
   type DemoTable,
 } from '@/lib/demo/platform-data'
 
@@ -174,14 +197,181 @@ function renderField(field: DemoFormField) {
 
 function FieldsGrid({ fields, columns = 2 }: { fields: DemoFormField[]; columns?: 1 | 2 }) {
   return (
-    <div className={cn('grid gap-4', columns === 2 && 'lg:grid-cols-2')}>
-      {fields.map((field) => (
-        <div key={field.label} className="space-y-2">
-          <div className="flex items-center justify-between gap-3">
-            <p className="text-sm font-medium text-foreground">{field.label}</p>
-            {field.note ? <p className="text-xs text-muted-foreground">{field.note}</p> : null}
+    <TooltipProvider delayDuration={250}>
+      <div className={cn('grid gap-4', columns === 2 && 'lg:grid-cols-2')}>
+        {fields.map((field) => (
+          <div key={field.label} className="space-y-2">
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <div className="flex min-w-0 items-center gap-2">
+                <p className="text-sm font-medium text-foreground">{field.label}</p>
+                {field.tooltip ? (
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <button
+                        type="button"
+                        className="shrink-0 rounded-md text-muted-foreground transition-colors hover:text-foreground"
+                        aria-label={`Ajuda: ${field.label}`}
+                      >
+                        <HelpCircle className="h-4 w-4" />
+                      </button>
+                    </TooltipTrigger>
+                    <TooltipContent side="top" className="max-w-xs text-left leading-snug">
+                      {field.tooltip}
+                    </TooltipContent>
+                  </Tooltip>
+                ) : null}
+              </div>
+              <div className="flex items-center gap-3">
+                {field.saved ? (
+                  <span className="flex items-center gap-1 text-xs font-medium text-success">
+                    <CheckCircle2 className="h-3.5 w-3.5" aria-hidden />
+                    Salvo
+                  </span>
+                ) : null}
+                {field.note ? <p className="text-xs text-muted-foreground">{field.note}</p> : null}
+              </div>
+            </div>
+            {renderField(field)}
           </div>
-          {renderField(field)}
+        ))}
+      </div>
+    </TooltipProvider>
+  )
+}
+
+function cloneDemoSteps(steps: DemoStep[]): DemoStep[] {
+  return JSON.parse(JSON.stringify(steps)) as DemoStep[]
+}
+
+function computeOnboardingProgress(current: DemoStep[], baseline: DemoStep[]): number {
+  if (baseline.length === 0 || current.length === 0) return 0
+  let total = 0
+  let changed = 0
+  for (let i = 0; i < current.length; i++) {
+    const cf = current[i]?.fields ?? []
+    const bf = baseline[i]?.fields ?? []
+    for (let j = 0; j < cf.length; j++) {
+      total++
+      if (JSON.stringify(cf[j]?.value) !== JSON.stringify(bf[j]?.value)) {
+        changed++
+      }
+    }
+  }
+  if (total === 0) return 0
+  return Math.round((changed / total) * 100)
+}
+
+function renderOnboardingField(
+  field: DemoFormField,
+  onChange: (v: DemoFormFieldValue) => void,
+  options?: { completionAnchorId?: string }
+) {
+  const value = field.value
+
+  if (field.kind === 'investor-step2-bundle') {
+    const v = value as DemoInvestorOnboardingStep2Value
+    return (
+      <DemoInvestorOnboardingStep2Field
+        value={v}
+        onChange={onChange}
+        completionAnchorId={options?.completionAnchorId}
+      />
+    )
+  }
+
+  if (field.kind === 'geography') {
+    const codes = Array.isArray(value) ? value.map(String) : []
+    return <DemoGeographyPicker value={codes} onChange={(v) => onChange(v)} />
+  }
+
+  if (Array.isArray(value) || field.kind === 'tags') {
+    const items = Array.isArray(value) ? value : [String(value)]
+    return <DemoTagsField value={items} onChange={(next) => onChange(next)} tagOptions={field.tagOptions} />
+  }
+
+  if (field.kind === 'textarea') {
+    return (
+      <Textarea
+        value={String(value)}
+        onChange={(e) => onChange(e.target.value)}
+        className="min-h-[112px] resize-none rounded-lg"
+      />
+    )
+  }
+
+  if (field.kind === 'boolean') {
+    return (
+      <div className="flex flex-wrap items-center gap-3">
+        <Checkbox
+          checked={Boolean(value)}
+          onCheckedChange={(v) => onChange(v === true)}
+          aria-label={field.label}
+        />
+        <span className="text-sm text-muted-foreground">Ajuste conforme o seu caso.</span>
+      </div>
+    )
+  }
+
+  if (field.kind === 'checkbox') {
+    return (
+      <div className="flex flex-wrap items-center gap-3">
+        <Checkbox
+          checked={Boolean(value)}
+          onCheckedChange={(v) => onChange(v === true)}
+          aria-label={field.label}
+        />
+        <span className="text-sm text-muted-foreground">Aceite (simulado na demo).</span>
+      </div>
+    )
+  }
+
+  return <Input value={String(value)} onChange={(e) => onChange(e.target.value)} className="rounded-lg" />
+}
+
+function OnboardingStepFields({
+  fields,
+  onFieldChange,
+  investorCompletionAnchorId,
+}: {
+  fields: DemoFormField[]
+  onFieldChange: (label: string, value: DemoFormFieldValue) => void
+  investorCompletionAnchorId?: string
+}) {
+  return (
+    <div className={cn('grid gap-4', 'lg:grid-cols-2')}>
+      {fields.map((field) => (
+        <div
+          key={field.label}
+          className={cn(
+            'space-y-2',
+            field.kind === 'geography' && 'lg:col-span-2',
+            field.kind === 'investor-step2-bundle' && 'lg:col-span-2'
+          )}
+        >
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <div className="flex min-w-0 items-center gap-2">
+              <p className="text-sm font-medium text-foreground">{field.label}</p>
+              {field.tooltip ? (
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <button
+                      type="button"
+                      className="shrink-0 rounded-md text-muted-foreground transition-colors hover:text-foreground"
+                      aria-label={`Ajuda: ${field.label}`}
+                    >
+                      <HelpCircle className="h-4 w-4" />
+                    </button>
+                  </TooltipTrigger>
+                  <TooltipContent side="top" className="max-w-xs text-left leading-snug">
+                    {field.tooltip}
+                  </TooltipContent>
+                </Tooltip>
+              ) : null}
+            </div>
+          </div>
+          {renderOnboardingField(field, (v) => onFieldChange(field.label, v), {
+            completionAnchorId: investorCompletionAnchorId,
+          })}
         </div>
       ))}
     </div>
@@ -458,7 +648,28 @@ function renderRoute(experience: DemoProfileExperience, route: { key: DemoRouteK
   if (route.key === 'pipeline' && experience.pipeline) return <PipelineView experience={experience} />
   if (route.key === 'mrs' && experience.mrs) return <MrsView experience={experience} />
   if (route.key === 'projects' && experience.projects) return <ProjectsView experience={experience} />
-  if (route.key === 'project' && experience.project && route.codename === experience.project.codename) return <ProjectView experience={experience} />
+  if (
+    route.key === 'project' &&
+    experience.profile === 'investor' &&
+    route.codename
+  ) {
+    if (experience.project && route.codename === experience.project.codename) {
+      return <ProjectView experience={experience} />
+    }
+    const kanbanCard = experience.projects?.kanbanCards?.find((c) => c.codename === route.codename)
+    if (kanbanCard) {
+      return (
+        <ProjectView
+          experience={{
+            ...experience,
+            project: createInvestorPlaceholderProject(kanbanCard),
+          }}
+        />
+      )
+    }
+  }
+  if (route.key === 'project' && experience.project && route.codename === experience.project.codename)
+    return <ProjectView experience={experience} />
   if (route.key === 'profile' && experience.profilePage) return <ProfileView experience={experience} />
   if (route.key === 'settings' && experience.settings) return <SettingsView experience={experience} />
 
@@ -497,6 +708,8 @@ function LandingView({ experience }: { experience: DemoProfileExperience }) {
 }
 
 function SignupView({ experience }: { experience: DemoProfileExperience }) {
+  const cta = experience.signup.ctaBanner
+
   return (
     <div className="grid gap-6 xl:grid-cols-[1.35fr_0.95fr]">
       <Card className="rounded-[32px] border-white/80 bg-white/90 shadow-elegant">
@@ -504,14 +717,26 @@ function SignupView({ experience }: { experience: DemoProfileExperience }) {
           <CardTitle>{experience.signup.title}</CardTitle>
           <CardDescription className="text-base leading-7">{experience.signup.summary}</CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent className="space-y-6">
+          {cta ? (
+            <div className="rounded-2xl border border-primary/20 bg-primary/5 p-5 shadow-card">
+              <p className="text-base font-medium leading-7 text-foreground">{cta.message}</p>
+              <div className="mt-4">
+                <Button asChild className="rounded-2xl">
+                  <Link href={cta.ctaHref}>{cta.ctaLabel}</Link>
+                </Button>
+              </div>
+            </div>
+          ) : null}
           <FieldsGrid fields={experience.signup.fields} />
         </CardContent>
       </Card>
       <Card className="rounded-[32px] border-white/80 bg-white/90 shadow-card">
         <CardHeader>
           <CardTitle>Regras e automações</CardTitle>
-          <CardDescription>Mock do comportamento esperado antes de soltar auth real.</CardDescription>
+          <CardDescription>
+            Comportamento de produto, padrões Mary e validações técnicas esperadas (mock, antes de auth real).
+          </CardDescription>
         </CardHeader>
         <CardContent className="space-y-3">
           {experience.signup.validations.map((validation) => (
@@ -527,38 +752,117 @@ function SignupView({ experience }: { experience: DemoProfileExperience }) {
 }
 
 function OnboardingView({ experience }: { experience: DemoProfileExperience }) {
-  const progress = Math.round((experience.onboarding.steps.length / experience.onboarding.steps.length) * 100)
+  const baselineRef = useRef<DemoStep[] | null>(null)
+  const [steps, setSteps] = useState<DemoStep[]>(() => {
+    const initial = cloneDemoSteps(experience.onboarding.steps)
+    baselineRef.current = initial
+    return initial
+  })
+
+  useEffect(() => {
+    const next = cloneDemoSteps(experience.onboarding.steps)
+    baselineRef.current = next
+    setSteps(next)
+    // Baseline vem de DEMO_PLATFORM por perfil; intencionalmente não dependemos de `experience.onboarding.steps`.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [experience.profile])
+
+  const progressDelta = useMemo(() => {
+    const base = baselineRef.current ?? steps
+    return computeOnboardingProgress(steps, base)
+  }, [steps])
+
+  const handleFieldChange = (stepId: string, label: string, value: DemoFormFieldValue) => {
+    setSteps((prev) =>
+      prev.map((step) => {
+        if (step.id !== stepId) return step
+        return {
+          ...step,
+          fields: step.fields.map((f) => (f.label === label ? { ...f, value } : f)),
+        }
+      })
+    )
+  }
 
   return (
-    <div className="space-y-6">
+    <TooltipProvider delayDuration={250}>
+      <div className="space-y-6">
       <Card className="rounded-[32px] border-white/80 bg-white/90 shadow-card">
         <CardHeader>
           <CardTitle>{experience.onboarding.title}</CardTitle>
           <CardDescription className="text-base leading-7">{experience.onboarding.summary}</CardDescription>
         </CardHeader>
         <CardContent className="space-y-3">
-          <div className="flex items-center justify-between text-sm text-muted-foreground">
-            <span>Passo {experience.onboarding.steps.length} de {experience.onboarding.steps.length}</span>
-            <span>{progress}% concluído</span>
+          <div className="flex flex-wrap items-center justify-between gap-2 text-sm text-muted-foreground">
+            <span>
+              {steps.length} passo{steps.length === 1 ? '' : 's'} · campos editáveis (exemplo inicial pode ser alterado)
+            </span>
+            <span>{progressDelta}% alterado em relação ao exemplo</span>
           </div>
-          <Progress value={progress} className="h-2" />
+          <Progress value={progressDelta} className="h-2" />
         </CardContent>
       </Card>
 
-      {experience.onboarding.steps.map((step, index) => (
-        <div key={step.id} className="space-y-6">
+      {steps.map((step, index) => (
+        <div
+          key={step.id}
+          className="space-y-6"
+          id={experience.profile === 'investor' && index === 1 ? 'demo-investor-onboarding-step-2' : undefined}
+        >
           <Card className="rounded-[32px] border-white/80 bg-white/90 shadow-card">
             <CardHeader>
-              <CardTitle>{step.title}</CardTitle>
+              <div className="flex flex-wrap items-start gap-2">
+                <CardTitle className="flex-1">{step.title}</CardTitle>
+                {step.titleTooltip ? (
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <button
+                        type="button"
+                        className="mt-0.5 shrink-0 rounded-md text-muted-foreground transition-colors hover:text-foreground"
+                        aria-label={`Ajuda: ${step.title}`}
+                      >
+                        <HelpCircle className="h-5 w-5" />
+                      </button>
+                    </TooltipTrigger>
+                    <TooltipContent side="top" className="max-w-xs text-left leading-snug">
+                      {step.titleTooltip}
+                    </TooltipContent>
+                  </Tooltip>
+                ) : null}
+              </div>
               <CardDescription className="text-base leading-7">{step.description}</CardDescription>
             </CardHeader>
             <CardContent>
-              <FieldsGrid fields={step.fields} />
+              <OnboardingStepFields
+                fields={step.fields}
+                onFieldChange={(label, value) => handleFieldChange(step.id, label, value)}
+                investorCompletionAnchorId={
+                  experience.profile === 'investor' ? 'demo-investor-onboarding-completion' : undefined
+                }
+              />
             </CardContent>
           </Card>
 
           {experience.profile === 'asset' && index === 0 ? (
             <MockPopupCard text="Com base nas informações fornecidas, identificamos investidores potencialmente compatíveis com seu perfil. Continue para refinar seu perfil e se preparar." />
+          ) : null}
+
+          {experience.profile === 'investor' && index === 0 ? (
+            <div className="flex flex-col gap-4 rounded-lg border border-border bg-card p-5 text-card-foreground shadow-card md:flex-row md:items-center md:justify-between md:gap-6">
+              <p className="text-base leading-7">{INVESTOR_BRIDGE_COPY}</p>
+              <Button
+                type="button"
+                className="shrink-0 rounded-2xl"
+                onClick={() =>
+                  document.getElementById('demo-investor-onboarding-step-2')?.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start',
+                  })
+                }
+              >
+                Passo 2
+              </Button>
+            </div>
           ) : null}
 
           {experience.profile === 'asset' && index === 2 ? (
@@ -568,14 +872,19 @@ function OnboardingView({ experience }: { experience: DemoProfileExperience }) {
       ))}
 
       <CompletionPopupCard
+        id={experience.profile === 'investor' ? 'demo-investor-onboarding-completion' : undefined}
         title={experience.onboarding.completionTitle}
         body={experience.onboarding.completionBody}
         href={experience.onboarding.completionHref}
         cta={experience.onboarding.completionCta}
       />
-    </div>
+      </div>
+    </TooltipProvider>
   )
 }
+
+const INVESTOR_BRIDGE_COPY =
+  'Com base nas informações fornecidas, identificamos ativos potencialmente compatíveis com seu perfil. Continue para refinar sua tese de investimento.'
 
 function MockPopupCard({ text }: { text: string }) {
   return (
@@ -595,18 +904,23 @@ function MockPopupCard({ text }: { text: string }) {
 }
 
 function CompletionPopupCard({
+  id,
   title,
   body,
   href,
   cta,
 }: {
+  id?: string
   title: string
   body: string
   href: string
   cta: string
 }) {
   return (
-    <Card className="mx-auto max-w-2xl rounded-[28px] border-primary/25 bg-white/95 shadow-elegant">
+    <Card
+      id={id}
+      className="mx-auto max-w-2xl scroll-mt-8 rounded-[28px] border-primary/25 bg-white/95 shadow-elegant"
+    >
       <CardContent className="pt-6">
         <div className="rounded-2xl border border-primary/15 bg-primary/5 p-6 text-center text-foreground">
           <div className="mb-4 flex items-center justify-center">
@@ -640,13 +954,14 @@ function DashboardView({ experience }: { experience: DemoProfileExperience }) {
       </Card>
       <MetricsGrid metrics={dashboard.metrics} />
       <PanelGrid panels={dashboard.panels} />
-      <AiQueueCard prompts={dashboard.aiQueue} />
+      <DemoAiQueueCard prompts={dashboard.aiQueue} />
     </div>
   )
 }
 
 function ThesisView({ experience }: { experience: DemoProfileExperience }) {
   const thesis = experience.thesis!
+  const [approvedByThesisId, setApprovedByThesisId] = useState<Record<string, boolean>>({})
 
   return (
     <div className="space-y-6">
@@ -667,13 +982,35 @@ function ThesisView({ experience }: { experience: DemoProfileExperience }) {
         {thesis.theses.map((item) => (
           <TabsContent key={item.id} value={item.id}>
             <Card className="rounded-[32px] border-white/80 bg-white/90 shadow-card">
-              <CardHeader>
-                <div className="flex flex-wrap items-center gap-3">
-                  <CardTitle>{item.name}</CardTitle>
-                  <Badge>{item.status}</Badge>
-                  <Badge variant="outline">{item.matchCount}</Badge>
+              <CardHeader className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
+                <div className="min-w-0 flex-1 space-y-1.5">
+                  <div className="flex flex-wrap items-center gap-3">
+                    <CardTitle>{item.name}</CardTitle>
+                    <Badge>{item.status}</Badge>
+                    <Badge variant="outline">{item.matchCount}</Badge>
+                  </div>
+                  <CardDescription className="text-base leading-7">{item.summary}</CardDescription>
                 </div>
-                <CardDescription className="text-base leading-7">{item.summary}</CardDescription>
+                <ProjectTabHeaderActions
+                  actions={['share', 'approve', 'edit']}
+                  tabId={item.id}
+                  approvedAriaLabel={`Tese ${item.name} aprovada (demo)`}
+                  isApproved={Boolean(approvedByThesisId[item.id])}
+                  onShare={async () => {
+                    const url = `https://mary.ai/demo/investor/thesis?thesis=${item.id}`
+                    try {
+                      await navigator.clipboard.writeText(url)
+                      toast.success('Link copiado (demo).')
+                    } catch {
+                      toast.message('Link (demo)', { description: url })
+                    }
+                  }}
+                  onEdit={() => toast.success('Alterações salvas localmente (demo).')}
+                  onApprove={() => {
+                    setApprovedByThesisId((prev) => ({ ...prev, [item.id]: true }))
+                    toast.success(`Tese "${item.name}" marcada como aprovada (demo).`)
+                  }}
+                />
               </CardHeader>
               <CardContent>
                 <FieldsGrid fields={item.fields} />
@@ -682,37 +1019,109 @@ function ThesisView({ experience }: { experience: DemoProfileExperience }) {
           </TabsContent>
         ))}
       </Tabs>
-      <AiQueueCard prompts={thesis.aiActions} />
+      <DemoAiQueueCard prompts={thesis.aiActions} />
     </div>
   )
 }
 
 function RadarView({ experience }: { experience: DemoProfileExperience }) {
   const radar = experience.radar!
+  const thesisList = experience.thesis?.theses ?? []
+  const initialThesisId =
+    thesisList.find((t) => t.status === 'Ativa')?.id ?? thesisList[0]?.id ?? 'edtech-growth'
+  const [selectedThesisId, setSelectedThesisId] = useState(initialThesisId)
+  const [minMrs, setMinMrs] = useState(0)
+
+  const filteredOpportunities = useMemo(() => {
+    const list = radar.opportunities ?? []
+    return list.filter((o) => {
+      const mrs = o.mrsScore ?? o.matchScore
+      if (mrs < minMrs) return false
+      if (o.thesisIds?.length) return o.thesisIds.includes(selectedThesisId)
+      return true
+    })
+  }, [radar.opportunities, minMrs, selectedThesisId])
+
+  const showInvestorOpportunityRadar = radar.opportunities != null
 
   return (
     <div className="space-y-6">
-      <Card className="rounded-[32px] border-white/80 bg-white/90 shadow-card">
-        <CardHeader>
-          <CardTitle>{radar.title}</CardTitle>
-          <CardDescription className="text-base leading-7">{radar.summary}</CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-3">
-          <p className="text-sm font-medium">{radar.selectorLabel}</p>
-          <div className="flex flex-wrap gap-2">
-            {radar.selectorValues.map((value) => (
-              <Badge key={value} variant="secondary" className="rounded-full px-3 py-1">
-                {value}
-              </Badge>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
+      {showInvestorOpportunityRadar ? (
+        <Card className="rounded-[32px] border-white/80 bg-white/90 shadow-card">
+          <CardHeader>
+            <CardTitle>{radar.title}</CardTitle>
+            <CardDescription className="text-base leading-7">{radar.summary}</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+              <div className="min-w-0 flex-1 space-y-2">
+                <Label htmlFor="demo-radar-thesis" className="text-sm font-medium">
+                  {radar.selectorLabel}
+                </Label>
+                <Select value={selectedThesisId} onValueChange={setSelectedThesisId}>
+                  <SelectTrigger id="demo-radar-thesis" className="w-full max-w-md rounded-lg">
+                    <SelectValue placeholder="Selecione uma tese" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {thesisList.map((t) => (
+                      <SelectItem key={t.id} value={t.id}>
+                        {t.name}
+                        {t.status !== 'Ativa' ? ` (${t.status})` : ''}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div className="min-w-0 flex-1 space-y-3 lg:max-w-md">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <Label htmlFor="demo-radar-mrs" className="text-sm font-medium">
+                    MRS mínimo
+                  </Label>
+                  <span className="text-sm tabular-nums text-muted-foreground">{minMrs}</span>
+                </div>
+                <Slider
+                  id="demo-radar-mrs"
+                  min={0}
+                  max={100}
+                  step={1}
+                  value={[minMrs]}
+                  onValueChange={(v) => setMinMrs(v[0] ?? 0)}
+                  className="w-full"
+                />
+              </div>
+            </div>
+
+            <p className="text-sm text-muted-foreground">
+              {filteredOpportunities.length} oportunidade
+              {filteredOpportunities.length === 1 ? '' : 's'} com os filtros atuais
+            </p>
+          </CardContent>
+        </Card>
+      ) : (
+        <Card className="rounded-[32px] border-white/80 bg-white/90 shadow-card">
+          <CardHeader>
+            <CardTitle>{radar.title}</CardTitle>
+            <CardDescription className="text-base leading-7">{radar.summary}</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-3">
+            <p className="text-sm font-medium">{radar.selectorLabel}</p>
+            <div className="flex flex-wrap gap-2">
+              {radar.selectorValues.map((value) => (
+                <Badge key={value} variant="secondary" className="rounded-full px-3 py-1">
+                  {value}
+                </Badge>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      )}
 
       {radar.opportunities ? (
         <OpportunitiesList
+          key={`demo-radar-${selectedThesisId}-${minMrs}`}
           organizationId={`demo-${experience.profile}`}
-          opportunities={radar.opportunities}
+          opportunities={filteredOpportunities}
           readOnlyMode={false}
           fallbackUsed={false}
           demoMode
@@ -741,6 +1150,10 @@ function RadarView({ experience }: { experience: DemoProfileExperience }) {
 function FeedView({ experience }: { experience: DemoProfileExperience }) {
   const feed = experience.feed!
 
+  if (experience.profile === 'investor' && feed.filterTabs?.length) {
+    return <DemoInvestorFeed feed={feed} />
+  }
+
   return (
     <div className="grid gap-6 xl:grid-cols-[1.25fr_0.85fr]">
       <div className="space-y-6">
@@ -749,13 +1162,15 @@ function FeedView({ experience }: { experience: DemoProfileExperience }) {
             <CardTitle>{feed.title}</CardTitle>
             <CardDescription className="text-base leading-7">{feed.summary}</CardDescription>
           </CardHeader>
-          <CardContent className="flex flex-wrap gap-2">
-            {feed.filters.map((filter) => (
-              <Badge key={filter} variant="outline" className="rounded-full px-3 py-1">
-                {filter}
-              </Badge>
-            ))}
-          </CardContent>
+          {feed.filters.length > 0 ? (
+            <CardContent className="flex flex-wrap gap-2">
+              {feed.filters.map((filter) => (
+                <Badge key={filter} variant="outline" className="rounded-full px-3 py-1">
+                  {filter}
+                </Badge>
+              ))}
+            </CardContent>
+          ) : null}
         </Card>
 
         {feed.items.map((item) => (
@@ -771,7 +1186,7 @@ function FeedView({ experience }: { experience: DemoProfileExperience }) {
           </Card>
         ))}
       </div>
-      <AiQueueCard prompts={feed.aiPrompts} />
+      <DemoAiQueueCard prompts={feed.aiPrompts} />
     </div>
   )
 }
@@ -952,7 +1367,7 @@ function MrsView({ experience }: { experience: DemoProfileExperience }) {
 
       {narrativeAndChecklist}
       <ProjectDocsCard docs={mrs.docs} />
-      <AiQueueCard prompts={mrs.aiPrompts} />
+      <DemoAiQueueCard prompts={mrs.aiPrompts} />
     </div>
   )
 }
@@ -964,18 +1379,28 @@ function demoProjectMatchBadgeClass(score: number) {
   return 'border-amber-500/50 bg-amber-500/12 text-amber-950 dark:text-amber-100'
 }
 
+function projectListCountLabel(profile: DemoProfileKey, count: number) {
+  if (profile === 'investor') return `${count} Oportunidades encontradas`
+  if (profile === 'asset') return `${count} Projetos encontrados`
+  return `${count} Mandatos encontrados`
+}
+
 function ProjectsView({ experience }: { experience: DemoProfileExperience }) {
   const projects = experience.projects!
-  const count = projects.cards.length
-  const countLabel = count === 1 ? 'projeto encontrado' : 'projetos encontrados'
-  const headlineScore = projects.cards[0]?.matchScore ?? 45
 
-  const inviteCta =
-    experience.profile === 'asset'
-      ? '[ + Convidar investidores ]'
-      : experience.profile === 'investor'
-        ? '[ + Refinar tese ]'
-        : '[ + Novo mandato ]'
+  if (experience.profile === 'investor' && projects.kanbanCards?.length) {
+    return (
+      <DemoInvestorProjectsKanban
+        profileSlug="investor"
+        title={projects.title}
+        summary={projects.summary}
+        cards={projects.kanbanCards}
+      />
+    )
+  }
+
+  const gridCards = projects.cards ?? []
+  const count = gridCards.length
 
   return (
     <div className="space-y-6">
@@ -986,68 +1411,86 @@ function ProjectsView({ experience }: { experience: DemoProfileExperience }) {
         </CardHeader>
       </Card>
 
-      <div className="flex flex-col gap-2 rounded-lg border border-border bg-card px-4 py-3 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
-        <button
-          type="button"
-          className="text-left text-sm font-semibold text-primary transition-smooth hover:underline"
-        >
-          [ Selecione um projeto ▼ ]
-        </button>
-        <span className="text-sm font-semibold text-primary">MRS Atual: {headlineScore}</span>
-        <button
-          type="button"
-          className="text-left text-sm font-semibold text-primary transition-smooth hover:underline sm:text-right"
-        >
-          {inviteCta}
-        </button>
-      </div>
-
-      <p className="text-sm font-medium text-foreground">
-        {count} {countLabel}
-      </p>
+      <h2 className="text-xl font-semibold tracking-tight text-foreground">
+        {projectListCountLabel(experience.profile, count)}
+      </h2>
 
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-        {projects.cards.map((project) => {
-          const score = project.matchScore ?? 72
-          const typeLine = project.typeLabel ?? project.objective
+        {gridCards.map((project) => {
+          const matchPct = project.matchScore ?? 72
+          const readiness =
+            project.readinessScore ?? Math.min(100, Math.round(matchPct * 0.75))
           const location = project.location?.trim() ? project.location : '—'
           const hasDetailLink = Boolean(experience.project && project.codename === experience.project.codename)
+          const revenueDisplay = project.annualRevenue ?? project.value
+          const revenueLabel = project.annualRevenue ? 'Receita Anual' : 'Valor alvo'
 
           return (
             <div
               key={project.codename}
-              className="flex flex-col rounded-lg border border-border bg-muted/30 p-4 shadow-none"
+              className="flex flex-col rounded-lg border border-border bg-card p-4 text-card-foreground shadow-card"
             >
-              <div className="flex flex-1 flex-col">
-                <div className="flex items-start gap-2">
-                  <Briefcase className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden />
-                  <div className="min-w-0 flex-1">
-                    <div className="flex items-start justify-between gap-2">
-                      <p className="font-semibold leading-snug text-foreground">{project.name}</p>
-                      <span
-                        className={cn(
-                          'shrink-0 rounded-full border px-2 py-0.5 text-xs font-semibold tabular-nums',
-                          demoProjectMatchBadgeClass(score)
-                        )}
-                      >
-                        {score}%
+              <div className="flex items-start gap-3">
+                <Building2 className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden />
+                <div className="min-w-0 flex-1 space-y-3">
+                  <div className="flex items-start justify-between gap-2">
+                    <p className="font-semibold leading-snug text-foreground">{project.name}</p>
+                    <span
+                      className={cn(
+                        'shrink-0 rounded-full border px-2.5 py-0.5 text-xs font-semibold tabular-nums',
+                        demoProjectMatchBadgeClass(matchPct)
+                      )}
+                    >
+                      {matchPct}%
+                    </span>
+                  </div>
+
+                  {project.sector || project.sectorTag ? (
+                    <div className="flex flex-wrap items-center gap-2">
+                      {project.sector ? (
+                        <span className="text-sm text-muted-foreground">{project.sector}</span>
+                      ) : null}
+                      {project.sectorTag ? (
+                        <Badge variant="outline" className="rounded-full px-2.5 py-0.5 text-xs font-normal">
+                          {project.sectorTag}
+                        </Badge>
+                      ) : null}
+                    </div>
+                  ) : project.typeLabel ? (
+                    <Badge variant="outline" className="w-fit rounded-full px-2.5 py-0.5 text-xs font-normal">
+                      {project.typeLabel}
+                    </Badge>
+                  ) : null}
+
+                  <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
+                    <MapPin className="h-4 w-4 shrink-0 text-primary" aria-hidden />
+                    <span>{location}</span>
+                  </div>
+
+                  <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
+                    <TrendingUp className="h-4 w-4 shrink-0 text-primary" aria-hidden />
+                    <span>{project.stage}</span>
+                  </div>
+
+                  <div className="rounded-lg border border-border bg-background/80 px-3 py-2.5">
+                    <div className="flex items-center justify-between gap-2 text-sm">
+                      <span className="text-muted-foreground">Readiness Score</span>
+                      <span className="tabular-nums font-medium text-foreground">
+                        {readiness}/100
                       </span>
                     </div>
-                    <p className="mt-2 text-xs text-muted-foreground">{typeLine}</p>
-                    <div className="mt-1.5 flex items-center gap-1 text-xs text-muted-foreground">
-                      <MapPin className="h-3.5 w-3.5 shrink-0 text-primary" aria-hidden />
-                      <span>{location}</span>
-                    </div>
-                    <p className="mt-2 text-xs text-muted-foreground">
-                      Valor alvo{' '}
-                      <span className="font-medium text-foreground">{project.value}</span>
-                    </p>
-                    <p className="mt-1 text-xs leading-tight text-muted-foreground">
-                      {project.stage} · {project.visibility}
+                    <Progress value={readiness} className="mt-2 h-2 bg-secondary" />
+                  </div>
+
+                  <div className="rounded-lg bg-muted/80 px-3 py-2.5">
+                    <p className="text-xs text-muted-foreground">{revenueLabel}</p>
+                    <p className="mt-0.5 text-lg font-semibold tabular-nums tracking-tight text-foreground">
+                      {revenueDisplay}
                     </p>
                   </div>
                 </div>
               </div>
+
               <div className="mt-4">
                 {hasDetailLink ? (
                   <Button
@@ -1067,8 +1510,12 @@ function ProjectsView({ experience }: { experience: DemoProfileExperience }) {
                   <Button
                     type="button"
                     variant="outline"
-                    disabled
-                    className="w-full rounded-lg border-border bg-background font-medium opacity-60 shadow-none"
+                    className="w-full rounded-lg border-border bg-background font-medium shadow-none transition-smooth hover:bg-muted/50"
+                    onClick={() =>
+                      toast.message('Ver detalhes', {
+                        description: 'Demo: página de detalhe disponível apenas para o projeto principal mockado.',
+                      })
+                    }
                   >
                     <Eye className="mr-2 h-4 w-4" aria-hidden />
                     Ver detalhes
@@ -1092,6 +1539,8 @@ function getProjectTabSecondaryActions(tabId: string): ProjectTabSecondaryAction
   switch (tabId) {
     case 'summary':
       return ['share', 'edit']
+    case 'mrs':
+      return ['share', 'approve', 'edit']
     case 'investors':
       return []
     case 'teaser':
@@ -1111,6 +1560,7 @@ function ProjectTabHeaderActions({
   onShare,
   onEdit,
   onApprove,
+  approvedAriaLabel,
 }: {
   actions: ProjectTabSecondaryAction[]
   tabId: string
@@ -1118,8 +1568,12 @@ function ProjectTabHeaderActions({
   onShare: () => void
   onEdit: () => void
   onApprove: () => void
+  approvedAriaLabel?: string
 }) {
   if (actions.length === 0) return null
+
+  const approvedLabel =
+    approvedAriaLabel ?? `Material da aba ${tabId} aprovado (demo)`
 
   return (
     <div className="flex flex-wrap items-center justify-end gap-2">
@@ -1143,7 +1597,7 @@ function ProjectTabHeaderActions({
             size="sm"
             disabled
             className="rounded-lg border border-border/80 bg-muted/50 text-muted-foreground shadow-none"
-            aria-label={`Material da aba ${tabId} aprovado (demo)`}
+            aria-label={approvedLabel}
           >
             <CheckCircle2 className="mr-2 h-4 w-4 text-primary" aria-hidden />
             Aprovado
@@ -1222,6 +1676,12 @@ function ProjectView({ experience }: { experience: DemoProfileExperience }) {
     setOpenModal(null)
   }
 
+  const kanbanCardForProject = experience.projects?.kanbanCards?.find(
+    (c) => c.codename === project.codename
+  )
+  /** Sem card no Kanban (ex.: Tiger só em `project`), assume NDA para narrativa demo. */
+  const investorDemoHasNda = kanbanCardForProject ? kanbanCardForProject.column !== 'teaser' : true
+
   return (
     <div className="space-y-6">
       <PanelGrid panels={project.summary} />
@@ -1244,34 +1704,104 @@ function ProjectView({ experience }: { experience: DemoProfileExperience }) {
             + Convidar investidores
           </Button>
         </div>
-        {project.tabs.map((tab) => (
-          <TabsContent key={tab.id} value={tab.id} className="space-y-4">
-            <Card className="rounded-[32px] border-white/80 bg-white/90 shadow-card">
-              <CardHeader className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
-                <div className="min-w-0 flex-1 space-y-1.5">
-                  <CardTitle>{tab.label}</CardTitle>
-                  <CardDescription className="text-base leading-7">{tab.intro}</CardDescription>
-                </div>
-                <ProjectTabHeaderActions
-                  actions={getProjectTabSecondaryActions(tab.id)}
-                  tabId={tab.id}
-                  isApproved={Boolean(approvedByTabId[tab.id])}
-                  onShare={() => openForTab(tab.id, 'share')}
-                  onEdit={() => {
-                    setEditDraft('')
-                    openForTab(tab.id, 'edit')
-                  }}
-                  onApprove={() => openForTab(tab.id, 'approve')}
-                />
-              </CardHeader>
-              <CardContent className="space-y-4">
-                {tab.panels?.length ? <PanelGrid panels={tab.panels} /> : null}
-                {tab.table ? <DataTable table={tab.table} /> : null}
-                {tab.docs?.length ? <ProjectDocsCard docs={tab.docs} /> : null}
-              </CardContent>
-            </Card>
-          </TabsContent>
-        ))}
+        {project.tabs.map((tab) => {
+          const isInvestorProject =
+            experience.profile === 'investor' && experience.mrs && tab.id === 'mrs'
+          const isInvestorMoreInfo =
+            experience.profile === 'investor' &&
+            tab.id === 'info' &&
+            Boolean(tab.moreInfoSections?.length)
+
+          if (isInvestorProject) {
+            return (
+              <TabsContent key={tab.id} value={tab.id} className="space-y-4">
+                <Card className="rounded-[32px] border-white/80 bg-white/90 shadow-card">
+                  <CardHeader className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
+                    <CardDescription className="text-base leading-7">{tab.intro}</CardDescription>
+                    <ProjectTabHeaderActions
+                      actions={getProjectTabSecondaryActions(tab.id)}
+                      tabId={tab.id}
+                      isApproved={Boolean(approvedByTabId[tab.id])}
+                      onShare={() => openForTab(tab.id, 'share')}
+                      onEdit={() => {
+                        setEditDraft('')
+                        openForTab(tab.id, 'edit')
+                      }}
+                      onApprove={() => openForTab(tab.id, 'approve')}
+                    />
+                  </CardHeader>
+                  <CardContent className="space-y-4 pt-0">
+                    <DemoInvestorProjectMrsTab
+                      mrs={experience.mrs!}
+                      kpiScoreOverride={project.kpiScoreOverride}
+                    />
+                  </CardContent>
+                </Card>
+              </TabsContent>
+            )
+          }
+
+          if (isInvestorMoreInfo) {
+            return (
+              <TabsContent key={tab.id} value={tab.id} className="space-y-4">
+                <Card className="rounded-[32px] border-white/80 bg-white/90 shadow-card">
+                  <CardHeader className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
+                    <div className="min-w-0 flex-1 space-y-1.5">
+                      <CardTitle>{tab.label}</CardTitle>
+                      <CardDescription className="text-base leading-7">{tab.intro}</CardDescription>
+                    </div>
+                    <ProjectTabHeaderActions
+                      actions={getProjectTabSecondaryActions(tab.id)}
+                      tabId={tab.id}
+                      isApproved={Boolean(approvedByTabId[tab.id])}
+                      onShare={() => openForTab(tab.id, 'share')}
+                      onEdit={() => {
+                        setEditDraft('')
+                        openForTab(tab.id, 'edit')
+                      }}
+                      onApprove={() => openForTab(tab.id, 'approve')}
+                    />
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <DemoInvestorProjectMoreInfoTab
+                      sections={tab.moreInfoSections!}
+                      visibility={{ hasNda: investorDemoHasNda }}
+                    />
+                  </CardContent>
+                </Card>
+              </TabsContent>
+            )
+          }
+
+          return (
+            <TabsContent key={tab.id} value={tab.id} className="space-y-4">
+              <Card className="rounded-[32px] border-white/80 bg-white/90 shadow-card">
+                <CardHeader className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
+                  <div className="min-w-0 flex-1 space-y-1.5">
+                    <CardTitle>{tab.label}</CardTitle>
+                    <CardDescription className="text-base leading-7">{tab.intro}</CardDescription>
+                  </div>
+                  <ProjectTabHeaderActions
+                    actions={getProjectTabSecondaryActions(tab.id)}
+                    tabId={tab.id}
+                    isApproved={Boolean(approvedByTabId[tab.id])}
+                    onShare={() => openForTab(tab.id, 'share')}
+                    onEdit={() => {
+                      setEditDraft('')
+                      openForTab(tab.id, 'edit')
+                    }}
+                    onApprove={() => openForTab(tab.id, 'approve')}
+                  />
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  {tab.panels?.length ? <PanelGrid panels={tab.panels} /> : null}
+                  {tab.table ? <DataTable table={tab.table} /> : null}
+                  {tab.docs?.length ? <ProjectDocsCard docs={tab.docs} /> : null}
+                </CardContent>
+              </Card>
+            </TabsContent>
+          )
+        })}
       </Tabs>
 
       <Dialog open={openModal === 'invite'} onOpenChange={(open) => !open && setOpenModal(null)}>
@@ -1403,7 +1933,7 @@ function ProfileView({ experience }: { experience: DemoProfileExperience }) {
         <CardHeader><CardTitle>Preferências operacionais</CardTitle></CardHeader>
         <CardContent><FieldsGrid fields={profilePage.preferences} /></CardContent>
       </Card>
-      <AiQueueCard prompts={profilePage.aiQueue} />
+      <DemoAiQueueCard prompts={profilePage.aiQueue} />
     </div>
   )
 }
@@ -1512,31 +2042,6 @@ function SettingsView({ experience }: { experience: DemoProfileExperience }) {
         </TabsContent>
       </Tabs>
     </div>
-  )
-}
-
-function AiQueueCard({ prompts }: { prompts: string[] }) {
-  return (
-    <Card className="rounded-[32px] border-white/80 bg-white/90 shadow-card">
-      <CardHeader>
-        <div className="flex items-center gap-3">
-          <div className="rounded-2xl bg-primary/10 p-3 text-primary">
-            <Bot className="h-5 w-5" />
-          </div>
-          <div>
-            <CardTitle>Mary AI</CardTitle>
-            <CardDescription>Fila mockada de apoio contextual e operacional.</CardDescription>
-          </div>
-        </div>
-      </CardHeader>
-      <CardContent className="space-y-3">
-        {prompts.map((prompt) => (
-          <div key={prompt} className="rounded-2xl bg-muted/50 p-3 text-sm text-muted-foreground">
-            {prompt}
-          </div>
-        ))}
-      </CardContent>
-    </Card>
   )
 }
 

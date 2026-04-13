@@ -29,16 +29,44 @@ export interface DemoStat {
   helper: string
 }
 
+/** Estado composto do Step 2 do onboarding de investidor (demo). */
+export interface DemoInvestorOnboardingStep2Value {
+  /** ROB mínimo em milhões USD (últimos 12 meses). */
+  robMin: number
+  /** ROB máximo em milhões USD (últimos 12 meses). */
+  robMax: number
+  /** EBITDA mínimo da empresa-alvo (%). */
+  ebitdaPct: number
+  /** Cheque mínimo em milhões USD. */
+  chequeMin: number
+  /** Cheque máximo em milhões USD. */
+  chequeMax: number
+  hasAdvisor: boolean
+  advisorName: string
+  advisorEmail: string
+  termsAccepted: boolean
+}
+
+export type DemoFormFieldValue = string | string[] | boolean | DemoInvestorOnboardingStep2Value
+
 export interface DemoFormField {
   label: string
-  value: string | string[] | boolean
+  value: DemoFormFieldValue
   note?: string
-  kind?: 'text' | 'textarea' | 'tags' | 'boolean' | 'checkbox'
+  /** Texto de ajuda contextual (tooltip) no demo. */
+  tooltip?: string
+  /** Indicador mock de persistência automática (demo). */
+  saved?: boolean
+  kind?: 'text' | 'textarea' | 'tags' | 'boolean' | 'checkbox' | 'geography' | 'investor-step2-bundle'
+  /** Para `kind: 'tags'`: pool sugerido no demo editável (ainda é possível incluir valores livres). */
+  tagOptions?: string[]
 }
 
 export interface DemoStep {
   id: string
   title: string
+  /** Tooltip opcional ao lado do título do passo (onboarding demo). */
+  titleTooltip?: string
   description: string
   fields: DemoFormField[]
 }
@@ -55,6 +83,45 @@ export interface DemoTable {
   rows: string[][]
 }
 
+/** Categoria do item no feed (demo); usada em abas e filtros do investidor. */
+export type DemoFeedItemKind = 'vdr' | 'pipeline' | 'mary_ai' | 'mercado' | 'mrs' | 'alerta' | 'other'
+
+export type DemoFeedFilterTabKey = 'all' | 'vdr' | 'pipeline' | 'mary_ai' | 'mercado'
+
+export interface DemoFeedItem {
+  id: string
+  tag: string
+  title: string
+  body: string
+  at: string
+  /** Presente nos feeds enriquecidos (investidor). */
+  kind?: DemoFeedItemKind
+  /** Rótulo do ativo no card (ex.: Projeto Alpha). */
+  projectLabel?: string
+  /** Valor alinhado a `projectOptions` para filtro por ativo; omitido = item global (ex.: Mercado). */
+  projectId?: string
+}
+
+/** Compartilhamento mock na aba + Informações (detalhe projeto investidor). */
+export type DemoMoreInfoSharedWith = 'all_with_nda' | 'requester_only'
+
+export interface DemoProjectMoreInfoRow {
+  id: string
+  subtheme: string
+  itemDocument: string
+  /** Data de upload ou null se ainda não enviado */
+  uploadDate: string | null
+  status: 'completo' | 'parcial' | 'pendente'
+  responsible: string
+  sharedWith: DemoMoreInfoSharedWith
+}
+
+export interface DemoProjectMoreInfoSection {
+  id: string
+  title: string
+  rows: DemoProjectMoreInfoRow[]
+}
+
 export interface DemoProjectTab {
   id: string
   label: string
@@ -62,6 +129,8 @@ export interface DemoProjectTab {
   panels?: DemoPanel[]
   table?: DemoTable
   docs?: { name: string; status: string; note: string }[]
+  /** Aba "+ Informações": tabelas agrupadas; filtro por NDA no componente. */
+  moreInfoSections?: DemoProjectMoreInfoSection[]
 }
 
 export interface DemoProjectCard {
@@ -72,12 +141,45 @@ export interface DemoProjectCard {
   visibility: string
   summary: string
   value: string
-  /** 0–100: badge de aderência / readiness no card (demo). */
+  /** 0–100: percentual de aderência no canto superior (demo). */
   matchScore?: number
+  /** Readiness / MRS agregado 0–100 para a barra (demo). */
+  readinessScore?: number
+  /** Setor em texto simples (ex.: Saúde). */
+  sector?: string
+  /** Badge do segmento (ex.: Healthtech). */
+  sectorTag?: string
+  /** Receita anual formatada para o bloco financeiro (ex.: 15.000.000). */
+  annualRevenue?: string
   /** Cidade/UF exibidos como no card de investidor. */
   location?: string
   /** Rótulo curto no corpo do card (ex.: tipo de mandato). */
   typeLabel?: string
+}
+
+/** Colunas do Kanban mock do investidor em `/demo/investor/projects`. */
+export type DemoInvestorKanbanColumnId =
+  | 'teaser'
+  | 'nda'
+  | 'nbo'
+  | 'spa'
+  | 'fechado'
+  | 'perdido'
+
+/** Card do Kanban (demo): ROB/MRS são valores exibidos, sem cálculo real. */
+export interface DemoInvestorKanbanCard {
+  id: string
+  name: string
+  codename: string
+  column: DemoInvestorKanbanColumnId
+  /** Ex.: Venda, Captação */
+  typeLabel: string
+  /** ROB (valor numérico exibido no card). */
+  rob: number
+  /** MRS (valor numérico exibido no card). */
+  mrs: number
+  sectorTag?: string
+  segment?: string
 }
 
 export interface DemoProfileExperience {
@@ -103,6 +205,8 @@ export interface DemoProfileExperience {
     summary: string
     validations: string[]
     fields: DemoFormField[]
+    /** Bloco opcional de CTA acima do formulário (demo). */
+    ctaBanner?: { message: string; ctaLabel: string; ctaHref: string }
   }
   onboarding: {
     title: string
@@ -145,14 +249,13 @@ export interface DemoProfileExperience {
   feed?: {
     title: string
     summary: string
+    /** Legado: badges estáticos (asset/advisor). */
     filters: string[]
-    items: Array<{
-      id: string
-      tag: string
-      title: string
-      body: string
-      at: string
-    }>
+    /** Investidor: abas interativas (Todos, VDR, Pipeline, …). */
+    filterTabs?: Array<{ key: DemoFeedFilterTabKey; label: string }>
+    /** Investidor: opções do select por projeto (`value: 'all'` = todos). */
+    projectOptions?: Array<{ value: string; label: string }>
+    items: DemoFeedItem[]
     aiPrompts: string[]
   }
   pipeline?: {
@@ -179,13 +282,17 @@ export interface DemoProfileExperience {
   projects?: {
     title: string
     summary: string
-    cards: DemoProjectCard[]
+    /** Grade legada (asset/advisor); investidor usa `kanbanCards`. */
+    cards?: DemoProjectCard[]
+    kanbanCards?: DemoInvestorKanbanCard[]
   }
   project?: {
     codename: string
     title: string
     summary: DemoPanel[]
     tabs: DemoProjectTab[]
+    /** Exibe no KPI "Score Total Mary" da aba MRS (ex.: alinhado ao card do Kanban). */
+    kpiScoreOverride?: number
   }
   profilePage?: {
     title: string
@@ -257,7 +364,62 @@ const investorRadar: RadarOpportunity[] = [
     assetOrganizationId: 'asset-aurora',
     codename: 'Projeto Aurora',
     sector: 'B2B SaaS',
-    matchScore: 91,
+    matchScore: 92,
+    mrsScore: 72,
+    thesisIds: ['edtech-growth'],
+    demoCard: {
+      sectorLabel: 'Tecnologia',
+      sectorTag: 'SaaS',
+      location: 'São Paulo, SP',
+      stage: 'Series A',
+      arrLabel: 'ARR',
+      arrValue: 'R$ 2,5 mi',
+    },
+    demoMatchSheet: {
+      personaBadge: 'SaaS B2B',
+      breakdown: {
+        segmento: 94,
+        cheque: 88,
+        geografia: 91,
+        estagio: 89,
+        estrategia: 92,
+      },
+      risks: [
+        'Cheque mínimo da tese próximo ao teto do ticket informado pelo ativo.',
+        'Due diligence fiscal ainda em andamento no passo 2 do MRS.',
+      ],
+    },
+    demoTeaserDetail: {
+      company_name: 'Aurora Supply Tech',
+      sector: 'Tecnologia',
+      segment: 'SaaS',
+      location: 'São Paulo, SP',
+      stage: 'Series A',
+      readiness_score: 72,
+      registration_status: 'registered',
+      has_advisor: true,
+      risks_attention: [
+        'Cheque mínimo da tese próximo ao teto do ticket informado pelo ativo.',
+        'Due diligence fiscal ainda em andamento no passo 2 do MRS.',
+      ],
+      teaser: {
+        description:
+          'Empresa vertical SaaS para supply chain, com recorrência previsível e margem operacional resiliente. A tese combina com mandatos B2B de enablement e expansão LatAm; o time comercial tem tração em médias empresas e integrações com ERPs líderes.',
+        highlights: [
+          'Recorrência SaaS com NRR estável e churn controlado no segmento alvo.',
+          'Produto com aderência a teses de crescimento em educação corporativa e supply chain.',
+          'Geografia alinhada à prioridade SP/Sudeste do mandato.',
+        ],
+        key_metrics: [
+          { label: 'ARR', value: 'R$ 2,5M' },
+          { label: 'Margem Bruta', value: '78%' },
+          { label: 'Churn Mensal', value: '1,2%' },
+          { label: 'CAC Payback', value: '8 meses' },
+        ],
+        founded_year: 2019,
+        employees_range: '80 a 120',
+      },
+    },
     updatedAt: '2026-04-10T14:20:00.000Z',
     teaserSummary:
       'Empresa vertical SaaS para supply chain, com recorrência, margem operacional resiliente e tese aderente ao mandato Edtech Growth pela camada de B2B enablement e expansão LatAm.',
@@ -275,6 +437,61 @@ const investorRadar: RadarOpportunity[] = [
     codename: 'Projeto Tiger',
     sector: 'Edtech B2B2C',
     matchScore: 88,
+    mrsScore: 72,
+    thesisIds: ['edtech-growth'],
+    demoCard: {
+      sectorLabel: 'Educação',
+      sectorTag: 'Edtech',
+      location: 'São Paulo, SP',
+      stage: 'Growth',
+      arrLabel: 'ARR',
+      arrValue: 'R$ 12 mi',
+    },
+    demoMatchSheet: {
+      personaBadge: 'Growth equity',
+      breakdown: {
+        segmento: 91,
+        cheque: 86,
+        geografia: 88,
+        estagio: 87,
+        estrategia: 88,
+      },
+      risks: [
+        'NDA já solicitado — acompanhar aceite do ativo antes de próxima rodada.',
+        'MRS parcial: passos 3–4 ainda bloqueados até NBO.',
+      ],
+    },
+    demoTeaserDetail: {
+      company_name: 'Tiger Learning Co.',
+      sector: 'Educação',
+      segment: 'Edtech',
+      location: 'São Paulo, SP',
+      stage: 'Growth',
+      readiness_score: 72,
+      registration_status: 'registered',
+      has_advisor: true,
+      risks_attention: [
+        'NDA já solicitado — acompanhar aceite do ativo antes de próxima rodada.',
+        'MRS parcial: passos 3–4 ainda bloqueados até NBO.',
+      ],
+      teaser: {
+        description:
+          'Plataforma de aprendizado corporativo com distribuição em 7 países, churn controlado e receita recorrente. O ativo opera sob codinome até formalização de NDA; há advisor sell-side acompanhando o processo.',
+        highlights: [
+          'Base instalada em grandes contas e expansão multi-país.',
+          'MRS com checklist avançado no passo documental.',
+          'Ticket e estágio aderentes ao mandato Edtech Growth.',
+        ],
+        key_metrics: [
+          { label: 'ARR', value: 'R$ 12 mi' },
+          { label: 'Retenção líquida', value: '118%' },
+          { label: 'Países', value: '7' },
+          { label: 'Colaboradores', value: '210' },
+        ],
+        founded_year: 2016,
+        employees_range: '200 a 250',
+      },
+    },
     updatedAt: '2026-04-10T13:10:00.000Z',
     teaserSummary:
       'Plataforma de aprendizado corporativo com distribuição em 7 países, churn controlado e readiness score inicial de 72. O ativo não expõe nome antes do NDA.',
@@ -292,10 +509,390 @@ const investorRadar: RadarOpportunity[] = [
     codename: 'Codinome Vesper',
     sector: 'Fintech B2C',
     matchScore: 74,
+    mrsScore: 64,
+    thesisIds: ['fintech-expansion'],
+    demoCard: {
+      sectorLabel: 'Serviços financeiros',
+      sectorTag: 'Fintech',
+      location: 'Rio de Janeiro, RJ',
+      stage: 'Series A',
+      arrLabel: 'ARR',
+      arrValue: 'R$ 4,2 mi',
+    },
+    demoMatchSheet: {
+      personaBadge: 'Fintech B2C',
+      breakdown: {
+        segmento: 78,
+        cheque: 72,
+        geografia: 76,
+        estagio: 74,
+        estrategia: 74,
+      },
+      risks: [
+        'Regulação setorial em mudança pode afetar modelo de receita.',
+        'Concentração de receita em poucos canais de aquisição.',
+      ],
+    },
+    demoTeaserDetail: {
+      company_name: 'Vesper Pay',
+      sector: 'Serviços financeiros',
+      segment: 'Fintech',
+      location: 'Rio de Janeiro, RJ',
+      stage: 'Series A',
+      readiness_score: 64,
+      registration_status: 'registered',
+      has_advisor: true,
+      risks_attention: [
+        'Regulação setorial em mudança pode afetar modelo de receita.',
+        'Concentração de receita em poucos canais de aquisição.',
+      ],
+      teaser: {
+        description:
+          'Negócio em fase growth com monetização comprovada e advisor sell-side contratado. Foco em crédito e pagamentos para PMEs.',
+        highlights: ['Monetização comprovada', 'Advisor sell-side ativo', 'Ticket compatível com a tese'],
+        key_metrics: [
+          { label: 'ARR', value: 'R$ 4,2 mi' },
+          { label: 'Crescimento YoY', value: '62%' },
+        ],
+        founded_year: 2020,
+        employees_range: '45 a 70',
+      },
+    },
     updatedAt: '2026-04-10T10:40:00.000Z',
     teaserSummary:
       'Negócio em fase growth com monetização comprovada e advisor sell-side contratado. Exemplo de card com teaser completo e CTA de contato.',
     matchReasons: ['Ticket compatível', 'EBITDA mínimo atingido'],
+    ctaState: {
+      canViewTeaser: true,
+      canRequestNda: true,
+      isFollowing: false,
+      hasNdaRequest: false,
+    },
+  },
+  {
+    projectId: 'demo-investor-orbit',
+    assetOrganizationId: 'asset-orbit',
+    codename: 'Orbit CRM',
+    sector: 'B2B SaaS',
+    matchScore: 79,
+    mrsScore: 55,
+    thesisIds: ['edtech-growth'],
+    demoCard: {
+      sectorLabel: 'Tecnologia',
+      sectorTag: 'SaaS',
+      location: 'Campinas, SP',
+      stage: 'Series B',
+      arrLabel: 'ARR',
+      arrValue: 'R$ 6 mi',
+    },
+    demoMatchSheet: {
+      personaBadge: 'B2B SaaS',
+      breakdown: {
+        segmento: 82,
+        cheque: 76,
+        geografia: 80,
+        estagio: 78,
+        estrategia: 79,
+      },
+      risks: [
+        'Concorrência acirrada no segmento CRM mid-market.',
+        'Integrações críticas dependem de roadmap de terceiros.',
+      ],
+    },
+    demoTeaserDetail: {
+      company_name: 'Orbit CRM',
+      sector: 'Tecnologia',
+      segment: 'SaaS',
+      location: 'Campinas, SP',
+      stage: 'Series B',
+      readiness_score: 55,
+      registration_status: 'registered',
+      has_advisor: false,
+      risks_attention: [
+        'Concorrência acirrada no segmento CRM mid-market.',
+        'Integrações críticas dependem de roadmap de terceiros.',
+      ],
+      teaser: {
+        description:
+          'CRM vertical para times comerciais mid-market, integrações nativas e NRR estável.',
+        highlights: ['Recorrência SaaS', 'Integrações nativas', 'Ticket aderente'],
+        key_metrics: [
+          { label: 'ARR', value: 'R$ 6 mi' },
+          { label: 'NRR', value: '105%' },
+        ],
+        founded_year: 2018,
+        employees_range: '90 a 130',
+      },
+    },
+    updatedAt: '2026-04-10T11:05:00.000Z',
+    teaserSummary:
+      'CRM vertical para times comerciais mid-market, integrações nativas e NRR estável. Bom exemplo de card com MRS intermediário para testar o slider.',
+    matchReasons: ['Recorrência SaaS', 'Ticket aderente'],
+    ctaState: {
+      canViewTeaser: true,
+      canRequestNda: true,
+      isFollowing: false,
+      hasNdaRequest: false,
+    },
+  },
+  {
+    projectId: 'demo-investor-nebula',
+    assetOrganizationId: 'asset-nebula',
+    codename: 'Nebula Pay',
+    sector: 'Fintech B2B',
+    matchScore: 70,
+    mrsScore: 48,
+    thesisIds: ['fintech-expansion'],
+    demoCard: {
+      sectorLabel: 'Pagamentos',
+      sectorTag: 'Fintech',
+      location: 'Belo Horizonte, MG',
+      stage: 'Series A',
+      arrLabel: 'ARR',
+      arrValue: 'R$ 3,1 mi',
+    },
+    demoMatchSheet: {
+      personaBadge: 'Infra financeira',
+      breakdown: {
+        segmento: 73,
+        cheque: 68,
+        geografia: 72,
+        estagio: 70,
+        estrategia: 70,
+      },
+      risks: [
+        'MRS ainda em consolidação documental.',
+        'Dependência de volume transacional para escala.',
+      ],
+    },
+    demoTeaserDetail: {
+      company_name: 'Nebula Pay',
+      sector: 'Pagamentos',
+      segment: 'Fintech',
+      location: 'Belo Horizonte, MG',
+      stage: 'Series A',
+      readiness_score: 48,
+      registration_status: 'registered',
+      has_advisor: true,
+      risks_attention: [
+        'MRS ainda em consolidação documental.',
+        'Dependência de volume transacional para escala.',
+      ],
+      teaser: {
+        description:
+          'Infra de pagamentos para ERPs, take rate crescente e base concentrada em PMEs.',
+        highlights: ['Infraestrutura financeira', 'Geografia BR', 'Take rate crescente'],
+        key_metrics: [
+          { label: 'ARR', value: 'R$ 3,1 mi' },
+          { label: 'GMV processado', value: 'R$ 180 mi' },
+        ],
+        founded_year: 2021,
+        employees_range: '35 a 55',
+      },
+    },
+    updatedAt: '2026-04-10T09:50:00.000Z',
+    teaserSummary:
+      'Infra de pagamentos para ERPs, take rate crescente e base concentrada em PMEs. MRS ainda em consolidação documental.',
+    matchReasons: ['Infraestrutura financeira', 'Geografia BR'],
+    ctaState: {
+      canViewTeaser: true,
+      canRequestNda: true,
+      isFollowing: false,
+      hasNdaRequest: false,
+    },
+  },
+  {
+    projectId: 'demo-investor-atlas',
+    assetOrganizationId: 'asset-atlas',
+    codename: 'Atlas Foundry',
+    sector: 'Industrial Tech',
+    matchScore: 62,
+    mrsScore: 38,
+    thesisIds: ['special-situations'],
+    demoCard: {
+      sectorLabel: 'Industrial',
+      sectorTag: 'Automação',
+      location: 'Curitiba, PR',
+      stage: 'Carve-out',
+      arrLabel: 'Receita',
+      arrValue: 'R$ 35 mi',
+    },
+    demoMatchSheet: {
+      personaBadge: 'Special situations',
+      breakdown: {
+        segmento: 65,
+        cheque: 58,
+        geografia: 62,
+        estagio: 60,
+        estrategia: 62,
+      },
+      risks: [
+        'Documentação parcial — DD inicial ainda não fechou gaps críticos.',
+        'ROB fora do núcleo histórico da tese principal.',
+      ],
+    },
+    demoTeaserDetail: {
+      company_name: 'Atlas Foundry',
+      sector: 'Industrial',
+      segment: 'Automação',
+      location: 'Curitiba, PR',
+      stage: 'Carve-out',
+      readiness_score: 38,
+      registration_status: 'registered',
+      has_advisor: true,
+      risks_attention: [
+        'Documentação parcial — DD inicial ainda não fechou gaps críticos.',
+        'ROB fora do núcleo histórico da tese principal.',
+      ],
+      teaser: {
+        description:
+          'Carve-out de unidade de automação com contratos longos; documentação parcial e DD inicial em andamento.',
+        highlights: ['Special situations', 'Contratos longos', 'Ativos operacionais'],
+        key_metrics: [
+          { label: 'Receita', value: 'R$ 35 mi' },
+          { label: 'EBITDA ajustado', value: '18%' },
+        ],
+        founded_year: 2008,
+        employees_range: '280 a 320',
+      },
+    },
+    updatedAt: '2026-04-10T08:30:00.000Z',
+    teaserSummary:
+      'Carve-out de unidade de automação com contratos longos; documentação parcial e DD inicial em andamento.',
+    matchReasons: ['Special situations', 'ROB fora do core'],
+    ctaState: {
+      canViewTeaser: true,
+      canRequestNda: true,
+      isFollowing: false,
+      hasNdaRequest: false,
+    },
+  },
+  {
+    projectId: 'demo-investor-harbor',
+    assetOrganizationId: 'asset-harbor',
+    codename: 'Harbor Line',
+    sector: 'Logística',
+    matchScore: 84,
+    mrsScore: 81,
+    thesisIds: ['special-situations'],
+    demoCard: {
+      sectorLabel: 'Logística',
+      sectorTag: '3PL',
+      location: 'Santos, SP',
+      stage: 'Growth',
+      arrLabel: 'ARR',
+      arrValue: 'R$ 48 mi',
+    },
+    demoMatchSheet: {
+      personaBadge: 'Logística ativa',
+      breakdown: {
+        segmento: 86,
+        cheque: 82,
+        geografia: 85,
+        estagio: 84,
+        estrategia: 84,
+      },
+      risks: [
+        'Turnaround operacional pode exigir capex acima do previsto.',
+        'Exposição a custos de combustível e frete.',
+      ],
+    },
+    demoTeaserDetail: {
+      company_name: 'Harbor Line',
+      sector: 'Logística',
+      segment: '3PL',
+      location: 'Santos, SP',
+      stage: 'Growth',
+      readiness_score: 81,
+      registration_status: 'registered',
+      has_advisor: true,
+      risks_attention: [
+        'Turnaround operacional pode exigir capex acima do previsto.',
+        'Exposição a custos de combustível e frete.',
+      ],
+      teaser: {
+        description:
+          '3PL com ativos próprios e expansão via M&A; MRS alto por checklist quase completo no passo documental.',
+        highlights: ['Ativos reais', 'Turnaround', 'MRS elevado'],
+        key_metrics: [
+          { label: 'ARR', value: 'R$ 48 mi' },
+          { label: 'Frota própria', value: '120 veículos' },
+        ],
+        founded_year: 2005,
+        employees_range: '400 a 500',
+      },
+    },
+    updatedAt: '2026-04-10T15:00:00.000Z',
+    teaserSummary:
+      '3PL com ativos próprios e expansão via M&A; MRS alto por checklist quase completo no passo documental.',
+    matchReasons: ['Ativos reais', 'Turnaround'],
+    ctaState: {
+      canViewTeaser: true,
+      canRequestNda: false,
+      isFollowing: true,
+      hasNdaRequest: false,
+    },
+  },
+  {
+    projectId: 'demo-investor-quartz',
+    assetOrganizationId: 'asset-quartz',
+    codename: 'Quartz Edu',
+    sector: 'Edtech B2C',
+    matchScore: 66,
+    mrsScore: 29,
+    thesisIds: ['edtech-growth'],
+    demoCard: {
+      sectorLabel: 'Educação',
+      sectorTag: 'Edtech',
+      location: 'Campinas, SP',
+      stage: 'Seed',
+      arrLabel: 'ARR',
+      arrValue: 'R$ 0,8 mi',
+    },
+    demoMatchSheet: {
+      personaBadge: 'Edtech early',
+      breakdown: {
+        segmento: 68,
+        cheque: 62,
+        geografia: 66,
+        estagio: 64,
+        estrategia: 66,
+      },
+      risks: [
+        'Early stage — métricas de retenção ainda em validação.',
+        'Ticket efetivo pode ficar abaixo do mínimo da tese em cenário conservador.',
+      ],
+    },
+    demoTeaserDetail: {
+      company_name: 'Quartz Edu',
+      sector: 'Educação',
+      segment: 'Edtech',
+      location: 'Campinas, SP',
+      stage: 'Seed',
+      readiness_score: null,
+      registration_status: 'pre_registration',
+      has_advisor: false,
+      risks_attention: [
+        'Early stage — métricas de retenção ainda em validação.',
+        'Ticket efetivo pode ficar abaixo do mínimo da tese em cenário conservador.',
+      ],
+      teaser: {
+        description:
+          'Teaser gerado pela Mary AI com base em informações públicas. App de reforço escolar com tração regional; equipe enxuta e roadmap centrado em expansão geográfica.',
+        highlights: [
+          'Tração inicial em escolas parceiras na região de Campinas.',
+          'Produto mobile-first com baixo custo de aquisição experimental.',
+        ],
+        key_metrics: [
+          { label: 'ARR', value: 'R$ 0,8 mi' },
+          { label: 'MAU', value: '12 mil' },
+        ],
+      },
+    },
+    updatedAt: '2026-04-10T07:15:00.000Z',
+    teaserSummary:
+      'App de reforço escolar com tração regional; MRS baixo para exercitar o filtro mínimo no Radar da demo.',
+    matchReasons: ['Early stage', 'Geografia prioritaria'],
     ctaState: {
       canViewTeaser: true,
       canRequestNda: true,
@@ -320,10 +917,11 @@ export const DEMO_PLATFORM: Record<DemoProfileKey, DemoProfileExperience> = {
     ],
     appFlow: [
       { key: 'dashboard', label: 'Dashboard', href: '/demo/investor/dashboard' },
-      { key: 'thesis', label: 'Teses', href: '/demo/investor/thesis' },
       { key: 'radar', label: 'Radar', href: '/demo/investor/radar' },
       { key: 'feed', label: 'Feed', href: '/demo/investor/feed' },
-      { key: 'pipeline', label: 'Pipeline', href: '/demo/investor/pipeline' },
+      { key: 'thesis', label: 'Teses', href: '/demo/investor/thesis' },
+      { key: 'mrs', label: 'MRS', href: '/demo/investor/mrs' },
+      { key: 'projects', label: 'Projetos', href: '/demo/investor/projects' },
       { key: 'project', label: 'Projeto Tiger', href: '/demo/investor/projects/tiger' },
       { key: 'settings', label: 'Configurações', href: '/demo/investor/settings' },
     ],
@@ -361,23 +959,64 @@ export const DEMO_PLATFORM: Record<DemoProfileKey, DemoProfileExperience> = {
       title: 'Cadastro de investidor',
       summary:
         'Todos os campos do pré-cadastro foram mockados, incluindo bloqueio de domínio pessoal, MFA por WhatsApp e lookup do website institucional.',
+      ctaBanner: {
+        message: 'Você está a um passo de acessar inúmeros Ativos qualificados.',
+        ctaLabel: 'Comece agora',
+        ctaHref: '/demo/investor/onboarding',
+      },
       validations: [
+        'CTA de conversão: mensagem de apoio acima do formulário e botão primário “Comece agora” para reforçar a entrada no fluxo.',
+        'Cada campo possui tooltip objetiva: o que preencher, formato esperado e por que o dado é necessário.',
+        'Persistência automática ao preencher (sem botão “Salvar” por campo); feedback sutil quando o dado é salvo — padrão Mary em todos os fluxos.',
         'Bloqueio de @gmail, @hotmail, @yahoo e @outlook',
         'Senha com mínimo de 8 caracteres, letra, número e símbolo',
         'Disparo paralelo de email de autenticação e código WhatsApp',
         'Lookup de empresa e logo a partir do domínio institucional',
       ],
       fields: [
-        { label: 'Nome completo do responsável', value: 'Mariana Reis' },
-        { label: 'E-mail profissional', value: 'm.reis@atlasgrowth.com', note: 'domínio corporativo validado' },
-        { label: 'Senha', value: 'A!as2026#secure' },
-        { label: 'Confirmação de senha', value: 'A!as2026#secure' },
-        { label: 'MFA via WhatsApp', value: '+55 11 98888-4401' },
-        { label: 'Website institucional', value: 'https://atlasgrowth.com' },
+        {
+          label: 'Nome completo do responsável',
+          value: 'Mariana Reis',
+          saved: true,
+          tooltip: 'Nome da pessoa que assinará os termos e receberá alertas; use o mesmo do documento oficial.',
+        },
+        {
+          label: 'E-mail profissional',
+          value: 'm.reis@atlasgrowth.com',
+          note: 'domínio corporativo validado',
+          saved: true,
+          tooltip: 'Apenas e-mail corporativo do domínio da instituição; domínios pessoais são bloqueados.',
+        },
+        {
+          label: 'Senha',
+          value: 'A!as2026#secure',
+          saved: true,
+          tooltip: 'Mínimo 8 caracteres com letra, número e símbolo; evite reutilizar senhas de outros serviços.',
+        },
+        {
+          label: 'Confirmação de senha',
+          value: 'A!as2026#secure',
+          saved: true,
+          tooltip: 'Repita exatamente a senha para evitar bloqueio por divergência.',
+        },
+        {
+          label: 'MFA via WhatsApp',
+          value: '+55 11 98888-4401',
+          saved: true,
+          tooltip: 'Número para receber o código de verificação; use um aparelho que você acessa com frequência.',
+        },
+        {
+          label: 'Website institucional',
+          value: 'https://atlasgrowth.com',
+          saved: true,
+          tooltip: 'URL pública do fundo ou gestora; usamos para identificar a instituição e exibir o logo.',
+        },
         {
           label: 'Tipo de investidor',
           value: ['Private Equity', 'Family Office'],
           kind: 'tags',
+          saved: true,
+          tooltip: 'Selecione todos os perfis que descrevem sua atuação; isso calibra o matching no Radar.',
         },
       ],
     },
@@ -389,12 +1028,40 @@ export const DEMO_PLATFORM: Record<DemoProfileKey, DemoProfileExperience> = {
         {
           id: 'step-1',
           title: 'Step 1 · Crie sua primeira tese de investimento',
+          titleTooltip:
+            'Você poderá cadastrar outras teses de investimento depois; não se preocupe.',
           description: 'Os campos geram a base do matching e aparecem depois na tela de Teses.',
           fields: [
             { label: 'Nome da empresa/fundo', value: 'Atlas Growth Partners' },
-            { label: 'Setores-alvo de investimento', value: ['Edtech', 'HR Tech', 'B2B SaaS'], kind: 'tags' },
-            { label: 'Público-alvo da empresa-alvo', value: ['B2B', 'B2B2C'], kind: 'tags' },
-            { label: 'Regiões prioritárias', value: ['Brasil', 'México', 'Chile'], kind: 'tags' },
+            {
+              label: 'Setores-alvo de investimento',
+              value: ['Edtech', 'HR Tech', 'B2B SaaS'],
+              kind: 'tags',
+              tooltip: 'Você pode selecionar múltiplos setores. Quanto mais específico, melhor o match.',
+              tagOptions: [
+                'Edtech',
+                'HR Tech',
+                'B2B SaaS',
+                'Fintech',
+                'Healthtech',
+                'B2B marketplace',
+                'Cybersecurity',
+                'Logística',
+              ],
+            },
+            {
+              label: 'Público-alvo da empresa-alvo',
+              value: ['B2B', 'B2B2C'],
+              kind: 'tags',
+              tagOptions: ['B2B', 'B2B2C', 'B2C', 'B2G', 'Marketplace'],
+            },
+            {
+              label: 'Regiões prioritárias',
+              value: ['BR', 'MX', 'CL'],
+              kind: 'geography',
+              tooltip:
+                'Escolha o continente e marque países ou use a opção do continente para selecionar todos os países listados na demo.',
+            },
             {
               label: 'Detalhes da tese',
               value:
@@ -406,16 +1073,25 @@ export const DEMO_PLATFORM: Record<DemoProfileKey, DemoProfileExperience> = {
         {
           id: 'step-2',
           title: 'Step 2 · Refine sua tese',
-          description: 'Faixas financeiras, EBITDA mínimo e convite do advisor entram aqui.',
+          titleTooltip: 'Os valores sugeridos podem ser ajustados antes de concluir o passo.',
+          description:
+            'Ajuste faixas de ROB e de cheque com slider e inputs, informe EBITDA mínimo (%), indique se há advisor buy-side e conclua o cadastro.',
           fields: [
-            { label: 'ROB mínimo (últimos 12 meses)', value: 'USD 8M' },
-            { label: 'ROB máximo (últimos 12 meses)', value: 'USD 70M' },
-            { label: 'EBITDA % mínimo', value: '12%' },
-            { label: 'Cheque mínimo', value: 'USD 5M' },
-            { label: 'Cheque máximo', value: 'USD 35M' },
-            { label: 'Ja possui advisor buy-side?', value: true, kind: 'boolean' },
-            { label: 'Advisor convidado', value: 'rafael@northadvisors.com' },
-            { label: 'Aceite de termos e privacidade', value: true, kind: 'checkbox' },
+            {
+              label: 'Ticket, rentabilidade e advisor',
+              kind: 'investor-step2-bundle',
+              value: {
+                robMin: 8,
+                robMax: 70,
+                ebitdaPct: 12,
+                chequeMin: 5,
+                chequeMax: 35,
+                hasAdvisor: true,
+                advisorName: 'Rafael North',
+                advisorEmail: 'rafael@northadvisors.com',
+                termsAccepted: true,
+              },
+            },
           ],
         },
       ],
@@ -529,9 +1205,9 @@ export const DEMO_PLATFORM: Record<DemoProfileKey, DemoProfileExperience> = {
     radar: {
       title: 'Radar de oportunidades',
       summary:
-        'A tese Edtech Growth vem pré-selecionada por padrao. O usuario pode combinar multiplas teses e ver matches anonimizados com teaser, score e CTA.',
-      selectorLabel: 'Teses selecionadas',
-      selectorValues: ['Edtech Growth', 'Fintech Expansion'],
+        'Escolha a tese ativa, ajuste o MRS mínimo (0–100) e veja a lista filtrar em tempo real. Tudo mockado para a demo.',
+      selectorLabel: 'Selecionar Tese',
+      selectorValues: ['Edtech Growth', 'Fintech Expansion', 'Special Situations'],
       notes: [
         'Cenario 1: ativo pré-cadastrado mostra teaser basico e apenas CTA de acompanhar.',
         'Cenario 2: ativo cadastrado mostra teaser completo, readiness score e CTA de NDA.',
@@ -540,36 +1216,65 @@ export const DEMO_PLATFORM: Record<DemoProfileKey, DemoProfileExperience> = {
       opportunities: investorRadar,
     },
     feed: {
-      title: 'Atualizacoes do investidor',
-      summary:
-        'Feed único dos ativos acompanhados, com filtro por projeto e suporte contextual da Mary AI para Q&A, tese e monitoramento.',
-      filters: ['Todos', 'Projeto Tiger', 'Projeto Aurora', 'Somente MRS', 'Somente pipeline'],
+      title: 'Atualizações',
+      summary: 'Movimentações dos ativos que você acompanha e insights de mercado.',
+      filters: [],
+      filterTabs: [
+        { key: 'all', label: 'Todos' },
+        { key: 'vdr', label: 'VDR' },
+        { key: 'pipeline', label: 'Pipeline' },
+        { key: 'mary_ai', label: 'Mary AI' },
+        { key: 'mercado', label: 'Mercado' },
+      ],
+      projectOptions: [
+        { value: 'all', label: 'Todos os projetos' },
+        { value: 'alpha', label: 'Projeto Alpha' },
+        { value: 'beta', label: 'Projeto Beta' },
+      ],
       items: [
         {
-          id: 'inv-feed-1',
-          tag: 'mrs',
-          title: 'Projeto Tiger subiu o MRS de 68 para 72',
-          body: 'O ativo concluiu documentos financeiros do passo 2 e destravou mais detalhes do resumo executivo.',
-          at: '2026-04-10T14:00:00.000Z',
+          id: 'inv-feed-vdr-alpha',
+          kind: 'vdr',
+          tag: 'VDR',
+          projectId: 'alpha',
+          projectLabel: 'Projeto Alpha',
+          title: '3 novos documentos adicionados na pasta Financeiro',
+          body:
+            'Demonstrações financeiras auditadas, projeções 2026 e fluxo de caixa foram disponibilizados no Data Room.',
+          at: '2026-04-12T19:55:00.000Z',
         },
         {
-          id: 'inv-feed-2',
-          tag: 'pipeline',
-          title: 'NDA de Codinome Vesper aguardando aceite do ativo',
-          body: 'O advisor sell-side recebeu o pedido e a timeline estimada para resposta ficou em 24h.',
-          at: '2026-04-10T12:30:00.000Z',
+          id: 'inv-feed-mary-1',
+          kind: 'mary_ai',
+          tag: 'Mary AI',
+          title: 'Insight de mercado: valuations em alta no setor de tecnologia',
+          body:
+            'Setor de tecnologia registrou alta de 12% em valuations no último trimestre, impulsionado por M&A cross-border.',
+          at: '2026-04-12T17:55:00.000Z',
         },
         {
-          id: 'inv-feed-3',
-          tag: 'alerta',
-          title: 'Projeto Aurora entrou no seu radar como novo match quente',
-          body: 'Setor, geografia e ticket aderem a sua tese principal. O score calculado foi 91.',
-          at: '2026-04-10T09:15:00.000Z',
+          id: 'inv-feed-pipe-beta',
+          kind: 'pipeline',
+          tag: 'Pipeline',
+          projectId: 'beta',
+          projectLabel: 'Projeto Beta',
+          title: 'Avançou para fase Pré-DD',
+          body: 'O ativo concluiu a etapa de NDA e agora está disponível para due diligence preliminar.',
+          at: '2026-04-12T15:55:00.000Z',
+        },
+        {
+          id: 'inv-feed-mercado-1',
+          kind: 'mercado',
+          tag: 'Mercado',
+          title: 'Relatório trimestral: M&A no Brasil',
+          body:
+            'Volume de transações cresceu 8% no Q4 2025. Setores de saúde e agro lideram em número de deals.',
+          at: '2026-04-11T10:00:00.000Z',
         },
       ],
       aiPrompts: [
-        'Resuma as mudanças de readiness dos ativos seguidos nestá semana.',
-        'Monte um Q&A inicial para o advisor do Projeto Tiger.',
+        'Resuma as mudanças de readiness dos ativos seguidos nesta semana.',
+        'Monte um Q&A inicial para o advisor do Projeto Alpha.',
         'Liste quais projetos já estão elegíveis para IOI.',
       ],
     },
@@ -600,34 +1305,158 @@ export const DEMO_PLATFORM: Record<DemoProfileKey, DemoProfileExperience> = {
         },
       ],
     },
-    projects: {
-      title: 'Projetos engajados',
+    mrs: {
+      title: 'Market Readiness Score (MRS)',
       summary:
-        'A lista de projetos serve como entrada para o VDR progressivo e para o histórico dos deals em que o investidor está ativo.',
-      cards: [
+        'Índice de prontidão do ativo para processos de captação e M&A. Avaliação contínua por Mary AI. O workspace organiza documentos, responsáveis e lacunas; abaixo, visão por eixos e passos.',
+      score: 72,
+      benchmarkScore: null,
+      globalStatus: {
+        label: 'Em Preparação',
+        detail: 'Você subiu 15 itens do total de 180',
+      },
+      radarAxes: [
+        { label: 'Fundamentos', value: 2 },
+        { label: 'Financeiro', value: 2 },
+        { label: 'Comercial', value: 2 },
+        { label: 'Operações', value: 3 },
+        { label: 'Pessoas', value: 4 },
+        { label: 'Jurídicos', value: 2 },
+        { label: 'Planejamento', value: 2 },
+        { label: 'Adicionais', value: 1 },
+      ],
+      dimensions: [
+        { label: 'Company basics', value: '86%', helper: 'identidade e narrativa' },
+        { label: 'Financial package', value: '73%', helper: 'DFs e KPIs' },
+        { label: 'Legal / tax', value: '48%', helper: 'pendências de diligencia' },
+        { label: 'Project materials', value: '81%', helper: 'teaser, valuation e deck' },
+      ],
+      steps: [
         {
-          name: 'Projeto Tiger',
-          codename: 'tiger',
-          objective: 'Aquisicao integral',
-          stage: 'NDA',
-          visibility: 'Restrito',
-          summary: 'Edtech B2B2C com readiness score 72 e advisor sell-side contratado.',
-          value: 'USD 40M - 60M',
-          matchScore: 94,
-          location: 'São Paulo, SP',
-          typeLabel: 'Growth equity',
+          title: 'Passo 1 · Base da empresa',
+          body: 'Identidade, tese, público, geografia, narrativa e resumo executivo foram gerados a partir do onboarding.',
+          bullets: ['Descrição validada', 'Resumo executivo pronto', 'SWOT inicial pronta'],
         },
         {
-          name: 'Projeto Aurora',
-          codename: 'aurora',
-          objective: 'Growth equity',
-          stage: 'Teaser',
-          visibility: 'Radar Mary',
-          summary: 'SaaS vertical em supply chain com forte aderencia a tese principal.',
-          value: 'USD 20M - 35M',
-          matchScore: 82,
-          location: 'São Paulo, SP',
-          typeLabel: 'Venture Capital',
+          title: 'Passo 2 · Financial snapshot',
+          body: 'Receita, EBITDA, crescimento, drivers e estrutura de indicadores foram preenchidos e resumidos.',
+          bullets: ['ROB 12 meses', 'Margem EBITDA', 'Drivers de crescimento'],
+        },
+        {
+          title: 'Passo 3 · Tax and legal',
+          body: 'Camada ainda incompleta. A Mary destaca a falta de documentos fiscais, societários e contratos chave.',
+          bullets: ['Contrato social', 'Certidões', 'Mapa tributário'],
+        },
+        {
+          title: 'Passo 4 · Final package',
+          body: 'Deck, valuation e materiais extras estão prontos, mas alguns anexos ainda dependem do advisor para revisão final.',
+          bullets: ['Deck/IM v1', 'Valuation draft', 'Q&A room'],
+        },
+      ],
+      docs: [
+        { name: 'Resumo executivo', status: 'Pronto', note: 'gerado pela Mary AI' },
+        { name: 'Teaser v1', status: 'Pronto', note: 'editável com autosave' },
+        { name: 'Valuation draft', status: 'Em revisão', note: 'advisor sell-side revisando premissas' },
+        { name: 'Tax package', status: 'Pendente', note: 'impacta score e DD' },
+      ],
+      aiPrompts: [
+        'Atualize o teaser com foco em revenue quality.',
+        'Liste os documentos que mais impactam o score restante.',
+        'Gere briefing para o advisor revisar o valuation.',
+      ],
+    },
+    projects: {
+      title: 'Pipeline de projetos',
+      summary:
+        'Kanban por fase do deal (demo). Busca e filtros são simulados no navegador; clique no card para abrir o resumo do projeto.',
+      kanbanCards: [
+        {
+          id: 'kanban-alpha',
+          name: 'Projeto Alpha',
+          codename: 'alpha',
+          column: 'teaser',
+          typeLabel: 'Venda',
+          rob: 82,
+          mrs: 64,
+          sectorTag: 'B2B SaaS',
+          segment: 'Software',
+        },
+        {
+          id: 'kanban-bravo',
+          name: 'Projeto Bravo',
+          codename: 'bravo',
+          column: 'teaser',
+          typeLabel: 'Captação',
+          rob: 76,
+          mrs: 71,
+          sectorTag: 'Fintech',
+          segment: 'Serviços financeiros',
+        },
+        {
+          id: 'kanban-charlie',
+          name: 'Projeto Charlie',
+          codename: 'charlie',
+          column: 'nda',
+          typeLabel: 'Venda',
+          rob: 88,
+          mrs: 59,
+          sectorTag: 'Indústria',
+          segment: 'Manufatura',
+        },
+        {
+          id: 'kanban-tiger',
+          name: 'Projeto Tiger',
+          codename: 'tiger',
+          column: 'nda',
+          typeLabel: 'Captação',
+          rob: 94,
+          mrs: 72,
+          sectorTag: 'Edtech',
+          segment: 'Educação',
+        },
+        {
+          id: 'kanban-delta',
+          name: 'Projeto Delta',
+          codename: 'delta',
+          column: 'nbo',
+          typeLabel: 'Venda',
+          rob: 79,
+          mrs: 68,
+          sectorTag: 'Healthtech',
+          segment: 'Saúde',
+        },
+        {
+          id: 'kanban-echo',
+          name: 'Projeto Echo',
+          codename: 'echo',
+          column: 'spa',
+          typeLabel: 'Captação',
+          rob: 91,
+          mrs: 66,
+          sectorTag: 'Logística',
+          segment: 'Supply chain',
+        },
+        {
+          id: 'kanban-golf',
+          name: 'Projeto Golf',
+          codename: 'golf',
+          column: 'fechado',
+          typeLabel: 'Venda',
+          rob: 85,
+          mrs: 74,
+          sectorTag: 'Varejo',
+          segment: 'Consumo',
+        },
+        {
+          id: 'kanban-foxtrot',
+          name: 'Projeto Foxtrot',
+          codename: 'foxtrot',
+          column: 'perdido',
+          typeLabel: 'Captação',
+          rob: 70,
+          mrs: 55,
+          sectorTag: 'Agro',
+          segment: 'Agronegócio',
         },
       ],
     },
@@ -662,28 +1491,121 @@ export const DEMO_PLATFORM: Record<DemoProfileKey, DemoProfileExperience> = {
               body: 'Teaser visto, NDA assinado, perguntas iniciais abertas e checklist de pré-DD em construcao.',
               bullets: ['03/04 teaser aberto', '05/04 NDA assinado', '10/04 acesso aos passos 1 e 2 do MRS'],
             },
+            {
+              title: 'Documentos e materiais (demo)',
+              body: 'Lista ampliada para demonstrar o que costuma estar disponível ao investidor após NDA; status e nomes são mockados.',
+              bullets: [
+                'Teaser executivo (PDF)',
+                'Information Memorandum v0.9',
+                'One-pager de investimento',
+                'Demonstrações financeiras auditadas (FY24)',
+                'Pacote de KPIs e métricas SaaS',
+                'Cap table e estrutura societária resumida',
+                'Contratos relevantes (amostra anonimizada)',
+                'Política de privacidade e LGPD',
+                'Organograma e biografias do time',
+                'Apresentação para gestão (management deck)',
+                'Relatório de valuation (rascunho)',
+                'Due diligence checklist (parcial)',
+                'Minutas de NDA e NBO (referência)',
+              ],
+            },
           ],
         },
         {
           id: 'mrs',
           label: 'MRS',
-          intro: 'Passos 1 e 2 liberados após NDA.',
-          docs: [
-            { name: 'Passo 1 · Company basics', status: 'Compartilhado', note: 'visível ao investidor' },
-            { name: 'Passo 2 · Financial snapshot', status: 'Compartilhado', note: 'DFs resumidas e resumo executivo' },
-            { name: 'Passo 3 · Tax and legal', status: 'Bloqueado', note: 'libera após NBO assinada' },
-            { name: 'Passo 4 · Final DD package', status: 'Bloqueado', note: 'libera após fase avancada' },
-          ],
+          intro: 'Market Readiness Score e passos liberados conforme a fase do deal (demo).',
         },
         {
           id: 'info',
-          label: '+ Info',
-          intro: 'VDR complementar para Q&A, memorandos internos e materiais adicionais.',
-          panels: [
+          label: '+ Informações',
+          intro:
+            'Documentos compartilhados pelo ativo com o seu perfil. Itens não compartilhados não aparecem nesta lista.',
+          moreInfoSections: [
             {
-              title: 'Q&A do deal',
-              body: 'Investidor pode subir documentos proprios, registrar perguntas e receber rascunhos da Mary AI baseados no material compartilhado.',
-              bullets: ['Pergunta 1: CAC por segmento', 'Pergunta 2: Renovação por cohort', 'Pergunta 3: Estrutura societária internacional'],
+              id: 'ma-docs',
+              title: 'M&A Docs',
+              rows: [
+                {
+                  id: 'ma-1',
+                  subtheme: 'Apresentação',
+                  itemDocument: 'Teaser Executivo',
+                  uploadDate: '01/03/2026',
+                  status: 'completo',
+                  responsible: 'Mary AI',
+                  sharedWith: 'all_with_nda',
+                },
+                {
+                  id: 'ma-2',
+                  subtheme: 'Avaliação',
+                  itemDocument: 'Information Memorandum (IM)',
+                  uploadDate: '01/03/2026',
+                  status: 'parcial',
+                  responsible: 'Sócio',
+                  sharedWith: 'all_with_nda',
+                },
+                {
+                  id: 'ma-3',
+                  subtheme: 'Avaliação',
+                  itemDocument: 'Valuation Report',
+                  uploadDate: null,
+                  status: 'pendente',
+                  responsible: 'Contador',
+                  sharedWith: 'requester_only',
+                },
+                {
+                  id: 'ma-4',
+                  subtheme: 'Avaliação',
+                  itemDocument: 'Financial Model',
+                  uploadDate: null,
+                  status: 'pendente',
+                  responsible: 'Sócio',
+                  sharedWith: 'all_with_nda',
+                },
+              ],
+            },
+            {
+              id: 'extra-docs',
+              title: 'Documentos Adicionais',
+              rows: [
+                {
+                  id: 'ex-1',
+                  subtheme: 'Due Diligence',
+                  itemDocument: 'Due Diligence Checklist',
+                  uploadDate: null,
+                  status: 'parcial',
+                  responsible: 'Mary AI',
+                  sharedWith: 'requester_only',
+                },
+                {
+                  id: 'ex-2',
+                  subtheme: 'Apresentação',
+                  itemDocument: 'Management Presentation',
+                  uploadDate: '05/03/2026',
+                  status: 'completo',
+                  responsible: 'Sócio',
+                  sharedWith: 'all_with_nda',
+                },
+                {
+                  id: 'ex-3',
+                  subtheme: 'Societário',
+                  itemDocument: 'Cap Table',
+                  uploadDate: null,
+                  status: 'pendente',
+                  responsible: 'Advogado',
+                  sharedWith: 'all_with_nda',
+                },
+                {
+                  id: 'ex-4',
+                  subtheme: 'Negociação',
+                  itemDocument: 'Term Sheet Draft',
+                  uploadDate: null,
+                  status: 'pendente',
+                  responsible: 'Sócio',
+                  sharedWith: 'requester_only',
+                },
+              ],
             },
           ],
         },
@@ -836,8 +1758,18 @@ export const DEMO_PLATFORM: Record<DemoProfileKey, DemoProfileExperience> = {
           fields: [
             { label: 'Razao social / nome fantasia', value: 'Tiger Learning S.A.' },
             { label: 'CNPJ', value: '12.345.678/0001-90' },
-            { label: 'Setores', value: ['Edtech', 'Corporate Learning', 'B2B2C'], kind: 'tags' },
-            { label: 'Público alvo', value: ['B2B', 'B2B2C'], kind: 'tags' },
+            {
+              label: 'Setores',
+              value: ['Edtech', 'Corporate Learning', 'B2B2C'],
+              kind: 'tags',
+              tagOptions: ['Edtech', 'Corporate Learning', 'B2B2C', 'HR Tech', 'Fintech', 'Healthtech', 'B2B SaaS'],
+            },
+            {
+              label: 'Público alvo',
+              value: ['B2B', 'B2B2C'],
+              kind: 'tags',
+              tagOptions: ['B2B', 'B2B2C', 'B2C', 'B2G'],
+            },
             { label: 'Descrição do negócio', value: 'Plataforma de treinamento corporativo com motor de IA para jornada de aprendizagem e analytics.', kind: 'textarea' },
             { label: 'Objetivo principal', value: 'Venda integral com possibilidade de permanência da gestão por transição.' },
             { label: 'Motivação da transação', value: 'Escalar internacionalmente com parceiro estratégico e organizar sucessão dos fundadores.', kind: 'textarea' },
@@ -848,7 +1780,12 @@ export const DEMO_PLATFORM: Record<DemoProfileKey, DemoProfileExperience> = {
           title: 'Passo 2 - Forneça alguns dados mínimos para matching',
           description: 'Dados privados que so serao abertos conforme autorizacao e fase.',
           fields: [
-            { label: 'ROB mínimo / máximo', value: ['USD 24M', 'USD 32M'], kind: 'tags' },
+            {
+              label: 'ROB mínimo / máximo',
+              value: ['USD 24M', 'USD 32M'],
+              kind: 'tags',
+              tagOptions: ['USD 24M', 'USD 32M', 'USD 20M', 'USD 40M', 'USD 15M', 'USD 50M'],
+            },
             { label: 'EBITDA % atual', value: '14%' },
             { label: 'Valuation alvo', value: 'USD 48M' },
             { label: 'Participação alvo', value: '100%' },
@@ -1301,8 +2238,18 @@ export const DEMO_PLATFORM: Record<DemoProfileKey, DemoProfileExperience> = {
           title: 'Step 1 · Identidade consultiva',
           description: 'Tipo, lado de atuação, tamanho da equipe e experiência.',
           fields: [
-            { label: 'Tipo de advisory', value: ['Boutique M&A', 'Corporate finance'], kind: 'tags' },
-            { label: 'Side principal', value: ['Sell-side', 'Buy-side'], kind: 'tags' },
+            {
+              label: 'Tipo de advisory',
+              value: ['Boutique M&A', 'Corporate finance'],
+              kind: 'tags',
+              tagOptions: ['Boutique M&A', 'Corporate finance', 'Restructuring', 'Growth advisory'],
+            },
+            {
+              label: 'Side principal',
+              value: ['Sell-side', 'Buy-side'],
+              kind: 'tags',
+              tagOptions: ['Sell-side', 'Buy-side', 'Both'],
+            },
             { label: 'Tamanho da equipe', value: '14 pessoas' },
             { label: 'Anos de experiência', value: '11 anos' },
           ],
@@ -1314,10 +2261,25 @@ export const DEMO_PLATFORM: Record<DemoProfileKey, DemoProfileExperience> = {
           fields: [
             { label: 'Deals nos últimos 3 anos', value: '7' },
             { label: 'Tombstone URL', value: 'https://northadvisors.com/tombstones' },
-            { label: 'Setores', value: ['Edtech', 'Fintech', 'Healthcare'], kind: 'tags' },
-            { label: 'Estagios', value: ['Teaser', 'NDA', 'DD/SPA'], kind: 'tags' },
+            {
+              label: 'Setores',
+              value: ['Edtech', 'Fintech', 'Healthcare'],
+              kind: 'tags',
+              tagOptions: ['Edtech', 'Fintech', 'Healthcare', 'Industria', 'Consumer', 'B2B SaaS'],
+            },
+            {
+              label: 'Estagios',
+              value: ['Teaser', 'NDA', 'DD/SPA'],
+              kind: 'tags',
+              tagOptions: ['Teaser', 'NDA', 'DD/SPA', 'Signing', 'Closing'],
+            },
             { label: 'Ticket medio', value: 'USD 10M - 80M' },
-            { label: 'Geografias', value: ['Brasil', 'LatAm'], kind: 'tags' },
+            {
+              label: 'Geografias',
+              value: ['Brasil', 'LatAm'],
+              kind: 'tags',
+              tagOptions: ['Brasil', 'LatAm', 'México', 'Chile', 'Europa', 'Estados Unidos'],
+            },
           ],
         },
         {

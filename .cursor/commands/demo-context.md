@@ -2,6 +2,18 @@
 
 Quando este comando for acionado, o assistente deve **carregar o contexto da página** a partir da **URL obrigatória** que o usuário enviar e **preparar-se para receber instruções** sobre mudanças ou análises nessa tela — sem executar ainda o trabalho completo, salvo se o usuário pedir na mesma mensagem.
 
+## Escopo demo (regra padrão)
+
+Quando o contexto for uma URL em **`/demo/**`** (ou quando o usuário disser explicitamente que o trabalho é só na demo):
+
+1. **Limitar mudanças** a arquivos e dados usados exclusivamente pela demo, em geral:
+   - `src/app/demo/**`
+   - `src/components/demo/**`
+   - `src/lib/demo/**`
+2. **Não** alterar, neste escopo, fluxos autenticados reais, onboarding de produção, Server Actions de domínio, Supabase, middleware ou rotas `(protected)` — salvo **pedido explícito** do usuário para fora da demo.
+3. Se o requisito **espelhar** comportamento do app real (ex.: `GeographySelector`), na demo preferir **mock ou componente só em `components/demo`**, documentando que a paridade com produção é opcional e futura.
+4. Ao listar “pontos de extensão”, deixar claro o que é **100% mock** e o que seria necessário para levar ao produto (sem implementar).
+
 ## Entrada obrigatória
 
 - **Sempre** incluir a **URL completa** ou, no mínimo, o **path absoluto** (ex.: `http://localhost:3000/demo/asset/projects/tiger` ou `/demo/asset/projects/tiger`).
@@ -43,4 +55,5 @@ O usuário pode colar, junto com a URL, o bloco que o Cursor/browser gera ao ins
 
 - Não prosseguir sem URL.
 - Não fazer refatorações amplas nem mudanças fora do escopo até o usuário pedir.
+- Não expandir escopo para onboarding real, APIs ou banco quando a tarefa for **explicitamente** demo-only (conforme a seção **Escopo demo** acima).
 - Não criar documentação nova (.md) salvo se o usuário solicitar.
